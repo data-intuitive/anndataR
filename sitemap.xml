@@ -43,6 +43,18 @@
     <loc>https://scverse.org/anndataR/reference/anndataR-package.html</loc>
   </url>
   <url>
+    <loc>https://scverse.org/anndataR/reference/dummy_Seurat.html</loc>
+  </url>
+  <url>
+    <loc>https://scverse.org/anndataR/reference/dummy_SingleCellExperiment.html</loc>
+  </url>
+  <url>
+    <loc>https://scverse.org/anndataR/reference/dummy_data.html</loc>
+  </url>
+  <url>
+    <loc>https://scverse.org/anndataR/reference/dummy_list.html</loc>
+  </url>
+  <url>
     <loc>https://scverse.org/anndataR/reference/get_generator.html</loc>
   </url>
   <url>
@@ -53,6 +65,9 @@
   </url>
   <url>
     <loc>https://scverse.org/anndataR/reference/list_generators.html</loc>
+  </url>
+  <url>
+    <loc>https://scverse.org/anndataR/reference/read_h5ad.html</loc>
   </url>
   <url>
     <loc>https://scverse.org/anndataR/reference/read_h5ad_categorical.html</loc>
@@ -79,6 +94,9 @@
     <loc>https://scverse.org/anndataR/reference/read_h5ad_mapping.html</loc>
   </url>
   <url>
+    <loc>https://scverse.org/anndataR/reference/read_h5ad_nullable.html</loc>
+  </url>
+  <url>
     <loc>https://scverse.org/anndataR/reference/read_h5ad_nullable_boolean.html</loc>
   </url>
   <url>
@@ -100,10 +118,16 @@
     <loc>https://scverse.org/anndataR/reference/read_h5ad_string_scalar.html</loc>
   </url>
   <url>
+    <loc>https://scverse.org/anndataR/reference/to_HDF5AnnData.html</loc>
+  </url>
+  <url>
     <loc>https://scverse.org/anndataR/reference/to_InMemory.html</loc>
   </url>
   <url>
     <loc>https://scverse.org/anndataR/reference/write_empty_h5ad.html</loc>
+  </url>
+  <url>
+    <loc>https://scverse.org/anndataR/reference/write_h5ad.html</loc>
   </url>
   <url>
     <loc>https://scverse.org/anndataR/reference/write_h5ad_categorical.html</loc>
