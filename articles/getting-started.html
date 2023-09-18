@@ -138,12 +138,10 @@ access its contents.</p>
 <span>  var_names <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span></span>
 <span><span class="op">)</span></span>
 <span><span class="va">adata</span></span>
-<span><span class="co">#&gt; class: InMemoryAnnData</span></span>
-<span><span class="co">#&gt; dim: 3 obs x 5 var</span></span>
-<span><span class="co">#&gt; X: matrix</span></span>
-<span><span class="co">#&gt; layers: A B</span></span>
-<span><span class="co">#&gt; obs: cell</span></span>
-<span><span class="co">#&gt; var: gene</span></span></code></pre></div>
+<span><span class="co">#&gt; AnnData object with n_obs × n_vars = 3 × 5</span></span>
+<span><span class="co">#&gt;     obs: 'cell'</span></span>
+<span><span class="co">#&gt;     var: 'gene'</span></span>
+<span><span class="co">#&gt;     layers: 'A', 'B'</span></span></code></pre></div>
 <p>The contents can be accessed as well:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="va">adata</span><span class="op">$</span><span class="va">X</span></span>
