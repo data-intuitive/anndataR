@@ -97,25 +97,86 @@
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
-<p>Here’s a quick example of how to use <a href="https://scverse.org/anndataR">anndataR</a>:</p>
+<p>Here’s a quick example of how to use <a href="https://scverse.org/anndataR">anndataR</a>. First, we download an h5ad file.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://scverse.org/anndataR">anndataR</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span><span class="st">"https://github.com/chanzuckerberg/cellxgene/raw/main/example-dataset/pbmc3k.h5ad"</span>, <span class="st">"pbmc3k.h5ad"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Read an h5ad file</span></span>
-<span><span class="va">adata</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_h5ad.html">read_h5ad</a></span><span class="op">(</span><span class="st">"pbmc3k.h5ad"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Access AnnData slots</span></span>
-<span><span class="va">adata</span><span class="op">$</span><span class="va">X</span></span>
-<span><span class="va">adata</span><span class="op">$</span><span class="va">obs</span></span>
-<span><span class="va">adata</span><span class="op">$</span><span class="va">var</span></span>
-<span></span>
-<span><span class="co"># Convert the AnnData object to a SingleCellExperiment object</span></span>
-<span><span class="va">sce</span> <span class="op">&lt;-</span> <span class="va">adata</span><span class="op">$</span><span class="fu">to_SingleCellExperiment</span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Convert the AnnData object to a Seurat object</span></span>
-<span><span class="va">sce</span> <span class="op">&lt;-</span> <span class="va">adata</span><span class="op">$</span><span class="fu">to_Seurat</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">h5ad_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"example.h5ad"</span>, package <span class="op">=</span> <span class="st">"anndataR"</span><span class="op">)</span></span></code></pre></div>
+<p>Read an h5ad file:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">adata</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_h5ad.html">read_h5ad</a></span><span class="op">(</span><span class="va">h5ad_path</span>, to <span class="op">=</span> <span class="st">"InMemoryAnnData"</span><span class="op">)</span></span></code></pre></div>
+<p>View structure:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">adata</span></span>
+<span><span class="co">#&gt; class: InMemoryAnnData</span></span>
+<span><span class="co">#&gt; dim: 50 obs x 100 var</span></span>
+<span><span class="co">#&gt; X: dgRMatrix</span></span>
+<span><span class="co">#&gt; layers: counts csc_counts dense_X dense_counts</span></span>
+<span><span class="co">#&gt; obs: Float FloatNA Int IntNA Bool BoolNA n_genes_by_counts</span></span>
+<span><span class="co">#&gt;   log1p_n_genes_by_counts total_counts log1p_total_counts leiden</span></span>
+<span><span class="co">#&gt; var: String n_cells_by_counts mean_counts log1p_mean_counts</span></span>
+<span><span class="co">#&gt;   pct_dropout_by_counts total_counts log1p_total_counts highly_variable</span></span>
+<span><span class="co">#&gt;   means dispersions dispersions_norm</span></span></code></pre></div>
+<p>Access AnnData slots:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">adata</span><span class="op">$</span><span class="va">X</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1]  50 100</span></span>
+<span><span class="va">adata</span><span class="op">$</span><span class="va">obs</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span></span>
+<span><span class="co">#&gt;   Float FloatNA Int IntNA  Bool BoolNA</span></span>
+<span><span class="co">#&gt; 1 42.42     NaN   0    NA FALSE  FALSE</span></span>
+<span><span class="co">#&gt; 2 42.42   42.42   1    42  TRUE     NA</span></span>
+<span><span class="co">#&gt; 3 42.42   42.42   2    42  TRUE   TRUE</span></span>
+<span><span class="co">#&gt; 4 42.42   42.42   3    42  TRUE   TRUE</span></span>
+<span><span class="co">#&gt; 5 42.42   42.42   4    42  TRUE   TRUE</span></span>
+<span><span class="va">adata</span><span class="op">$</span><span class="va">var</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span></span>
+<span><span class="co">#&gt;    String n_cells_by_counts mean_counts log1p_mean_counts pct_dropout_by_counts</span></span>
+<span><span class="co">#&gt; 1 String0                44        1.94          1.078410                    12</span></span>
+<span><span class="co">#&gt; 2 String1                42        2.04          1.111858                    16</span></span>
+<span><span class="co">#&gt; 3 String2                43        2.12          1.137833                    14</span></span>
+<span><span class="co">#&gt; 4 String3                41        1.72          1.000632                    18</span></span>
+<span><span class="co">#&gt; 5 String4                42        2.06          1.118415                    16</span></span>
+<span><span class="co">#&gt;   total_counts</span></span>
+<span><span class="co">#&gt; 1           97</span></span>
+<span><span class="co">#&gt; 2          102</span></span>
+<span><span class="co">#&gt; 3          106</span></span>
+<span><span class="co">#&gt; 4           86</span></span>
+<span><span class="co">#&gt; 5          103</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="interoperability">Interoperability<a class="anchor" aria-label="anchor" href="#interoperability"></a>
+</h2>
+<p>Convert the AnnData object to a SingleCellExperiment object:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">sce</span> <span class="op">&lt;-</span> <span class="va">adata</span><span class="op">$</span><span class="fu">to_SingleCellExperiment</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">sce</span></span>
+<span><span class="co">#&gt; class: SingleCellExperiment </span></span>
+<span><span class="co">#&gt; dim: 100 50 </span></span>
+<span><span class="co">#&gt; metadata(0):</span></span>
+<span><span class="co">#&gt; assays(5): X counts csc_counts dense_X dense_counts</span></span>
+<span><span class="co">#&gt; rownames(100): Gene000 Gene001 ... Gene098 Gene099</span></span>
+<span><span class="co">#&gt; rowData names(11): String n_cells_by_counts ... dispersions</span></span>
+<span><span class="co">#&gt;   dispersions_norm</span></span>
+<span><span class="co">#&gt; colnames(50): Cell000 Cell001 ... Cell048 Cell049</span></span>
+<span><span class="co">#&gt; colData names(11): Float FloatNA ... log1p_total_counts leiden</span></span>
+<span><span class="co">#&gt; reducedDimNames(0):</span></span>
+<span><span class="co">#&gt; mainExpName: NULL</span></span>
+<span><span class="co">#&gt; altExpNames(0):</span></span></code></pre></div>
+<p>Convert the AnnData object to a Seurat object:</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="va">adata</span><span class="op">$</span><span class="fu">to_Seurat</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Keys should be one or more alphanumeric characters followed by an</span></span>
+<span><span class="co">#&gt; underscore, setting key from rna to rna_</span></span>
+<span><span class="co">#&gt; Warning: Keys should be one or more alphanumeric characters followed by an</span></span>
+<span><span class="co">#&gt; underscore, setting key from csc_counts_ to csccounts_</span></span>
+<span><span class="co">#&gt; Warning: Keys should be one or more alphanumeric characters followed by an</span></span>
+<span><span class="co">#&gt; underscore, setting key from dense_x_ to densex_</span></span>
+<span><span class="co">#&gt; Warning: Keys should be one or more alphanumeric characters followed by an</span></span>
+<span><span class="co">#&gt; underscore, setting key from dense_counts_ to densecounts_</span></span>
+<span><span class="va">obj</span></span>
+<span><span class="co">#&gt; An object of class Seurat </span></span>
+<span><span class="co">#&gt; 500 features across 50 samples within 5 assays </span></span>
+<span><span class="co">#&gt; Active assay: RNA (100 features, 0 variable features)</span></span>
+<span><span class="co">#&gt;  4 other assays present: counts, csc_counts, dense_X, dense_counts</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">

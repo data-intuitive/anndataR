@@ -28,6 +28,9 @@
     <loc>https://scverse.org/anndataR/reference/AbstractAnnData.html</loc>
   </url>
   <url>
+    <loc>https://scverse.org/anndataR/reference/AnnData.html</loc>
+  </url>
+  <url>
     <loc>https://scverse.org/anndataR/reference/HDF5AnnData.html</loc>
   </url>
   <url>
@@ -56,9 +59,6 @@
   </url>
   <url>
     <loc>https://scverse.org/anndataR/reference/get_generator.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/reference/hdf5_path_exists.html</loc>
   </url>
   <url>
     <loc>https://scverse.org/anndataR/reference/index.html</loc>
@@ -121,51 +121,12 @@
     <loc>https://scverse.org/anndataR/reference/to_HDF5AnnData.html</loc>
   </url>
   <url>
-    <loc>https://scverse.org/anndataR/reference/to_InMemory.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/reference/write_empty_h5ad.html</loc>
+    <loc>https://scverse.org/anndataR/reference/to_InMemoryAnnData.html</loc>
   </url>
   <url>
     <loc>https://scverse.org/anndataR/reference/write_h5ad.html</loc>
   </url>
   <url>
-    <loc>https://scverse.org/anndataR/reference/write_h5ad_categorical.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/reference/write_h5ad_data_frame.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/reference/write_h5ad_data_frame_index.html</loc>
-  </url>
-  <url>
     <loc>https://scverse.org/anndataR/reference/write_h5ad_dense_array.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/reference/write_h5ad_element.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/reference/write_h5ad_encoding.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/reference/write_h5ad_mapping.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/reference/write_h5ad_nullable_boolean.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/reference/write_h5ad_nullable_integer.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/reference/write_h5ad_numeric_scalar.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/reference/write_h5ad_sparse_array.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/reference/write_h5ad_string_array.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/reference/write_h5ad_string_scalar.html</loc>
   </url>
 </urlset>

@@ -117,6 +117,7 @@ vector.</p></dd>
 <li><span class="pkg-link" data-pkg="anndataR" data-topic="AbstractAnnData" data-id="obs_keys"><a href="AbstractAnnData.html#method-obs_keys"><code>anndataR::AbstractAnnData$obs_keys()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="anndataR" data-topic="AbstractAnnData" data-id="print"><a href="AbstractAnnData.html#method-print"><code>anndataR::AbstractAnnData$print()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="anndataR" data-topic="AbstractAnnData" data-id="shape"><a href="AbstractAnnData.html#method-shape"><code>anndataR::AbstractAnnData$shape()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="anndataR" data-topic="AbstractAnnData" data-id="to_HDF5AnnData"><a href="AbstractAnnData.html#method-to_HDF5AnnData"><code>anndataR::AbstractAnnData$to_HDF5AnnData()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="anndataR" data-topic="AbstractAnnData" data-id="to_InMemoryAnnData"><a href="AbstractAnnData.html#method-to_InMemoryAnnData"><code>anndataR::AbstractAnnData$to_InMemoryAnnData()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="anndataR" data-topic="AbstractAnnData" data-id="to_Seurat"><a href="AbstractAnnData.html#method-to_Seurat"><code>anndataR::AbstractAnnData$to_Seurat()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="anndataR" data-topic="AbstractAnnData" data-id="to_SingleCellExperiment"><a href="AbstractAnnData.html#method-to_SingleCellExperiment"><code>anndataR::AbstractAnnData$to_SingleCellExperiment()</code></a></span></li>
@@ -203,7 +204,7 @@ with <code>obs</code> and <code>var</code>.</p></dd>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## complete example</span></span></span>
-<span class="r-in"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="va">InMemoryAnnData</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span></span>
+<span class="r-in"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="AnnData.html">AnnData</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  X <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">15</span>, <span class="fl">3L</span>, <span class="fl">5L</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  layers <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>    A <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fl">5</span><span class="op">:</span><span class="fl">1</span>, <span class="fl">3L</span>, <span class="fl">5L</span><span class="op">)</span>,</span></span>
@@ -223,7 +224,7 @@ with <code>obs</code> and <code>var</code>.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> var: gene</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## minimum example</span></span></span>
-<span class="r-in"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="va">InMemoryAnnData</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span></span>
+<span class="r-in"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="AnnData.html">AnnData</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  obs_names <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span>,</span></span>
 <span class="r-in"><span>  var_names <span class="op">=</span> <span class="va">LETTERS</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
