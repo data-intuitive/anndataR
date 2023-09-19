@@ -73,6 +73,26 @@ with with all elements having the dimensions consistent with
 <code>obs</code> and <code>var</code>.</p></dd>
 
 
+<dt><code>obsm</code></dt>
+<dd><p>The obsm slot. Must be <code>NULL</code> or a named list with
+with all elements having the same number of rows as <code>obs</code>.</p></dd>
+
+
+<dt><code>varm</code></dt>
+<dd><p>The varm slot. Must be <code>NULL</code> or a named list with
+with all elements having the same number of rows as <code>var</code>.</p></dd>
+
+
+<dt><code>obsp</code></dt>
+<dd><p>The obsp slot. Must be <code>NULL</code> or a named list with
+with all elements having the same number of rows and columns as <code>obs</code>.</p></dd>
+
+
+<dt><code>varp</code></dt>
+<dd><p>The varp slot. Must be <code>NULL</code> or a named list with
+with all elements having the same number of rows and columns as <code>var</code>.</p></dd>
+
+
 <dt><code>obs</code></dt>
 <dd><p>The obs slot</p></dd>
 
@@ -121,7 +141,11 @@ with with all elements having the dimensions consistent with
 <span>  X <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  obs <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  var <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  layers <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  layers <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  obsm <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  varm <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  obsp <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  varp <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -167,6 +191,30 @@ automatically be generated.</p></dd>
 <dd><p>Either <code>NULL</code> or a named list, where each element is an
 observation × variable matrix with dimensions consistent with <code>obs</code> and
 <code>var</code>.</p></dd>
+
+
+<dt><code>obsm</code></dt>
+<dd><p>The obsm slot is used to store multi-dimensional annotation
+arrays. It must be either <code>NULL</code> or a named list, where each element is a
+matrix with <code>n_obs</code> rows and an arbitrary number of columns.</p></dd>
+
+
+<dt><code>varm</code></dt>
+<dd><p>The varm slot is used to store multi-dimensional annotation
+arrays. It must be either <code>NULL</code> or a named list, where each element is a
+matrix with <code>n_vars</code> rows and an arbitrary number of columns.</p></dd>
+
+
+<dt><code>obsp</code></dt>
+<dd><p>The obsp slot is used to store sparse multi-dimensional
+annotation arrays. It must be either <code>NULL</code> or a named list, where each
+element is a sparse matrix where each dimension has length <code>n_obs</code>.</p></dd>
+
+
+<dt><code>varp</code></dt>
+<dd><p>The varp slot is used to store sparse multi-dimensional
+annotation arrays. It must be either <code>NULL</code> or a named list, where each
+element is a sparse matrix where each dimension has length <code>n_vars</code>.</p></dd>
 
 
 </dl><p></p></div>
