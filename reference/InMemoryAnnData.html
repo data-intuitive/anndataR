@@ -122,6 +122,10 @@ with all elements having the same number of rows and columns as <code>obs</code>
 with all elements having the same number of rows and columns as <code>var</code>.</p></dd>
 
 
+<dt><code>uns</code></dt>
+<dd><p>The uns slot. Must be <code>NULL</code> or a named list.</p></dd>
+
+
 </dl><p></p></div>
     </div>
     <div class="section level2">
@@ -162,7 +166,8 @@ Inherits from AbstractAnnData.</p><div class="section">
 <span>  obsm <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  varm <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  obsp <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  varp <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  varp <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  uns <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -229,6 +234,11 @@ element is a sparse matrix where each dimension has length <code>n_obs</code>.</
 <dd><p>The varp slot is used to store sparse multi-dimensional
 annotation arrays. It must be either <code>NULL</code> or a named list, where each
 element is a sparse matrix where each dimension has length <code>n_vars</code>.</p></dd>
+
+
+<dt><code>uns</code></dt>
+<dd><p>The uns slot is used to store unstructured annotation.
+It must be either <code>NULL</code> or a named list.</p></dd>
 
 
 </dl><p></p></div>

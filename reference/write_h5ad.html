@@ -103,7 +103,6 @@ HDF5 file. Can be one of <code>"none"</code>, <code>"gzip"</code> or <code>"lzf"
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Write a SingleCellExperiment as an H5AD</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"SingleCellExperiment"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">h5ad_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".h5ad"</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">ncells</span> <span class="op">&lt;-</span> <span class="fl">100</span></span></span>
 <span class="r-in"><span>  <span class="va">counts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html" class="external-link">rpois</a></span><span class="op">(</span><span class="fl">20000</span>, <span class="fl">5</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="va">ncells</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">logcounts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log2</a></span><span class="op">(</span><span class="va">counts</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span></span></span>
@@ -115,12 +114,16 @@ HDF5 file. Can be one of <code>"none"</code>, <code>"gzip"</code> or <code>"lzf"
 <span class="r-in"><span>    assays <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>counts <span class="op">=</span> <span class="va">counts</span>, logcounts <span class="op">=</span> <span class="va">logcounts</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>    reducedDims <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>PCA <span class="op">=</span> <span class="va">pca</span>, tSNE <span class="op">=</span> <span class="va">tsne</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="va">h5ad_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".h5ad"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">write_h5ad</span><span class="op">(</span><span class="va">sce</span>, <span class="va">h5ad_file</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>colnames(sce) should not be NULL</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>rownames(sce) should not be NULL</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Write a Seurat as a H5AD</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"SeuratObject"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span>  <span class="co"># TODO: uncomment this code when the seurat converter is fixed</span></span></span>
-<span class="r-in"><span>  <span class="co"># h5ad_file &lt;- tempfile(fileext = ".h5ad")</span></span></span>
 <span class="r-in"><span>  <span class="co"># counts &lt;- matrix(1:15, 3L, 5L)</span></span></span>
 <span class="r-in"><span>  <span class="co"># dimnames(counts) &lt;- list(</span></span></span>
 <span class="r-in"><span>  <span class="co">#   letters[1:3],</span></span></span>
@@ -137,6 +140,7 @@ HDF5 file. Can be one of <code>"none"</code>, <code>"gzip"</code> or <code>"lzf"
 <span class="r-in"><span>  <span class="co"># )</span></span></span>
 <span class="r-in"><span>  <span class="co"># obj &lt;- SeuratObject::AddMetaData(obj, cell.metadata)</span></span></span>
 <span class="r-in"><span>  <span class="co">#</span></span></span>
+<span class="r-in"><span>  <span class="co"># h5ad_file &lt;- tempfile(fileext = ".h5ad")</span></span></span>
 <span class="r-in"><span>  <span class="co"># write_h5ad(obj, h5ad_file)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
