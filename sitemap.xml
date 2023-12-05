@@ -49,19 +49,13 @@
     <loc>https://scverse.org/anndataR/reference/anndataR-package.html</loc>
   </url>
   <url>
-    <loc>https://scverse.org/anndataR/reference/get_generator.html</loc>
+    <loc>https://scverse.org/anndataR/reference/generate_dataset.html</loc>
   </url>
   <url>
     <loc>https://scverse.org/anndataR/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://scverse.org/anndataR/reference/list_generators.html</loc>
-  </url>
-  <url>
     <loc>https://scverse.org/anndataR/reference/read_h5ad.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/reference/read_h5ad_nullable_boolean.html</loc>
   </url>
   <url>
     <loc>https://scverse.org/anndataR/reference/to_HDF5AnnData.html</loc>
@@ -71,8 +65,5 @@
   </url>
   <url>
     <loc>https://scverse.org/anndataR/reference/write_h5ad.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/reference/write_h5ad_dense_array.html</loc>
   </url>
 </urlset>
