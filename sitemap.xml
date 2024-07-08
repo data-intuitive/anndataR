@@ -1,69 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://scverse.org/anndataR/404.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/articles/design.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/articles/getting-started.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/index.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/reference/AbstractAnnData.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/reference/AnnData.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/reference/HDF5AnnData.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/reference/InMemoryAnnData.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/reference/Seurat.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/reference/SingleCellExperiment.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/reference/anndataR-package.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/reference/generate_dataset.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/reference/read_h5ad.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/reference/to_HDF5AnnData.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/reference/to_InMemoryAnnData.html</loc>
-  </url>
-  <url>
-    <loc>https://scverse.org/anndataR/reference/write_h5ad.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://scverse.org/anndataR/404.html</loc></url>
+<url><loc>https://scverse.org/anndataR/LICENSE-text.html</loc></url>
+<url><loc>https://scverse.org/anndataR/LICENSE.html</loc></url>
+<url><loc>https://scverse.org/anndataR/articles/design.html</loc></url>
+<url><loc>https://scverse.org/anndataR/articles/getting-started.html</loc></url>
+<url><loc>https://scverse.org/anndataR/articles/index.html</loc></url>
+<url><loc>https://scverse.org/anndataR/authors.html</loc></url>
+<url><loc>https://scverse.org/anndataR/index.html</loc></url>
+<url><loc>https://scverse.org/anndataR/news/index.html</loc></url>
+<url><loc>https://scverse.org/anndataR/reference/AbstractAnnData.html</loc></url>
+<url><loc>https://scverse.org/anndataR/reference/AnnData.html</loc></url>
+<url><loc>https://scverse.org/anndataR/reference/HDF5AnnData.html</loc></url>
+<url><loc>https://scverse.org/anndataR/reference/InMemoryAnnData.html</loc></url>
+<url><loc>https://scverse.org/anndataR/reference/Seurat.html</loc></url>
+<url><loc>https://scverse.org/anndataR/reference/SingleCellExperiment.html</loc></url>
+<url><loc>https://scverse.org/anndataR/reference/anndataR-package.html</loc></url>
+<url><loc>https://scverse.org/anndataR/reference/generate_dataset.html</loc></url>
+<url><loc>https://scverse.org/anndataR/reference/index.html</loc></url>
+<url><loc>https://scverse.org/anndataR/reference/read_h5ad.html</loc></url>
+<url><loc>https://scverse.org/anndataR/reference/to_HDF5AnnData.html</loc></url>
+<url><loc>https://scverse.org/anndataR/reference/to_InMemoryAnnData.html</loc></url>
+<url><loc>https://scverse.org/anndataR/reference/write_h5ad.html</loc></url>
 </urlset>
+
