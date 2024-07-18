@@ -257,12 +257,10 @@ if <code>X</code> or <code>obs</code> and <code>var</code> are not provided.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     layers: 'A', 'B'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## minimum example</span></span></span>
-<span class="r-in"><span><span class="co"># -&gt; using `AnnData()` is synonymous to `InMemoryAnnData$new()`</span></span></span>
-<span class="r-in"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="AnnData.html">AnnData</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="AnnData.html">AnnData</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  obs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>row.names <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  var <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>row.names <span class="op">=</span> <span class="va">LETTERS</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">ad</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> AnnData object with n_obs × n_vars = 10 × 5</span>
 </code></pre></div>
     </div>
