@@ -8,18 +8,13 @@
 <url><loc>https://scverse.org/anndataR/authors.html</loc></url>
 <url><loc>https://scverse.org/anndataR/index.html</loc></url>
 <url><loc>https://scverse.org/anndataR/news/index.html</loc></url>
-<url><loc>https://scverse.org/anndataR/reference/AbstractAnnData.html</loc></url>
 <url><loc>https://scverse.org/anndataR/reference/AnnData.html</loc></url>
-<url><loc>https://scverse.org/anndataR/reference/HDF5AnnData.html</loc></url>
-<url><loc>https://scverse.org/anndataR/reference/InMemoryAnnData.html</loc></url>
-<url><loc>https://scverse.org/anndataR/reference/Seurat.html</loc></url>
-<url><loc>https://scverse.org/anndataR/reference/SingleCellExperiment.html</loc></url>
 <url><loc>https://scverse.org/anndataR/reference/anndataR-package.html</loc></url>
+<url><loc>https://scverse.org/anndataR/reference/from_Seurat.html</loc></url>
+<url><loc>https://scverse.org/anndataR/reference/from_SingleCellExperiment.html</loc></url>
 <url><loc>https://scverse.org/anndataR/reference/generate_dataset.html</loc></url>
 <url><loc>https://scverse.org/anndataR/reference/index.html</loc></url>
 <url><loc>https://scverse.org/anndataR/reference/read_h5ad.html</loc></url>
-<url><loc>https://scverse.org/anndataR/reference/to_HDF5AnnData.html</loc></url>
-<url><loc>https://scverse.org/anndataR/reference/to_InMemoryAnnData.html</loc></url>
 <url><loc>https://scverse.org/anndataR/reference/write_h5ad.html</loc></url>
 </urlset>
 

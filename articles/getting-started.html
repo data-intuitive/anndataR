@@ -160,8 +160,8 @@ access its contents.</p>
 <p>You can convert the AnnData object to a SingleCellExperiment object
 or to a SeuratObject in the following way:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">sce</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/SingleCellExperiment.html">to_SingleCellExperiment</a></span><span class="op">(</span><span class="va">adata</span><span class="op">)</span></span>
-<span><span class="va">seurat</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Seurat.html">to_Seurat</a></span><span class="op">(</span><span class="va">adata</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">sce</span> <span class="op">&lt;-</span> <span class="va">adata</span><span class="op">$</span><span class="fu">to_SingleCellExperiment</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">seurat</span> <span class="op">&lt;-</span> <span class="va">adata</span><span class="op">$</span><span class="fu">to_Seurat</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in matrix(data = as.numeric(x = x), ncol = nc): NAs introduced by</span></span>
 <span><span class="co">#&gt; coercion</span></span></code></pre></div>
 </div>
