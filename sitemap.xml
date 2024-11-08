@@ -1,20 +1,20 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
-<url><loc>https://scverse.org/anndataR/404.html</loc></url>
-<url><loc>https://scverse.org/anndataR/LICENSE-text.html</loc></url>
-<url><loc>https://scverse.org/anndataR/LICENSE.html</loc></url>
-<url><loc>https://scverse.org/anndataR/articles/design.html</loc></url>
-<url><loc>https://scverse.org/anndataR/articles/getting-started.html</loc></url>
-<url><loc>https://scverse.org/anndataR/articles/index.html</loc></url>
-<url><loc>https://scverse.org/anndataR/authors.html</loc></url>
-<url><loc>https://scverse.org/anndataR/index.html</loc></url>
-<url><loc>https://scverse.org/anndataR/news/index.html</loc></url>
-<url><loc>https://scverse.org/anndataR/reference/AnnData.html</loc></url>
-<url><loc>https://scverse.org/anndataR/reference/anndataR-package.html</loc></url>
-<url><loc>https://scverse.org/anndataR/reference/from_Seurat.html</loc></url>
-<url><loc>https://scverse.org/anndataR/reference/from_SingleCellExperiment.html</loc></url>
-<url><loc>https://scverse.org/anndataR/reference/generate_dataset.html</loc></url>
-<url><loc>https://scverse.org/anndataR/reference/index.html</loc></url>
-<url><loc>https://scverse.org/anndataR/reference/read_h5ad.html</loc></url>
-<url><loc>https://scverse.org/anndataR/reference/write_h5ad.html</loc></url>
+<url><loc>https://anndataR.data-intuitive.com/404.html</loc></url>
+<url><loc>https://anndataR.data-intuitive.com/LICENSE-text.html</loc></url>
+<url><loc>https://anndataR.data-intuitive.com/LICENSE.html</loc></url>
+<url><loc>https://anndataR.data-intuitive.com/articles/anndataR.html</loc></url>
+<url><loc>https://anndataR.data-intuitive.com/articles/design.html</loc></url>
+<url><loc>https://anndataR.data-intuitive.com/articles/index.html</loc></url>
+<url><loc>https://anndataR.data-intuitive.com/authors.html</loc></url>
+<url><loc>https://anndataR.data-intuitive.com/index.html</loc></url>
+<url><loc>https://anndataR.data-intuitive.com/news/index.html</loc></url>
+<url><loc>https://anndataR.data-intuitive.com/reference/AnnData.html</loc></url>
+<url><loc>https://anndataR.data-intuitive.com/reference/anndataR-package.html</loc></url>
+<url><loc>https://anndataR.data-intuitive.com/reference/from_Seurat.html</loc></url>
+<url><loc>https://anndataR.data-intuitive.com/reference/from_SingleCellExperiment.html</loc></url>
+<url><loc>https://anndataR.data-intuitive.com/reference/generate_dataset.html</loc></url>
+<url><loc>https://anndataR.data-intuitive.com/reference/index.html</loc></url>
+<url><loc>https://anndataR.data-intuitive.com/reference/read_h5ad.html</loc></url>
+<url><loc>https://anndataR.data-intuitive.com/reference/write_h5ad.html</loc></url>
 </urlset>
 
