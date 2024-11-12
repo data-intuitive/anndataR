@@ -126,6 +126,56 @@ function <code>to_SingleCellExperiment</code> returns object of type
 feature in the package:</p>
 </div>
 <div class="section level2">
+<h2 id="anndata">AnnData<a class="anchor" aria-label="anchor" href="#anndata"></a>
+</h2>
+<table class="table">
+<colgroup>
+<col width="15%">
+<col width="15%">
+<col width="26%">
+<col width="15%">
+<col width="26%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">Slot</th>
+<th align="left">Getter</th>
+<th align="left">Getter test</th>
+<th align="left">Setter</th>
+<th align="left">Setter test</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">layers</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-Seurat.R#L73" class="external-link">✓</a></td>
+</tr>
+<tr class="even">
+<td align="left">obsm</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-Seurat.R#L79" class="external-link">✓</a></td>
+</tr>
+<tr class="odd">
+<td align="left">varm</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-Seurat.R#L82" class="external-link">✓</a></td>
+</tr>
+<tr class="even">
+<td align="left">X</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-Seurat.R#L72" class="external-link">✓</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section level2">
 <h2 id="hdf5anndata">HDF5AnnData<a class="anchor" aria-label="anchor" href="#hdf5anndata"></a>
 </h2>
 <table class="table">
@@ -344,79 +394,79 @@ feature in the package:</p>
 <tbody>
 <tr class="odd">
 <td align="left">layers</td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/Seurat.R#L76" class="external-link">~</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/Seurat.R#L129" class="external-link">✓</a></td>
 <td align="left"></td>
-<td align="left"></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/Seurat.R#L621" class="external-link">✓</a></td>
 <td align="left"></td>
 </tr>
 <tr class="even">
 <td align="left">obs</td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/Seurat.R#L37" class="external-link">✓</a></td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-Seurat.R#L32" class="external-link">✓</a></td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/Seurat.R#L158" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/Seurat.R#L127" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-Seurat.R#L33" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/Seurat.R#L595" class="external-link">✓</a></td>
 <td align="left"></td>
 </tr>
 <tr class="odd">
 <td align="left">obs_names</td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/Seurat.R#L28" class="external-link">✓</a></td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-Seurat.R#L26" class="external-link">✓</a></td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/Seurat.R#L157" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/Seurat.R#L154" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-Seurat.R#L27" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/Seurat.R#L594" class="external-link">✓</a></td>
 <td align="left"></td>
 </tr>
 <tr class="even">
 <td align="left">obsm</td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/Seurat.R#L169" class="external-link">~</a></td>
 <td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/Seurat.R#L630" class="external-link">~</a></td>
 <td align="left"></td>
 </tr>
 <tr class="odd">
 <td align="left">obsp</td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/Seurat.R#L199" class="external-link">~</a></td>
 <td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/Seurat.R#L674" class="external-link">~</a></td>
 <td align="left"></td>
 </tr>
 <tr class="even">
 <td align="left">uns</td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/Seurat.R#L214" class="external-link">✓</a></td>
 <td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/Seurat.R#L720" class="external-link">~</a></td>
 <td align="left"></td>
 </tr>
 <tr class="odd">
 <td align="left">var</td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/Seurat.R#L32" class="external-link">✓</a></td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-Seurat.R#L40" class="external-link">✓</a></td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/Seurat.R#L164" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/Seurat.R#L145" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-Seurat.R#L41" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/Seurat.R#L600" class="external-link">✓</a></td>
 <td align="left"></td>
 </tr>
 <tr class="even">
 <td align="left">var_names</td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/Seurat.R#L24" class="external-link">✓</a></td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-Seurat.R#L22" class="external-link">✓</a></td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/Seurat.R#L163" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/Seurat.R#L155" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-Seurat.R#L23" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/Seurat.R#L599" class="external-link">✓</a></td>
 <td align="left"></td>
 </tr>
 <tr class="odd">
 <td align="left">varm</td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/Seurat.R#L170" class="external-link">~</a></td>
 <td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/Seurat.R#L650" class="external-link">~</a></td>
 <td align="left"></td>
 </tr>
 <tr class="even">
 <td align="left">varp</td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/Seurat.R#L215" class="external-link">✓</a></td>
 <td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/Seurat.R#L698" class="external-link">~</a></td>
 <td align="left"></td>
 </tr>
 <tr class="odd">
 <td align="left">X</td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/Seurat.R#L48" class="external-link">~</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/Seurat.R#L128" class="external-link">✓</a></td>
 <td align="left"></td>
-<td align="left"></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/Seurat.R#L615" class="external-link">✓</a></td>
 <td align="left"></td>
 </tr>
 </tbody>
@@ -443,23 +493,23 @@ feature in the package:</p>
 <tbody>
 <tr class="odd">
 <td align="left">layers</td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L43" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L45" class="external-link">✓</a></td>
 <td align="left"></td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L144" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L147" class="external-link">✓</a></td>
 <td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L83" class="external-link">✓</a></td>
 </tr>
 <tr class="even">
 <td align="left">obs</td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L57" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L59" class="external-link">✓</a></td>
 <td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L32" class="external-link">✓</a></td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L131" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L134" class="external-link">✓</a></td>
 <td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L71" class="external-link">✓</a></td>
 </tr>
 <tr class="odd">
 <td align="left">obs_names</td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L58" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L60" class="external-link">✓</a></td>
 <td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L21" class="external-link">✓</a></td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L132" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L135" class="external-link">✓</a></td>
 <td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L77" class="external-link">✓</a></td>
 </tr>
 <tr class="even">
@@ -485,16 +535,16 @@ feature in the package:</p>
 </tr>
 <tr class="odd">
 <td align="left">var</td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L65" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L67" class="external-link">✓</a></td>
 <td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L26" class="external-link">✓</a></td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L137" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L140" class="external-link">✓</a></td>
 <td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L74" class="external-link">✓</a></td>
 </tr>
 <tr class="even">
 <td align="left">var_names</td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L66" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L68" class="external-link">✓</a></td>
 <td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L22" class="external-link">✓</a></td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L138" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L141" class="external-link">✓</a></td>
 <td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L80" class="external-link">✓</a></td>
 </tr>
 <tr class="odd">
@@ -513,9 +563,9 @@ feature in the package:</p>
 </tr>
 <tr class="odd">
 <td align="left">X</td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L35" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L37" class="external-link">✓</a></td>
 <td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L38" class="external-link">✓</a></td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L143" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L146" class="external-link">✓</a></td>
 <td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L68" class="external-link">✓</a></td>
 </tr>
 </tbody>
