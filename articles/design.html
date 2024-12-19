@@ -8,8 +8,8 @@
 <title>Design • anndataR</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Design">
 </head>
 <body>
@@ -85,9 +85,9 @@ An R implementation of the AnnData data structures, uses
 <p>Ideally, this package will be a complete replacement for all of these
 packages, and will be the go-to package for working with AnnData files
 in R.</p>
-<div class="section level3">
-<h3 id="desired-feature-list">Desired feature list<a class="anchor" aria-label="anchor" href="#desired-feature-list"></a>
-</h3>
+<div class="section level2">
+<h2 id="desired-feature-list">Desired feature list<a class="anchor" aria-label="anchor" href="#desired-feature-list"></a>
+</h2>
 <ul>
 <li>Provide an <code>R6</code> class to work with AnnData objects in R
 (either in-memory or on-disk).</li>
@@ -96,9 +96,9 @@ in R.</p>
 <li>Convert to/from <code>Seurat</code> objects</li>
 </ul>
 </div>
-<div class="section level3">
-<h3 id="class-diagram">Class diagram<a class="anchor" aria-label="anchor" href="#class-diagram"></a>
-</h3>
+<div class="section level2">
+<h2 id="class-diagram">Class diagram<a class="anchor" aria-label="anchor" href="#class-diagram"></a>
+</h2>
 <p>Here is a diagram of the main R6 classes provided by the package:</p>
 <p><img src="diagrams%2Fclass_diagram.svg"></p>
 <p>Notation:</p>
@@ -119,15 +119,14 @@ function <code>to_SingleCellExperiment</code> returns object of type
 <code>to_SingleCellExperiment</code> is abstract</li>
 </ul>
 </div>
-<div class="section level3">
-<h3 id="feature-tracking">Feature tracking<a class="anchor" aria-label="anchor" href="#feature-tracking"></a>
-</h3>
+<div class="section level2">
+<h2 id="feature-tracking">Feature tracking<a class="anchor" aria-label="anchor" href="#feature-tracking"></a>
+</h2>
 <p>The following tables show the status of the implementation of each
 feature in the package:</p>
-</div>
-<div class="section level2">
-<h2 id="anndata">AnnData<a class="anchor" aria-label="anchor" href="#anndata"></a>
-</h2>
+<div class="section level3">
+<h3 id="anndata">AnnData<a class="anchor" aria-label="anchor" href="#anndata"></a>
+</h3>
 <table class="table">
 <colgroup>
 <col width="15%">
@@ -175,9 +174,9 @@ feature in the package:</p>
 </tbody>
 </table>
 </div>
-<div class="section level2">
-<h2 id="hdf5anndata">HDF5AnnData<a class="anchor" aria-label="anchor" href="#hdf5anndata"></a>
-</h2>
+<div class="section level3">
+<h3 id="hdf5anndata">HDF5AnnData<a class="anchor" aria-label="anchor" href="#hdf5anndata"></a>
+</h3>
 <table class="table">
 <colgroup>
 <col width="20%">
@@ -274,9 +273,9 @@ feature in the package:</p>
 </tbody>
 </table>
 </div>
-<div class="section level2">
-<h2 id="inmemoryanndata">InMemoryAnnData<a class="anchor" aria-label="anchor" href="#inmemoryanndata"></a>
-</h2>
+<div class="section level3">
+<h3 id="inmemoryanndata">InMemoryAnnData<a class="anchor" aria-label="anchor" href="#inmemoryanndata"></a>
+</h3>
 <table class="table">
 <colgroup>
 <col width="20%">
@@ -373,9 +372,9 @@ feature in the package:</p>
 </tbody>
 </table>
 </div>
-<div class="section level2">
-<h2 id="seurat">Seurat<a class="anchor" aria-label="anchor" href="#seurat"></a>
-</h2>
+<div class="section level3">
+<h3 id="seurat">Seurat<a class="anchor" aria-label="anchor" href="#seurat"></a>
+</h3>
 <table class="table">
 <colgroup>
 <col width="20%">
@@ -472,9 +471,9 @@ feature in the package:</p>
 </tbody>
 </table>
 </div>
-<div class="section level2">
-<h2 id="singlecellexperiment">SingleCellExperiment<a class="anchor" aria-label="anchor" href="#singlecellexperiment"></a>
-</h2>
+<div class="section level3">
+<h3 id="singlecellexperiment">SingleCellExperiment<a class="anchor" aria-label="anchor" href="#singlecellexperiment"></a>
+</h3>
 <table class="table">
 <colgroup>
 <col width="20%">
@@ -570,6 +569,114 @@ feature in the package:</p>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="section level2">
+<h2 id="known-issues">Known issues<a class="anchor" aria-label="anchor" href="#known-issues"></a>
+</h2>
+<div class="section level3">
+<h3 id="issue-integers-are-being-converted-to-floats-">Issue: Integers are being converted to floats.<a class="anchor" aria-label="anchor" href="#issue-integers-are-being-converted-to-floats-"></a>
+</h3>
+<ul>
+<li>Affected backend: <code>HDF5AnnData</code>
+</li>
+<li>Affected slot(s): <code>X</code>, <code>layers</code>,
+<code>obsp</code>, <code>varp</code>, <code>obsm</code>,
+<code>varm</code>
+</li>
+<li>Affected dtype(s): <code>integer_csparse</code>,
+<code>integer_rsparse</code>, <code>integer_matrix</code>
+</li>
+<li>Probable cause: read</li>
+<li>To investigate: TRUE</li>
+<li>To fix: TRUE</li>
+</ul>
+<div class="section level4">
+<h4 id="error-message">Error message<a class="anchor" aria-label="anchor" href="#error-message"></a>
+</h4>
+<pre><code>Failure (test-roundtrip-obspvarp.R:111:5): Writing an AnnData with obsp and varp 'integer_csparse' works
+a$dtype (`actual`) not equal to b$dtype (`expected`).
+
+`class(actual)`:   "numpy.dtypes.Float64DType" "numpy.dtype" "python.builtin.object"
+`class(expected)`: "numpy.dtypes.Int64DType"   "numpy.dtype" "python.builtin.object"</code></pre>
+</div>
+<div class="section level4">
+<h4 id="proposed-solution">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution"></a>
+</h4>
+<p>Debug and fix</p>
+</div>
+</div>
+<div class="section level3">
+<h3 id="issue-python-nd-arrays-have-a-dimension-while-r-vectors-do-not-">Issue: Python nd.arrays have a dimension while R vectors do
+not.<a class="anchor" aria-label="anchor" href="#issue-python-nd-arrays-have-a-dimension-while-r-vectors-do-not-"></a>
+</h3>
+<ul>
+<li>Affected backend: <code>HDF5AnnData</code>
+</li>
+<li>Affected slot(s): <code>obsm</code>, <code>varm</code>
+</li>
+<li>Affected dtype(s): <code>boolean_array</code>,
+<code>categorical</code>, <code>categorical_missing_values</code>,
+<code>categorical_ordered</code>,
+<code>categorical_ordered_missing_values</code>,
+<code>dense_array</code>, <code>integer_array</code>,
+<code>nullable_boolean_array</code>,
+<code>nullable_integer_array</code>, <code>string_array</code>
+</li>
+<li>Probable cause: reticulate</li>
+<li>To investigate: TRUE</li>
+<li>To fix: TRUE</li>
+</ul>
+<div class="section level4">
+<h4 id="error-message-1">Error message<a class="anchor" aria-label="anchor" href="#error-message-1"></a>
+</h4>
+<pre><code>adata_r$varm[[name]] (`actual`) not equal to py_to_r(py_get_item(adata_py$varm, name)) (`expected`).
+
+`dim(actual)` is absent
+`dim(expected)` is an integer vector (20)</code></pre>
+</div>
+<div class="section level4">
+<h4 id="proposed-solution-1">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-1"></a>
+</h4>
+<p>Debug and fix</p>
+</div>
+</div>
+<div class="section level3">
+<h3 id="issue-r-vectors-dont-have-a-dimension-">Issue: R vectors don’t have a dimension.<a class="anchor" aria-label="anchor" href="#issue-r-vectors-dont-have-a-dimension-"></a>
+</h3>
+<ul>
+<li>Affected backend: <code>HDF5AnnData</code>
+</li>
+<li>Affected slot(s): <code>obsm</code>, <code>varm</code>
+</li>
+<li>Affected dtype(s): <code>boolean_array</code>,
+<code>categorical</code>, <code>categorical_missing_values</code>,
+<code>categorical_ordered</code>,
+<code>categorical_ordered_missing_values</code>,
+<code>dense_array</code>, <code>integer_array</code>,
+<code>nullable_boolean_array</code>,
+<code>nullable_integer_array</code>, <code>string_array</code>
+</li>
+<li>Probable cause: write</li>
+<li>To investigate: TRUE</li>
+<li>To fix: TRUE</li>
+</ul>
+<div class="section level4">
+<h4 id="error-message-2">Error message<a class="anchor" aria-label="anchor" href="#error-message-2"></a>
+</h4>
+<pre><code>Error in `if (found_dim != expected_dim) {
+    stop("dim(", label, ")[", i, "] should have shape: ", expected_dim, 
+        ", found: ", found_dim, ".")
+}`: argument is of length zero</code></pre>
+</div>
+<div class="section level4">
+<h4 id="proposed-solution-2">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-2"></a>
+</h4>
+<p>The input checking function for obsm and varm should allow the object
+to be a vector of the correct length instead of only a matrix or a data
+frame.</p>
+</div>
+</div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
