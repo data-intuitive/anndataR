@@ -23,7 +23,15 @@ If NULL, the functions from_Seurat_guess_* will be used to guess the mapping."><
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/design.html">Design</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><h6 class="dropdown-header" data-toc-skip>Usage</h6></li>
+    <li><a class="dropdown-item" href="../articles/usage_h5ad.html">Read/write H5AD files</a></li>
+    <li><a class="dropdown-item" href="../articles/usage_seurat.html">Read/write Seurat objects</a></li>
+    <li><a class="dropdown-item" href="../articles/usage_singlecellexperiment.html">Read/write SingleCellExperiment objects</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Development</h6></li>
+    <li><a class="dropdown-item" href="../articles/software_design.html">Software design</a></li>
+    <li><a class="dropdown-item" href="../articles/development_status.html">Development status</a></li>
+    <li><a class="dropdown-item" href="../articles/known_issues.html">Known issues</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -269,10 +277,10 @@ length 2. The first element must be <code>"misc"</code>. The second element is t
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>The default method for RunUMAP has changed from calling Python UMAP via reticulate to the R-native UWOT using the cosine metric</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> To use Python UMAP via reticulate, set umap.method to 'umap-learn' and metric to 'correlation'</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> This message will be shown once per session</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 19:15:35 UMAP embedding parameters a = 0.9922 b = 1.112</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 19:15:35 Read 200 rows and found 10 numeric columns</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 19:15:35 Using Annoy for neighbor search, n_neighbors = 30</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 19:15:35 Building Annoy index with metric = cosine, n_trees = 50</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 19:17:58 UMAP embedding parameters a = 0.9922 b = 1.112</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 19:17:58 Read 200 rows and found 10 numeric columns</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 19:17:58 Using Annoy for neighbor search, n_neighbors = 30</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 19:17:58 Building Annoy index with metric = cosine, n_trees = 50</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> 0%   10   20   30   40   50   60   70   80   90   100%</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> [----|----|----|----|----|----|----|----|----|----|</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> *</span>
@@ -326,14 +334,14 @@ length 2. The first element must be <code>"misc"</code>. The second element is t
 <span class="r-msg co"><span class="r-pr">#&gt;</span> *</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> *</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> |</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 19:15:35 Writing NN index file to temp file /tmp/RtmpBMTzZm/file17e5161e95f0</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 19:15:35 Searching Annoy index using 1 thread, search_k = 3000</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 19:15:35 Annoy recall = 100%</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 19:15:35 Commencing smooth kNN distance calibration using 1 thread</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 19:17:58 Writing NN index file to temp file /tmp/RtmpvJwov8/file2a0955de78da</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 19:17:58 Searching Annoy index using 1 thread, search_k = 3000</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 19:17:58 Annoy recall = 100%</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 19:17:59 Commencing smooth kNN distance calibration using 1 thread</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>  with target n_neighbors = 30</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 19:15:36 Initializing from normalized Laplacian + noise (using RSpectra)</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 19:15:36 Commencing optimization for 500 epochs, with 6160 positive edges</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 19:15:36 Optimization finished</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 19:17:59 Initializing from normalized Laplacian + noise (using RSpectra)</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 19:17:59 Commencing optimization for 500 epochs, with 6160 positive edges</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 19:18:00 Optimization finished</span>
 <span class="r-in"><span><span class="fu">from_Seurat</span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> AnnData object with n_obs × n_vars = 200 × 100</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     obs: 'orig.ident', 'nCount_RNA', 'nFeature_RNA'</span>

@@ -3,8 +3,13 @@ pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   anndataR: anndataR.html
-  design: design.html
-last_built: 2024-12-19T19:15Z
+  development_status: development_status.html
+  known_issues: known_issues.html
+  software_design: software_design.html
+  usage_h5ad: usage_h5ad.html
+  usage_seurat: usage_seurat.html
+  usage_singlecellexperiment: usage_singlecellexperiment.html
+last_built: 2025-01-16T19:17Z
 urls:
   reference: https://anndataR.data-intuitive.com/reference
   article: https://anndataR.data-intuitive.com/articles

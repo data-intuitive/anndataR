@@ -19,7 +19,15 @@
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/design.html">Design</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><h6 class="dropdown-header" data-toc-skip>Usage</h6></li>
+    <li><a class="dropdown-item" href="../articles/usage_h5ad.html">Read/write H5AD files</a></li>
+    <li><a class="dropdown-item" href="../articles/usage_seurat.html">Read/write Seurat objects</a></li>
+    <li><a class="dropdown-item" href="../articles/usage_singlecellexperiment.html">Read/write SingleCellExperiment objects</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Development</h6></li>
+    <li><a class="dropdown-item" href="../articles/software_design.html">Software design</a></li>
+    <li><a class="dropdown-item" href="../articles/development_status.html">Development status</a></li>
+    <li><a class="dropdown-item" href="../articles/known_issues.html">Known issues</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -97,7 +105,7 @@ HDF5 file. Can be one of <code>"none"</code>, <code>"gzip"</code> or <code>"lzf"
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">h5ad_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".h5ad"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">adata</span><span class="op">$</span><span class="fu">write_h5ad</span><span class="op">(</span><span class="va">h5ad_file</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/tmp/RtmpBMTzZm/file17e5296bb214.h5ad"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/tmp/RtmpvJwov8/file2a0939b193aa.h5ad"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Write a SingleCellExperiment as an H5AD</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"SingleCellExperiment"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
@@ -117,7 +125,7 @@ HDF5 file. Can be one of <code>"none"</code>, <code>"gzip"</code> or <code>"lzf"
 <span class="r-in"><span>  <span class="va">h5ad_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".h5ad"</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">adata</span><span class="op">$</span><span class="fu">write_h5ad</span><span class="op">(</span><span class="va">h5ad_file</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/tmp/RtmpBMTzZm/file17e557c7f6b.h5ad"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/tmp/RtmpvJwov8/file2a0964ab6a03.h5ad"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Write a Seurat as a H5AD</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"Seurat"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
@@ -144,7 +152,7 @@ HDF5 file. Can be one of <code>"none"</code>, <code>"gzip"</code> or <code>"lzf"
 <span class="r-in"><span>  <span class="va">adata</span><span class="op">$</span><span class="fu">write_h5ad</span><span class="op">(</span><span class="va">h5ad_file</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Data is of class matrix. Coercing to dgCMatrix.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/tmp/RtmpBMTzZm/file17e55c9ebd9b.h5ad"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/tmp/RtmpvJwov8/file2a093e2c5e28.h5ad"</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
