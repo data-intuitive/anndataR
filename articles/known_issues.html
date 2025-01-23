@@ -77,77 +77,6 @@
 <p>This document lists known issues with the package and suggests
 possible solutions.</p>
 <div class="section level2">
-<h2 id="issue-python-nd-arrays-have-a-dimension-while-r-vectors-do-not-">Issue: Python nd.arrays have a dimension while R vectors do
-not.<a class="anchor" aria-label="anchor" href="#issue-python-nd-arrays-have-a-dimension-while-r-vectors-do-not-"></a>
-</h2>
-<ul>
-<li>Affected backend: <code>HDF5AnnData</code>
-</li>
-<li>Affected slot(s): <code>obsm</code>, <code>varm</code>
-</li>
-<li>Affected dtype(s): <code>boolean_array</code>,
-<code>categorical</code>, <code>categorical_missing_values</code>,
-<code>categorical_ordered</code>,
-<code>categorical_ordered_missing_values</code>,
-<code>dense_array</code>, <code>integer_array</code>,
-<code>nullable_boolean_array</code>,
-<code>nullable_integer_array</code>, <code>string_array</code>
-</li>
-<li>Probable cause: reticulate</li>
-<li>To investigate: TRUE</li>
-<li>To fix: TRUE</li>
-</ul>
-<div class="section level3">
-<h3 id="error-message">Error message<a class="anchor" aria-label="anchor" href="#error-message"></a>
-</h3>
-<pre><code>adata_r$varm[[name]] (`actual`) not equal to py_to_r(py_get_item(adata_py$varm, name)) (`expected`).
-
-`dim(actual)` is absent
-`dim(expected)` is an integer vector (20)</code></pre>
-</div>
-<div class="section level3">
-<h3 id="proposed-solution">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution"></a>
-</h3>
-<p>Debug and fix</p>
-</div>
-</div>
-<div class="section level2">
-<h2 id="issue-r-vectors-dont-have-a-dimension-">Issue: R vectors don’t have a dimension.<a class="anchor" aria-label="anchor" href="#issue-r-vectors-dont-have-a-dimension-"></a>
-</h2>
-<ul>
-<li>Affected backend: <code>HDF5AnnData</code>
-</li>
-<li>Affected slot(s): <code>obsm</code>, <code>varm</code>
-</li>
-<li>Affected dtype(s): <code>boolean_array</code>,
-<code>categorical</code>, <code>categorical_missing_values</code>,
-<code>categorical_ordered</code>,
-<code>categorical_ordered_missing_values</code>,
-<code>dense_array</code>, <code>integer_array</code>,
-<code>nullable_boolean_array</code>,
-<code>nullable_integer_array</code>, <code>string_array</code>
-</li>
-<li>Probable cause: write</li>
-<li>To investigate: TRUE</li>
-<li>To fix: TRUE</li>
-</ul>
-<div class="section level3">
-<h3 id="error-message-1">Error message<a class="anchor" aria-label="anchor" href="#error-message-1"></a>
-</h3>
-<pre><code>Error in `if (found_dim != expected_dim) {
-    stop("dim(", label, ")[", i, "] should have shape: ", expected_dim, 
-        ", found: ", found_dim, ".")
-}`: argument is of length zero</code></pre>
-</div>
-<div class="section level3">
-<h3 id="proposed-solution-1">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-1"></a>
-</h3>
-<p>The input checking function for obsm and varm should allow the object
-to be a vector of the correct length instead of only a matrix or a data
-frame.</p>
-</div>
-</div>
-<div class="section level2">
 <h2 id="issue-nones-are-being-dropped-from-uns">Issue: None’s are being dropped from uns<a class="anchor" aria-label="anchor" href="#issue-nones-are-being-dropped-from-uns"></a>
 </h2>
 <ul>
@@ -162,7 +91,7 @@ frame.</p>
 <li>To fix: TRUE</li>
 </ul>
 <div class="section level3">
-<h3 id="error-message-2">Error message<a class="anchor" aria-label="anchor" href="#error-message-2"></a>
+<h3 id="error-message">Error message<a class="anchor" aria-label="anchor" href="#error-message"></a>
 </h3>
 <pre><code>Error: names(adata_r$uns) (`actual`) not equal to reticulate::py_to_r(adata_py$uns) (`expected`).
 
@@ -170,7 +99,7 @@ frame.</p>
 `expected` is a list</code></pre>
 </div>
 <div class="section level3">
-<h3 id="proposed-solution-2">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-2"></a>
+<h3 id="proposed-solution">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution"></a>
 </h3>
 <p>Debug and fix</p>
 </div>
@@ -193,7 +122,7 @@ not.<a class="anchor" aria-label="anchor" href="#issue-the-python-object-has-a-d
 <li>To fix: TRUE</li>
 </ul>
 <div class="section level3">
-<h3 id="error-message-3">Error message<a class="anchor" aria-label="anchor" href="#error-message-3"></a>
+<h3 id="error-message-1">Error message<a class="anchor" aria-label="anchor" href="#error-message-1"></a>
 </h3>
 <pre><code>adata_r$uns[[name]] (`actual`) not equal to reticulate::py_to_r(adata_py$uns[[name]]) (`expected`).
 
@@ -201,7 +130,7 @@ not.<a class="anchor" aria-label="anchor" href="#issue-the-python-object-has-a-d
 `dim(expected)` is an integer vector (10)</code></pre>
 </div>
 <div class="section level3">
-<h3 id="proposed-solution-3">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-3"></a>
+<h3 id="proposed-solution-1">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-1"></a>
 </h3>
 <p>Think about whether this is a problem or not. If it isn’t, fix the
 unit test.</p>
@@ -225,7 +154,7 @@ unit test.</p>
 <li>To fix: TRUE</li>
 </ul>
 <div class="section level3">
-<h3 id="error-message-4">Error message<a class="anchor" aria-label="anchor" href="#error-message-4"></a>
+<h3 id="error-message-2">Error message<a class="anchor" aria-label="anchor" href="#error-message-2"></a>
 </h3>
 <pre><code>&lt;python.builtin.AttributeError/python.builtin.Exception/python.builtin.BaseException/python.builtin.object/error/condition&gt;
 Error in `py_get_attr(x, name)`: AttributeError: 'Categorical' object has no attribute 'get_values'. Did you mean: 'sort_values'?
@@ -246,7 +175,7 @@ Backtrace:
 12.       └─reticulate::py_get_attr(x, name)</code></pre>
 </div>
 <div class="section level3">
-<h3 id="proposed-solution-4">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-4"></a>
+<h3 id="proposed-solution-2">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-2"></a>
 </h3>
 <p>Debug and fix</p>
 </div>
@@ -267,7 +196,7 @@ Backtrace:
 <li>To fix: TRUE</li>
 </ul>
 <div class="section level3">
-<h3 id="error-message-5">Error message<a class="anchor" aria-label="anchor" href="#error-message-5"></a>
+<h3 id="error-message-3">Error message<a class="anchor" aria-label="anchor" href="#error-message-3"></a>
 </h3>
 <pre><code>adata_r$uns[[name]] (`actual`) not equal to reticulate::py_to_r(adata_py$uns[[name]]) (`expected`).
 
@@ -275,7 +204,7 @@ Backtrace:
 `expected` is an S3 object of class &lt;pandas.core.arrays.boolean.BooleanArray/pandas.core.arrays.masked.BaseMaskedArray/pandas.core.arraylike.OpsMixin/pandas.core.arrays.base.ExtensionArray/python.builtin.object&gt;, an environment</code></pre>
 </div>
 <div class="section level3">
-<h3 id="proposed-solution-5">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-5"></a>
+<h3 id="proposed-solution-3">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-3"></a>
 </h3>
 <p>Debug and fix</p>
 </div>
@@ -297,7 +226,7 @@ Backtrace:
 <li>To fix: TRUE</li>
 </ul>
 <div class="section level3">
-<h3 id="error-message-6">Error message<a class="anchor" aria-label="anchor" href="#error-message-6"></a>
+<h3 id="error-message-4">Error message<a class="anchor" aria-label="anchor" href="#error-message-4"></a>
 </h3>
 <pre><code>bi$type(a) (`actual`) not equal to bi$type(b) (`expected`).
 
@@ -309,7 +238,7 @@ Backtrace:
 2.   └─testthat::expect_equal(bi$type(a), bi$type(b)) at tests/testthat/helper-expect_equal_py.R:7:3</code></pre>
 </div>
 <div class="section level3">
-<h3 id="proposed-solution-6">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-6"></a>
+<h3 id="proposed-solution-4">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-4"></a>
 </h3>
 <p>Debug and fix</p>
 </div>
@@ -331,7 +260,7 @@ writes it as H5T_STD_I32LE.</shape><a class="anchor" aria-label="anchor" href="#
 <li>To fix: TRUE</li>
 </ul>
 <div class="section level3">
-<h3 id="error-message-7">Error message<a class="anchor" aria-label="anchor" href="#error-message-7"></a>
+<h3 id="error-message-5">Error message<a class="anchor" aria-label="anchor" href="#error-message-5"></a>
 </h3>
 <pre><code>Warning: different storage datatype
 &lt;shape&gt; has file datatype H5T_STD_I64LE
@@ -339,7 +268,7 @@ writes it as H5T_STD_I32LE.</shape><a class="anchor" aria-label="anchor" href="#
 attribute: &lt;shape of &lt;/X&gt;&gt; and &lt;shape of &lt;/X&gt;&gt;  </code></pre>
 </div>
 <div class="section level3">
-<h3 id="proposed-solution-7">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-7"></a>
+<h3 id="proposed-solution-5">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-5"></a>
 </h3>
 <p>We should investigate if we can specify the type with which an
 attribute should be written.</p>
@@ -364,7 +293,7 @@ unsigned int. hdf5r has it as the actual value<a class="anchor" aria-label="anch
 <li>To fix: FALSE</li>
 </ul>
 <div class="section level3">
-<h3 id="error-message-8">Error message<a class="anchor" aria-label="anchor" href="#error-message-8"></a>
+<h3 id="error-message-6">Error message<a class="anchor" aria-label="anchor" href="#error-message-6"></a>
 </h3>
 <pre><code>dataset: &lt;/X/data&gt; and &lt;/X/data&gt;
 Not comparable: &lt;/X/data&gt; has rank 1, dimensions [200], max dimensions [18446744073709551615]
@@ -380,7 +309,7 @@ Warning: different maximum dimensions
 &lt;/X/indptr&gt; has max dimensions [21]</code></pre>
 </div>
 <div class="section level3">
-<h3 id="proposed-solution-8">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-8"></a>
+<h3 id="proposed-solution-6">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-6"></a>
 </h3>
 <p>We should investigate if something goes wrong with h5py, but I think
 hdf5 provides the expected behaviour.</p>
@@ -402,7 +331,7 @@ hdf5r writes with type H5T_SGN_NONE<a class="anchor" aria-label="anchor" href="#
 <li>To fix: TRUE</li>
 </ul>
 <div class="section level3">
-<h3 id="error-message-9">Error message<a class="anchor" aria-label="anchor" href="#error-message-9"></a>
+<h3 id="error-message-7">Error message<a class="anchor" aria-label="anchor" href="#error-message-7"></a>
 </h3>
 <pre><code>dataset: &lt;/var/nullable_integer_array/mask&gt; and &lt;/var/integer_with_nas/mask&gt;
 Warning: different storage datatype
@@ -410,7 +339,7 @@ Not comparable: &lt;/var/nullable_integer_array/mask&gt; has sign H5T_SGN_2 and 
 0 differences found</code></pre>
 </div>
 <div class="section level3">
-<h3 id="proposed-solution-9">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-9"></a>
+<h3 id="proposed-solution-7">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-7"></a>
 </h3>
 <p>We should investigate if we can specify the type with which an
 attribute should be written.</p>
@@ -432,7 +361,7 @@ H5T_STD_I64LE, hdf5r writes with type H5T_STD_I32LE<a class="anchor" aria-label=
 <li>To fix: TRUE</li>
 </ul>
 <div class="section level3">
-<h3 id="error-message-10">Error message<a class="anchor" aria-label="anchor" href="#error-message-10"></a>
+<h3 id="error-message-8">Error message<a class="anchor" aria-label="anchor" href="#error-message-8"></a>
 </h3>
 <pre><code>dataset: &lt;/var/nullable_integer_array/values&gt; and &lt;/var/integer_with_nas/values&gt;
 Warning: different storage datatype
@@ -445,7 +374,7 @@ position        values          values          difference
 1 differences found</code></pre>
 </div>
 <div class="section level3">
-<h3 id="proposed-solution-10">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-10"></a>
+<h3 id="proposed-solution-8">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-8"></a>
 </h3>
 <p>We should investigate if we can specify the type with which an
 attribute should be written.</p>
@@ -467,7 +396,7 @@ writes a 1.<a class="anchor" aria-label="anchor" href="#issue-on-position-0-hdf5
 <li>To fix: TRUE</li>
 </ul>
 <div class="section level3">
-<h3 id="error-message-11">Error message<a class="anchor" aria-label="anchor" href="#error-message-11"></a>
+<h3 id="error-message-9">Error message<a class="anchor" aria-label="anchor" href="#error-message-9"></a>
 </h3>
 <pre><code>dataset: &lt;/var/nullable_integer_array/values&gt; and &lt;/var/integer_with_nas/values&gt;
 Warning: different storage datatype
@@ -480,7 +409,7 @@ position        values          values          difference
 1 differences found</code></pre>
 </div>
 <div class="section level3">
-<h3 id="proposed-solution-11">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-11"></a>
+<h3 id="proposed-solution-9">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-9"></a>
 </h3>
 <p>We should investigate why this difference happens.</p>
 </div>
@@ -504,7 +433,7 @@ position        values          values          difference
 <li>To fix: TRUE</li>
 </ul>
 <div class="section level3">
-<h3 id="error-message-12">Error message<a class="anchor" aria-label="anchor" href="#error-message-12"></a>
+<h3 id="error-message-10">Error message<a class="anchor" aria-label="anchor" href="#error-message-10"></a>
 </h3>
 <pre><code>Error in `H5File.open(filename, mode, file_create_pl, file_access_pl)`: HDF5-API Errors:
 error #000: ../../../src/H5F.c in H5Fcreate(): line 349: unable to create file
@@ -525,7 +454,7 @@ error #003: ../../../src/H5FDsec2.c in H5FD__sec2_open(): line 351: unable to op
     minor: Unable to open file</code></pre>
 </div>
 <div class="section level3">
-<h3 id="proposed-solution-12">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-12"></a>
+<h3 id="proposed-solution-10">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-10"></a>
 </h3>
 <p>Fix writing dgeMatrix objects.</p>
 </div>
