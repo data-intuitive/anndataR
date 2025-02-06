@@ -38,6 +38,7 @@
     <li><a class="dropdown-item" href="../articles/usage_h5ad.html">Read/write H5AD files</a></li>
     <li><a class="dropdown-item" href="../articles/usage_seurat.html">Read/write Seurat objects</a></li>
     <li><a class="dropdown-item" href="../articles/usage_singlecellexperiment.html">Read/write SingleCellExperiment objects</a></li>
+    <li><a class="dropdown-item" href="../articles/singlecellexperiment_mapping.html">Mapping between SingleCellExperiment and AnnData</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Development</h6></li>
     <li><a class="dropdown-item" href="../articles/software_design.html">Software design</a></li>
@@ -425,6 +426,108 @@ error #003: ../../../src/H5FDsec2.c in H5FD__sec2_open(): line 351: unable to op
 <h3 id="proposed-solution-9">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-9"></a>
 </h3>
 <p>Fix writing dgeMatrix objects.</p>
+</div>
+</div>
+<div class="section level2">
+<h2 id="issue-after-conversion-of-a-sparse-matrix-also-containing-nas-to-a-selfhits-object-the-distinction-between-na-and-0-is-lost-">Issue: After conversion of a sparse matrix, also containing NAs to a
+SelfHits object, the distinction between NA and 0 is lost.<a class="anchor" aria-label="anchor" href="#issue-after-conversion-of-a-sparse-matrix-also-containing-nas-to-a-selfhits-object-the-distinction-between-na-and-0-is-lost-"></a>
+</h2>
+<ul>
+<li>Affected backend: <code>to_SCE</code>
+</li>
+<li>Affected slot(s): <code>obsp</code>, <code>varp</code>
+</li>
+<li>Affected dtype(s): <code>numeric_csparse_with_nas</code>,
+<code>numeric_rsparse_with_nas</code>,
+<code>integer_csparse_with_nas</code>,
+<code>integer_rsparse_with_nas</code>
+</li>
+<li>Probable cause: convert</li>
+<li>To investigate: TRUE</li>
+<li>To fix: FALSE</li>
+</ul>
+<div class="section level3">
+<h3 id="error-message-10">Error message<a class="anchor" aria-label="anchor" href="#error-message-10"></a>
+</h3>
+<pre><code>`sce_matrix` (`actual`) not equal to `ad_matrix` (`expected`).
+
+actual vs expected
+                [, 1] [, 2] [, 3] [, 4] [, 5] [, 6] [, 7] [, 8] [, 9] [,10]
+  actual[1, ]       NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+- actual[2, ]       NA    NA    NA    NA   1.2    NA    NA    NA    NA    NA
++ expected[2, ]   0.00     0     0     0   1.2     0  0.00     0     0     0
+  actual[3, ]       NA    NA    NA    NA    NA    NA    NA    NA    NA    NA
+- actual[4, ]     0.48    NA    NA    NA    NA    NA  0.66    NA    NA    NA
++ expected[4, ]   0.48     0     0     0   0.0     0  0.66     0     0     0</code></pre>
+</div>
+<div class="section level3">
+<h3 id="proposed-solution-10">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-10"></a>
+</h3>
+<p>Upstream the issue, is this intentional?</p>
+</div>
+</div>
+<div class="section level2">
+<h2 id="issue-after-conversion-of-a-sparse-matrix-also-containing-nas-to-a-selfhits-object-the-distinction-between-na-and-0-is-lost--1">Issue: After conversion of a sparse matrix, also containing NAs to a
+SelfHits object, the distinction between NA and 0 is lost.<a class="anchor" aria-label="anchor" href="#issue-after-conversion-of-a-sparse-matrix-also-containing-nas-to-a-selfhits-object-the-distinction-between-na-and-0-is-lost--1"></a>
+</h2>
+<ul>
+<li>Affected backend: <code>to_SCE</code>
+</li>
+<li>Affected slot(s): <code>obsp</code>, <code>varp</code>
+</li>
+<li>Affected dtype(s): <code>numeric_dense_with_nas</code>,
+<code>numeric_matrix_with_nas</code>,
+<code>integer_dense_with_nas</code>,
+<code>integer_matrix_with_nas</code>
+</li>
+<li>Probable cause: convert</li>
+<li>To investigate: TRUE</li>
+<li>To fix: FALSE</li>
+</ul>
+<div class="section level3">
+<h3 id="error-message-11">Error message<a class="anchor" aria-label="anchor" href="#error-message-11"></a>
+</h3>
+<pre><code>`sce_matrix` (`actual`) not equal to `ad_matrix` (`expected`).
+
+actual vs expected
+                      [, 1]     [, 2]     [, 3]     [, 4]     [, 5]     [, 6]      [, 7]     [, 8]     [, 9]     [,10]
+- actual[1, ]    0.00000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.00000000 0.0000000 0.0000000 0.0000000
++ expected[1, ]          NA        NA        NA        NA        NA        NA         NA        NA        NA        NA
+  actual[2, ]    0.30879331 0.3489866 0.9774142 0.5004646 0.5611313 0.8525832 0.06551198 0.1663290 0.1574261 0.4143122
+- actual[3, ]    0.00000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.00000000 0.0000000 0.0000000 0.0000000
++ expected[3, ]          NA        NA        NA        NA        NA        NA         NA        NA        NA        NA</code></pre>
+</div>
+<div class="section level3">
+<h3 id="proposed-solution-11">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-11"></a>
+</h3>
+<p>Upstream the issue, is this intentional?</p>
+</div>
+</div>
+<div class="section level2">
+<h2 id="issue-converted-sce-object-has-dimnames-whilst-the-original-anndata-does-not-">Issue: converted sce object has dimnames(), whilst the original
+anndata does not.<a class="anchor" aria-label="anchor" href="#issue-converted-sce-object-has-dimnames-whilst-the-original-anndata-does-not-"></a>
+</h2>
+<ul>
+<li>Affected backend: <code>to_SCE</code>
+</li>
+<li>Affected slot(s): <code>obsm</code>, <code>varm</code>
+</li>
+<li>Affected dtype(s): <code>pca</code>
+</li>
+<li>Probable cause: convert</li>
+<li>To investigate: TRUE</li>
+<li>To fix: FALSE</li>
+</ul>
+<div class="section level3">
+<h3 id="error-message-12">Error message<a class="anchor" aria-label="anchor" href="#error-message-12"></a>
+</h3>
+<pre><code>sampleFactors(reducedDims(sce)$pca) (`actual`) not equal to ad$obsm[["X_pca"]] (`expected`).
+`dimnames(actual)` is a list `dimnames(expected)` is absent</code></pre>
+</div>
+<div class="section level3">
+<h3 id="proposed-solution-12">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-12"></a>
+</h3>
+<p>Investigate if this is a problem or not.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

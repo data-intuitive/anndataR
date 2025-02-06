@@ -25,6 +25,7 @@ SingleCellExperiment to an AnnData object."></head><body>
     <li><a class="dropdown-item" href="../articles/usage_h5ad.html">Read/write H5AD files</a></li>
     <li><a class="dropdown-item" href="../articles/usage_seurat.html">Read/write Seurat objects</a></li>
     <li><a class="dropdown-item" href="../articles/usage_singlecellexperiment.html">Read/write SingleCellExperiment objects</a></li>
+    <li><a class="dropdown-item" href="../articles/singlecellexperiment_mapping.html">Mapping between SingleCellExperiment and AnnData</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Development</h6></li>
     <li><a class="dropdown-item" href="../articles/software_design.html">Software design</a></li>
@@ -58,6 +59,15 @@ SingleCellExperiment to an AnnData object.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">from_SingleCellExperiment</span><span class="op">(</span></span>
 <span>  <span class="va">sce</span>,</span>
 <span>  output_class <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"InMemory"</span>, <span class="st">"HDF5AnnData"</span><span class="op">)</span>,</span>
+<span>  x_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  layers_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  obs_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  var_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  obsm_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  varm_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  obsp_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  varp_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  uns_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -75,9 +85,67 @@ SingleCellExperiment to an AnnData object.</p>
 or <code>"InMemoryAnnData"</code>.</p></dd>
 
 
+<dt id="arg-x-mapping">x_mapping<a class="anchor" aria-label="anchor" href="#arg-x-mapping"></a></dt>
+<dd><p>Name of the assay in <code>sce</code> to use as the <code>X</code> matrix in the AnnData object.</p></dd>
+
+
+<dt id="arg-layers-mapping">layers_mapping<a class="anchor" aria-label="anchor" href="#arg-layers-mapping"></a></dt>
+<dd><p>A named list mapping <code>assay</code> names in <code>sce</code> to <code>layers</code> in the created AnnData object.
+The names of the list should be the names of the <code>layers</code> in the resulting AnnData object, and the values should be
+the names of the <code>assays</code> in the <code>sce</code> object.</p></dd>
+
+
+<dt id="arg-obs-mapping">obs_mapping<a class="anchor" aria-label="anchor" href="#arg-obs-mapping"></a></dt>
+<dd><p>A named list mapping <code>colData</code> in <code>sce</code> to <code>obs</code> in the created AnnData object.
+The names of the list should be the names of the <code>obs</code> columns in the resulting AnnData object. The values of the
+list should be the names of the <code>colData</code> columns in <code>sce</code>.</p></dd>
+
+
+<dt id="arg-var-mapping">var_mapping<a class="anchor" aria-label="anchor" href="#arg-var-mapping"></a></dt>
+<dd><p>A named list mapping <code>rowData</code> in <code>sce</code> to <code>var</code> in the created AnnData object.
+The names of the list should be the names of the <code>var</code> columns in the resulting AnnData object. The values of the
+list should be the names of the <code>rowData</code> columns in <code>sce</code>.</p></dd>
+
+
+<dt id="arg-obsm-mapping">obsm_mapping<a class="anchor" aria-label="anchor" href="#arg-obsm-mapping"></a></dt>
+<dd><p>A named list mapping <code>reducedDim</code> in <code>sce</code> to <code>obsm</code> in the created AnnData object.
+The names of the list should be the names of the <code>obsm</code> in the resulting AnnData object. The values of the list
+should be a named list with as key the name of the <code>obsm</code> slot in the resulting AnnData object, and as value a list
+with the following elements</p><ul><li><p><code>reducedDim</code></p></li>
+<li><p>the name of the <code>reducedDim</code> in <code>sce</code></p></li>
+</ul></dd>
+
+
+<dt id="arg-varm-mapping">varm_mapping<a class="anchor" aria-label="anchor" href="#arg-varm-mapping"></a></dt>
+<dd><p>A named list mapping <code>reducedDim</code> in <code>sce</code> to <code>varm</code> in the created AnnData object.
+The names of the list should be the names of the <code>varm</code> in the resulting AnnData object. The values of the list
+should be a named list with as key the name of the <code>varm</code> slot in the resulting AnnData object, and as value a
+list with the following elements</p><ul><li><p><code>reducedDim</code></p></li>
+<li><p>the name of the <code>reducedDim</code> in <code>sce</code>, that is <code>LinearEmbeddingMatrix</code> of which you want the featureLoadings to
+end up in the <code>varm</code> slot</p></li>
+</ul></dd>
+
+
+<dt id="arg-obsp-mapping">obsp_mapping<a class="anchor" aria-label="anchor" href="#arg-obsp-mapping"></a></dt>
+<dd><p>A named list mapping <code>colPairs</code> in <code>sce</code> to <code>obsp</code> in the created AnnData object.
+The names of the list should be the names of the <code>obsp</code> in the resulting AnnData object. The values of the list
+should be the names of the <code>colPairs</code> in <code>sce</code>.</p></dd>
+
+
+<dt id="arg-varp-mapping">varp_mapping<a class="anchor" aria-label="anchor" href="#arg-varp-mapping"></a></dt>
+<dd><p>A named list mapping <code>rowPairs</code> in <code>sce</code> to <code>varp</code> in the created AnnData object.
+The names of the list should be the names of the <code>varp</code> in the resulting AnnData object. The values of the list
+should be the names of the <code>rowPairs</code> in <code>sce</code>.</p></dd>
+
+
+<dt id="arg-uns-mapping">uns_mapping<a class="anchor" aria-label="anchor" href="#arg-uns-mapping"></a></dt>
+<dd><p>A named list mapping <code>metadata</code> in <code>sce</code> to <code>uns</code> in the created AnnData object.
+The names of the list should be the names of the <code>uns</code> in the resulting AnnData object. The values of the list
+should be the names of the <code>metadata</code> in <code>sce</code>.</p></dd>
+
+
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
-<dd><p>Additional arguments passed to the generator function.
-See the "Details" section for more information on which parameters</p></dd>
+<dd><p>Additional arguments to pass to the generator function.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -178,6 +246,7 @@ See the "Details" section for more information on which parameters</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> AnnData object with n_obs × n_vars = 3 × 5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     obs: 'cell'</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     var: 'gene'</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     layers: 'counts'</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

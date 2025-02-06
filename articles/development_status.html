@@ -38,6 +38,7 @@
     <li><a class="dropdown-item" href="../articles/usage_h5ad.html">Read/write H5AD files</a></li>
     <li><a class="dropdown-item" href="../articles/usage_seurat.html">Read/write Seurat objects</a></li>
     <li><a class="dropdown-item" href="../articles/usage_singlecellexperiment.html">Read/write SingleCellExperiment objects</a></li>
+    <li><a class="dropdown-item" href="../articles/singlecellexperiment_mapping.html">Mapping between SingleCellExperiment and AnnData</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Development</h6></li>
     <li><a class="dropdown-item" href="../articles/software_design.html">Software design</a></li>
@@ -378,11 +379,11 @@ feature in the package:</p>
 </h3>
 <table class="table">
 <colgroup>
-<col width="20%">
+<col width="22%">
 <col width="14%">
-<col width="25%">
+<col width="24%">
 <col width="14%">
-<col width="25%">
+<col width="24%">
 </colgroup>
 <thead><tr class="header">
 <th align="left">Slot</th>
@@ -394,80 +395,94 @@ feature in the package:</p>
 <tbody>
 <tr class="odd">
 <td align="left">layers</td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L45" class="external-link">✓</a></td>
-<td align="left"></td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L147" class="external-link">✓</a></td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L83" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L118" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L60" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L410" class="external-link">~</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L210" class="external-link">✓</a></td>
 </tr>
 <tr class="even">
 <td align="left">obs</td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L59" class="external-link">✓</a></td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L32" class="external-link">✓</a></td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L134" class="external-link">✓</a></td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L71" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L133" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L26" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L390" class="external-link">~</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L176" class="external-link">✓</a></td>
 </tr>
 <tr class="odd">
 <td align="left">obs_names</td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L60" class="external-link">✓</a></td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L21" class="external-link">✓</a></td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L135" class="external-link">✓</a></td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L77" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L134" class="external-link">✓</a></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L169" class="external-link">✓</a></td>
 </tr>
 <tr class="even">
 <td align="left">obsm</td>
 <td align="left"></td>
 <td align="left"></td>
-<td align="left"></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L414" class="external-link">~</a></td>
 <td align="left"></td>
 </tr>
 <tr class="odd">
 <td align="left">obsp</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L159" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L80" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L457" class="external-link">~</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L230" class="external-link">✓</a></td>
+</tr>
+<tr class="even">
+<td align="left">pca</td>
+<td align="left">NA</td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L139" class="external-link">✓</a></td>
+<td align="left">NA</td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L284" class="external-link">✓</a></td>
+</tr>
+<tr class="odd">
+<td align="left">reductions</td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L143" class="external-link">~</a></td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">uns</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L167" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L122" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L465" class="external-link">~</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L267" class="external-link">✓</a></td>
 </tr>
 <tr class="odd">
 <td align="left">var</td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L67" class="external-link">✓</a></td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L26" class="external-link">✓</a></td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L140" class="external-link">✓</a></td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L74" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L138" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L43" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L394" class="external-link">~</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L193" class="external-link">✓</a></td>
 </tr>
 <tr class="even">
 <td align="left">var_names</td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L68" class="external-link">✓</a></td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L22" class="external-link">✓</a></td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L141" class="external-link">✓</a></td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L80" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L139" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L20" class="external-link">✓</a></td>
+<td align="left"></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L171" class="external-link">✓</a></td>
 </tr>
 <tr class="odd">
 <td align="left">varm</td>
 <td align="left"></td>
 <td align="left"></td>
-<td align="left"></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L430" class="external-link">~</a></td>
 <td align="left"></td>
 </tr>
 <tr class="even">
 <td align="left">varp</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L163" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L101" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L461" class="external-link">~</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L250" class="external-link">✓</a></td>
 </tr>
 <tr class="odd">
 <td align="left">X</td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L37" class="external-link">✓</a></td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L38" class="external-link">✓</a></td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L146" class="external-link">✓</a></td>
-<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/tests/testthat/test-SingleCellExperiment.R#L68" class="external-link">✓</a></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L117" class="external-link">✓</a></td>
+<td align="left"></td>
+<td align="left"><a href="https://github.com/scverse/anndataR/blob/main/R/SingleCellExperiment.R#L404" class="external-link">~</a></td>
+<td align="left"></td>
 </tr>
 </tbody>
 </table>

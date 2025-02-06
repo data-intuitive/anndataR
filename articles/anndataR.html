@@ -38,6 +38,7 @@
     <li><a class="dropdown-item" href="../articles/usage_h5ad.html">Read/write H5AD files</a></li>
     <li><a class="dropdown-item" href="../articles/usage_seurat.html">Read/write Seurat objects</a></li>
     <li><a class="dropdown-item" href="../articles/usage_singlecellexperiment.html">Read/write SingleCellExperiment objects</a></li>
+    <li><a class="dropdown-item" href="../articles/singlecellexperiment_mapping.html">Mapping between SingleCellExperiment and AnnData</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Development</h6></li>
     <li><a class="dropdown-item" href="../articles/software_design.html">Software design</a></li>
@@ -159,14 +160,14 @@ package:</p>
 <span><span class="va">sce</span></span>
 <span><span class="co">#&gt; class: SingleCellExperiment </span></span>
 <span><span class="co">#&gt; dim: 100 50 </span></span>
-<span><span class="co">#&gt; metadata(0):</span></span>
-<span><span class="co">#&gt; assays(5): X counts csc_counts dense_X dense_counts</span></span>
+<span><span class="co">#&gt; metadata(18): Bool BoolNA ... rank_genes_groups umap</span></span>
+<span><span class="co">#&gt; assays(5): data counts csc_counts dense_X dense_counts</span></span>
 <span><span class="co">#&gt; rownames(100): Gene000 Gene001 ... Gene098 Gene099</span></span>
 <span><span class="co">#&gt; rowData names(11): String n_cells_by_counts ... dispersions</span></span>
 <span><span class="co">#&gt;   dispersions_norm</span></span>
 <span><span class="co">#&gt; colnames(50): Cell000 Cell001 ... Cell048 Cell049</span></span>
 <span><span class="co">#&gt; colData names(11): Float FloatNA ... log1p_total_counts leiden</span></span>
-<span><span class="co">#&gt; reducedDimNames(0):</span></span>
+<span><span class="co">#&gt; reducedDimNames(2): pca umap</span></span>
 <span><span class="co">#&gt; mainExpName: NULL</span></span>
 <span><span class="co">#&gt; altExpNames(0):</span></span></code></pre></div>
 <p>Convert the AnnData object to a Seurat object:</p>
