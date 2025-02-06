@@ -105,38 +105,6 @@ possible solutions.</p>
 </div>
 </div>
 <div class="section level2">
-<h2 id="issue-the-python-object-has-a-dimension-while-the-r-object-does-not-">Issue: The python object has a dimension while the R object does
-not.<a class="anchor" aria-label="anchor" href="#issue-the-python-object-has-a-dimension-while-the-r-object-does-not-"></a>
-</h2>
-<ul>
-<li>Affected backend: <code>HDF5AnnData</code>
-</li>
-<li>Affected slot(s): <code>uns</code>, <code>uns_nested</code>
-</li>
-<li>Affected dtype(s): <code>boolean_array</code>,
-<code>dense_array</code>, <code>integer_array</code>,
-<code>string_array</code>
-</li>
-<li>Probable cause: reticulate</li>
-<li>To investigate: TRUE</li>
-<li>To fix: TRUE</li>
-</ul>
-<div class="section level3">
-<h3 id="error-message-1">Error message<a class="anchor" aria-label="anchor" href="#error-message-1"></a>
-</h3>
-<pre><code>adata_r$uns[[name]] (`actual`) not equal to reticulate::py_to_r(adata_py$uns[[name]]) (`expected`).
-
-`dim(actual)` is absent
-`dim(expected)` is an integer vector (10)</code></pre>
-</div>
-<div class="section level3">
-<h3 id="proposed-solution-1">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-1"></a>
-</h3>
-<p>Think about whether this is a problem or not. If it isn’t, fix the
-unit test.</p>
-</div>
-</div>
-<div class="section level2">
 <h2 id="issue-python-object-is-not-being-converted-correctly-">Issue: Python object is not being converted correctly.<a class="anchor" aria-label="anchor" href="#issue-python-object-is-not-being-converted-correctly-"></a>
 </h2>
 <ul>
@@ -154,7 +122,7 @@ unit test.</p>
 <li>To fix: TRUE</li>
 </ul>
 <div class="section level3">
-<h3 id="error-message-2">Error message<a class="anchor" aria-label="anchor" href="#error-message-2"></a>
+<h3 id="error-message-1">Error message<a class="anchor" aria-label="anchor" href="#error-message-1"></a>
 </h3>
 <pre><code>&lt;python.builtin.AttributeError/python.builtin.Exception/python.builtin.BaseException/python.builtin.object/error/condition&gt;
 Error in `py_get_attr(x, name)`: AttributeError: 'Categorical' object has no attribute 'get_values'. Did you mean: 'sort_values'?
@@ -175,7 +143,7 @@ Backtrace:
 12.       └─reticulate::py_get_attr(x, name)</code></pre>
 </div>
 <div class="section level3">
-<h3 id="proposed-solution-2">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-2"></a>
+<h3 id="proposed-solution-1">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-1"></a>
 </h3>
 <p>Debug and fix</p>
 </div>
@@ -196,7 +164,7 @@ Backtrace:
 <li>To fix: TRUE</li>
 </ul>
 <div class="section level3">
-<h3 id="error-message-3">Error message<a class="anchor" aria-label="anchor" href="#error-message-3"></a>
+<h3 id="error-message-2">Error message<a class="anchor" aria-label="anchor" href="#error-message-2"></a>
 </h3>
 <pre><code>adata_r$uns[[name]] (`actual`) not equal to reticulate::py_to_r(adata_py$uns[[name]]) (`expected`).
 
@@ -204,7 +172,7 @@ Backtrace:
 `expected` is an S3 object of class &lt;pandas.core.arrays.boolean.BooleanArray/pandas.core.arrays.masked.BaseMaskedArray/pandas.core.arraylike.OpsMixin/pandas.core.arrays.base.ExtensionArray/python.builtin.object&gt;, an environment</code></pre>
 </div>
 <div class="section level3">
-<h3 id="proposed-solution-3">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-3"></a>
+<h3 id="proposed-solution-2">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-2"></a>
 </h3>
 <p>Debug and fix</p>
 </div>
@@ -226,7 +194,7 @@ Backtrace:
 <li>To fix: TRUE</li>
 </ul>
 <div class="section level3">
-<h3 id="error-message-4">Error message<a class="anchor" aria-label="anchor" href="#error-message-4"></a>
+<h3 id="error-message-3">Error message<a class="anchor" aria-label="anchor" href="#error-message-3"></a>
 </h3>
 <pre><code>bi$type(a) (`actual`) not equal to bi$type(b) (`expected`).
 
@@ -238,7 +206,7 @@ Backtrace:
 2.   └─testthat::expect_equal(bi$type(a), bi$type(b)) at tests/testthat/helper-expect_equal_py.R:7:3</code></pre>
 </div>
 <div class="section level3">
-<h3 id="proposed-solution-4">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-4"></a>
+<h3 id="proposed-solution-3">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-3"></a>
 </h3>
 <p>Debug and fix</p>
 </div>
@@ -260,7 +228,7 @@ writes it as H5T_STD_I32LE.</shape><a class="anchor" aria-label="anchor" href="#
 <li>To fix: TRUE</li>
 </ul>
 <div class="section level3">
-<h3 id="error-message-5">Error message<a class="anchor" aria-label="anchor" href="#error-message-5"></a>
+<h3 id="error-message-4">Error message<a class="anchor" aria-label="anchor" href="#error-message-4"></a>
 </h3>
 <pre><code>Warning: different storage datatype
 &lt;shape&gt; has file datatype H5T_STD_I64LE
@@ -268,7 +236,7 @@ writes it as H5T_STD_I32LE.</shape><a class="anchor" aria-label="anchor" href="#
 attribute: &lt;shape of &lt;/X&gt;&gt; and &lt;shape of &lt;/X&gt;&gt;  </code></pre>
 </div>
 <div class="section level3">
-<h3 id="proposed-solution-5">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-5"></a>
+<h3 id="proposed-solution-4">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-4"></a>
 </h3>
 <p>We should investigate if we can specify the type with which an
 attribute should be written.</p>
@@ -293,7 +261,7 @@ unsigned int. hdf5r has it as the actual value<a class="anchor" aria-label="anch
 <li>To fix: FALSE</li>
 </ul>
 <div class="section level3">
-<h3 id="error-message-6">Error message<a class="anchor" aria-label="anchor" href="#error-message-6"></a>
+<h3 id="error-message-5">Error message<a class="anchor" aria-label="anchor" href="#error-message-5"></a>
 </h3>
 <pre><code>dataset: &lt;/X/data&gt; and &lt;/X/data&gt;
 Not comparable: &lt;/X/data&gt; has rank 1, dimensions [200], max dimensions [18446744073709551615]
@@ -309,7 +277,7 @@ Warning: different maximum dimensions
 &lt;/X/indptr&gt; has max dimensions [21]</code></pre>
 </div>
 <div class="section level3">
-<h3 id="proposed-solution-6">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-6"></a>
+<h3 id="proposed-solution-5">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-5"></a>
 </h3>
 <p>We should investigate if something goes wrong with h5py, but I think
 hdf5 provides the expected behaviour.</p>
@@ -331,12 +299,47 @@ hdf5r writes with type H5T_SGN_NONE<a class="anchor" aria-label="anchor" href="#
 <li>To fix: TRUE</li>
 </ul>
 <div class="section level3">
-<h3 id="error-message-7">Error message<a class="anchor" aria-label="anchor" href="#error-message-7"></a>
+<h3 id="error-message-6">Error message<a class="anchor" aria-label="anchor" href="#error-message-6"></a>
 </h3>
 <pre><code>dataset: &lt;/var/nullable_integer_array/mask&gt; and &lt;/var/integer_with_nas/mask&gt;
 Warning: different storage datatype
 Not comparable: &lt;/var/nullable_integer_array/mask&gt; has sign H5T_SGN_2 and &lt;/var/integer_with_nas/mask&gt; has sign H5T_SGN_NONE
 0 differences found</code></pre>
+</div>
+<div class="section level3">
+<h3 id="proposed-solution-6">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-6"></a>
+</h3>
+<p>We should investigate if we can specify the type with which an
+attribute should be written.</p>
+</div>
+</div>
+<div class="section level2">
+<h2 id="issue-hdf5py-writes-a-nullable-integer-array-with-type-h5t_std_i64le-hdf5r-writes-with-type-h5t_std_i32le">Issue: hdf5py writes a nullable integer array with type
+H5T_STD_I64LE, hdf5r writes with type H5T_STD_I32LE<a class="anchor" aria-label="anchor" href="#issue-hdf5py-writes-a-nullable-integer-array-with-type-h5t_std_i64le-hdf5r-writes-with-type-h5t_std_i32le"></a>
+</h2>
+<ul>
+<li>Affected backend: <code>HDF5AnnData</code>
+</li>
+<li>Affected slot(s): <code>obs</code>, <code>var</code>
+</li>
+<li>Affected dtype(s): <code>nullable_integer_array</code>
+</li>
+<li>Probable cause: h5diff</li>
+<li>To investigate: TRUE</li>
+<li>To fix: TRUE</li>
+</ul>
+<div class="section level3">
+<h3 id="error-message-7">Error message<a class="anchor" aria-label="anchor" href="#error-message-7"></a>
+</h3>
+<pre><code>dataset: &lt;/var/nullable_integer_array/values&gt; and &lt;/var/integer_with_nas/values&gt;
+Warning: different storage datatype
+&lt;/var/nullable_integer_array/values&gt; has file datatype H5T_STD_I64LE
+&lt;/var/integer_with_nas/values&gt; has file datatype H5T_STD_I32LE
+size:           [20]           [20]
+position        values          values          difference          
+------------------------------------------------------------
+[ 0 ]          0               1               1              
+1 differences found</code></pre>
 </div>
 <div class="section level3">
 <h3 id="proposed-solution-7">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-7"></a>
@@ -346,8 +349,8 @@ attribute should be written.</p>
 </div>
 </div>
 <div class="section level2">
-<h2 id="issue-hdf5py-writes-a-nullable-integer-array-with-type-h5t_std_i64le-hdf5r-writes-with-type-h5t_std_i32le">Issue: hdf5py writes a nullable integer array with type
-H5T_STD_I64LE, hdf5r writes with type H5T_STD_I32LE<a class="anchor" aria-label="anchor" href="#issue-hdf5py-writes-a-nullable-integer-array-with-type-h5t_std_i64le-hdf5r-writes-with-type-h5t_std_i32le"></a>
+<h2 id="issue-on-position-0-hdf5py-writes-a-0-in-the-values-array-hdf5r-writes-a-1-">Issue: On position 0, hdf5py writes a 0 in the values array, hdf5r
+writes a 1.<a class="anchor" aria-label="anchor" href="#issue-on-position-0-hdf5py-writes-a-0-in-the-values-array-hdf5r-writes-a-1-"></a>
 </h2>
 <ul>
 <li>Affected backend: <code>HDF5AnnData</code>
@@ -376,41 +379,6 @@ position        values          values          difference
 <div class="section level3">
 <h3 id="proposed-solution-8">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-8"></a>
 </h3>
-<p>We should investigate if we can specify the type with which an
-attribute should be written.</p>
-</div>
-</div>
-<div class="section level2">
-<h2 id="issue-on-position-0-hdf5py-writes-a-0-in-the-values-array-hdf5r-writes-a-1-">Issue: On position 0, hdf5py writes a 0 in the values array, hdf5r
-writes a 1.<a class="anchor" aria-label="anchor" href="#issue-on-position-0-hdf5py-writes-a-0-in-the-values-array-hdf5r-writes-a-1-"></a>
-</h2>
-<ul>
-<li>Affected backend: <code>HDF5AnnData</code>
-</li>
-<li>Affected slot(s): <code>obs</code>, <code>var</code>
-</li>
-<li>Affected dtype(s): <code>nullable_integer_array</code>
-</li>
-<li>Probable cause: h5diff</li>
-<li>To investigate: TRUE</li>
-<li>To fix: TRUE</li>
-</ul>
-<div class="section level3">
-<h3 id="error-message-9">Error message<a class="anchor" aria-label="anchor" href="#error-message-9"></a>
-</h3>
-<pre><code>dataset: &lt;/var/nullable_integer_array/values&gt; and &lt;/var/integer_with_nas/values&gt;
-Warning: different storage datatype
-&lt;/var/nullable_integer_array/values&gt; has file datatype H5T_STD_I64LE
-&lt;/var/integer_with_nas/values&gt; has file datatype H5T_STD_I32LE
-size:           [20]           [20]
-position        values          values          difference          
-------------------------------------------------------------
-[ 0 ]          0               1               1              
-1 differences found</code></pre>
-</div>
-<div class="section level3">
-<h3 id="proposed-solution-9">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-9"></a>
-</h3>
 <p>We should investigate why this difference happens.</p>
 </div>
 </div>
@@ -433,7 +401,7 @@ position        values          values          difference
 <li>To fix: TRUE</li>
 </ul>
 <div class="section level3">
-<h3 id="error-message-10">Error message<a class="anchor" aria-label="anchor" href="#error-message-10"></a>
+<h3 id="error-message-9">Error message<a class="anchor" aria-label="anchor" href="#error-message-9"></a>
 </h3>
 <pre><code>Error in `H5File.open(filename, mode, file_create_pl, file_access_pl)`: HDF5-API Errors:
 error #000: ../../../src/H5F.c in H5Fcreate(): line 349: unable to create file
@@ -454,7 +422,7 @@ error #003: ../../../src/H5FDsec2.c in H5FD__sec2_open(): line 351: unable to op
     minor: Unable to open file</code></pre>
 </div>
 <div class="section level3">
-<h3 id="proposed-solution-10">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-10"></a>
+<h3 id="proposed-solution-9">Proposed solution<a class="anchor" aria-label="anchor" href="#proposed-solution-9"></a>
 </h3>
 <p>Fix writing dgeMatrix objects.</p>
 </div>
