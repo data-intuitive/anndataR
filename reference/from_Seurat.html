@@ -280,10 +280,10 @@ length 2. The first element must be <code>"misc"</code>. The second element is t
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>The default method for RunUMAP has changed from calling Python UMAP via reticulate to the R-native UWOT using the cosine metric</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> To use Python UMAP via reticulate, set umap.method to 'umap-learn' and metric to 'correlation'</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> This message will be shown once per session</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 13:08:42 UMAP embedding parameters a = 0.9922 b = 1.112</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 13:08:42 Read 200 rows and found 10 numeric columns</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 13:08:42 Using Annoy for neighbor search, n_neighbors = 30</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 13:08:42 Building Annoy index with metric = cosine, n_trees = 50</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 18:13:26 UMAP embedding parameters a = 0.9922 b = 1.112</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 18:13:26 Read 200 rows and found 10 numeric columns</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 18:13:26 Using Annoy for neighbor search, n_neighbors = 30</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 18:13:26 Building Annoy index with metric = cosine, n_trees = 50</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> 0%   10   20   30   40   50   60   70   80   90   100%</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> [----|----|----|----|----|----|----|----|----|----|</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> *</span>
@@ -337,15 +337,15 @@ length 2. The first element must be <code>"misc"</code>. The second element is t
 <span class="r-msg co"><span class="r-pr">#&gt;</span> *</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> *</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> |</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 13:08:42 Writing NN index file to temp file /tmp/Rtmp1dFSye/file29d2660d7e83</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 13:08:42 Searching Annoy index using 1 thread, search_k = 3000</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 13:08:42 Annoy recall = 100%</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 13:08:43 Commencing smooth kNN distance calibration using 1 thread</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 18:13:26 Writing NN index file to temp file /tmp/RtmpkK5PGg/file1cbf2efdb277</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 18:13:26 Searching Annoy index using 1 thread, search_k = 3000</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 18:13:26 Annoy recall = 100%</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 18:13:27 Commencing smooth kNN distance calibration using 1 thread</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>  with target n_neighbors = 30</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 13:08:43 Initializing from normalized Laplacian + noise (using RSpectra)</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 13:08:43 Commencing optimization for 500 epochs, with 6160 positive edges</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 13:08:43 Using rng type: pcg</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 13:08:44 Optimization finished</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 18:13:27 Initializing from normalized Laplacian + noise (using RSpectra)</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 18:13:27 Commencing optimization for 500 epochs, with 6160 positive edges</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 18:13:27 Using rng type: pcg</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 18:13:28 Optimization finished</span>
 <span class="r-in"><span><span class="fu">from_Seurat</span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> AnnData object with n_obs × n_vars = 200 × 100</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     obs: 'orig.ident', 'nCount_RNA', 'nFeature_RNA'</span>
