@@ -126,21 +126,21 @@ to a <code>Seurat</code> object.</p>
 <span><span class="co">#&gt;     intersect, t</span></span>
 <span></span>
 <span><span class="va">h5ad_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"example.h5ad"</span>, package <span class="op">=</span> <span class="st">"anndataR"</span><span class="op">)</span></span></code></pre></div>
-<p>Read the <code>.h5ad</code> file:</p>
+<p>Read the <code>.h5ad</code> file and convert it to a
+<code>Seurat</code> object:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">adata</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_h5ad.html">read_h5ad</a></span><span class="op">(</span><span class="va">h5ad_file</span><span class="op">)</span></span>
-<span><span class="va">adata</span></span>
-<span><span class="co">#&gt; AnnData object with n_obs × n_vars = 50 × 100</span></span>
-<span><span class="co">#&gt;     obs: 'Float', 'FloatNA', 'Int', 'IntNA', 'Bool', 'BoolNA', 'n_genes_by_counts', 'log1p_n_genes_by_counts', 'total_counts', 'log1p_total_counts', 'leiden'</span></span>
-<span><span class="co">#&gt;     var: 'String', 'n_cells_by_counts', 'mean_counts', 'log1p_mean_counts', 'pct_dropout_by_counts', 'total_counts', 'log1p_total_counts', 'highly_variable', 'means', 'dispersions', 'dispersions_norm'</span></span>
-<span><span class="co">#&gt;     uns: 'Bool', 'BoolNA', 'Category', 'DataFrameEmpty', 'Int', 'IntNA', 'IntScalar', 'Sparse1D', 'String', 'String2D', 'StringScalar', 'hvg', 'leiden', 'log1p', 'neighbors', 'pca', 'rank_genes_groups', 'umap'</span></span>
-<span><span class="co">#&gt;     obsm: 'X_pca', 'X_umap'</span></span>
-<span><span class="co">#&gt;     varm: 'PCs'</span></span>
-<span><span class="co">#&gt;     layers: 'counts', 'csc_counts', 'dense_X', 'dense_counts'</span></span>
-<span><span class="co">#&gt;     obsp: 'connectivities', 'distances'</span></span></code></pre></div>
-<p>Convert to a <code>Seurat</code> object:</p>
+<code class="sourceCode R"><span><span class="va">seurat_obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_h5ad.html">read_h5ad</a></span><span class="op">(</span><span class="va">h5ad_file</span>, to <span class="op">=</span> <span class="st">"Seurat"</span><span class="op">)</span></span>
+<span><span class="va">seurat_obj</span></span>
+<span><span class="co">#&gt; An object of class Seurat </span></span>
+<span><span class="co">#&gt; 100 features across 50 samples within 1 assay </span></span>
+<span><span class="co">#&gt; Active assay: RNA (100 features, 0 variable features)</span></span>
+<span><span class="co">#&gt;  5 layers present: counts, data, csc_counts, dense_X, dense_counts</span></span>
+<span><span class="co">#&gt;  2 dimensional reductions calculated: pca, umap</span></span></code></pre></div>
+<p>This is equivalent to reading in the <code>.h5ad</code> file and
+explicitly converting.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">seurat_obj</span> <span class="op">&lt;-</span> <span class="va">adata</span><span class="op">$</span><span class="fu">to_Seurat</span><span class="op">(</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">adata</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_h5ad.html">read_h5ad</a></span><span class="op">(</span><span class="va">h5ad_file</span><span class="op">)</span></span>
+<span><span class="va">seurat_obj</span> <span class="op">&lt;-</span> <span class="va">adata</span><span class="op">$</span><span class="fu">to_Seurat</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">seurat_obj</span></span>
 <span><span class="co">#&gt; An object of class Seurat </span></span>
 <span><span class="co">#&gt; 100 features across 50 samples within 1 assay </span></span>
@@ -220,45 +220,37 @@ as <code>.h5ad</code></p>
 <span><span class="co">#&gt;     Feature16, Feature70, Feature42, Feature41, Feature48, Feature79, Feature10, Feature2, Feature49, Feature97</span></span>
 <span><span class="co">#&gt; Computing nearest neighbor graph</span></span>
 <span><span class="co">#&gt; Computing SNN</span></span>
-<span><span class="co">#&gt; 18:14:53 UMAP embedding parameters a = 0.9922 b = 1.112</span></span>
-<span><span class="co">#&gt; 18:14:53 Read 200 rows and found 10 numeric columns</span></span>
-<span><span class="co">#&gt; 18:14:53 Using Annoy for neighbor search, n_neighbors = 30</span></span>
-<span><span class="co">#&gt; 18:14:53 Building Annoy index with metric = cosine, n_trees = 50</span></span>
+<span><span class="co">#&gt; 18:22:07 UMAP embedding parameters a = 0.9922 b = 1.112</span></span>
+<span><span class="co">#&gt; 18:22:07 Read 200 rows and found 10 numeric columns</span></span>
+<span><span class="co">#&gt; 18:22:07 Using Annoy for neighbor search, n_neighbors = 30</span></span>
+<span><span class="co">#&gt; 18:22:07 Building Annoy index with metric = cosine, n_trees = 50</span></span>
 <span><span class="co">#&gt; 0%   10   20   30   40   50   60   70   80   90   100%</span></span>
 <span><span class="co">#&gt; [----|----|----|----|----|----|----|----|----|----|</span></span>
 <span><span class="co">#&gt; **************************************************|</span></span>
-<span><span class="co">#&gt; 18:14:53 Writing NN index file to temp file /tmp/RtmpqIjKJQ/file1f4f15d65223</span></span>
-<span><span class="co">#&gt; 18:14:53 Searching Annoy index using 1 thread, search_k = 3000</span></span>
-<span><span class="co">#&gt; 18:14:53 Annoy recall = 100%</span></span>
-<span><span class="co">#&gt; 18:14:53 Commencing smooth kNN distance calibration using 1 thread with target n_neighbors = 30</span></span>
-<span><span class="co">#&gt; 18:14:54 Initializing from normalized Laplacian + noise (using RSpectra)</span></span>
-<span><span class="co">#&gt; 18:14:54 Commencing optimization for 500 epochs, with 6160 positive edges</span></span>
-<span><span class="co">#&gt; 18:14:54 Using rng type: pcg</span></span>
-<span><span class="co">#&gt; 18:14:54 Optimization finished</span></span>
+<span><span class="co">#&gt; 18:22:07 Writing NN index file to temp file /tmp/RtmpZ9qUoR/file1f9af223f2f</span></span>
+<span><span class="co">#&gt; 18:22:07 Searching Annoy index using 1 thread, search_k = 3000</span></span>
+<span><span class="co">#&gt; 18:22:07 Annoy recall = 100%</span></span>
+<span><span class="co">#&gt; 18:22:07 Commencing smooth kNN distance calibration using 1 thread with target n_neighbors = 30</span></span>
+<span><span class="co">#&gt; 18:22:08 Initializing from normalized Laplacian + noise (using RSpectra)</span></span>
+<span><span class="co">#&gt; 18:22:08 Commencing optimization for 500 epochs, with 6160 positive edges</span></span>
+<span><span class="co">#&gt; 18:22:08 Using rng type: pcg</span></span>
+<span><span class="co">#&gt; 18:22:08 Optimization finished</span></span>
 <span><span class="va">seurat_obj</span></span>
 <span><span class="co">#&gt; An object of class Seurat </span></span>
 <span><span class="co">#&gt; 100 features across 200 samples within 1 assay </span></span>
 <span><span class="co">#&gt; Active assay: RNA (100 features, 100 variable features)</span></span>
 <span><span class="co">#&gt;  3 layers present: counts, data, scale.data</span></span>
 <span><span class="co">#&gt;  2 dimensional reductions calculated: pca, umap</span></span></code></pre></div>
-<p>You can convert the <code>Seurat</code> object to an
-<code>AnnData</code> object using the <code>from_Seurat</code>
-function:</p>
+<p>You can write out the <code>Seurat</code> object to an
+<code>.h5ad</code> file using the <code>write_h5ad</code> function:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">adata</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/from_Seurat.html">from_Seurat</a></span><span class="op">(</span><span class="va">seurat_obj</span><span class="op">)</span></span>
-<span><span class="va">adata</span></span>
-<span><span class="co">#&gt; AnnData object with n_obs × n_vars = 200 × 100</span></span>
-<span><span class="co">#&gt;     obs: 'orig.ident', 'nCount_RNA', 'nFeature_RNA'</span></span>
-<span><span class="co">#&gt;     var: 'vf_vst_counts_mean', 'vf_vst_counts_variance', 'vf_vst_counts_variance.expected', 'vf_vst_counts_variance.standardized', 'vf_vst_counts_variable', 'vf_vst_counts_rank', 'var.features', 'var.features.rank'</span></span>
-<span><span class="co">#&gt;     obsm: 'X_pca', 'X_umap'</span></span>
-<span><span class="co">#&gt;     varm: 'PCs'</span></span>
-<span><span class="co">#&gt;     layers: 'counts', 'data', 'scale.data'</span></span>
-<span><span class="co">#&gt;     obsp: 'connectivities', 'snn'</span></span></code></pre></div>
-<p>Again note that there is no one-to-one mapping possible between the
-AnnData and SeuratObject data structures, so some information might be
-lost during conversion. It is recommended to carefully inspect the
-converted object to ensure that all necessary information has been
-transferred.</p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/write_h5ad.html">write_h5ad</a></span><span class="op">(</span><span class="va">seurat_obj</span>, <span class="st">"seurat_obj.h5ad"</span><span class="op">)</span></span></code></pre></div>
+<p>If you need more customized conversion, you first need to convert the
+<code>Seurat</code> object to an <code>AnnData</code> object. Again note
+that there is no one-to-one mapping possible between the AnnData and
+SeuratObject data structures, so some information might be lost during
+conversion. It is recommended to carefully inspect the converted object
+to ensure that all necessary information has been transferred.</p>
 <p>See <code><a href="../reference/from_Seurat.html">?from_Seurat</a></code> for more details on how to customize
 the conversion process. Example:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
@@ -272,7 +264,7 @@ the conversion process. Example:</p>
 <span><span class="co">#&gt;     obs: 'orig.ident', 'nCount_RNA', 'nFeature_RNA'</span></span>
 <span><span class="co">#&gt;     var: 'vf_vst_counts_mean', 'vf_vst_counts_variance', 'vf_vst_counts_variance.expected', 'vf_vst_counts_variance.standardized', 'vf_vst_counts_variable', 'vf_vst_counts_rank', 'var.features', 'var.features.rank'</span></span>
 <span><span class="co">#&gt;     obsm: 'X_pca', 'X_umap'</span></span>
-<span><span class="co">#&gt;     varm: 'PCs'</span></span>
+<span><span class="co">#&gt;     varm: 'pca'</span></span>
 <span><span class="co">#&gt;     layers: 'foo'</span></span>
 <span><span class="co">#&gt;     obsp: 'connectivities', 'snn'</span></span></code></pre></div>
 </div>

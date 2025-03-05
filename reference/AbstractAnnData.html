@@ -336,6 +336,8 @@ computationally expensive.</p><div class="section">
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">AbstractAnnData</span><span class="op">$</span><span class="fu">to_Seurat</span><span class="op">(</span></span>
 <span>  assay_name <span class="op">=</span> <span class="st">"RNA"</span>,</span>
 <span>  layers_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  object_metadata_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  assay_metadata_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  reduction_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  graph_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  misc_mapping <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -350,6 +352,14 @@ computationally expensive.</p><div class="section">
 
 <dt><code>layers_mapping</code></dt>
 <dd><p>A named list mapping Seurat layers to AnnData layers</p></dd>
+
+
+<dt><code>object_metadata_mapping</code></dt>
+<dd><p>A named list mapping Seurat object metadata to AnnData obs</p></dd>
+
+
+<dt><code>assay_metadata_mapping</code></dt>
+<dd><p>A named list mapping Seurat assay metadata to AnnData var</p></dd>
 
 
 <dt><code>reduction_mapping</code></dt>
@@ -504,7 +514,7 @@ HDF5 file. Can be one of <code>"none"</code>, <code>"gzip"</code> or <code>"lzf"
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">h5ad_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".h5ad"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">adata</span><span class="op">$</span><span class="fu">write_h5ad</span><span class="op">(</span><span class="va">h5ad_file</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/tmp/RtmpkK5PGg/file1cbf4997eceb.h5ad"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/tmp/Rtmp45jwB9/file1cc86ce125b1.h5ad"</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
