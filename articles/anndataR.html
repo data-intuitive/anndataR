@@ -166,21 +166,25 @@ package:</p>
 <span><span class="co">#&gt;   dispersions_norm</span></span>
 <span><span class="co">#&gt; colnames(50): Cell000 Cell001 ... Cell048 Cell049</span></span>
 <span><span class="co">#&gt; colData names(11): Float FloatNA ... log1p_total_counts leiden</span></span>
-<span><span class="co">#&gt; reducedDimNames(2): pca umap</span></span>
+<span><span class="co">#&gt; reducedDimNames(2): X_pca X_umap</span></span>
 <span><span class="co">#&gt; mainExpName: NULL</span></span>
 <span><span class="co">#&gt; altExpNames(0):</span></span></code></pre></div>
 <p>Convert the AnnData object to a Seurat object:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="va">adata</span><span class="op">$</span><span class="fu">to_Seurat</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Data is of class dgRMatrix. Coercing to dgCMatrix.</span></span>
-<span><span class="co">#&gt; Warning: No columnames present in cell embeddings, setting to 'PC_1:38'</span></span>
-<span><span class="co">#&gt; Warning: No columnames present in cell embeddings, setting to 'umap_1:2'</span></span>
+<span><span class="co">#&gt; Warning: Keys should be one or more alphanumeric characters followed by an</span></span>
+<span><span class="co">#&gt; underscore, setting key from X_pca to Xpca_</span></span>
+<span><span class="co">#&gt; Warning: No columnames present in cell embeddings, setting to 'Xpca_1:38'</span></span>
+<span><span class="co">#&gt; Warning: Keys should be one or more alphanumeric characters followed by an</span></span>
+<span><span class="co">#&gt; underscore, setting key from X_umap to Xumap_</span></span>
+<span><span class="co">#&gt; Warning: No columnames present in cell embeddings, setting to 'Xumap_1:2'</span></span>
 <span><span class="va">obj</span></span>
 <span><span class="co">#&gt; An object of class Seurat </span></span>
 <span><span class="co">#&gt; 100 features across 50 samples within 1 assay </span></span>
 <span><span class="co">#&gt; Active assay: RNA (100 features, 0 variable features)</span></span>
 <span><span class="co">#&gt;  5 layers present: counts, data, csc_counts, dense_X, dense_counts</span></span>
-<span><span class="co">#&gt;  2 dimensional reductions calculated: pca, umap</span></span></code></pre></div>
+<span><span class="co">#&gt;  2 dimensional reductions calculated: X_pca, X_umap</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="manually-create-an-object">Manually create an object<a class="anchor" aria-label="anchor" href="#manually-create-an-object"></a>
@@ -264,7 +268,7 @@ package:</p>
 <span><span class="co">#&gt;  [73] tidyr_1.3.1             data.table_1.17.0       XVector_0.46.0         </span></span>
 <span><span class="co">#&gt;  [76] spatstat.geom_3.3-6     RcppAnnoy_0.0.22        stringr_1.5.1          </span></span>
 <span><span class="co">#&gt;  [79] ggrepel_0.9.6           RANN_2.6.2              pillar_1.10.2          </span></span>
-<span><span class="co">#&gt;  [82] spam_2.11-1             RcppHNSW_0.6.0          later_1.4.1            </span></span>
+<span><span class="co">#&gt;  [82] spam_2.11-1             RcppHNSW_0.6.0          later_1.4.2            </span></span>
 <span><span class="co">#&gt;  [85] splines_4.4.3           dplyr_1.1.4             lattice_0.22-6         </span></span>
 <span><span class="co">#&gt;  [88] deldir_2.0-4            survival_3.8-3          bit_4.6.0              </span></span>
 <span><span class="co">#&gt;  [91] tidyselect_1.2.1        miniUI_0.1.1.1          pbapply_1.7-2          </span></span>

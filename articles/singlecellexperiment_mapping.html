@@ -140,7 +140,7 @@ the conversion.</p>
 <span><span class="co">#&gt; rowData names(3): character numeric logical</span></span>
 <span><span class="co">#&gt; colnames(10): cell1 cell2 ... cell9 cell10</span></span>
 <span><span class="co">#&gt; colData names(3): integer numeric factor</span></span>
-<span><span class="co">#&gt; reducedDimNames(2): pca umap</span></span>
+<span><span class="co">#&gt; reducedDimNames(2): X_pca X_umap</span></span>
 <span><span class="co">#&gt; mainExpName: NULL</span></span>
 <span><span class="co">#&gt; altExpNames(0):</span></span></code></pre></div>
 <p>In the following subsections, we detail how each of these implicit
@@ -227,7 +227,7 @@ starting with <code>X_</code>, we will store this as a
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/SingleCellExperiment/man/reducedDims.html" class="external-link">reducedDims</a></span><span class="op">(</span><span class="va">sce_dimred</span><span class="op">)</span></span>
 <span><span class="co">#&gt; List of length 2</span></span>
-<span><span class="co">#&gt; names(2): pca umap</span></span></code></pre></div>
+<span><span class="co">#&gt; names(2): X_pca X_umap</span></span></code></pre></div>
 <p>We can see that indeed, the <code>pca</code> dimred got converted to
 a <code>LinearEmbeddingMatrix</code>, comprising of the information in
 the <code>obsm</code> and <code>varm</code> slots. The <code>umap</code>
@@ -437,8 +437,8 @@ with the name of the <code>reducedDims</code> prepended by an
 <span><span class="op">)</span></span>
 <span><span class="va">ad_reductions</span></span>
 <span><span class="co">#&gt; AnnData object with n_obs × n_vars = 10 × 20</span></span>
-<span><span class="co">#&gt;     obsm: 'X_pca', 'X_umap'</span></span>
-<span><span class="co">#&gt;     varm: 'pcas'</span></span>
+<span><span class="co">#&gt;     obsm: 'pca', 'umap'</span></span>
+<span><span class="co">#&gt;     varm: 'pca'</span></span>
 <span><span class="co">#&gt;     layers: 'counts'</span></span></code></pre></div>
 </div>
 <div class="section level4">
@@ -460,8 +460,8 @@ SingleCellExperiment slots and the AnnData slots. We assume that all
 <span><span class="op">)</span></span>
 <span><span class="va">ad</span></span>
 <span><span class="co">#&gt; AnnData object with n_obs × n_vars = 10 × 20</span></span>
-<span><span class="co">#&gt;     obsm: 'X_pca', 'X_umap'</span></span>
-<span><span class="co">#&gt;     varm: 'pcas'</span></span></code></pre></div>
+<span><span class="co">#&gt;     obsm: 'pca', 'umap'</span></span>
+<span><span class="co">#&gt;     varm: 'pca'</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level3">

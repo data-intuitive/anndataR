@@ -135,7 +135,7 @@ to a <code>Seurat</code> object.</p>
 <span><span class="co">#&gt; 100 features across 50 samples within 1 assay </span></span>
 <span><span class="co">#&gt; Active assay: RNA (100 features, 0 variable features)</span></span>
 <span><span class="co">#&gt;  5 layers present: counts, data, csc_counts, dense_X, dense_counts</span></span>
-<span><span class="co">#&gt;  2 dimensional reductions calculated: pca, umap</span></span></code></pre></div>
+<span><span class="co">#&gt;  2 dimensional reductions calculated: X_pca, X_umap</span></span></code></pre></div>
 <p>This is equivalent to reading in the <code>.h5ad</code> file and
 explicitly converting.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -146,7 +146,7 @@ explicitly converting.</p>
 <span><span class="co">#&gt; 100 features across 50 samples within 1 assay </span></span>
 <span><span class="co">#&gt; Active assay: RNA (100 features, 0 variable features)</span></span>
 <span><span class="co">#&gt;  5 layers present: counts, data, csc_counts, dense_X, dense_counts</span></span>
-<span><span class="co">#&gt;  2 dimensional reductions calculated: pca, umap</span></span></code></pre></div>
+<span><span class="co">#&gt;  2 dimensional reductions calculated: X_pca, X_umap</span></span></code></pre></div>
 <p>Note that there is no one-to-one mapping possible between the AnnData
 and SeuratObject data structures, so some information might be lost
 during conversion. It is recommended to carefully inspect the converted
@@ -163,7 +163,7 @@ conversion process. For instance:</p>
 <span><span class="co">#&gt; 100 features across 50 samples within 1 assay </span></span>
 <span><span class="co">#&gt; Active assay: ADT (100 features, 0 variable features)</span></span>
 <span><span class="co">#&gt;  2 layers present: counts, data</span></span>
-<span><span class="co">#&gt;  2 dimensional reductions calculated: pca, umap</span></span></code></pre></div>
+<span><span class="co">#&gt;  2 dimensional reductions calculated: X_pca, X_umap</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="convert-a-seurat-object-to-an-anndata-object">Convert a Seurat Object to an AnnData Object<a class="anchor" aria-label="anchor" href="#convert-a-seurat-object-to-an-anndata-object"></a>
@@ -184,57 +184,57 @@ as <code>.h5ad</code></p>
 <span><span class="co">#&gt; Finding variable features for layer counts</span></span>
 <span><span class="co">#&gt; Centering and scaling data matrix</span></span>
 <span><span class="co">#&gt; PC_ 1 </span></span>
-<span><span class="co">#&gt; Positive:  Feature72, Feature61, Feature35, Feature78, Feature52, Feature50, Feature66, Feature8, Feature14, Feature32 </span></span>
-<span><span class="co">#&gt;     Feature70, Feature1, Feature56, Feature87, Feature19, Feature97, Feature7, Feature17, Feature86, Feature48 </span></span>
-<span><span class="co">#&gt;     Feature81, Feature88, Feature43, Feature67, Feature36, Feature3, Feature26, Feature54, Feature40, Feature33 </span></span>
-<span><span class="co">#&gt; Negative:  Feature9, Feature29, Feature4, Feature39, Feature15, Feature27, Feature34, Feature68, Feature62, Feature18 </span></span>
-<span><span class="co">#&gt;     Feature22, Feature46, Feature10, Feature74, Feature49, Feature37, Feature12, Feature23, Feature95, Feature100 </span></span>
-<span><span class="co">#&gt;     Feature64, Feature30, Feature90, Feature55, Feature47, Feature96, Feature5, Feature31, Feature60, Feature92 </span></span>
+<span><span class="co">#&gt; Positive:  Feature64, Feature61, Feature69, Feature5, Feature77, Feature84, Feature29, Feature21, Feature93, Feature53 </span></span>
+<span><span class="co">#&gt;     Feature15, Feature59, Feature80, Feature96, Feature68, Feature34, Feature47, Feature75, Feature6, Feature91 </span></span>
+<span><span class="co">#&gt;     Feature72, Feature24, Feature12, Feature52, Feature19, Feature17, Feature89, Feature63, Feature3, Feature27 </span></span>
+<span><span class="co">#&gt; Negative:  Feature70, Feature98, Feature65, Feature1, Feature41, Feature58, Feature38, Feature71, Feature39, Feature79 </span></span>
+<span><span class="co">#&gt;     Feature99, Feature32, Feature95, Feature83, Feature46, Feature11, Feature100, Feature55, Feature73, Feature33 </span></span>
+<span><span class="co">#&gt;     Feature8, Feature82, Feature22, Feature94, Feature43, Feature9, Feature13, Feature90, Feature51, Feature88 </span></span>
 <span><span class="co">#&gt; PC_ 2 </span></span>
-<span><span class="co">#&gt; Positive:  Feature41, Feature89, Feature45, Feature98, Feature33, Feature44, Feature68, Feature91, Feature18, Feature59 </span></span>
-<span><span class="co">#&gt;     Feature61, Feature86, Feature32, Feature4, Feature51, Feature42, Feature54, Feature67, Feature56, Feature21 </span></span>
-<span><span class="co">#&gt;     Feature53, Feature70, Feature8, Feature31, Feature22, Feature14, Feature12, Feature76, Feature62, Feature58 </span></span>
-<span><span class="co">#&gt; Negative:  Feature97, Feature13, Feature48, Feature69, Feature49, Feature82, Feature7, Feature5, Feature79, Feature93 </span></span>
-<span><span class="co">#&gt;     Feature94, Feature84, Feature23, Feature78, Feature27, Feature40, Feature26, Feature50, Feature81, Feature46 </span></span>
-<span><span class="co">#&gt;     Feature29, Feature10, Feature71, Feature72, Feature52, Feature88, Feature87, Feature9, Feature95, Feature16 </span></span>
+<span><span class="co">#&gt; Positive:  Feature9, Feature54, Feature48, Feature93, Feature10, Feature82, Feature39, Feature40, Feature86, Feature13 </span></span>
+<span><span class="co">#&gt;     Feature33, Feature78, Feature43, Feature69, Feature55, Feature1, Feature34, Feature81, Feature94, Feature96 </span></span>
+<span><span class="co">#&gt;     Feature30, Feature7, Feature42, Feature35, Feature97, Feature21, Feature12, Feature56, Feature83, Feature99 </span></span>
+<span><span class="co">#&gt; Negative:  Feature2, Feature76, Feature22, Feature25, Feature65, Feature100, Feature14, Feature6, Feature66, Feature84 </span></span>
+<span><span class="co">#&gt;     Feature50, Feature57, Feature98, Feature89, Feature92, Feature5, Feature20, Feature29, Feature90, Feature52 </span></span>
+<span><span class="co">#&gt;     Feature95, Feature47, Feature46, Feature79, Feature41, Feature70, Feature16, Feature74, Feature87, Feature88 </span></span>
 <span><span class="co">#&gt; PC_ 3 </span></span>
-<span><span class="co">#&gt; Positive:  Feature3, Feature93, Feature2, Feature5, Feature11, Feature79, Feature66, Feature74, Feature50, Feature36 </span></span>
-<span><span class="co">#&gt;     Feature78, Feature12, Feature45, Feature98, Feature51, Feature16, Feature83, Feature28, Feature27, Feature9 </span></span>
-<span><span class="co">#&gt;     Feature8, Feature95, Feature33, Feature63, Feature21, Feature87, Feature40, Feature53, Feature85, Feature57 </span></span>
-<span><span class="co">#&gt; Negative:  Feature58, Feature90, Feature46, Feature81, Feature44, Feature56, Feature69, Feature86, Feature37, Feature97 </span></span>
-<span><span class="co">#&gt;     Feature92, Feature26, Feature88, Feature30, Feature96, Feature42, Feature14, Feature25, Feature71, Feature34 </span></span>
-<span><span class="co">#&gt;     Feature70, Feature82, Feature23, Feature35, Feature13, Feature19, Feature80, Feature4, Feature29, Feature67 </span></span>
+<span><span class="co">#&gt; Positive:  Feature90, Feature16, Feature97, Feature51, Feature86, Feature30, Feature21, Feature10, Feature92, Feature28 </span></span>
+<span><span class="co">#&gt;     Feature77, Feature76, Feature7, Feature71, Feature18, Feature5, Feature85, Feature31, Feature55, Feature64 </span></span>
+<span><span class="co">#&gt;     Feature94, Feature79, Feature93, Feature29, Feature56, Feature19, Feature53, Feature81, Feature25, Feature57 </span></span>
+<span><span class="co">#&gt; Negative:  Feature89, Feature22, Feature15, Feature59, Feature62, Feature11, Feature14, Feature33, Feature96, Feature1 </span></span>
+<span><span class="co">#&gt;     Feature27, Feature26, Feature70, Feature80, Feature50, Feature13, Feature24, Feature69, Feature52, Feature78 </span></span>
+<span><span class="co">#&gt;     Feature40, Feature54, Feature83, Feature6, Feature43, Feature32, Feature39, Feature84, Feature72, Feature4 </span></span>
 <span><span class="co">#&gt; PC_ 4 </span></span>
-<span><span class="co">#&gt; Positive:  Feature96, Feature11, Feature78, Feature59, Feature31, Feature57, Feature19, Feature80, Feature41, Feature4 </span></span>
-<span><span class="co">#&gt;     Feature55, Feature44, Feature60, Feature90, Feature32, Feature50, Feature1, Feature14, Feature9, Feature77 </span></span>
-<span><span class="co">#&gt;     Feature85, Feature28, Feature82, Feature99, Feature25, Feature8, Feature27, Feature62, Feature64, Feature29 </span></span>
-<span><span class="co">#&gt; Negative:  Feature20, Feature18, Feature81, Feature100, Feature93, Feature10, Feature15, Feature74, Feature83, Feature33 </span></span>
-<span><span class="co">#&gt;     Feature58, Feature6, Feature72, Feature89, Feature7, Feature35, Feature53, Feature37, Feature42, Feature43 </span></span>
-<span><span class="co">#&gt;     Feature76, Feature46, Feature98, Feature73, Feature52, Feature88, Feature63, Feature49, Feature17, Feature22 </span></span>
+<span><span class="co">#&gt; Positive:  Feature80, Feature58, Feature93, Feature62, Feature49, Feature94, Feature99, Feature30, Feature75, Feature12 </span></span>
+<span><span class="co">#&gt;     Feature36, Feature39, Feature53, Feature65, Feature32, Feature97, Feature34, Feature17, Feature41, Feature57 </span></span>
+<span><span class="co">#&gt;     Feature18, Feature7, Feature22, Feature95, Feature92, Feature43, Feature72, Feature89, Feature85, Feature83 </span></span>
+<span><span class="co">#&gt; Negative:  Feature35, Feature54, Feature91, Feature23, Feature44, Feature37, Feature48, Feature50, Feature98, Feature8 </span></span>
+<span><span class="co">#&gt;     Feature67, Feature38, Feature29, Feature71, Feature84, Feature86, Feature28, Feature88, Feature81, Feature31 </span></span>
+<span><span class="co">#&gt;     Feature33, Feature6, Feature61, Feature24, Feature82, Feature96, Feature27, Feature59, Feature55, Feature69 </span></span>
 <span><span class="co">#&gt; PC_ 5 </span></span>
-<span><span class="co">#&gt; Positive:  Feature77, Feature40, Feature9, Feature21, Feature38, Feature65, Feature80, Feature22, Feature72, Feature18 </span></span>
-<span><span class="co">#&gt;     Feature50, Feature71, Feature1, Feature83, Feature82, Feature53, Feature67, Feature63, Feature90, Feature13 </span></span>
-<span><span class="co">#&gt;     Feature4, Feature61, Feature56, Feature84, Feature43, Feature54, Feature19, Feature94, Feature37, Feature33 </span></span>
-<span><span class="co">#&gt; Negative:  Feature30, Feature51, Feature86, Feature69, Feature45, Feature14, Feature3, Feature26, Feature57, Feature23 </span></span>
-<span><span class="co">#&gt;     Feature99, Feature60, Feature66, Feature36, Feature15, Feature68, Feature85, Feature29, Feature78, Feature24 </span></span>
-<span><span class="co">#&gt;     Feature16, Feature70, Feature42, Feature41, Feature48, Feature79, Feature10, Feature2, Feature49, Feature97</span></span>
+<span><span class="co">#&gt; Positive:  Feature19, Feature33, Feature43, Feature42, Feature17, Feature84, Feature9, Feature5, Feature4, Feature51 </span></span>
+<span><span class="co">#&gt;     Feature36, Feature7, Feature48, Feature96, Feature63, Feature24, Feature29, Feature99, Feature38, Feature37 </span></span>
+<span><span class="co">#&gt;     Feature70, Feature41, Feature28, Feature57, Feature64, Feature49, Feature88, Feature47, Feature95, Feature35 </span></span>
+<span><span class="co">#&gt; Negative:  Feature94, Feature27, Feature62, Feature46, Feature40, Feature81, Feature39, Feature8, Feature87, Feature10 </span></span>
+<span><span class="co">#&gt;     Feature21, Feature16, Feature54, Feature98, Feature66, Feature61, Feature78, Feature18, Feature75, Feature77 </span></span>
+<span><span class="co">#&gt;     Feature12, Feature55, Feature69, Feature59, Feature60, Feature89, Feature79, Feature6, Feature45, Feature23</span></span>
 <span><span class="co">#&gt; Computing nearest neighbor graph</span></span>
 <span><span class="co">#&gt; Computing SNN</span></span>
-<span><span class="co">#&gt; 12:16:26 UMAP embedding parameters a = 0.9922 b = 1.112</span></span>
-<span><span class="co">#&gt; 12:16:26 Read 200 rows and found 10 numeric columns</span></span>
-<span><span class="co">#&gt; 12:16:26 Using Annoy for neighbor search, n_neighbors = 30</span></span>
-<span><span class="co">#&gt; 12:16:26 Building Annoy index with metric = cosine, n_trees = 50</span></span>
+<span><span class="co">#&gt; 14:18:48 UMAP embedding parameters a = 0.9922 b = 1.112</span></span>
+<span><span class="co">#&gt; 14:18:48 Read 200 rows and found 10 numeric columns</span></span>
+<span><span class="co">#&gt; 14:18:48 Using Annoy for neighbor search, n_neighbors = 30</span></span>
+<span><span class="co">#&gt; 14:18:48 Building Annoy index with metric = cosine, n_trees = 50</span></span>
 <span><span class="co">#&gt; 0%   10   20   30   40   50   60   70   80   90   100%</span></span>
 <span><span class="co">#&gt; [----|----|----|----|----|----|----|----|----|----|</span></span>
 <span><span class="co">#&gt; **************************************************|</span></span>
-<span><span class="co">#&gt; 12:16:26 Writing NN index file to temp file /tmp/RtmpngIKCn/file30362c856644</span></span>
-<span><span class="co">#&gt; 12:16:26 Searching Annoy index using 1 thread, search_k = 3000</span></span>
-<span><span class="co">#&gt; 12:16:26 Annoy recall = 100%</span></span>
-<span><span class="co">#&gt; 12:16:26 Commencing smooth kNN distance calibration using 1 thread with target n_neighbors = 30</span></span>
-<span><span class="co">#&gt; 12:16:27 Initializing from normalized Laplacian + noise (using RSpectra)</span></span>
-<span><span class="co">#&gt; 12:16:27 Commencing optimization for 500 epochs, with 6160 positive edges</span></span>
-<span><span class="co">#&gt; 12:16:27 Using rng type: pcg</span></span>
-<span><span class="co">#&gt; 12:16:27 Optimization finished</span></span>
+<span><span class="co">#&gt; 14:18:48 Writing NN index file to temp file /tmp/Rtmpouj2SP/file1fd8245a8664</span></span>
+<span><span class="co">#&gt; 14:18:48 Searching Annoy index using 1 thread, search_k = 3000</span></span>
+<span><span class="co">#&gt; 14:18:48 Annoy recall = 100%</span></span>
+<span><span class="co">#&gt; 14:18:48 Commencing smooth kNN distance calibration using 1 thread with target n_neighbors = 30</span></span>
+<span><span class="co">#&gt; 14:18:49 Initializing from normalized Laplacian + noise (using RSpectra)</span></span>
+<span><span class="co">#&gt; 14:18:49 Commencing optimization for 500 epochs, with 6176 positive edges</span></span>
+<span><span class="co">#&gt; 14:18:49 Using rng type: pcg</span></span>
+<span><span class="co">#&gt; 14:18:49 Optimization finished</span></span>
 <span><span class="va">seurat_obj</span></span>
 <span><span class="co">#&gt; An object of class Seurat </span></span>
 <span><span class="co">#&gt; 100 features across 200 samples within 1 assay </span></span>
@@ -263,7 +263,7 @@ the conversion process. Example:</p>
 <span><span class="co">#&gt; AnnData object with n_obs × n_vars = 200 × 100</span></span>
 <span><span class="co">#&gt;     obs: 'orig.ident', 'nCount_RNA', 'nFeature_RNA'</span></span>
 <span><span class="co">#&gt;     var: 'vf_vst_counts_mean', 'vf_vst_counts_variance', 'vf_vst_counts_variance.expected', 'vf_vst_counts_variance.standardized', 'vf_vst_counts_variable', 'vf_vst_counts_rank', 'var.features', 'var.features.rank'</span></span>
-<span><span class="co">#&gt;     obsm: 'X_pca', 'X_umap'</span></span>
+<span><span class="co">#&gt;     obsm: 'pca', 'umap'</span></span>
 <span><span class="co">#&gt;     varm: 'pca'</span></span>
 <span><span class="co">#&gt;     layers: 'foo'</span></span>
 <span><span class="co">#&gt;     obsp: 'connectivities', 'snn'</span></span></code></pre></div>
@@ -307,7 +307,7 @@ the conversion process. Example:</p>
 <span><span class="co">#&gt;  [19] promises_1.3.2         rmarkdown_2.29         ragg_1.3.3            </span></span>
 <span><span class="co">#&gt;  [22] bit_4.6.0              purrr_1.0.4            xfun_0.52             </span></span>
 <span><span class="co">#&gt;  [25] cachem_1.1.0           jsonlite_2.0.0         goftest_1.2-3         </span></span>
-<span><span class="co">#&gt;  [28] later_1.4.1            spatstat.utils_3.1-3   irlba_2.3.5.1         </span></span>
+<span><span class="co">#&gt;  [28] later_1.4.2            spatstat.utils_3.1-3   irlba_2.3.5.1         </span></span>
 <span><span class="co">#&gt;  [31] parallel_4.4.3         cluster_2.1.8          R6_2.6.1              </span></span>
 <span><span class="co">#&gt;  [34] ica_1.0-3              spatstat.data_3.1-6    stringi_1.8.7         </span></span>
 <span><span class="co">#&gt;  [37] bslib_0.9.0            RColorBrewer_1.1-3     reticulate_1.42.0     </span></span>
