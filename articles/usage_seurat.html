@@ -214,21 +214,21 @@ as <code>.h5ad</code></p>
 <span><span class="co">#&gt;     Feature12, Feature55, Feature69, Feature59, Feature60, Feature89, Feature79, Feature6, Feature45, Feature23</span></span>
 <span><span class="co">#&gt; Computing nearest neighbor graph</span></span>
 <span><span class="co">#&gt; Computing SNN</span></span>
-<span><span class="co">#&gt; 07:01:22 UMAP embedding parameters a = 0.9922 b = 1.112</span></span>
-<span><span class="co">#&gt; 07:01:22 Read 200 rows and found 10 numeric columns</span></span>
-<span><span class="co">#&gt; 07:01:22 Using Annoy for neighbor search, n_neighbors = 30</span></span>
-<span><span class="co">#&gt; 07:01:22 Building Annoy index with metric = cosine, n_trees = 50</span></span>
+<span><span class="co">#&gt; 09:13:42 UMAP embedding parameters a = 0.9922 b = 1.112</span></span>
+<span><span class="co">#&gt; 09:13:42 Read 200 rows and found 10 numeric columns</span></span>
+<span><span class="co">#&gt; 09:13:42 Using Annoy for neighbor search, n_neighbors = 30</span></span>
+<span><span class="co">#&gt; 09:13:42 Building Annoy index with metric = cosine, n_trees = 50</span></span>
 <span><span class="co">#&gt; 0%   10   20   30   40   50   60   70   80   90   100%</span></span>
 <span><span class="co">#&gt; [----|----|----|----|----|----|----|----|----|----|</span></span>
 <span><span class="co">#&gt; **************************************************|</span></span>
-<span><span class="co">#&gt; 07:01:22 Writing NN index file to temp file /tmp/Rtmp7UoLGu/file2aba44c9db8f</span></span>
-<span><span class="co">#&gt; 07:01:22 Searching Annoy index using 1 thread, search_k = 3000</span></span>
-<span><span class="co">#&gt; 07:01:22 Annoy recall = 100%</span></span>
-<span><span class="co">#&gt; 07:01:22 Commencing smooth kNN distance calibration using 1 thread with target n_neighbors = 30</span></span>
-<span><span class="co">#&gt; 07:01:23 Initializing from normalized Laplacian + noise (using RSpectra)</span></span>
-<span><span class="co">#&gt; 07:01:23 Commencing optimization for 500 epochs, with 6176 positive edges</span></span>
-<span><span class="co">#&gt; 07:01:23 Using rng type: pcg</span></span>
-<span><span class="co">#&gt; 07:01:23 Optimization finished</span></span>
+<span><span class="co">#&gt; 09:13:42 Writing NN index file to temp file /tmp/RtmpTtkjIV/file20375a60bd46</span></span>
+<span><span class="co">#&gt; 09:13:42 Searching Annoy index using 1 thread, search_k = 3000</span></span>
+<span><span class="co">#&gt; 09:13:42 Annoy recall = 100%</span></span>
+<span><span class="co">#&gt; 09:13:43 Commencing smooth kNN distance calibration using 1 thread with target n_neighbors = 30</span></span>
+<span><span class="co">#&gt; 09:13:43 Initializing from normalized Laplacian + noise (using RSpectra)</span></span>
+<span><span class="co">#&gt; 09:13:43 Commencing optimization for 500 epochs, with 6176 positive edges</span></span>
+<span><span class="co">#&gt; 09:13:43 Using rng type: pcg</span></span>
+<span><span class="co">#&gt; 09:13:44 Optimization finished</span></span>
 <span><span class="va">seurat_obj</span></span>
 <span><span class="co">#&gt; An object of class Seurat </span></span>
 <span><span class="co">#&gt; 100 features across 200 samples within 1 assay </span></span>
@@ -260,7 +260,7 @@ the conversion process. Example:</p>
 <span><span class="co">#&gt;     obsm: 'pca', 'umap'</span></span>
 <span><span class="co">#&gt;     varm: 'pca'</span></span>
 <span><span class="co">#&gt;     layers: 'foo'</span></span>
-<span><span class="co">#&gt;     obsp: 'connectivities', 'snn'</span></span></code></pre></div>
+<span><span class="co">#&gt;     obsp: 'nn', 'snn'</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="session-info">Session info<a class="anchor" aria-label="anchor" href="#session-info"></a>

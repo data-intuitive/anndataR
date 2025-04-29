@@ -140,7 +140,7 @@ the conversion.</p>
 <span><span class="co">#&gt; rowData names(3): character numeric logical</span></span>
 <span><span class="co">#&gt; colnames(10): cell1 cell2 ... cell9 cell10</span></span>
 <span><span class="co">#&gt; colData names(3): integer numeric factor</span></span>
-<span><span class="co">#&gt; reducedDimNames(2): X_pca X_umap</span></span>
+<span><span class="co">#&gt; reducedDimNames(4): numeric_matrix numeric_csparse X_pca X_umap</span></span>
 <span><span class="co">#&gt; mainExpName: NULL</span></span>
 <span><span class="co">#&gt; altExpNames(0):</span></span></code></pre></div>
 <p>In the following subsections, we detail how each of these implicit
@@ -169,24 +169,24 @@ ensure that nothing gets converted to the respective slots.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sce_layers</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_SingleCellExperiment.html">to_SingleCellExperiment</a></span><span class="op">(</span></span>
 <span>  <span class="va">ad</span>,</span>
-<span>  colData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  rowData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  reduction_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  colPairs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  rowPairs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  colData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  rowData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  reduction_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  colPairs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  rowPairs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">sce_layers</span></span>
 <span><span class="co">#&gt; class: SingleCellExperiment </span></span>
 <span><span class="co">#&gt; dim: 20 10 </span></span>
-<span><span class="co">#&gt; metadata(0):</span></span>
+<span><span class="co">#&gt; metadata(3): vec_integer vec_character df_integer</span></span>
 <span><span class="co">#&gt; assays(3): counts integer_matrix numeric_rsparse</span></span>
 <span><span class="co">#&gt; rownames(20): gene1 gene2 ... gene19 gene20</span></span>
-<span><span class="co">#&gt; rowData names(0):</span></span>
+<span><span class="co">#&gt; rowData names(3): character numeric logical</span></span>
 <span><span class="co">#&gt; colnames(10): cell1 cell2 ... cell9 cell10</span></span>
-<span><span class="co">#&gt; colData names(0):</span></span>
-<span><span class="co">#&gt; reducedDimNames(0):</span></span>
+<span><span class="co">#&gt; colData names(3): integer numeric factor</span></span>
+<span><span class="co">#&gt; reducedDimNames(4): numeric_matrix numeric_csparse X_pca X_umap</span></span>
 <span><span class="co">#&gt; mainExpName: NULL</span></span>
 <span><span class="co">#&gt; altExpNames(0):</span></span></code></pre></div>
 <p>We can see that indeed, the <code>X</code> slot got stored as
@@ -218,16 +218,16 @@ starting with <code>X_</code>, we will store this as a
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sce_dimred</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_SingleCellExperiment.html">to_SingleCellExperiment</a></span><span class="op">(</span></span>
 <span>  <span class="va">ad</span>,</span>
-<span>  colData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  rowData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  colPairs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  rowPairs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  colData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  rowData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  colPairs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  rowPairs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/SingleCellExperiment/man/reducedDims.html" class="external-link">reducedDims</a></span><span class="op">(</span><span class="va">sce_dimred</span><span class="op">)</span></span>
-<span><span class="co">#&gt; List of length 2</span></span>
-<span><span class="co">#&gt; names(2): X_pca X_umap</span></span></code></pre></div>
+<span><span class="co">#&gt; List of length 4</span></span>
+<span><span class="co">#&gt; names(4): numeric_matrix numeric_csparse X_pca X_umap</span></span></code></pre></div>
 <p>We can see that indeed, the <code>pca</code> dimred got converted to
 a <code>LinearEmbeddingMatrix</code>, comprising of the information in
 the <code>obsm</code> and <code>varm</code> slots. The <code>umap</code>
@@ -247,20 +247,20 @@ the <code>obs</code> slot, all <code>rowData</code> is stored in the
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sce_implicit</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_SingleCellExperiment.html">to_SingleCellExperiment</a></span><span class="op">(</span></span>
 <span>  <span class="va">ad</span>,</span>
-<span>  assays_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  reduction_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  assays_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  reduction_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">sce_implicit</span></span>
 <span><span class="co">#&gt; class: SingleCellExperiment </span></span>
 <span><span class="co">#&gt; dim: 20 10 </span></span>
 <span><span class="co">#&gt; metadata(3): vec_integer vec_character df_integer</span></span>
-<span><span class="co">#&gt; assays(0):</span></span>
+<span><span class="co">#&gt; assays(3): counts integer_matrix numeric_rsparse</span></span>
 <span><span class="co">#&gt; rownames(20): gene1 gene2 ... gene19 gene20</span></span>
 <span><span class="co">#&gt; rowData names(3): character numeric logical</span></span>
 <span><span class="co">#&gt; colnames(10): cell1 cell2 ... cell9 cell10</span></span>
 <span><span class="co">#&gt; colData names(3): integer numeric factor</span></span>
-<span><span class="co">#&gt; reducedDimNames(0):</span></span>
+<span><span class="co">#&gt; reducedDimNames(4): numeric_matrix numeric_csparse X_pca X_umap</span></span>
 <span><span class="co">#&gt; mainExpName: NULL</span></span>
 <span><span class="co">#&gt; altExpNames(0):</span></span></code></pre></div>
 </div>
@@ -279,24 +279,24 @@ are the names of the AnnData slots.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sce_assays</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_SingleCellExperiment.html">to_SingleCellExperiment</a></span><span class="op">(</span></span>
 <span>  <span class="va">ad</span>,</span>
-<span>  assays_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>counts <span class="op">=</span> <span class="st">"X"</span>, layer1 <span class="op">=</span> <span class="st">"integer_matrix"</span>, layer2 <span class="op">=</span> <span class="st">"numeric_rsparse"</span><span class="op">)</span>,</span>
-<span>  colData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  rowData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  reduction_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  colPairs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  rowPairs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  assays_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>counts <span class="op">=</span> <span class="st">"X"</span>, layer1 <span class="op">=</span> <span class="st">"integer_matrix"</span>, layer2 <span class="op">=</span> <span class="st">"numeric_rsparse"</span><span class="op">)</span>,</span>
+<span>  colData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  rowData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  reduction_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  colPairs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  rowPairs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="va">sce_assays</span></span>
 <span><span class="co">#&gt; class: SingleCellExperiment </span></span>
 <span><span class="co">#&gt; dim: 20 10 </span></span>
-<span><span class="co">#&gt; metadata(0):</span></span>
+<span><span class="co">#&gt; metadata(3): vec_integer vec_character df_integer</span></span>
 <span><span class="co">#&gt; assays(3): counts layer1 layer2</span></span>
 <span><span class="co">#&gt; rownames(20): gene1 gene2 ... gene19 gene20</span></span>
-<span><span class="co">#&gt; rowData names(0):</span></span>
+<span><span class="co">#&gt; rowData names(3): character numeric logical</span></span>
 <span><span class="co">#&gt; colnames(10): cell1 cell2 ... cell9 cell10</span></span>
-<span><span class="co">#&gt; colData names(0):</span></span>
-<span><span class="co">#&gt; reducedDimNames(0):</span></span>
+<span><span class="co">#&gt; colData names(3): integer numeric factor</span></span>
+<span><span class="co">#&gt; reducedDimNames(4): numeric_matrix numeric_csparse X_pca X_umap</span></span>
 <span><span class="co">#&gt; mainExpName: NULL</span></span>
 <span><span class="co">#&gt; altExpNames(0):</span></span></code></pre></div>
 <p>You can see that the <code>X</code> slot got stored as
@@ -309,25 +309,35 @@ with the names <code>layer1</code> and <code>layer2</code>.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sce</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_SingleCellExperiment.html">to_SingleCellExperiment</a></span><span class="op">(</span></span>
 <span>  <span class="va">ad</span>,</span>
-<span>  assays_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  colData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>coldata1 <span class="op">=</span> <span class="st">"integer"</span>, coldata2 <span class="op">=</span> <span class="st">"numeric"</span><span class="op">)</span>,</span>
-<span>  rowData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>rowdata1 <span class="op">=</span> <span class="st">"character"</span>, rowdata2 <span class="op">=</span> <span class="st">"logical"</span><span class="op">)</span>,</span>
-<span>  reduction_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  colPairs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>colPairs_dense <span class="op">=</span> <span class="st">"numeric_matrix"</span>, colPairs_sparse <span class="op">=</span> <span class="st">"numeric_csparse"</span><span class="op">)</span>,</span>
-<span>  rowPairs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>rowPairs1 <span class="op">=</span> <span class="st">"integer_matrix"</span>, rowPairs2 <span class="op">=</span> <span class="st">"numeric_matrix"</span><span class="op">)</span>,</span>
-<span>  metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>vector1 <span class="op">=</span> <span class="st">"vec_integer"</span>, vector2 <span class="op">=</span> <span class="st">"vec_character"</span>, df <span class="op">=</span> <span class="st">"df_integer"</span><span class="op">)</span></span>
+<span>  assays_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  colData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>coldata1 <span class="op">=</span> <span class="st">"integer"</span>, coldata2 <span class="op">=</span> <span class="st">"numeric"</span><span class="op">)</span>,</span>
+<span>  rowData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>rowdata1 <span class="op">=</span> <span class="st">"character"</span>, rowdata2 <span class="op">=</span> <span class="st">"logical"</span><span class="op">)</span>,</span>
+<span>  reduction_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  colPairs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    colPairs_dense <span class="op">=</span> <span class="st">"numeric_matrix"</span>,</span>
+<span>    colPairs_sparse <span class="op">=</span> <span class="st">"numeric_csparse"</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  rowPairs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    rowPairs1 <span class="op">=</span> <span class="st">"integer_matrix"</span>,</span>
+<span>    rowPairs2 <span class="op">=</span> <span class="st">"numeric_matrix"</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    vector1 <span class="op">=</span> <span class="st">"vec_integer"</span>,</span>
+<span>    vector2 <span class="op">=</span> <span class="st">"vec_character"</span>,</span>
+<span>    df <span class="op">=</span> <span class="st">"df_integer"</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">sce</span></span>
 <span><span class="co">#&gt; class: SingleCellExperiment </span></span>
 <span><span class="co">#&gt; dim: 20 10 </span></span>
 <span><span class="co">#&gt; metadata(3): vector1 vector2 df</span></span>
-<span><span class="co">#&gt; assays(0):</span></span>
+<span><span class="co">#&gt; assays(3): counts integer_matrix numeric_rsparse</span></span>
 <span><span class="co">#&gt; rownames(20): gene1 gene2 ... gene19 gene20</span></span>
 <span><span class="co">#&gt; rowData names(2): rowdata1 rowdata2</span></span>
 <span><span class="co">#&gt; colnames(10): cell1 cell2 ... cell9 cell10</span></span>
 <span><span class="co">#&gt; colData names(2): coldata1 coldata2</span></span>
-<span><span class="co">#&gt; reducedDimNames(0):</span></span>
+<span><span class="co">#&gt; reducedDimNames(4): numeric_matrix numeric_csparse X_pca X_umap</span></span>
 <span><span class="co">#&gt; mainExpName: NULL</span></span>
 <span><span class="co">#&gt; altExpNames(0):</span></span></code></pre></div>
 <p>Here you can see that the anndata slots (specified as values in the
@@ -343,23 +353,26 @@ AnnData object gets stored in the <code>coldata1</code> column of the
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sce</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_SingleCellExperiment.html">to_SingleCellExperiment</a></span><span class="op">(</span></span>
 <span>  <span class="va">ad</span>,</span>
-<span>  assays_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>counts <span class="op">=</span> <span class="st">"X"</span><span class="op">)</span>,</span>
-<span>  colData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  rowData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  reduction_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"pca"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"obsm"</span> <span class="op">=</span> <span class="st">"X_pca"</span>, <span class="st">"varm"</span> <span class="op">=</span> <span class="st">"PCs"</span><span class="op">)</span>, <span class="st">"umap"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"obsm"</span> <span class="op">=</span> <span class="st">"X_umap"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>  colPairs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  rowPairs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  assays_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>counts <span class="op">=</span> <span class="st">"X"</span><span class="op">)</span>,</span>
+<span>  colData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  rowData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  reduction_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    <span class="st">"pca"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"obsm"</span> <span class="op">=</span> <span class="st">"X_pca"</span>, <span class="st">"varm"</span> <span class="op">=</span> <span class="st">"PCs"</span><span class="op">)</span>,</span>
+<span>    <span class="st">"umap"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"obsm"</span> <span class="op">=</span> <span class="st">"X_umap"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  colPairs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  rowPairs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="va">sce</span></span>
 <span><span class="co">#&gt; class: SingleCellExperiment </span></span>
 <span><span class="co">#&gt; dim: 20 10 </span></span>
-<span><span class="co">#&gt; metadata(0):</span></span>
+<span><span class="co">#&gt; metadata(3): vec_integer vec_character df_integer</span></span>
 <span><span class="co">#&gt; assays(1): counts</span></span>
 <span><span class="co">#&gt; rownames(20): gene1 gene2 ... gene19 gene20</span></span>
-<span><span class="co">#&gt; rowData names(0):</span></span>
+<span><span class="co">#&gt; rowData names(3): character numeric logical</span></span>
 <span><span class="co">#&gt; colnames(10): cell1 cell2 ... cell9 cell10</span></span>
-<span><span class="co">#&gt; colData names(0):</span></span>
+<span><span class="co">#&gt; colData names(3): integer numeric factor</span></span>
 <span><span class="co">#&gt; reducedDimNames(2): pca umap</span></span>
 <span><span class="co">#&gt; mainExpName: NULL</span></span>
 <span><span class="co">#&gt; altExpNames(0):</span></span></code></pre></div>
@@ -400,17 +413,24 @@ remain empty.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ad_assays</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/from_SingleCellExperiment.html">from_SingleCellExperiment</a></span><span class="op">(</span></span>
 <span>  <span class="va">sce</span>,</span>
-<span>  obs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  var_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  obsm_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  varm_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  obsp_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  varp_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  uns_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  obs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  var_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  obsm_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  varm_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  obsp_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  varp_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  uns_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="va">ad_assays</span></span>
 <span><span class="co">#&gt; AnnData object with n_obs × n_vars = 10 × 20</span></span>
-<span><span class="co">#&gt;     layers: 'counts'</span></span></code></pre></div>
+<span><span class="co">#&gt;     obs: 'integer', 'numeric', 'factor'</span></span>
+<span><span class="co">#&gt;     var: 'character', 'numeric', 'logical'</span></span>
+<span><span class="co">#&gt;     uns: 'vec_integer', 'vec_character', 'df_integer'</span></span>
+<span><span class="co">#&gt;     obsm: 'pca', 'umap'</span></span>
+<span><span class="co">#&gt;     varm: 'pca'</span></span>
+<span><span class="co">#&gt;     layers: 'counts'</span></span>
+<span><span class="co">#&gt;     obsp: 'numeric_matrix', 'numeric_csparse'</span></span>
+<span><span class="co">#&gt;     varp: 'integer_matrix', 'numeric_matrix'</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="obsm-and-varm">obsm and varm<a class="anchor" aria-label="anchor" href="#obsm-and-varm"></a>
@@ -429,17 +449,22 @@ with the name of the <code>reducedDims</code> prepended by an
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ad_reductions</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/from_SingleCellExperiment.html">from_SingleCellExperiment</a></span><span class="op">(</span></span>
 <span>  <span class="va">sce</span>,</span>
-<span>  obs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  var_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  obsp_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  varp_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  uns_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  obs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  var_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  obsp_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  varp_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  uns_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="va">ad_reductions</span></span>
 <span><span class="co">#&gt; AnnData object with n_obs × n_vars = 10 × 20</span></span>
+<span><span class="co">#&gt;     obs: 'integer', 'numeric', 'factor'</span></span>
+<span><span class="co">#&gt;     var: 'character', 'numeric', 'logical'</span></span>
+<span><span class="co">#&gt;     uns: 'vec_integer', 'vec_character', 'df_integer'</span></span>
 <span><span class="co">#&gt;     obsm: 'pca', 'umap'</span></span>
 <span><span class="co">#&gt;     varm: 'pca'</span></span>
-<span><span class="co">#&gt;     layers: 'counts'</span></span></code></pre></div>
+<span><span class="co">#&gt;     layers: 'counts'</span></span>
+<span><span class="co">#&gt;     obsp: 'numeric_matrix', 'numeric_csparse'</span></span>
+<span><span class="co">#&gt;     varp: 'integer_matrix', 'numeric_matrix'</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="obs-var-obsp-varp-uns">obs, var, obsp, varp, uns<a class="anchor" aria-label="anchor" href="#obs-var-obsp-varp-uns"></a>
@@ -460,45 +485,52 @@ SingleCellExperiment slots and the AnnData slots. We assume that all
 <span><span class="op">)</span></span>
 <span><span class="va">ad</span></span>
 <span><span class="co">#&gt; AnnData object with n_obs × n_vars = 10 × 20</span></span>
+<span><span class="co">#&gt;     obs: 'integer', 'numeric', 'factor'</span></span>
+<span><span class="co">#&gt;     var: 'character', 'numeric', 'logical'</span></span>
+<span><span class="co">#&gt;     uns: 'vec_integer', 'vec_character', 'df_integer'</span></span>
 <span><span class="co">#&gt;     obsm: 'pca', 'umap'</span></span>
-<span><span class="co">#&gt;     varm: 'pca'</span></span></code></pre></div>
+<span><span class="co">#&gt;     varm: 'pca'</span></span>
+<span><span class="co">#&gt;     obsp: 'numeric_matrix', 'numeric_csparse'</span></span>
+<span><span class="co">#&gt;     varp: 'integer_matrix', 'numeric_matrix'</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level3">
 <h3 id="explicit-conversion-1">Explicit conversion<a class="anchor" aria-label="anchor" href="#explicit-conversion-1"></a>
 </h3>
 <p>It’s also possible to provide an explicit mapping for the conversion
-from SingleCellExperiment to AnnData. For all of the simpler mappings,
-such as <code>layers_mapping</code>, <code>obs_mapping</code>,
+from SingleCellExperiment to AnnData. For all of the mappings
+(<code>layers_mapping</code>, <code>obs_mapping</code>,
 <code>var_mapping</code>, <code>obsp_mapping</code>,
-<code>varp_mapping</code> and <code>uns_mapping</code>, you can provide
-a named list where the names are the names of the AnnData columns and
-the values are the names of the SingleCellExperiment columns in their
-respective slots.</p>
-<p>The <code>obsm_mapping</code> and <code>varm_mapping</code> are a bit
-more complex, as they can contain multiple elements. Each of the
-<code>obsm_mapping</code> and <code>varm_mapping</code> elements should
-be a named list, where the names are the names of the AnnData columns
-where the values are stored. The values should be a named list as well,
-containing as a first element the name of the SingleCellExperiment slot
-where the data is stored, and as a second element the name of the slot
-in the SingleCellExperiment slot where the data is stored.</p>
+<code>varp_mapping</code>, and <code>uns_mapping</code>), you can
+provide a named vector where the names are the names in the AnnData
+object and the values are the names in the SingleCellExperiment
+object.</p>
+<p>The <code>obsm_mapping</code> and <code>varm_mapping</code> work in
+the same way - they’re named vectors where each name corresponds to a
+key in AnnData’s obsm/varm, and each value corresponds to the name of a
+reducedDim in SCE.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ad_obsm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/from_SingleCellExperiment.html">from_SingleCellExperiment</a></span><span class="op">(</span></span>
 <span>  <span class="va">sce</span>,</span>
-<span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  obs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  obsm_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>X_pca <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"reducedDim"</span>, <span class="st">"pca"</span><span class="op">)</span>, X_umap <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"reducedDim"</span>, <span class="st">"umap"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>  varm_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>PCs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"reducedDim"</span>, <span class="st">"pca"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>  obsp_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  varp_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  uns_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  obs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  obsm_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>X_pca <span class="op">=</span> <span class="st">"pca"</span>, X_umap <span class="op">=</span> <span class="st">"umap"</span><span class="op">)</span>,</span>
+<span>  varm_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>PCs <span class="op">=</span> <span class="st">"pca"</span><span class="op">)</span>,</span>
+<span>  obsp_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  varp_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  uns_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">ad_obsm</span></span>
 <span><span class="co">#&gt; AnnData object with n_obs × n_vars = 10 × 20</span></span>
+<span><span class="co">#&gt;     obs: 'integer', 'numeric', 'factor'</span></span>
+<span><span class="co">#&gt;     var: 'character', 'numeric', 'logical'</span></span>
+<span><span class="co">#&gt;     uns: 'vec_integer', 'vec_character', 'df_integer'</span></span>
 <span><span class="co">#&gt;     obsm: 'X_pca', 'X_umap'</span></span>
-<span><span class="co">#&gt;     varm: 'PCs'</span></span></code></pre></div>
+<span><span class="co">#&gt;     varm: 'PCs'</span></span>
+<span><span class="co">#&gt;     layers: 'counts'</span></span>
+<span><span class="co">#&gt;     obsp: 'numeric_matrix', 'numeric_csparse'</span></span>
+<span><span class="co">#&gt;     varp: 'integer_matrix', 'numeric_matrix'</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
