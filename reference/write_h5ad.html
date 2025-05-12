@@ -56,7 +56,8 @@
 <span>  <span class="va">object</span>,</span>
 <span>  <span class="va">path</span>,</span>
 <span>  compression <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"none"</span>, <span class="st">"gzip"</span>, <span class="st">"lzf"</span><span class="op">)</span>,</span>
-<span>  mode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"w-"</span>, <span class="st">"r"</span>, <span class="st">"r+"</span>, <span class="st">"a"</span>, <span class="st">"w"</span>, <span class="st">"x"</span><span class="op">)</span></span>
+<span>  mode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"w-"</span>, <span class="st">"r"</span>, <span class="st">"r+"</span>, <span class="st">"a"</span>, <span class="st">"w"</span>, <span class="st">"x"</span><span class="op">)</span>,</span>
+<span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -65,8 +66,9 @@
 
 
 <dl><dt id="arg-object">object<a class="anchor" aria-label="anchor" href="#arg-object"></a></dt>
-<dd><p>The object to write, either a "SingleCellExperiment" or a
-"Seurat" object</p></dd>
+<dd><p>The object to write, either a
+<code><a href="https://rdrr.io/pkg/SingleCellExperiment/man/SingleCellExperiment.html" class="external-link">SingleCellExperiment::SingleCellExperiment</a></code> or a
+<code><a href="https://satijalab.github.io/seurat-object/reference/Seurat-class.html" class="external-link">SeuratObject::Seurat</a></code> object</p></dd>
 
 
 <dt id="arg-path">path<a class="anchor" aria-label="anchor" href="#arg-path"></a></dt>
@@ -74,17 +76,20 @@
 
 
 <dt id="arg-compression">compression<a class="anchor" aria-label="anchor" href="#arg-compression"></a></dt>
-<dd><p>The compression algorithm to use when writing the
-HDF5 file. Can be one of <code>"none"</code>, <code>"gzip"</code> or <code>"lzf"</code>. Defaults to
-<code>"none"</code>.</p></dd>
+<dd><p>The compression algorithm to use when writing the HDF5
+file. Can be one of <code>"none"</code>, <code>"gzip"</code> or <code>"lzf"</code>. Defaults to <code>"none"</code>.</p></dd>
 
 
 <dt id="arg-mode">mode<a class="anchor" aria-label="anchor" href="#arg-mode"></a></dt>
-<dd><p>The mode to open the HDF5 file.</p><ul><li><p><code>a</code> creates a new file or opens an existing one for read/write.</p></li>
-<li><p><code>r+</code> opens an existing file for read/write.</p></li>
+<dd><p>The mode to open the HDF5 file.</p><ul><li><p><code>a</code> creates a new file or opens an existing one for read/write</p></li>
+<li><p><code>r+</code> opens an existing file for read/write</p></li>
 <li><p><code>w</code> creates a file, truncating any existing ones</p></li>
-<li><p><code>w-</code>/<code>x</code> are synonyms creating a file and failing if it already exists.</p></li>
+<li><p><code>w-</code>/<code>x</code> are synonyms creating a file and failing if it already exists</p></li>
 </ul></dd>
+
+
+<dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
+<dd><p>Additional arguments passed to <code><a href="as_AnnData.html">as_AnnData()</a></code></p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -105,7 +110,6 @@ HDF5 file. Can be one of <code>"none"</code>, <code>"gzip"</code> or <code>"lzf"
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">h5ad_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".h5ad"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">adata</span><span class="op">$</span><span class="fu">write_h5ad</span><span class="op">(</span><span class="va">h5ad_file</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/tmp/Rtmp8vIMpj/file1d4363056e87.h5ad"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Write a SingleCellExperiment as an H5AD</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"SingleCellExperiment"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
@@ -121,11 +125,10 @@ HDF5 file. Can be one of <code>"none"</code>, <code>"gzip"</code> or <code>"lzf"
 <span class="r-in"><span>    reducedDims <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>PCA <span class="op">=</span> <span class="va">pca</span>, tSNE <span class="op">=</span> <span class="va">tsne</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span>  <span class="va">adata</span> <span class="op">&lt;-</span> <span class="fu"><a href="from_SingleCellExperiment.html">from_SingleCellExperiment</a></span><span class="op">(</span><span class="va">sce</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">adata</span> <span class="op">&lt;-</span> <span class="fu"><a href="as_AnnData.html">as_AnnData</a></span><span class="op">(</span><span class="va">sce</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">h5ad_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".h5ad"</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">adata</span><span class="op">$</span><span class="fu">write_h5ad</span><span class="op">(</span><span class="va">h5ad_file</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/tmp/Rtmp8vIMpj/file1d43123ed41.h5ad"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Write a Seurat as a H5AD</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"Seurat"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
@@ -147,12 +150,11 @@ HDF5 file. Can be one of <code>"none"</code>, <code>"gzip"</code> or <code>"lzf"
 <span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">obj</span><span class="op">[[</span><span class="st">"RNA"</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://satijalab.github.io/seurat-object/reference/AddMetaData.html" class="external-link">AddMetaData</a></span><span class="op">(</span><span class="fu"><a href="https://satijalab.org/seurat/reference/GetAssay.html" class="external-link">GetAssay</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span>, <span class="va">gene.metadata</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span>  <span class="va">adata</span> <span class="op">&lt;-</span> <span class="fu"><a href="from_Seurat.html">from_Seurat</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">adata</span> <span class="op">&lt;-</span> <span class="fu"><a href="as_AnnData.html">as_AnnData</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">h5ad_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".h5ad"</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">adata</span><span class="op">$</span><span class="fu">write_h5ad</span><span class="op">(</span><span class="va">h5ad_file</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Data is of class matrix. Coercing to dgCMatrix.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/tmp/Rtmp8vIMpj/file1d431ee0c5ad.h5ad"</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -164,7 +166,7 @@ HDF5 file. Can be one of <code>"none"</code>, <code>"gzip"</code> or <code>"lzf"
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.2.</p>
 </div>
 
     </footer></div>

@@ -54,7 +54,8 @@
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">read_h5ad</span><span class="op">(</span></span>
 <span>  <span class="va">path</span>,</span>
-<span>  to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"InMemoryAnnData"</span>, <span class="st">"HDF5AnnData"</span>, <span class="st">"SingleCellExperiment"</span>, <span class="st">"Seurat"</span><span class="op">)</span>,</span>
+<span>  as <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"InMemoryAnnData"</span>, <span class="st">"HDF5AnnData"</span>, <span class="st">"SingleCellExperiment"</span>, <span class="st">"Seurat"</span><span class="op">)</span>,</span>
+<span>  to <span class="op">=</span> <span class="fu">deprecated</span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  mode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"r"</span>, <span class="st">"r+"</span>, <span class="st">"a"</span>, <span class="st">"w"</span>, <span class="st">"w-"</span>, <span class="st">"x"</span><span class="op">)</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -68,9 +69,19 @@
 <dd><p>Path to the H5AD file to read</p></dd>
 
 
+<dt id="arg-as">as<a class="anchor" aria-label="anchor" href="#arg-as"></a></dt>
+<dd><p>The type of object to return. One of:</p><ul><li><p><code>"InMemoryAnnData"</code>: Read the H5AD file into memory as an
+<code><a href="InMemoryAnnData.html">InMemoryAnnData</a></code> object</p></li>
+<li><p><code>"HDF5AnnData"</code>: Read the H5AD file as an <code><a href="HDF5AnnData.html">HDF5AnnData</a></code> object</p></li>
+<li><p><code>"SingleCellExperiment"</code>: Read the H5AD file as a
+<code><a href="https://rdrr.io/pkg/SingleCellExperiment/man/SingleCellExperiment.html" class="external-link">SingleCellExperiment::SingleCellExperiment</a></code> object</p></li>
+<li><p><code>"Seurat"</code>: Read the H5AD file as a
+<code><a href="https://satijalab.github.io/seurat-object/reference/Seurat-class.html" class="external-link">SeuratObject::Seurat</a></code> object</p></li>
+</ul></dd>
+
+
 <dt id="arg-to">to<a class="anchor" aria-label="anchor" href="#arg-to"></a></dt>
-<dd><p>The type of object to return. Must be one of: "InMemoryAnnData",
-"HDF5AnnData", "SingleCellExperiment", "Seurat"</p></dd>
+<dd><p><a href="https://lifecycle.r-lib.org/articles/stages.html#deprecated" class="external-link"><img src="figures/lifecycle-deprecated.svg" alt="[Deprecated]"></a> Deprecated, use <code>as</code> instead</p></dd>
 
 
 <dt id="arg-mode">mode<a class="anchor" aria-label="anchor" href="#arg-mode"></a></dt>
@@ -83,15 +94,19 @@
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
-<dd><p>Extra arguments provided to <code>adata$to_SingleCellExperiment()</code> or
-<code>adata$to_Seurat()</code>. See <code><a href="AnnData.html">AnnData()</a></code> for more information on the arguments of
-these functions. Note: update this documentation when
-<a href="https://github.com/r-lib/roxygen2/issues/955" class="external-link"><code>r-lib/roxygen2#955</code></a> is resolved.</p></dd>
+<dd><p>Extra arguments provided to the <code>as_*</code> conversion function for the
+object specified by <code>as</code></p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>The object specified by <code>to</code></p>
+    <p>The object specified by <code>as</code></p>
+    </div>
+    <div class="section level2">
+    <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
+    <div class="dont-index"><p>Other AnnData creators:
+<code><a href="AnnData.html">AnnData</a>()</code>,
+<code><a href="as_AnnData.html">as_AnnData</a>()</code></p></div>
     </div>
 
     <div class="section level2">
@@ -100,12 +115,12 @@ these functions. Note: update this documentation when
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Read the H5AD as a SingleCellExperiment object</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"SingleCellExperiment"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">sce</span> <span class="op">&lt;-</span> <span class="fu">read_h5ad</span><span class="op">(</span><span class="va">h5ad_file</span>, to <span class="op">=</span> <span class="st">"SingleCellExperiment"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">sce</span> <span class="op">&lt;-</span> <span class="fu">read_h5ad</span><span class="op">(</span><span class="va">h5ad_file</span>, as <span class="op">=</span> <span class="st">"SingleCellExperiment"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Read the H5AD as a Seurat object</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"SeuratObject"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="va">seurat</span> <span class="op">&lt;-</span> <span class="fu">read_h5ad</span><span class="op">(</span><span class="va">h5ad_file</span>, to <span class="op">=</span> <span class="st">"Seurat"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">seurat</span> <span class="op">&lt;-</span> <span class="fu">read_h5ad</span><span class="op">(</span><span class="va">h5ad_file</span>, as <span class="op">=</span> <span class="st">"Seurat"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
@@ -118,7 +133,7 @@ these functions. Note: update this documentation when
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.2.</p>
 </div>
 
     </footer></div>

@@ -130,7 +130,7 @@ slot, you can pass an empty list.</p>
 <p>Here, we showcase what happens if you do not provide any mapping for
 the conversion.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">sce</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_SingleCellExperiment.html">to_SingleCellExperiment</a></span><span class="op">(</span><span class="va">ad</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">sce</span> <span class="op">&lt;-</span> <span class="va">ad</span><span class="op">$</span><span class="fu">as_SingleCellExperiment</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">sce</span></span>
 <span><span class="co">#&gt; class: SingleCellExperiment </span></span>
 <span><span class="co">#&gt; dim: 20 10 </span></span>
@@ -167,11 +167,10 @@ provide a <code>layers_mapping</code>. We explicitly pass empty lists to
 the other mapping arguments for clarity in the resulting object. They
 ensure that nothing gets converted to the respective slots.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">sce_layers</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_SingleCellExperiment.html">to_SingleCellExperiment</a></span><span class="op">(</span></span>
-<span>  <span class="va">ad</span>,</span>
+<code class="sourceCode R"><span><span class="va">sce_layers</span> <span class="op">&lt;-</span> <span class="va">ad</span><span class="op">$</span><span class="fu">as_SingleCellExperiment</span><span class="op">(</span></span>
 <span>  colData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  rowData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  reduction_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  reducedDims_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  colPairs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  rowPairs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -216,8 +215,7 @@ starting with <code>X_</code>, we will store this as a
 <code>X_pca</code> slot, we will also store the associated loadings (in
 <code>varm</code>) in a LinearEmbeddingMatrix.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">sce_dimred</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_SingleCellExperiment.html">to_SingleCellExperiment</a></span><span class="op">(</span></span>
-<span>  <span class="va">ad</span>,</span>
+<code class="sourceCode R"><span><span class="va">sce_dimred</span> <span class="op">&lt;-</span> <span class="va">ad</span><span class="op">$</span><span class="fu">as_SingleCellExperiment</span><span class="op">(</span></span>
 <span>  colData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  rowData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  colPairs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -245,10 +243,9 @@ the <code>obs</code> slot, all <code>rowData</code> is stored in the
 <code>varp</code> slot, and all <code>metadata</code> is stored in the
 <code>uns</code> slot.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">sce_implicit</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_SingleCellExperiment.html">to_SingleCellExperiment</a></span><span class="op">(</span></span>
-<span>  <span class="va">ad</span>,</span>
+<code class="sourceCode R"><span><span class="va">sce_implicit</span> <span class="op">&lt;-</span> <span class="va">ad</span><span class="op">$</span><span class="fu">as_SingleCellExperiment</span><span class="op">(</span></span>
 <span>  assays_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  reduction_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  reducedDims_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">sce_implicit</span></span>
@@ -277,12 +274,11 @@ are the names of the AnnData slots.</p>
 <h4 id="assays_mapping">assays_mapping<a class="anchor" aria-label="anchor" href="#assays_mapping"></a>
 </h4>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">sce_assays</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_SingleCellExperiment.html">to_SingleCellExperiment</a></span><span class="op">(</span></span>
-<span>  <span class="va">ad</span>,</span>
+<code class="sourceCode R"><span><span class="va">sce_assays</span> <span class="op">&lt;-</span> <span class="va">ad</span><span class="op">$</span><span class="fu">as_SingleCellExperiment</span><span class="op">(</span></span>
 <span>  assays_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>counts <span class="op">=</span> <span class="st">"X"</span>, layer1 <span class="op">=</span> <span class="st">"integer_matrix"</span>, layer2 <span class="op">=</span> <span class="st">"numeric_rsparse"</span><span class="op">)</span>,</span>
 <span>  colData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  rowData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  reduction_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  reducedDims_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  colPairs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  rowPairs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -307,12 +303,11 @@ with the names <code>layer1</code> and <code>layer2</code>.</p>
 <h4 id="coldata-rowdata-colpairs-rowpairs-metadata-1">colData, rowData, colPairs, rowPairs, metadata<a class="anchor" aria-label="anchor" href="#coldata-rowdata-colpairs-rowpairs-metadata-1"></a>
 </h4>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">sce</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_SingleCellExperiment.html">to_SingleCellExperiment</a></span><span class="op">(</span></span>
-<span>  <span class="va">ad</span>,</span>
+<code class="sourceCode R"><span><span class="va">sce</span> <span class="op">&lt;-</span> <span class="va">ad</span><span class="op">$</span><span class="fu">as_SingleCellExperiment</span><span class="op">(</span></span>
 <span>  assays_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  colData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>coldata1 <span class="op">=</span> <span class="st">"integer"</span>, coldata2 <span class="op">=</span> <span class="st">"numeric"</span><span class="op">)</span>,</span>
 <span>  rowData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>rowdata1 <span class="op">=</span> <span class="st">"character"</span>, rowdata2 <span class="op">=</span> <span class="st">"logical"</span><span class="op">)</span>,</span>
-<span>  reduction_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  reducedDims_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  colPairs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
 <span>    colPairs_dense <span class="op">=</span> <span class="st">"numeric_matrix"</span>,</span>
 <span>    colPairs_sparse <span class="op">=</span> <span class="st">"numeric_csparse"</span></span>
@@ -351,14 +346,13 @@ AnnData object gets stored in the <code>coldata1</code> column of the
 <h4 id="reductions_mapping">reductions_mapping<a class="anchor" aria-label="anchor" href="#reductions_mapping"></a>
 </h4>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">sce</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_SingleCellExperiment.html">to_SingleCellExperiment</a></span><span class="op">(</span></span>
-<span>  <span class="va">ad</span>,</span>
+<code class="sourceCode R"><span><span class="va">sce</span> <span class="op">&lt;-</span> <span class="va">ad</span><span class="op">$</span><span class="fu">as_SingleCellExperiment</span><span class="op">(</span></span>
 <span>  assays_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>counts <span class="op">=</span> <span class="st">"X"</span><span class="op">)</span>,</span>
 <span>  colData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  rowData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  reduction_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>    <span class="st">"pca"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"obsm"</span> <span class="op">=</span> <span class="st">"X_pca"</span>, <span class="st">"varm"</span> <span class="op">=</span> <span class="st">"PCs"</span><span class="op">)</span>,</span>
-<span>    <span class="st">"umap"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"obsm"</span> <span class="op">=</span> <span class="st">"X_umap"</span><span class="op">)</span></span>
+<span>  reducedDims_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    <span class="st">"pca"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>sampleFactors <span class="op">=</span> <span class="st">"X_pca"</span>, featureLoadings <span class="op">=</span> <span class="st">"PCs"</span><span class="op">)</span>,</span>
+<span>    <span class="st">"umap"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>sampleFactors <span class="op">=</span> <span class="st">"X_umap"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span>,</span>
 <span>  colPairs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  rowPairs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -396,7 +390,7 @@ objects works in a similar way. There’s an implicit conversion, where we
 attempt a standard conversion, but the user can always provide an
 explicit mapping as well.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/from_SingleCellExperiment.html">from_SingleCellExperiment</a></span><span class="op">(</span><span class="va">sce</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span><span class="va">sce</span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="implicit-conversion-1">Implicit conversion<a class="anchor" aria-label="anchor" href="#implicit-conversion-1"></a>
 </h3>
@@ -411,7 +405,7 @@ slot of the AnnData object. Watch out: if there is no
 stored in the <code>X</code> slot of the AnnData object, and it will
 remain empty.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ad_assays</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/from_SingleCellExperiment.html">from_SingleCellExperiment</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">ad_assays</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span></span>
 <span>  <span class="va">sce</span>,</span>
 <span>  obs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  var_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -435,7 +429,7 @@ remain empty.</p>
 <div class="section level4">
 <h4 id="obsm-and-varm">obsm and varm<a class="anchor" aria-label="anchor" href="#obsm-and-varm"></a>
 </h4>
-<p>If there is no <code>reduction_mapping</code> provided, we will try
+<p>If there is no <code>reducedDims_mapping</code> provided, we will try
 to guess the mapping. This considers both the <code>obsm_mapping</code>
 and the <code>varm_mapping</code> arguments. By default, we will not map
 anything to the <code>varm</code> slot, as there is no direct equivalent
@@ -447,7 +441,7 @@ in the SingleCellExperiment object. However, if the
 with the name of the <code>reducedDims</code> prepended by an
 <code>X_</code> as the name of the <code>obsm</code> slot.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ad_reductions</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/from_SingleCellExperiment.html">from_SingleCellExperiment</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">ad_reductions</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span></span>
 <span>  <span class="va">sce</span>,</span>
 <span>  obs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  var_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -479,7 +473,7 @@ SingleCellExperiment slots and the AnnData slots. We assume that all
 <code>rowPairs</code> are stored in the <code>varp</code> slot, and all
 <code>metadata</code> is stored in the <code>uns</code> slot.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/from_SingleCellExperiment.html">from_SingleCellExperiment</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span></span>
 <span>  <span class="va">sce</span>,</span>
 <span>  x_mapping <span class="op">=</span> <span class="st">"counts"</span></span>
 <span><span class="op">)</span></span>
@@ -510,7 +504,7 @@ the same way - they’re named vectors where each name corresponds to a
 key in AnnData’s obsm/varm, and each value corresponds to the name of a
 reducedDim in SCE.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ad_obsm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/from_SingleCellExperiment.html">from_SingleCellExperiment</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">ad_obsm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span></span>
 <span>  <span class="va">sce</span>,</span>
 <span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  obs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -544,7 +538,7 @@ reducedDim in SCE.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.2.</p>
 </div>
 
     </footer>

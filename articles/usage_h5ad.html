@@ -120,7 +120,7 @@ only parts that are actively being used are loaded into memory.</p>
 <p>To do this, set the <code>to</code> parameter in the
 <code>read_h5ad</code> to <code>HDF5AnnData</code>:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">adata</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_h5ad.html">read_h5ad</a></span><span class="op">(</span><span class="va">h5ad_path</span>, to <span class="op">=</span> <span class="st">"HDF5AnnData"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">adata</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_h5ad.html">read_h5ad</a></span><span class="op">(</span><span class="va">h5ad_path</span>, as <span class="op">=</span> <span class="st">"HDF5AnnData"</span><span class="op">)</span></span></code></pre></div>
 <p>The structure of the object will look similar to the in-memory
 representation, but the data is stored on disk.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -210,16 +210,16 @@ various slots. Here’s how you can access some of them:</p>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
 <span><span class="co">#&gt;  [1] vctrs_0.6.5         cli_3.6.5           knitr_1.50         </span></span>
 <span><span class="co">#&gt;  [4] rlang_1.1.6         xfun_0.52           purrr_1.0.4        </span></span>
-<span><span class="co">#&gt;  [7] textshaping_1.0.0   jsonlite_2.0.0      bit_4.6.0          </span></span>
+<span><span class="co">#&gt;  [7] textshaping_1.0.1   jsonlite_2.0.0      bit_4.6.0          </span></span>
 <span><span class="co">#&gt; [10] htmltools_0.5.8.1   ragg_1.4.0          sass_0.4.10        </span></span>
 <span><span class="co">#&gt; [13] rmarkdown_2.29      grid_4.5.0          evaluate_1.0.3     </span></span>
 <span><span class="co">#&gt; [16] jquerylib_0.1.4     fastmap_1.2.0       yaml_2.3.10        </span></span>
 <span><span class="co">#&gt; [19] lifecycle_1.0.4     bookdown_0.43       BiocManager_1.30.25</span></span>
 <span><span class="co">#&gt; [22] compiler_4.5.0      fs_1.6.6            htmlwidgets_1.6.4  </span></span>
-<span><span class="co">#&gt; [25] lattice_0.22-6      systemfonts_1.2.2   digest_0.6.37      </span></span>
+<span><span class="co">#&gt; [25] lattice_0.22-6      systemfonts_1.2.3   digest_0.6.37      </span></span>
 <span><span class="co">#&gt; [28] R6_2.6.1            magrittr_2.0.3      bslib_0.9.0        </span></span>
 <span><span class="co">#&gt; [31] Matrix_1.7-3        bit64_4.6.0-1       hdf5r_1.3.12       </span></span>
-<span><span class="co">#&gt; [34] tools_4.5.0         pkgdown_2.1.1       cachem_1.1.0       </span></span>
+<span><span class="co">#&gt; [34] tools_4.5.0         pkgdown_2.1.2       cachem_1.1.0       </span></span>
 <span><span class="co">#&gt; [37] desc_1.4.3</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -233,7 +233,7 @@ various slots. Here’s how you can access some of them:</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.2.</p>
 </div>
 
     </footer>

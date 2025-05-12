@@ -131,7 +131,7 @@ mappings.</p>
 <p>Here, we showcase what happens if you do not provide any mapping
 information for the conversion.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">seurat_obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_Seurat.html">to_Seurat</a></span><span class="op">(</span><span class="va">ad</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">seurat_obj</span> <span class="op">&lt;-</span> <span class="va">ad</span><span class="op">$</span><span class="fu">as_Seurat</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Data is of class matrix. Coercing to dgCMatrix.</span></span>
 <span><span class="va">seurat_obj</span></span>
 <span><span class="co">#&gt; An object of class Seurat </span></span>
@@ -153,8 +153,7 @@ objects.</p>
 name of the assay in the Seurat object will be. By default, this will be
 “RNA”.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/to_Seurat.html">to_Seurat</a></span><span class="op">(</span></span>
-<span>  adata <span class="op">=</span> <span class="va">ad</span>,</span>
+<code class="sourceCode R"><span><span class="va">ad</span><span class="op">$</span><span class="fu">as_Seurat</span><span class="op">(</span></span>
 <span>  assay_name <span class="op">=</span> <span class="st">"Other_assay"</span>,</span>
 <span>  object_metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>counts <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span>,</span>
@@ -181,8 +180,7 @@ with the <code>obs</code> slot in the AnnData object.</p>
 default (<code>orig.ident</code>, <code>nCount_RNA</code>,
 <code>nFeature_RNA</code>).</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">seurat_object</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_Seurat.html">to_Seurat</a></span><span class="op">(</span></span>
-<span>  adata <span class="op">=</span> <span class="va">ad</span>,</span>
+<code class="sourceCode R"><span><span class="va">seurat_object</span> <span class="op">&lt;-</span> <span class="va">ad</span><span class="op">$</span><span class="fu">as_Seurat</span><span class="op">(</span></span>
 <span>  assay_name <span class="op">=</span> <span class="st">"RNA"</span>,</span>
 <span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>counts <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span>,</span>
 <span>  assay_metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -215,8 +213,7 @@ layer called <code>counts</code> or <code>data</code> exists in the
 AnnData object. The other layers of the AnnData object will be copied by
 name.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">seurat_object</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_Seurat.html">to_Seurat</a></span><span class="op">(</span></span>
-<span>  adata <span class="op">=</span> <span class="va">ad</span>,</span>
+<code class="sourceCode R"><span><span class="va">seurat_object</span> <span class="op">&lt;-</span> <span class="va">ad</span><span class="op">$</span><span class="fu">as_Seurat</span><span class="op">(</span></span>
 <span>  assay_name <span class="op">=</span> <span class="st">"RNA"</span>,</span>
 <span>  object_metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  assay_metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -238,8 +235,7 @@ object.</p>
 <p>If no information is provided, anndataR will try to convert the whole
 <code>var</code> slot.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">seurat_object</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_Seurat.html">to_Seurat</a></span><span class="op">(</span></span>
-<span>  adata <span class="op">=</span> <span class="va">ad</span>,</span>
+<code class="sourceCode R"><span><span class="va">seurat_object</span> <span class="op">&lt;-</span> <span class="va">ad</span><span class="op">$</span><span class="fu">as_Seurat</span><span class="op">(</span></span>
 <span>  assay_name <span class="op">=</span> <span class="st">"RNA"</span>,</span>
 <span>  object_metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>counts <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span>,</span>
@@ -284,8 +280,7 @@ characters after the <code>X_</code> being the name of the reduction.
 Elements in the <code>obsm</code> slot not starting with <code>X_</code>
 will not be converted.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">seurat_object</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_Seurat.html">to_Seurat</a></span><span class="op">(</span></span>
-<span>  adata <span class="op">=</span> <span class="va">ad</span>,</span>
+<code class="sourceCode R"><span><span class="va">seurat_object</span> <span class="op">&lt;-</span> <span class="va">ad</span><span class="op">$</span><span class="fu">as_Seurat</span><span class="op">(</span></span>
 <span>  assay_name <span class="op">=</span> <span class="st">"RNA"</span>,</span>
 <span>  object_metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>counts <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span>,</span>
@@ -307,8 +302,7 @@ Seurat object. Graphs starting with <code>connectivities_{name}</code>
 will be stored as <a href="https://github.com/christopherkenny/name" class="external-link">name</a> in the Seurat object. Other graphs
 will not be converted.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">seurat_object</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_Seurat.html">to_Seurat</a></span><span class="op">(</span></span>
-<span>  adata <span class="op">=</span> <span class="va">ad</span>,</span>
+<code class="sourceCode R"><span><span class="va">seurat_object</span> <span class="op">&lt;-</span> <span class="va">ad</span><span class="op">$</span><span class="fu">as_Seurat</span><span class="op">(</span></span>
 <span>  assay_name <span class="op">=</span> <span class="st">"RNA"</span>,</span>
 <span>  object_metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>counts <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span>,</span>
@@ -329,8 +323,7 @@ will not be converted.</p>
 information that does not fit in the other slots. By default, it will
 copy the <code>uns</code> slot from the AnnData object.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">seurat_object</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_Seurat.html">to_Seurat</a></span><span class="op">(</span></span>
-<span>  adata <span class="op">=</span> <span class="va">ad</span>,</span>
+<code class="sourceCode R"><span><span class="va">seurat_object</span> <span class="op">&lt;-</span> <span class="va">ad</span><span class="op">$</span><span class="fu">as_Seurat</span><span class="op">(</span></span>
 <span>  assay_name <span class="op">=</span> <span class="st">"RNA"</span>,</span>
 <span>  object_metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>counts <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span>,</span>
@@ -363,8 +356,7 @@ only have one assay, while a Seurat object can have multiple assays. The
 name you pass here will only determine what the assay is called in the
 Seurat object. By default, it is “RNA”.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">seurat_obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_Seurat.html">to_Seurat</a></span><span class="op">(</span></span>
-<span>  adata <span class="op">=</span> <span class="va">ad</span>,</span>
+<code class="sourceCode R"><span><span class="va">seurat_obj</span> <span class="op">&lt;-</span> <span class="va">ad</span><span class="op">$</span><span class="fu">as_Seurat</span><span class="op">(</span></span>
 <span>  assay_name <span class="op">=</span> <span class="st">"Other_assay"</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Data is of class matrix. Coercing to dgCMatrix.</span></span>
@@ -380,8 +372,7 @@ values refer to what the layers are called in the anndata object.</p>
 <p>You must provide at least a layer called <code>counts</code> or
 <code>data</code> in the mapping.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">seurat_obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_Seurat.html">to_Seurat</a></span><span class="op">(</span></span>
-<span>  adata <span class="op">=</span> <span class="va">ad</span>,</span>
+<code class="sourceCode R"><span><span class="va">seurat_obj</span> <span class="op">&lt;-</span> <span class="va">ad</span><span class="op">$</span><span class="fu">as_Seurat</span><span class="op">(</span></span>
 <span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>counts <span class="op">=</span> <span class="st">"integer_matrix"</span>, other_layer2 <span class="op">=</span> <span class="st">"numeric_rsparse"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Data is of class matrix. Coercing to dgCMatrix.</span></span>
@@ -398,8 +389,7 @@ slot in the AnnData object.</p>
 in the Seurat object. The values refer to what the columns are called in
 the <code>obs</code> slot of the anndata object.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">seurat_obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_Seurat.html">to_Seurat</a></span><span class="op">(</span></span>
-<span>  adata <span class="op">=</span> <span class="va">ad</span>,</span>
+<code class="sourceCode R"><span><span class="va">seurat_obj</span> <span class="op">&lt;-</span> <span class="va">ad</span><span class="op">$</span><span class="fu">as_Seurat</span><span class="op">(</span></span>
 <span>  object_metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>metadata1 <span class="op">=</span> <span class="st">"integer"</span>, metadata2 <span class="op">=</span> <span class="st">"numeric"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Data is of class matrix. Coercing to dgCMatrix.</span></span>
@@ -426,8 +416,7 @@ AnnData object.</p>
 in the Seurat object. The values refer to what the metadata is called in
 the <code>var</code> slot of the anndata object.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">seurat_obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_Seurat.html">to_Seurat</a></span><span class="op">(</span></span>
-<span>  adata <span class="op">=</span> <span class="va">ad</span>,</span>
+<code class="sourceCode R"><span><span class="va">seurat_obj</span> <span class="op">&lt;-</span> <span class="va">ad</span><span class="op">$</span><span class="fu">as_Seurat</span><span class="op">(</span></span>
 <span>  assay_metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>metadata1 <span class="op">=</span> <span class="st">"numeric"</span>, metadata2 <span class="op">=</span> <span class="st">"logical"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Data is of class matrix. Coercing to dgCMatrix.</span></span>
@@ -463,11 +452,10 @@ values must be a named list, containing the keys: <code>key</code>,
 <code>obsm</code> and maybe <code>varm</code>, if appropriate for the
 reduction.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">seurat_obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_Seurat.html">to_Seurat</a></span><span class="op">(</span></span>
-<span>  adata <span class="op">=</span> <span class="va">ad</span>,</span>
+<code class="sourceCode R"><span><span class="va">seurat_obj</span> <span class="op">&lt;-</span> <span class="va">ad</span><span class="op">$</span><span class="fu">as_Seurat</span><span class="op">(</span></span>
 <span>  reduction_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>    pca <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>key <span class="op">=</span> <span class="st">"PC"</span>, obsm <span class="op">=</span> <span class="st">"X_pca"</span>, varm <span class="op">=</span> <span class="st">"PCs"</span><span class="op">)</span>,</span>
-<span>    umap <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>key <span class="op">=</span> <span class="st">"UMAP"</span>, obsm <span class="op">=</span> <span class="st">"X_umap"</span><span class="op">)</span></span>
+<span>    pca <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>key <span class="op">=</span> <span class="st">"PC"</span>, embeddings <span class="op">=</span> <span class="st">"X_pca"</span>, loadings <span class="op">=</span> <span class="st">"PCs"</span><span class="op">)</span>,</span>
+<span>    umap <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>key <span class="op">=</span> <span class="st">"UMAP"</span>, embeddings <span class="op">=</span> <span class="st">"X_umap"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Data is of class matrix. Coercing to dgCMatrix.</span></span>
@@ -486,8 +474,7 @@ of the named list refer to what the graph will be called in the Seurat
 object. The values refer to names in the <code>obsp</code> slot of the
 anndata object. stored in the <code>obsp</code> slot.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">seurat_obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_Seurat.html">to_Seurat</a></span><span class="op">(</span></span>
-<span>  adata <span class="op">=</span> <span class="va">ad</span>,</span>
+<code class="sourceCode R"><span><span class="va">seurat_obj</span> <span class="op">&lt;-</span> <span class="va">ad</span><span class="op">$</span><span class="fu">as_Seurat</span><span class="op">(</span></span>
 <span>  graph_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>connectivities <span class="op">=</span> <span class="st">"numeric_matrix"</span>, connectivities_sparse <span class="op">=</span> <span class="st">"numeric_csparse"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Data is of class matrix. Coercing to dgCMatrix.</span></span>
@@ -506,8 +493,7 @@ with two elements. The first is the name of a slot in the AnnData object
 <code>obsp</code>, <code>varp</code>, <code>uns</code>) and the second
 is the name of the item to transfer from that slot.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">seurat_obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_Seurat.html">to_Seurat</a></span><span class="op">(</span></span>
-<span>  adata <span class="op">=</span> <span class="va">ad</span>,</span>
+<code class="sourceCode R"><span><span class="va">seurat_obj</span> <span class="op">&lt;-</span> <span class="va">ad</span><span class="op">$</span><span class="fu">as_Seurat</span><span class="op">(</span></span>
 <span>  misc_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>uns_vec <span class="op">=</span> <span class="st">"vec_integer"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Data is of class matrix. Coercing to dgCMatrix.</span></span>
@@ -559,20 +545,20 @@ mapping.</p>
 <span><span class="co">#&gt; Negative:  Feature14, Feature3, Feature4, Feature10, Feature1, Feature8, Feature17, Feature7, Feature5, Feature18</span></span>
 <span><span class="co">#&gt; Computing nearest neighbor graph</span></span>
 <span><span class="co">#&gt; Computing SNN</span></span>
-<span><span class="co">#&gt; 09:35:47 UMAP embedding parameters a = 0.9922 b = 1.112</span></span>
-<span><span class="co">#&gt; 09:35:47 Read 30 rows and found 10 numeric columns</span></span>
-<span><span class="co">#&gt; 09:35:47 Using Annoy for neighbor search, n_neighbors = 30</span></span>
-<span><span class="co">#&gt; 09:35:47 Building Annoy index with metric = cosine, n_trees = 50</span></span>
-<span><span class="co">#&gt; 09:35:47 Writing NN index file to temp file /tmp/RtmpTkz8sW/file1f641e82d071</span></span>
-<span><span class="co">#&gt; 09:35:47 Searching Annoy index using 1 thread, search_k = 3000</span></span>
-<span><span class="co">#&gt; 09:35:47 Annoy recall = 100%</span></span>
-<span><span class="co">#&gt; 09:35:47 Commencing smooth kNN distance calibration using 1 thread with target n_neighbors = 30</span></span>
-<span><span class="co">#&gt; 09:35:47 Initializing from normalized Laplacian + noise (using RSpectra)</span></span>
-<span><span class="co">#&gt; 09:35:47 Commencing optimization for 500 epochs, with 868 positive edges</span></span>
-<span><span class="co">#&gt; 09:35:47 Using rng type: pcg</span></span>
-<span><span class="co">#&gt; 09:35:48 Optimization finished</span></span></code></pre></div>
+<span><span class="co">#&gt; 14:00:19 UMAP embedding parameters a = 0.9922 b = 1.112</span></span>
+<span><span class="co">#&gt; 14:00:19 Read 30 rows and found 10 numeric columns</span></span>
+<span><span class="co">#&gt; 14:00:19 Using Annoy for neighbor search, n_neighbors = 30</span></span>
+<span><span class="co">#&gt; 14:00:19 Building Annoy index with metric = cosine, n_trees = 50</span></span>
+<span><span class="co">#&gt; 14:00:19 Writing NN index file to temp file /tmp/RtmpUPMxCj/file207f4c9c3dfe</span></span>
+<span><span class="co">#&gt; 14:00:19 Searching Annoy index using 1 thread, search_k = 3000</span></span>
+<span><span class="co">#&gt; 14:00:19 Annoy recall = 100%</span></span>
+<span><span class="co">#&gt; 14:00:19 Commencing smooth kNN distance calibration using 1 thread with target n_neighbors = 30</span></span>
+<span><span class="co">#&gt; 14:00:20 Initializing from normalized Laplacian + noise (using RSpectra)</span></span>
+<span><span class="co">#&gt; 14:00:20 Commencing optimization for 500 epochs, with 868 positive edges</span></span>
+<span><span class="co">#&gt; 14:00:20 Using rng type: pcg</span></span>
+<span><span class="co">#&gt; 14:00:20 Optimization finished</span></span></code></pre></div>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/from_Seurat.html">from_Seurat</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span>
 <span><span class="va">ad</span></span>
 <span><span class="co">#&gt; AnnData object with n_obs × n_vars = 30 × 20</span></span>
 <span><span class="co">#&gt;     obs: 'orig.ident', 'nCount_RNA', 'nFeature_RNA'</span></span>
@@ -589,7 +575,7 @@ mapping.</p>
 Seurat object will be converted to the AnnData object. By default it’s
 the <code>DefaultAssay</code>.</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/from_Seurat.html">from_Seurat</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span></span>
 <span>  <span class="va">obj</span>,</span>
 <span>  assay_name <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -619,7 +605,7 @@ AnnData object. If you want to put the data from a Seurat layer, such as
 <code>counts</code> or <code>data</code> into the <code>X</code> slot,
 you need to provide a mapping.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/from_Seurat.html">from_Seurat</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span></span>
 <span>  <span class="va">obj</span>,</span>
 <span>  assay_name <span class="op">=</span> <span class="st">"RNA"</span>,</span>
 <span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -643,7 +629,7 @@ you need to provide a mapping.</p>
 AnnData object. This means that the <code>X</code> slot will be
 <code>NULL</code> (empty).</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/from_Seurat.html">from_Seurat</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span></span>
 <span>  <span class="va">obj</span>,</span>
 <span>  obs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  var_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -665,7 +651,7 @@ cell-level metadata. By default, all information in the
 <code>meta.data</code> slot of the Seurat object is copied to the
 <code>obs</code> slot of the AnnData object.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/from_Seurat.html">from_Seurat</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span></span>
 <span>  <span class="va">obj</span>,</span>
 <span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  var_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -686,7 +672,7 @@ gene-level metadata. By default, all information in the
 <code>meta.data</code> slot of the specified assay of the Seurat object
 is copied to the <code>var</code> slot of the AnnData object.</p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/from_Seurat.html">from_Seurat</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span></span>
 <span>  <span class="va">obj</span>,</span>
 <span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  obs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -709,7 +695,7 @@ is copied to the <code>var</code> slot of the AnnData object.</p>
 annotations, such as dimensionality reductions. By default, it will
 prefix the name of all Seurat reductions with <code>X_</code>.</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/from_Seurat.html">from_Seurat</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span></span>
 <span>  <span class="va">obj</span>,</span>
 <span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  obs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -738,7 +724,7 @@ annotations. This is mainly used to store the loadings of dimensionality
 reductions. By default, all loadings of dimensionality reductions will
 be copied to the <code>varm</code> slot of the AnnData object.</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/from_Seurat.html">from_Seurat</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span></span>
 <span>  <span class="va">obj</span>,</span>
 <span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  obs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -802,7 +788,7 @@ observations. This is mainly used to store the connectivities of a
 graph. By default, all Seurat graphs are copied to the <code>obsp</code>
 slot of the AnnData object.</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/from_Seurat.html">from_Seurat</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span></span>
 <span>  <span class="va">obj</span>,</span>
 <span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  obs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -1014,7 +1000,7 @@ slot of the AnnData object.</p>
 By default, no information is copied to the <code>varp</code> slot of
 the AnnData object.</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/from_Seurat.html">from_Seurat</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span></span>
 <span>  <span class="va">obj</span>,</span>
 <span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  obs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -1034,7 +1020,7 @@ the AnnData object.</p>
 default all information in the <code>misc</code> slot of the Seurat
 object is copied to the <code>uns</code> slot of the AnnData object.</p>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/from_Seurat.html">from_Seurat</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span></span>
 <span>  <span class="va">obj</span>,</span>
 <span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  obs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -1061,7 +1047,7 @@ from Seurat to AnnData objects. For all of the mappings
 provide a named vector where the names are the names in the AnnData
 object and the values are the names in the Seurat object.</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/from_Seurat.html">from_Seurat</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span></span>
 <span>  <span class="va">obj</span>,</span>
 <span>  x_mapping <span class="op">=</span> <span class="st">"counts"</span>,</span>
 <span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>data <span class="op">=</span> <span class="st">"data"</span><span class="op">)</span>,</span>
@@ -1094,7 +1080,7 @@ object and the values are the names in the Seurat object.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.2.</p>
 </div>
 
     </footer>
