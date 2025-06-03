@@ -1,5 +1,5 @@
 pandoc: 3.1.11
-pkgdown: 2.1.2
+pkgdown: 2.1.3
 pkgdown_sha: ~
 articles:
   anndataR: anndataR.html
@@ -11,7 +11,7 @@ articles:
   usage_h5ad: usage_h5ad.html
   usage_seurat: usage_seurat.html
   usage_singlecellexperiment: usage_singlecellexperiment.html
-last_built: 2025-05-12T13:58Z
+last_built: 2025-06-03T07:40Z
 urls:
   reference: https://anndataR.data-intuitive.com/reference
   article: https://anndataR.data-intuitive.com/articles

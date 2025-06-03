@@ -26,9 +26,13 @@
 <url><loc>https://anndataR.data-intuitive.com/reference/as_InMemoryAnnData.html</loc></url>
 <url><loc>https://anndataR.data-intuitive.com/reference/as_Seurat.html</loc></url>
 <url><loc>https://anndataR.data-intuitive.com/reference/as_SingleCellExperiment.html</loc></url>
+<url><loc>https://anndataR.data-intuitive.com/reference/from_Seurat.html</loc></url>
+<url><loc>https://anndataR.data-intuitive.com/reference/from_SingleCellExperiment.html</loc></url>
 <url><loc>https://anndataR.data-intuitive.com/reference/generate_dataset.html</loc></url>
 <url><loc>https://anndataR.data-intuitive.com/reference/index.html</loc></url>
 <url><loc>https://anndataR.data-intuitive.com/reference/read_h5ad.html</loc></url>
+<url><loc>https://anndataR.data-intuitive.com/reference/to_Seurat.html</loc></url>
+<url><loc>https://anndataR.data-intuitive.com/reference/to_SingleCelllExperiment.html</loc></url>
 <url><loc>https://anndataR.data-intuitive.com/reference/write_h5ad.html</loc></url>
 </urlset>
 
