@@ -128,7 +128,7 @@ to a <code>Seurat</code> object.</p>
 <span><span class="co">#&gt; An object of class Seurat </span></span>
 <span><span class="co">#&gt; 100 features across 50 samples within 1 assay </span></span>
 <span><span class="co">#&gt; Active assay: RNA (100 features, 0 variable features)</span></span>
-<span><span class="co">#&gt;  5 layers present: counts, data, csc_counts, dense_X, dense_counts</span></span>
+<span><span class="co">#&gt;  5 layers present: counts, csc_counts, dense_X, dense_counts, X</span></span>
 <span><span class="co">#&gt;  2 dimensional reductions calculated: X_pca, X_umap</span></span></code></pre></div>
 <p>This is equivalent to reading in the <code>.h5ad</code> file and
 explicitly converting.</p>
@@ -139,7 +139,7 @@ explicitly converting.</p>
 <span><span class="co">#&gt; An object of class Seurat </span></span>
 <span><span class="co">#&gt; 100 features across 50 samples within 1 assay </span></span>
 <span><span class="co">#&gt; Active assay: RNA (100 features, 0 variable features)</span></span>
-<span><span class="co">#&gt;  5 layers present: counts, data, csc_counts, dense_X, dense_counts</span></span>
+<span><span class="co">#&gt;  5 layers present: counts, csc_counts, dense_X, dense_counts, X</span></span>
 <span><span class="co">#&gt;  2 dimensional reductions calculated: X_pca, X_umap</span></span></code></pre></div>
 <p>Note that there is no one-to-one mapping possible between the AnnData
 and SeuratObject data structures, so some information might be lost
@@ -156,7 +156,7 @@ conversion process. For instance:</p>
 <span><span class="co">#&gt; An object of class Seurat </span></span>
 <span><span class="co">#&gt; 100 features across 50 samples within 1 assay </span></span>
 <span><span class="co">#&gt; Active assay: ADT (100 features, 0 variable features)</span></span>
-<span><span class="co">#&gt;  2 layers present: counts, data</span></span>
+<span><span class="co">#&gt;  3 layers present: counts, data, X</span></span>
 <span><span class="co">#&gt;  2 dimensional reductions calculated: X_pca, X_umap</span></span></code></pre></div>
 </div>
 <div class="section level2">
@@ -214,21 +214,21 @@ as <code>.h5ad</code></p>
 <span><span class="co">#&gt;     Feature12, Feature55, Feature69, Feature59, Feature60, Feature89, Feature79, Feature6, Feature45, Feature23</span></span>
 <span><span class="co">#&gt; Computing nearest neighbor graph</span></span>
 <span><span class="co">#&gt; Computing SNN</span></span>
-<span><span class="co">#&gt; 12:34:30 UMAP embedding parameters a = 0.9922 b = 1.112</span></span>
-<span><span class="co">#&gt; 12:34:30 Read 200 rows and found 10 numeric columns</span></span>
-<span><span class="co">#&gt; 12:34:30 Using Annoy for neighbor search, n_neighbors = 30</span></span>
-<span><span class="co">#&gt; 12:34:30 Building Annoy index with metric = cosine, n_trees = 50</span></span>
+<span><span class="co">#&gt; 13:22:43 UMAP embedding parameters a = 0.9922 b = 1.112</span></span>
+<span><span class="co">#&gt; 13:22:43 Read 200 rows and found 10 numeric columns</span></span>
+<span><span class="co">#&gt; 13:22:43 Using Annoy for neighbor search, n_neighbors = 30</span></span>
+<span><span class="co">#&gt; 13:22:43 Building Annoy index with metric = cosine, n_trees = 50</span></span>
 <span><span class="co">#&gt; 0%   10   20   30   40   50   60   70   80   90   100%</span></span>
 <span><span class="co">#&gt; [----|----|----|----|----|----|----|----|----|----|</span></span>
 <span><span class="co">#&gt; **************************************************|</span></span>
-<span><span class="co">#&gt; 12:34:30 Writing NN index file to temp file /tmp/RtmpmovwKK/file217a2937ebbe</span></span>
-<span><span class="co">#&gt; 12:34:30 Searching Annoy index using 1 thread, search_k = 3000</span></span>
-<span><span class="co">#&gt; 12:34:30 Annoy recall = 100%</span></span>
-<span><span class="co">#&gt; 12:34:30 Commencing smooth kNN distance calibration using 1 thread with target n_neighbors = 30</span></span>
-<span><span class="co">#&gt; 12:34:31 Initializing from normalized Laplacian + noise (using RSpectra)</span></span>
-<span><span class="co">#&gt; 12:34:31 Commencing optimization for 500 epochs, with 6176 positive edges</span></span>
-<span><span class="co">#&gt; 12:34:31 Using rng type: pcg</span></span>
-<span><span class="co">#&gt; 12:34:31 Optimization finished</span></span>
+<span><span class="co">#&gt; 13:22:43 Writing NN index file to temp file /tmp/RtmpUjB28b/file213f39a28591</span></span>
+<span><span class="co">#&gt; 13:22:43 Searching Annoy index using 1 thread, search_k = 3000</span></span>
+<span><span class="co">#&gt; 13:22:43 Annoy recall = 100%</span></span>
+<span><span class="co">#&gt; 13:22:43 Commencing smooth kNN distance calibration using 1 thread with target n_neighbors = 30</span></span>
+<span><span class="co">#&gt; 13:22:44 Initializing from normalized Laplacian + noise (using RSpectra)</span></span>
+<span><span class="co">#&gt; 13:22:44 Commencing optimization for 500 epochs, with 6176 positive edges</span></span>
+<span><span class="co">#&gt; 13:22:44 Using rng type: pcg</span></span>
+<span><span class="co">#&gt; 13:22:44 Optimization finished</span></span>
 <span><span class="va">seurat_obj</span></span>
 <span><span class="co">#&gt; An object of class Seurat </span></span>
 <span><span class="co">#&gt; 100 features across 200 samples within 1 assay </span></span>

@@ -253,6 +253,7 @@ intended to be used as a base class for concrete implementations of
 <p>See <code><a href="as_SingleCellExperiment.html">as_SingleCellExperiment()</a></code> for more details on the conversion</p><div class="section">
 <h4 id="usage-12">Usage<a class="anchor" aria-label="anchor" href="#usage-12"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">AbstractAnnData</span><span class="op">$</span><span class="fu">as_SingleCellExperiment</span><span class="op">(</span></span>
+<span>  x_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  assays_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  colData_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  rowData_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -265,7 +266,11 @@ intended to be used as a base class for concrete implementations of
 
 <div class="section">
 <h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
-<p></p><div class="arguments"><dl><dt><code>assays_mapping</code></dt>
+<p></p><div class="arguments"><dl><dt><code>x_mapping</code></dt>
+<dd><p>See <code><a href="as_SingleCellExperiment.html">as_SingleCellExperiment()</a></code></p></dd>
+
+
+<dt><code>assays_mapping</code></dt>
 <dd><p>See <code><a href="as_SingleCellExperiment.html">as_SingleCellExperiment()</a></code></p></dd>
 
 
@@ -328,6 +333,7 @@ intended to be used as a base class for concrete implementations of
 <h4 id="usage-14">Usage<a class="anchor" aria-label="anchor" href="#usage-14"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">AbstractAnnData</span><span class="op">$</span><span class="fu">as_Seurat</span><span class="op">(</span></span>
 <span>  assay_name <span class="op">=</span> <span class="st">"RNA"</span>,</span>
+<span>  x_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  layers_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  object_metadata_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  assay_metadata_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -340,6 +346,10 @@ intended to be used as a base class for concrete implementations of
 <div class="section">
 <h4 id="arguments-3">Arguments<a class="anchor" aria-label="anchor" href="#arguments-3"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>assay_name</code></dt>
+<dd><p>See <code><a href="as_Seurat.html">as_Seurat()</a></code></p></dd>
+
+
+<dt><code>x_mapping</code></dt>
 <dd><p>See <code><a href="as_Seurat.html">as_Seurat()</a></code></p></dd>
 
 

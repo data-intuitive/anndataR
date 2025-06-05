@@ -55,6 +55,7 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">as_Seurat</span><span class="op">(</span></span>
 <span>  <span class="va">adata</span>,</span>
 <span>  assay_name <span class="op">=</span> <span class="st">"RNA"</span>,</span>
+<span>  x_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  layers_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  object_metadata_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  assay_metadata_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -74,6 +75,11 @@
 
 <dt id="arg-assay-name">assay_name<a class="anchor" aria-label="anchor" href="#arg-assay-name"></a></dt>
 <dd><p>Name of the assay to be created in the new <code>Seurat</code> object</p></dd>
+
+
+<dt id="arg-x-mapping">x_mapping<a class="anchor" aria-label="anchor" href="#arg-x-mapping"></a></dt>
+<dd><p>A string specifying the name of the layer in the resulting
+<code>Seurat</code> object where the data in the <code>X</code> slot of <code>adata</code> will be mapped to</p></dd>
 
 
 <dt id="arg-layers-mapping">layers_mapping<a class="anchor" aria-label="anchor" href="#arg-layers-mapping"></a></dt>
@@ -148,7 +154,7 @@ vector. If an unnamed vector is provided, the values will be used as names</p><d
 
 <div class="section">
 <h3 id="conversion-table">Conversion table<a class="anchor" aria-label="anchor" href="#conversion-table"></a></h3>
-<table class="table table"><tr><td><strong>From <code>AnnData</code></strong></td><td><strong>To <code>Seurat</code></strong></td><td><strong>Example mapping argument</strong></td><td><strong>Default if <code>NULL</code></strong></td></tr><tr><td><code>adata$layers</code></td><td><code>Layers(seurat)</code></td><td><code>layers_mapping = c(counts = "counts")</code></td><td>All items are copied by name</td></tr><tr><td><code>adata$obs</code></td><td><code>seurat[[]]</code></td><td><code>object_metadata_mapping = c(n_counts = "n_counts", cell_type = "CellType")</code></td><td>All columns are copied by name</td></tr><tr><td><code>adata$var</code></td><td><code>seurat[[assay_name]][[]]</code></td><td><code>assay_metadata_mapping = c(n_cells = "n_cells", pct_zero = "PctZero")</code></td><td>All columns are copied by name</td></tr><tr><td><code>adata$obsm</code></td><td><code>Embeddings(sce)</code></td><td><code>reduction_mapping = c(pca = "X_pca")</code> <strong>OR</strong> <code>reduction_mapping = list(pca = c(key = "PC_", obsm = "X_pca", varm = "PCs"))</code></td><td>All items that can be coerced to a numeric matrix are copied by name without loadings except for <code>"X_pca"</code> for which loadings are added from <code>"PCs"</code></td></tr><tr><td><code>adata$obsp</code></td><td><code>Graphs(seurat)</code></td><td><code>graph_mapping = c(nn = "connectivities")</code></td><td>All items are copied by name</td></tr><tr><td><code>adata$varp</code></td><td><em>NA</em></td><td><em>NA</em></td><td>There is no corresponding slot for <code>varp</code></td></tr><tr><td><code>adata$uns</code></td><td><code>Misc(seurat)</code></td><td><code>misc_mapping = c(project_metadata = "metadata")</code></td><td>All items are copied by name</td></tr></table></div>
+<table class="table table"><tr><td><strong>From <code>AnnData</code></strong></td><td><strong>To <code>Seurat</code></strong></td><td><strong>Example mapping argument</strong></td><td><strong>Default if <code>NULL</code></strong></td></tr><tr><td><code>adata$X</code></td><td><code>Layers(seurat)</code></td><td><code>x_mapping = "counts"</code> <em>OR</em> <code>layers_mapping = c(counts = NA)</code></td><td>The data in <code>adata$X</code> is copied to a layer named <code>X</code></td></tr><tr><td><code>adata$layers</code></td><td><code>Layers(seurat)</code></td><td><code>layers_mapping = c(counts = "counts")</code></td><td>All items are copied by name</td></tr><tr><td><code>adata$obs</code></td><td><code>seurat[[]]</code></td><td><code>object_metadata_mapping = c(n_counts = "n_counts", cell_type = "CellType")</code></td><td>All columns are copied by name</td></tr><tr><td><code>adata$var</code></td><td><code>seurat[[assay_name]][[]]</code></td><td><code>assay_metadata_mapping = c(n_cells = "n_cells", pct_zero = "PctZero")</code></td><td>All columns are copied by name</td></tr><tr><td><code>adata$obsm</code></td><td><code>Embeddings(sce)</code></td><td><code>reduction_mapping = c(pca = "X_pca")</code> <strong>OR</strong> <code>reduction_mapping = list(pca = c(key = "PC_", obsm = "X_pca", varm = "PCs"))</code></td><td>All items that can be coerced to a numeric matrix are copied by name without loadings except for <code>"X_pca"</code> for which loadings are added from <code>"PCs"</code></td></tr><tr><td><code>adata$obsp</code></td><td><code>Graphs(seurat)</code></td><td><code>graph_mapping = c(nn = "connectivities")</code></td><td>All items are copied by name</td></tr><tr><td><code>adata$varp</code></td><td><em>NA</em></td><td><em>NA</em></td><td>There is no corresponding slot for <code>varp</code></td></tr><tr><td><code>adata$uns</code></td><td><code>Misc(seurat)</code></td><td><code>misc_mapping = c(project_metadata = "metadata")</code></td><td>All items are copied by name</td></tr></table></div>
 
 <div class="section">
 <h3 id="the-reduction-mapping-argument">The <code>reduction_mapping</code> argument<a class="anchor" aria-label="anchor" href="#the-reduction-mapping-argument"></a></h3>
@@ -167,6 +173,23 @@ to the <code>key</code> argument after processing with <code><a href="https://sa
 <li><p><code>loadings</code>: a key of the <code>varm</code> slot in <code>adata</code> (optional),
 <code>adata$varm[[loadings]]</code> is passed to the <code>loadings</code> argument</p></li>
 </ul></div>
+
+<div class="section">
+<h3 id="the-x-mapping-and-layers-mapping-arguments">The <code>x_mapping</code> and <code>layers_mapping</code> arguments<a class="anchor" aria-label="anchor" href="#the-x-mapping-and-layers-mapping-arguments"></a></h3>
+
+
+<p>In order to specify where the data in <code>adata$X</code> will be stored in the
+<code>Layers(seurat)</code> slot of the resulting object, you can use either the <code>x_mapping</code>
+argument or the <code>layers_mapping</code> argument.
+If you use <code>x_mapping</code>, it should be a string specifying the name of the layer
+in <code>Layers(seurat)</code> where the data in <code>adata$X</code> will be stored.
+If you use <code>layers_mapping</code>, it should be a named vector where names are names
+of <code>Layers(seurat)</code> and values are keys of <code>layers</code> in <code>adata</code>.
+In order to indicate the <code>adata$X</code> slot, you use <code>NA</code> as the value in the vector.
+The name you provide for <code>x_mapping</code> may not be a name in <code>layers_mapping</code>.
+You must provide a layer named <code>counts</code> or <code>data</code> in either <code>x_mapping</code> or
+<code>layers_mapping</code>.</p>
+</div>
 
     </div>
     <div class="section level2">
@@ -189,6 +212,7 @@ to the <code>key</code> argument after processing with <code><a href="https://sa
 <span class="r-in"><span>  <span class="co"># Default usage</span></span></span>
 <span class="r-in"><span>  <span class="va">seurat</span> <span class="op">&lt;-</span> <span class="va">ad</span><span class="op">$</span><span class="fu">as_Seurat</span><span class="op">(</span></span></span>
 <span class="r-in"><span>    assay_name <span class="op">=</span> <span class="st">"RNA"</span>,</span></span>
+<span class="r-in"><span>    x_mapping <span class="op">=</span> <span class="st">"counts"</span>,</span></span>
 <span class="r-in"><span>    layers_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span></span>
 <span class="r-in"><span>    object_metadata_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span></span>
 <span class="r-in"><span>    assay_metadata_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span></span>

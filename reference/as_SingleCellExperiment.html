@@ -54,6 +54,7 @@
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">as_SingleCellExperiment</span><span class="op">(</span></span>
 <span>  <span class="va">adata</span>,</span>
+<span>  x_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  assays_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  colData_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  rowData_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -70,6 +71,12 @@
 
 <dl><dt id="arg-adata">adata<a class="anchor" aria-label="anchor" href="#arg-adata"></a></dt>
 <dd><p>The <code>AnnData</code> object to convert</p></dd>
+
+
+<dt id="arg-x-mapping">x_mapping<a class="anchor" aria-label="anchor" href="#arg-x-mapping"></a></dt>
+<dd><p>A string specifying the name of the assay in the resulting
+<code>SingleCellExperiment</code> where the data in the <code>X</code> slot of <code>adata</code> will be
+mapped to</p></dd>
 
 
 <dt id="arg-assays-mapping">assays_mapping<a class="anchor" aria-label="anchor" href="#arg-assays-mapping"></a></dt>
@@ -153,7 +160,7 @@ table</p></li>
 
 <div class="section">
 <h3 id="conversion-table">Conversion table<a class="anchor" aria-label="anchor" href="#conversion-table"></a></h3>
-<table class="table table"><tr><td><strong>From <code>AnnData</code></strong></td><td><strong>To <code>SingleCellExperiment</code></strong></td><td><strong>Example mapping argument</strong></td><td><strong>Default if <code>NULL</code></strong></td></tr><tr><td><code>adata$layers</code></td><td><code>assays(sce)</code></td><td><code>assays_mapping = c(counts = "counts")</code></td><td>All items are copied by name</td></tr><tr><td><code>adata$obs</code></td><td><code>colData(sce)</code></td><td><code>colData_mapping = c(n_counts = "n_counts", cell_type = "CellType")</code></td><td>All columns are copied by name</td></tr><tr><td><code>adata$var</code></td><td><code>rowData(sce)</code></td><td><code>rowData_mapping = c(n_cells = "n_cells", pct_zero = "PctZero")</code></td><td>All columns are copied by name</td></tr><tr><td><code>adata$obsm</code></td><td><code>reducedDims(sce)</code></td><td><code>reducedDims_mapping = c(pca = "X_pca")</code> <strong>OR</strong> <code>reducedDims_mapping = list(pca = c(obsm = "X_pca", varm = "PCs", uns = "pca_metadata"))</code></td><td>All items are copied by name without loadings except for <code>"X_pca"</code> for which loadings are added from <code>"PCs"</code></td></tr><tr><td><code>adata$obsp</code></td><td><code>colPairs(sce)</code></td><td><code>colPairs_mapping = c(nn = "connectivities")</code></td><td>All items are copied by name</td></tr><tr><td><code>adata$varp</code></td><td><code>rowPairs(sce)</code></td><td><code>rowPairs_mapping = c(gene_overlaps = "similarities")</code></td><td>All items are copied by name</td></tr><tr><td><code>adata$uns</code></td><td><code>metadata(sce)</code></td><td><code>uns_mapping = c(project_metadata = "metadata")</code></td><td>All items are copied by name</td></tr></table></div>
+<table class="table table"><tr><td><strong>From <code>AnnData</code></strong></td><td><strong>To <code>SingleCellExperiment</code></strong></td><td><strong>Example mapping argument</strong></td><td><strong>Default if <code>NULL</code></strong></td></tr><tr><td><code>adata$X</code></td><td><code>assays(sce)</code></td><td><code>x_mapping = "counts"</code></td><td>The data in <code>adata$X</code> is copied to the assay named <code>X</code></td></tr><tr><td><code>adata$layers</code></td><td><code>assays(sce)</code></td><td><code>assays_mapping = c(counts = "counts")</code></td><td>All items are copied by name</td></tr><tr><td><code>adata$obs</code></td><td><code>colData(sce)</code></td><td><code>colData_mapping = c(n_counts = "n_counts", cell_type = "CellType")</code></td><td>All columns are copied by name</td></tr><tr><td><code>adata$var</code></td><td><code>rowData(sce)</code></td><td><code>rowData_mapping = c(n_cells = "n_cells", pct_zero = "PctZero")</code></td><td>All columns are copied by name</td></tr><tr><td><code>adata$obsm</code></td><td><code>reducedDims(sce)</code></td><td><code>reducedDims_mapping = c(pca = "X_pca")</code> <strong>OR</strong> <code>reducedDims_mapping = list(pca = c(obsm = "X_pca", varm = "PCs", uns = "pca_metadata"))</code></td><td>All items are copied by name without loadings except for <code>"X_pca"</code> for which loadings are added from <code>"PCs"</code></td></tr><tr><td><code>adata$obsp</code></td><td><code>colPairs(sce)</code></td><td><code>colPairs_mapping = c(nn = "connectivities")</code></td><td>All items are copied by name</td></tr><tr><td><code>adata$varp</code></td><td><code>rowPairs(sce)</code></td><td><code>rowPairs_mapping = c(gene_overlaps = "similarities")</code></td><td>All items are copied by name</td></tr><tr><td><code>adata$uns</code></td><td><code>metadata(sce)</code></td><td><code>uns_mapping = c(project_metadata = "metadata")</code></td><td>All items are copied by name</td></tr></table></div>
 
 <div class="section">
 <h3 id="the-reduceddims-mapping-argument">The <code>reducedDims_mapping</code> argument<a class="anchor" aria-label="anchor" href="#the-reduceddims-mapping-argument"></a></h3>
@@ -172,6 +179,23 @@ with the following names used to create a
 <li><p><code>metadata</code>: a key of the <code>uns</code> slot in <code>adata</code> (optional),
 <code>adata$uns[[metadata]]</code> is passed to the <code>metadata</code> argument</p></li>
 </ul></div>
+
+<div class="section">
+<h3 id="the-x-mapping-and-assays-mapping-arguments">The <code>x_mapping</code> and <code>assays_mapping</code> arguments<a class="anchor" aria-label="anchor" href="#the-x-mapping-and-assays-mapping-arguments"></a></h3>
+
+
+<p>In order to specify where the data in <code>adata$X</code> will be stored in the
+<code>assays(sce)</code> slot of the resulting object, you can use either the <code>x_mapping</code>
+argument or the <code>assays_mapping</code> argument.
+If you use <code>x_mapping</code>, it should be a string specifying the name of the layer
+in <code>assays(sce)</code> where the data in <code>adata$X</code> will be stored.
+If you use <code>assays_mapping</code>, it should be a named vector where names are names
+of <code>assays(sce)</code> and values are keys of <code>layers</code> in <code>adata</code>.
+In order to indicate the <code>adata$X</code> slot, you use <code>NA</code> as the value in the vector.
+The name you provide for <code>x_mapping</code> may not be a name in <code>assays_mapping</code>.
+You must provide an assay named <code>counts</code> or <code>data</code> in either <code>x_mapping</code> or
+<code>assays_mapping</code>.</p>
+</div>
 
     </div>
     <div class="section level2">
