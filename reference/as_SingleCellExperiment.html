@@ -55,13 +55,13 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">as_SingleCellExperiment</span><span class="op">(</span></span>
 <span>  <span class="va">adata</span>,</span>
 <span>  x_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  assays_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  colData_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  rowData_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  reducedDims_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  colPairs_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  rowPairs_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  metadata_mapping <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  assays_mapping <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  colData_mapping <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  rowData_mapping <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  reducedDims_mapping <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  colPairs_mapping <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  rowPairs_mapping <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  metadata_mapping <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -138,20 +138,23 @@ the resulting <code>SingleCellExperiment</code> object and values are keys of <c
 
 <p>All mapping arguments expect a named character vector where names are the
 names of the slot in the <code>SingleCellExperiment</code> object and values are the
-keys of the corresponding slot of <code>adata</code>. If <code>NULL</code>, the conversion function
-will guess which items to copy as described in the conversion tables
-conversion table below. In most cases, the default is to copy all items using
-the same names except where the correspondence between objects is unclear.
-The <code>reducedDims_mapping</code> argument can also accept a more complex list format,
-see below for details. To avoid copying anything to a slot, provide an empty
-vector. If an unnamed vector is provided, the values will be used as names</p><div class="section">
+keys of the corresponding slot of <code>adata</code>. If <code>TRUE</code>, the conversion function
+will guess which items to copy as described in the conversion tables below.
+In most cases, the default is to copy all items using the same names except
+where the correspondence between objects is unclear. The
+<code>reducedDims_mapping</code> argument can also accept a more complex list format,
+see below for details. To avoid copying anything to a slot, set the mapping
+argument to <code>FALSE</code>. Empty mapping arguments (<code>NULL</code>, <code><a href="https://rdrr.io/r/base/c.html" class="external-link">c()</a></code>, <code><a href="https://rdrr.io/r/base/list.html" class="external-link">list()</a></code>) will
+be treated as <code>FALSE</code> with a warning. If an unnamed vector is provided, the
+values will be used as names.</p><div class="section">
 <h4 id="examples-">Examples:<a class="anchor" aria-label="anchor" href="#examples-"></a></h4>
 
-<ul><li><p><code>NULL</code> will guess which items to copy as described in the conversion
+<ul><li><p><code>TRUE</code> will guess which items to copy as described in the conversion
 table</p></li>
-<li><p><code>c(sce_item = "adata_item")</code> will copy <code>adata_item</code> from the slot in <code>adata</code> to
-<code>sce_item</code> in the corresponding slot of new <code>SingleCellExperiment</code> object</p></li>
-<li><p><code><a href="https://rdrr.io/r/base/c.html" class="external-link">c()</a></code> will avoid copying anything to the slot</p></li>
+<li><p><code>c(sce_item = "adata_item")</code> will copy <code>adata_item</code> from the slot in
+<code>adata</code> to <code>sce_item</code> in the corresponding slot of the new
+<code>SingleCellExperiment</code> object</p></li>
+<li><p><code>FALSE</code> will avoid copying anything to the slot</p></li>
 <li><p><code>c("adata_item")</code> is equivalent to <code>c(adata_item = "adata_item")</code></p></li>
 </ul></div>
 
@@ -218,13 +221,13 @@ You must provide an assay named <code>counts</code> or <code>data</code> in eith
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="co"># Default usage</span></span></span>
 <span class="r-in"><span>  <span class="va">sce</span> <span class="op">&lt;-</span> <span class="va">ad</span><span class="op">$</span><span class="fu">as_SingleCellExperiment</span><span class="op">(</span></span></span>
-<span class="r-in"><span>    assays_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span></span>
-<span class="r-in"><span>    colData_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span></span>
-<span class="r-in"><span>    rowData_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span></span>
-<span class="r-in"><span>    reducedDims_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span></span>
-<span class="r-in"><span>    colPairs_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span></span>
-<span class="r-in"><span>    rowPairs_mapping <span class="op">=</span> <span class="cn">NULL</span>,</span></span>
-<span class="r-in"><span>    metadata_mapping <span class="op">=</span> <span class="cn">NULL</span></span></span>
+<span class="r-in"><span>    assays_mapping <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>    colData_mapping <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>    rowData_mapping <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>    reducedDims_mapping <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>    colPairs_mapping <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>    rowPairs_mapping <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>    metadata_mapping <span class="op">=</span> <span class="cn">TRUE</span></span></span>
 <span class="r-in"><span> <span class="op">)</span></span></span>
 </code></pre></div>
     </div>

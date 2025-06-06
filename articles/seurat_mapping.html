@@ -170,19 +170,20 @@ name of the assay in the Seurat object will be. By default, this will be
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ad</span><span class="op">$</span><span class="fu">as_Seurat</span><span class="op">(</span></span>
 <span>  assay_name <span class="op">=</span> <span class="st">"Other_assay"</span>,</span>
-<span>  object_metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  object_metadata_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>counts <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span>,</span>
-<span>  assay_metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  reduction_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  graph_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  misc_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  assay_metadata_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  reduction_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  graph_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  misc_mapping <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Data is of class matrix. Coercing to dgCMatrix.</span></span>
+<span><span class="co">#&gt; Warning: [[&lt;- defined for objects of type "S4" only for subclasses of</span></span>
+<span><span class="co">#&gt; environment</span></span>
 <span><span class="co">#&gt; An object of class Seurat </span></span>
 <span><span class="co">#&gt; 20 features across 10 samples within 1 assay </span></span>
 <span><span class="co">#&gt; Active assay: Other_assay (20 features, 0 variable features)</span></span>
-<span><span class="co">#&gt;  2 layers present: counts, X</span></span>
-<span><span class="co">#&gt;  4 dimensional reductions calculated: numeric_matrix, numeric_csparse, X_pca, X_umap</span></span></code></pre></div>
+<span><span class="co">#&gt;  2 layers present: counts, X</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="object_metadata_mapping">object_metadata_mapping<a class="anchor" aria-label="anchor" href="#object_metadata_mapping"></a>
@@ -198,10 +199,10 @@ default (<code>orig.ident</code>, <code>nCount_RNA</code>,
 <code class="sourceCode R"><span><span class="va">seurat_object</span> <span class="op">&lt;-</span> <span class="va">ad</span><span class="op">$</span><span class="fu">as_Seurat</span><span class="op">(</span></span>
 <span>  assay_name <span class="op">=</span> <span class="st">"RNA"</span>,</span>
 <span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>counts <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span>,</span>
-<span>  assay_metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  reduction_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  graph_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  misc_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  assay_metadata_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  reduction_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  graph_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  misc_mapping <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Data is of class matrix. Coercing to dgCMatrix.</span></span>
 <span><span class="va">seurat_object</span><span class="op">[[</span><span class="op">]</span><span class="op">]</span></span>
@@ -233,13 +234,15 @@ mapping for either <code>counts</code> or <code>data</code> in the
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">seurat_object</span> <span class="op">&lt;-</span> <span class="va">ad</span><span class="op">$</span><span class="fu">as_Seurat</span><span class="op">(</span></span>
 <span>  assay_name <span class="op">=</span> <span class="st">"RNA"</span>,</span>
-<span>  object_metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  assay_metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  reduction_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  graph_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  misc_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  object_metadata_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  assay_metadata_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  reduction_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  graph_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  misc_mapping <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Data is of class matrix. Coercing to dgCMatrix.</span></span>
+<span><span class="co">#&gt; Warning: [[&lt;- defined for objects of type "S4" only for subclasses of</span></span>
+<span><span class="co">#&gt; environment</span></span>
 <span><span class="fu"><a href="https://satijalab.github.io/seurat-object/reference/Layers.html" class="external-link">Layers</a></span><span class="op">(</span><span class="va">seurat_object</span><span class="op">[[</span><span class="st">"RNA"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "counts"          "integer_matrix"  "numeric_rsparse" "X"</span></span></code></pre></div>
 </div>
@@ -255,13 +258,15 @@ object.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">seurat_object</span> <span class="op">&lt;-</span> <span class="va">ad</span><span class="op">$</span><span class="fu">as_Seurat</span><span class="op">(</span></span>
 <span>  assay_name <span class="op">=</span> <span class="st">"RNA"</span>,</span>
-<span>  object_metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  object_metadata_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>counts <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span>,</span>
-<span>  reduction_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  graph_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  misc_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  reduction_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  graph_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  misc_mapping <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Data is of class matrix. Coercing to dgCMatrix.</span></span>
+<span><span class="co">#&gt; Warning: [[&lt;- defined for objects of type "S4" only for subclasses of</span></span>
+<span><span class="co">#&gt; environment</span></span>
 <span><span class="va">seurat_object</span><span class="op">[[</span><span class="st">"RNA"</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="co">#&gt;        character numeric logical</span></span>
 <span><span class="co">#&gt; gene1    value_0     0.5    TRUE</span></span>
@@ -306,7 +311,17 @@ will not be converted.</p>
 <span>  graph_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  misc_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: The `object_metadata_mapping` argument is empty, setting it to</span></span>
+<span><span class="co">#&gt; <span style="color: #0000BB;">FALSE</span></span></span>
+<span><span class="co">#&gt; Warning: The `assay_metadata_mapping` argument is empty, setting it to</span></span>
+<span><span class="co">#&gt; <span style="color: #0000BB;">FALSE</span></span></span>
+<span><span class="co">#&gt; Warning: The `graph_mapping` argument is empty, setting it to</span></span>
+<span><span class="co">#&gt; <span style="color: #0000BB;">FALSE</span></span></span>
+<span><span class="co">#&gt; Warning: The `misc_mapping` argument is empty, setting it to</span></span>
+<span><span class="co">#&gt; <span style="color: #0000BB;">FALSE</span></span></span>
 <span><span class="co">#&gt; Warning: Data is of class matrix. Coercing to dgCMatrix.</span></span>
+<span><span class="co">#&gt; Warning: [[&lt;- defined for objects of type "S4" only for subclasses of</span></span>
+<span><span class="co">#&gt; environment</span></span>
 <span><span class="fu"><a href="https://satijalab.github.io/seurat-object/reference/ObjectAccess.html" class="external-link">Reductions</a></span><span class="op">(</span><span class="va">seurat_object</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "numeric_matrix"  "numeric_csparse" "X_pca"           "X_umap"</span></span></code></pre></div>
 </div>
@@ -322,13 +337,15 @@ will not be converted.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">seurat_object</span> <span class="op">&lt;-</span> <span class="va">ad</span><span class="op">$</span><span class="fu">as_Seurat</span><span class="op">(</span></span>
 <span>  assay_name <span class="op">=</span> <span class="st">"RNA"</span>,</span>
-<span>  object_metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  object_metadata_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>counts <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span>,</span>
-<span>  assay_metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  reduction_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  misc_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  assay_metadata_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  reduction_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  misc_mapping <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Data is of class matrix. Coercing to dgCMatrix.</span></span>
+<span><span class="co">#&gt; Warning: [[&lt;- defined for objects of type "S4" only for subclasses of</span></span>
+<span><span class="co">#&gt; environment</span></span>
 <span></span>
 <span><span class="fu"><a href="https://satijalab.github.io/seurat-object/reference/ObjectAccess.html" class="external-link">Graphs</a></span><span class="op">(</span><span class="va">seurat_object</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "RNA_numeric_matrix"        "RNA_numeric_csparse"      </span></span>
@@ -343,13 +360,15 @@ copy the <code>uns</code> slot from the AnnData object.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">seurat_object</span> <span class="op">&lt;-</span> <span class="va">ad</span><span class="op">$</span><span class="fu">as_Seurat</span><span class="op">(</span></span>
 <span>  assay_name <span class="op">=</span> <span class="st">"RNA"</span>,</span>
-<span>  object_metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  object_metadata_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>counts <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span>,</span>
-<span>  assay_metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  reduction_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  graph_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  assay_metadata_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  reduction_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  graph_mapping <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Data is of class matrix. Coercing to dgCMatrix.</span></span>
+<span><span class="co">#&gt; Warning: [[&lt;- defined for objects of type "S4" only for subclasses of</span></span>
+<span><span class="co">#&gt; environment</span></span>
 <span><span class="fu"><a href="https://satijalab.github.io/seurat-object/reference/Misc.html" class="external-link">Misc</a></span><span class="op">(</span><span class="va">seurat_object</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $vec_integer</span></span>
 <span><span class="co">#&gt;  [1] 0 1 2 3 4 5 6 7 8 9</span></span>
@@ -553,34 +572,34 @@ mapping.</p>
 <span><span class="co">#&gt; Finding variable features for layer counts</span></span>
 <span><span class="co">#&gt; Centering and scaling data matrix</span></span>
 <span><span class="co">#&gt; PC_ 1 </span></span>
-<span><span class="co">#&gt; Positive:  Feature17, Feature8, Feature10, Feature13, Feature19, Feature3, Feature5, Feature18, Feature12, Feature11 </span></span>
-<span><span class="co">#&gt; Negative:  Feature7, Feature15, Feature20, Feature6, Feature14, Feature1, Feature2, Feature4, Feature16, Feature9 </span></span>
+<span><span class="co">#&gt; Positive:  Feature9, Feature16, Feature12, Feature7, Feature11, Feature8, Feature3, Feature19, Feature20, Feature15 </span></span>
+<span><span class="co">#&gt; Negative:  Feature5, Feature10, Feature13, Feature4, Feature14, Feature18, Feature6, Feature2, Feature17, Feature1 </span></span>
 <span><span class="co">#&gt; PC_ 2 </span></span>
-<span><span class="co">#&gt; Positive:  Feature11, Feature2, Feature19, Feature7, Feature13, Feature9, Feature14, Feature3, Feature17, Feature6 </span></span>
-<span><span class="co">#&gt; Negative:  Feature12, Feature20, Feature10, Feature4, Feature16, Feature18, Feature8, Feature15, Feature1, Feature5 </span></span>
+<span><span class="co">#&gt; Positive:  Feature20, Feature14, Feature18, Feature6, Feature13, Feature19, Feature7, Feature1, Feature4, Feature8 </span></span>
+<span><span class="co">#&gt; Negative:  Feature17, Feature5, Feature2, Feature10, Feature12, Feature9, Feature3, Feature15, Feature11, Feature16 </span></span>
 <span><span class="co">#&gt; PC_ 3 </span></span>
-<span><span class="co">#&gt; Positive:  Feature1, Feature8, Feature14, Feature20, Feature13, Feature5, Feature19, Feature7, Feature16, Feature12 </span></span>
-<span><span class="co">#&gt; Negative:  Feature9, Feature3, Feature15, Feature18, Feature10, Feature4, Feature6, Feature11, Feature17, Feature2 </span></span>
+<span><span class="co">#&gt; Positive:  Feature20, Feature15, Feature1, Feature2, Feature9, Feature4, Feature14, Feature13, Feature12, Feature5 </span></span>
+<span><span class="co">#&gt; Negative:  Feature6, Feature17, Feature16, Feature18, Feature19, Feature8, Feature11, Feature10, Feature7, Feature3 </span></span>
 <span><span class="co">#&gt; PC_ 4 </span></span>
-<span><span class="co">#&gt; Positive:  Feature6, Feature16, Feature5, Feature1, Feature2, Feature17, Feature10, Feature9, Feature3, Feature12 </span></span>
-<span><span class="co">#&gt; Negative:  Feature4, Feature15, Feature14, Feature18, Feature13, Feature20, Feature8, Feature19, Feature7, Feature11 </span></span>
+<span><span class="co">#&gt; Positive:  Feature1, Feature11, Feature18, Feature5, Feature16, Feature3, Feature9, Feature10, Feature4, Feature6 </span></span>
+<span><span class="co">#&gt; Negative:  Feature19, Feature12, Feature2, Feature15, Feature13, Feature14, Feature7, Feature20, Feature8, Feature17 </span></span>
 <span><span class="co">#&gt; PC_ 5 </span></span>
-<span><span class="co">#&gt; Positive:  Feature12, Feature13, Feature20, Feature19, Feature9, Feature15, Feature2, Feature6, Feature11, Feature16 </span></span>
-<span><span class="co">#&gt; Negative:  Feature14, Feature3, Feature4, Feature10, Feature1, Feature8, Feature17, Feature7, Feature5, Feature18</span></span>
+<span><span class="co">#&gt; Positive:  Feature7, Feature18, Feature10, Feature8, Feature6, Feature15, Feature20, Feature2, Feature5, Feature12 </span></span>
+<span><span class="co">#&gt; Negative:  Feature16, Feature14, Feature3, Feature4, Feature13, Feature17, Feature19, Feature9, Feature1, Feature11</span></span>
 <span><span class="co">#&gt; Computing nearest neighbor graph</span></span>
 <span><span class="co">#&gt; Computing SNN</span></span>
-<span><span class="co">#&gt; 19:11:00 UMAP embedding parameters a = 0.9922 b = 1.112</span></span>
-<span><span class="co">#&gt; 19:11:00 Read 30 rows and found 10 numeric columns</span></span>
-<span><span class="co">#&gt; 19:11:00 Using Annoy for neighbor search, n_neighbors = 30</span></span>
-<span><span class="co">#&gt; 19:11:00 Building Annoy index with metric = cosine, n_trees = 50</span></span>
-<span><span class="co">#&gt; 19:11:00 Writing NN index file to temp file /tmp/RtmpcdaLET/file20bd32a7a8e7</span></span>
-<span><span class="co">#&gt; 19:11:00 Searching Annoy index using 1 thread, search_k = 3000</span></span>
-<span><span class="co">#&gt; 19:11:00 Annoy recall = 100%</span></span>
-<span><span class="co">#&gt; 19:11:01 Commencing smooth kNN distance calibration using 1 thread with target n_neighbors = 30</span></span>
-<span><span class="co">#&gt; 19:11:01 Initializing from normalized Laplacian + noise (using RSpectra)</span></span>
-<span><span class="co">#&gt; 19:11:01 Commencing optimization for 500 epochs, with 868 positive edges</span></span>
-<span><span class="co">#&gt; 19:11:01 Using rng type: pcg</span></span>
-<span><span class="co">#&gt; 19:11:01 Optimization finished</span></span></code></pre></div>
+<span><span class="co">#&gt; 08:45:05 UMAP embedding parameters a = 0.9922 b = 1.112</span></span>
+<span><span class="co">#&gt; 08:45:05 Read 30 rows and found 10 numeric columns</span></span>
+<span><span class="co">#&gt; 08:45:05 Using Annoy for neighbor search, n_neighbors = 30</span></span>
+<span><span class="co">#&gt; 08:45:05 Building Annoy index with metric = cosine, n_trees = 50</span></span>
+<span><span class="co">#&gt; 08:45:05 Writing NN index file to temp file /tmp/Rtmpnfbfgq/file205f7f660fe3</span></span>
+<span><span class="co">#&gt; 08:45:05 Searching Annoy index using 1 thread, search_k = 3000</span></span>
+<span><span class="co">#&gt; 08:45:05 Annoy recall = 100%</span></span>
+<span><span class="co">#&gt; 08:45:05 Commencing smooth kNN distance calibration using 1 thread with target n_neighbors = 30</span></span>
+<span><span class="co">#&gt; 08:45:05 Initializing from normalized Laplacian + noise (using RSpectra)</span></span>
+<span><span class="co">#&gt; 08:45:05 Commencing optimization for 500 epochs, with 866 positive edges</span></span>
+<span><span class="co">#&gt; 08:45:05 Using rng type: pcg</span></span>
+<span><span class="co">#&gt; 08:45:06 Optimization finished</span></span></code></pre></div>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span>
 <span><span class="va">ad</span></span>
@@ -602,24 +621,17 @@ the <code>DefaultAssay</code>.</p>
 <code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span></span>
 <span>  <span class="va">obj</span>,</span>
 <span>  assay_name <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  obs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  var_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  obsm_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  varm_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  obsp_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  varp_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  uns_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  layers_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  obs_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  var_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  obsm_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  varm_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  obsp_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  varp_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  uns_mapping <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span>
 <span><span class="va">ad</span></span>
-<span><span class="co">#&gt; AnnData object with n_obs × n_vars = 30 × 20</span></span>
-<span><span class="co">#&gt;     obs: 'orig.ident', 'nCount_RNA', 'nFeature_RNA'</span></span>
-<span><span class="co">#&gt;     var: 'vf_vst_counts_mean', 'vf_vst_counts_variance', 'vf_vst_counts_variance.expected', 'vf_vst_counts_variance.standardized', 'vf_vst_counts_variable', 'vf_vst_counts_rank', 'var.features', 'var.features.rank'</span></span>
-<span><span class="co">#&gt;     uns: 'data'</span></span>
-<span><span class="co">#&gt;     obsm: 'pca', 'umap'</span></span>
-<span><span class="co">#&gt;     varm: 'pca'</span></span>
-<span><span class="co">#&gt;     layers: 'counts', 'data', 'scale.data'</span></span>
-<span><span class="co">#&gt;     obsp: 'nn', 'snn'</span></span></code></pre></div>
+<span><span class="co">#&gt; AnnData object with n_obs × n_vars = 30 × 20</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="x_mapping">x_mapping<a class="anchor" aria-label="anchor" href="#x_mapping"></a>
@@ -632,14 +644,14 @@ you need to provide a mapping.</p>
 <code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span></span>
 <span>  <span class="va">obj</span>,</span>
 <span>  assay_name <span class="op">=</span> <span class="st">"RNA"</span>,</span>
-<span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  obs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  var_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  obsm_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  varm_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  obsp_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  varp_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  uns_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  layers_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  obs_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  var_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  obsm_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  varm_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  obsp_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  varp_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  uns_mapping <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span>
 <span><span class="va">ad</span><span class="op">$</span><span class="va">X</span></span>
 <span><span class="co">#&gt; NULL</span></span></code></pre></div>
@@ -655,13 +667,13 @@ AnnData object. This means that the <code>X</code> slot will be
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span></span>
 <span>  <span class="va">obj</span>,</span>
-<span>  obs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  var_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  obsm_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  varm_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  obsp_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  varp_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  uns_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  obs_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  var_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  obsm_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  varm_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  obsp_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  varp_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  uns_mapping <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">ad</span><span class="op">$</span><span class="va">layers</span><span class="op">)</span></span>
@@ -677,13 +689,13 @@ cell-level metadata. By default, all information in the
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span></span>
 <span>  <span class="va">obj</span>,</span>
-<span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  var_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  obsm_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  varm_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  obsp_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  varp_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  uns_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  layers_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  var_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  obsm_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  varm_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  obsp_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  varp_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  uns_mapping <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">ad</span><span class="op">$</span><span class="va">obs</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "orig.ident"   "nCount_RNA"   "nFeature_RNA"</span></span></code></pre></div>
@@ -698,13 +710,13 @@ is copied to the <code>var</code> slot of the AnnData object.</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span></span>
 <span>  <span class="va">obj</span>,</span>
-<span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  obs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  obsm_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  varm_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  obsp_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  varp_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  uns_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  layers_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  obs_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  obsm_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  varm_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  obsp_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  varp_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  uns_mapping <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">ad</span><span class="op">$</span><span class="va">var</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "vf_vst_counts_mean"                  "vf_vst_counts_variance"             </span></span>
@@ -721,24 +733,18 @@ prefix the name of all Seurat reductions with <code>X_</code>.</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span></span>
 <span>  <span class="va">obj</span>,</span>
-<span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  obs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  var_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  varm_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  obsp_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  varp_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  uns_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  layers_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  obs_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  var_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  varm_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  obsp_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  varp_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  uns_mapping <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">ad</span></span>
 <span><span class="co">#&gt; AnnData object with n_obs × n_vars = 30 × 20</span></span>
-<span><span class="co">#&gt;     obs: 'orig.ident', 'nCount_RNA', 'nFeature_RNA'</span></span>
-<span><span class="co">#&gt;     var: 'vf_vst_counts_mean', 'vf_vst_counts_variance', 'vf_vst_counts_variance.expected', 'vf_vst_counts_variance.standardized', 'vf_vst_counts_variable', 'vf_vst_counts_rank', 'var.features', 'var.features.rank'</span></span>
-<span><span class="co">#&gt;     uns: 'data'</span></span>
-<span><span class="co">#&gt;     obsm: 'pca', 'umap'</span></span>
-<span><span class="co">#&gt;     varm: 'pca'</span></span>
-<span><span class="co">#&gt;     layers: 'counts', 'data', 'scale.data'</span></span>
-<span><span class="co">#&gt;     obsp: 'nn', 'snn'</span></span></code></pre></div>
+<span><span class="co">#&gt;     obsm: 'pca', 'umap'</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="varm_mapping">varm_mapping<a class="anchor" aria-label="anchor" href="#varm_mapping"></a>
@@ -750,59 +756,59 @@ be copied to the <code>varm</code> slot of the AnnData object.</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span></span>
 <span>  <span class="va">obj</span>,</span>
-<span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  obs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  var_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  obsm_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  obsp_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  varp_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  uns_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  layers_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  obs_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  var_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  obsm_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  obsp_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  varp_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  uns_mapping <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">ad</span><span class="op">$</span><span class="va">varm</span></span>
 <span><span class="co">#&gt; $pca</span></span>
-<span><span class="co">#&gt;                  PC_1        PC_2        PC_3         PC_4         PC_5</span></span>
-<span><span class="co">#&gt; Feature4  -0.14510926 -0.23054553 -0.14282361 -0.372762644 -0.285585623</span></span>
-<span><span class="co">#&gt; Feature3   0.21624299  0.02711247 -0.27677452  0.047199636 -0.313403537</span></span>
-<span><span class="co">#&gt; Feature13  0.25718227  0.21392485  0.19998614 -0.176592334  0.320132606</span></span>
-<span><span class="co">#&gt; Feature16 -0.14301417 -0.21130253  0.03468936  0.423481804  0.013897721</span></span>
-<span><span class="co">#&gt; Feature15 -0.24601420 -0.09868081 -0.26537541 -0.238860797  0.078723827</span></span>
-<span><span class="co">#&gt; Feature11  0.01343436  0.49330114 -0.10857840 -0.064840902  0.032598855</span></span>
-<span><span class="co">#&gt; Feature19  0.23026351  0.25681402  0.05220451 -0.075370583  0.226086277</span></span>
-<span><span class="co">#&gt; Feature17  0.37646830  0.02067102 -0.06274589  0.175730077 -0.056531426</span></span>
-<span><span class="co">#&gt; Feature10  0.25898628 -0.28757950 -0.20057628  0.154409746 -0.239162196</span></span>
-<span><span class="co">#&gt; Feature1  -0.19337308 -0.09429668  0.43213133  0.271110976 -0.172283905</span></span>
-<span><span class="co">#&gt; Feature9  -0.13463494  0.07821953 -0.40057292  0.070740384  0.144439487</span></span>
-<span><span class="co">#&gt; Feature14 -0.19389611  0.07615768  0.32511249 -0.215889438 -0.399198575</span></span>
-<span><span class="co">#&gt; Feature6  -0.22031871  0.01277553 -0.13163671  0.435672647  0.048053462</span></span>
-<span><span class="co">#&gt; Feature7  -0.38440902  0.23676099  0.05100165 -0.068388338 -0.034559082</span></span>
-<span><span class="co">#&gt; Feature8   0.34649101 -0.10265340  0.37564354 -0.144229795 -0.083955923</span></span>
-<span><span class="co">#&gt; Feature18  0.07631481 -0.16064766 -0.24834467 -0.202109427  0.007252423</span></span>
-<span><span class="co">#&gt; Feature20 -0.23997889 -0.29868573  0.20379154 -0.175181228  0.272880245</span></span>
-<span><span class="co">#&gt; Feature2  -0.17173094  0.35131810  0.02368301  0.187356845  0.061965747</span></span>
-<span><span class="co">#&gt; Feature5   0.14244518 -0.02502998  0.11755764  0.282021899 -0.027461758</span></span>
-<span><span class="co">#&gt; Feature12  0.01953053 -0.35622445  0.03426947  0.007513232  0.546996665</span></span>
-<span><span class="co">#&gt;                   PC_6        PC_7         PC_8          PC_9       PC_10</span></span>
-<span><span class="co">#&gt; Feature4   0.169995983 -0.13220826  0.050540230  0.0571781924 -0.11235724</span></span>
-<span><span class="co">#&gt; Feature3   0.127631748  0.03470139  0.570260370 -0.1890825836 -0.08579982</span></span>
-<span><span class="co">#&gt; Feature13  0.134791088  0.35554733 -0.174304470  0.1890306853 -0.21477292</span></span>
-<span><span class="co">#&gt; Feature16  0.179808472  0.40430596  0.092773363  0.0419143008 -0.05802479</span></span>
-<span><span class="co">#&gt; Feature15 -0.028637264 -0.26592475 -0.073692113  0.4749650290 -0.26186415</span></span>
-<span><span class="co">#&gt; Feature11 -0.103343960 -0.23996034 -0.189793886 -0.0792187668 -0.09679354</span></span>
-<span><span class="co">#&gt; Feature19  0.415704354 -0.13204431  0.120763662  0.0902685048  0.56639957</span></span>
-<span><span class="co">#&gt; Feature17 -0.184564909  0.08820049  0.160212186  0.3206358991  0.02918222</span></span>
-<span><span class="co">#&gt; Feature10 -0.108662838  0.08537596 -0.253558339  0.0973267340  0.07418377</span></span>
-<span><span class="co">#&gt; Feature1   0.012046451 -0.14534122 -0.270324984  0.1136686337  0.19602817</span></span>
-<span><span class="co">#&gt; Feature9   0.416704835  0.14467095 -0.326018949 -0.1391447233 -0.12423854</span></span>
-<span><span class="co">#&gt; Feature14  0.106545424  0.31794041 -0.147712629 -0.0313812698 -0.05293369</span></span>
-<span><span class="co">#&gt; Feature6   0.008903344 -0.20674050 -0.003938903  0.2882914925  0.16956880</span></span>
-<span><span class="co">#&gt; Feature7  -0.101499079  0.22444383  0.226102888 -0.2194992790  0.12141788</span></span>
-<span><span class="co">#&gt; Feature8  -0.096491175 -0.18257633  0.016874659  0.0599502013 -0.17015736</span></span>
-<span><span class="co">#&gt; Feature18 -0.416162684  0.08306515 -0.310589762 -0.3207862260  0.45941555</span></span>
-<span><span class="co">#&gt; Feature20  0.062567209 -0.23344151  0.295264611 -0.0600673607  0.16961173</span></span>
-<span><span class="co">#&gt; Feature2  -0.477358912 -0.02952583  0.148579650  0.0008069563 -0.17771199</span></span>
-<span><span class="co">#&gt; Feature5   0.195123882 -0.42464920 -0.153587937 -0.5113089502 -0.29236397</span></span>
-<span><span class="co">#&gt; Feature12 -0.162009399  0.13584714  0.073115319 -0.1873270644 -0.19852495</span></span></code></pre></div>
+<span><span class="co">#&gt;                  PC_1          PC_2        PC_3         PC_4        PC_5</span></span>
+<span><span class="co">#&gt; Feature18 -0.13831405  0.2767499642 -0.18981101  0.278821809  0.34196588</span></span>
+<span><span class="co">#&gt; Feature17 -0.10834698 -0.3804030540 -0.24032844 -0.064070764 -0.17170085</span></span>
+<span><span class="co">#&gt; Feature14 -0.15627834  0.3034044214  0.06530596 -0.144152586 -0.32844046</span></span>
+<span><span class="co">#&gt; Feature3   0.15764252 -0.1162431507 -0.04744793  0.139893986 -0.30691496</span></span>
+<span><span class="co">#&gt; Feature15  0.05045854 -0.1072529329  0.38139961 -0.195353986  0.14923124</span></span>
+<span><span class="co">#&gt; Feature7   0.25218664  0.1240325760 -0.09144553 -0.125089084  0.41985641</span></span>
+<span><span class="co">#&gt; Feature4  -0.22938433  0.0370365899  0.07852043 -0.002001820 -0.26576167</span></span>
+<span><span class="co">#&gt; Feature19  0.15139047  0.1348308437 -0.18206269 -0.479826978 -0.13795130</span></span>
+<span><span class="co">#&gt; Feature5  -0.34342780 -0.3477769469 -0.03297579  0.160597461  0.07568737</span></span>
+<span><span class="co">#&gt; Feature9   0.39284874 -0.1830116862  0.14195954  0.099254569 -0.04051406</span></span>
+<span><span class="co">#&gt; Feature16  0.27362919 -0.0039496948 -0.22978114  0.155476787 -0.32875388</span></span>
+<span><span class="co">#&gt; Feature1  -0.01759120  0.1093275548  0.37448492  0.496695065 -0.01852973</span></span>
+<span><span class="co">#&gt; Feature13 -0.33043607  0.1682668256  0.05526881 -0.152405805 -0.25372228</span></span>
+<span><span class="co">#&gt; Feature12  0.26834743 -0.2581323495  0.01341079 -0.238498081  0.03881268</span></span>
+<span><span class="co">#&gt; Feature20  0.06671006  0.3349320426  0.41707863 -0.102652271  0.13474095</span></span>
+<span><span class="co">#&gt; Feature6  -0.12171196  0.2684223148 -0.43927692 -0.053600650  0.16691063</span></span>
+<span><span class="co">#&gt; Feature8   0.19855343 -0.0004220781 -0.14176054 -0.081425721  0.18874362</span></span>
+<span><span class="co">#&gt; Feature10 -0.34179754 -0.2780674784 -0.11692348  0.009108192  0.28575729</span></span>
+<span><span class="co">#&gt; Feature2  -0.11234940 -0.3165458928  0.26964796 -0.237330461  0.13450575</span></span>
+<span><span class="co">#&gt; Feature11  0.24776342 -0.0599055745 -0.12509563  0.361489108 -0.01541830</span></span>
+<span><span class="co">#&gt;                  PC_6          PC_7        PC_8        PC_9        PC_10</span></span>
+<span><span class="co">#&gt; Feature18 -0.16859923 -0.0003196258  0.13557196 -0.20850811 -0.078249672</span></span>
+<span><span class="co">#&gt; Feature17  0.12360865  0.3243412347  0.29115317  0.09737236  0.218317533</span></span>
+<span><span class="co">#&gt; Feature14  0.32489077 -0.0775743493  0.34960557  0.02511713 -0.109834247</span></span>
+<span><span class="co">#&gt; Feature3  -0.49281098 -0.0567146114  0.15504528  0.32171700  0.096111906</span></span>
+<span><span class="co">#&gt; Feature15 -0.19771053 -0.4934235703  0.08337324  0.07177542  0.047690520</span></span>
+<span><span class="co">#&gt; Feature7  -0.27962542  0.0386900269  0.07478509  0.04919212  0.360484375</span></span>
+<span><span class="co">#&gt; Feature4   0.10000348 -0.2851749185 -0.52983733 -0.31519721  0.220494051</span></span>
+<span><span class="co">#&gt; Feature19  0.13409650 -0.1864409901  0.26582844 -0.13241259 -0.105127038</span></span>
+<span><span class="co">#&gt; Feature5   0.10537738 -0.2430641242  0.11323787  0.01729967  0.353432577</span></span>
+<span><span class="co">#&gt; Feature9   0.06641673  0.1642535677  0.13833729 -0.35434019 -0.190479902</span></span>
+<span><span class="co">#&gt; Feature16 -0.14582993  0.1303530973 -0.30353213  0.04738605 -0.204092041</span></span>
+<span><span class="co">#&gt; Feature1   0.12597564  0.1417361468  0.22306140 -0.16934857  0.006865963</span></span>
+<span><span class="co">#&gt; Feature13 -0.36741070  0.2723746310 -0.18765699  0.02986721  0.078554847</span></span>
+<span><span class="co">#&gt; Feature12 -0.08661746  0.0085682077 -0.14846077 -0.49119771  0.038759898</span></span>
+<span><span class="co">#&gt; Feature20  0.06247438  0.2575885883 -0.17833660  0.19576048  0.021230901</span></span>
+<span><span class="co">#&gt; Feature6  -0.02830741 -0.1616626843 -0.02939449  0.02523821 -0.235475781</span></span>
+<span><span class="co">#&gt; Feature8   0.47479004  0.2098959640 -0.27516176  0.26457497  0.310693093</span></span>
+<span><span class="co">#&gt; Feature10 -0.02415249  0.1700874841 -0.11415443 -0.12969858 -0.364006269</span></span>
+<span><span class="co">#&gt; Feature2   0.01567334  0.0445840936 -0.08510780  0.34093794 -0.451467316</span></span>
+<span><span class="co">#&gt; Feature11  0.19108163 -0.3995713752 -0.16398252  0.27836851 -0.183566125</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="obsp_mapping">obsp_mapping<a class="anchor" aria-label="anchor" href="#obsp_mapping"></a>
@@ -814,206 +820,206 @@ slot of the AnnData object.</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span></span>
 <span>  <span class="va">obj</span>,</span>
-<span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  obs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  var_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  obsm_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  varm_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  varp_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  uns_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  layers_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  obs_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  var_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  obsm_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  varm_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  varp_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  uns_mapping <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span>
 <span><span class="va">ad</span><span class="op">$</span><span class="va">obsp</span></span>
 <span><span class="co">#&gt; $nn</span></span>
 <span><span class="co">#&gt; 30 x 30 sparse Matrix of class "dgCMatrix"</span></span>
 <span><span class="co">#&gt;   [[ suppressing 30 column names 'Cell_1', 'Cell_2', 'Cell_3' ... ]]</span></span>
 <span><span class="co">#&gt;                                                                    </span></span>
-<span><span class="co">#&gt; Cell_1  1 . 1 . 1 . 1 . . 1 1 1 1 . 1 1 . 1 1 1 . . 1 1 1 . 1 1 1 1</span></span>
-<span><span class="co">#&gt; Cell_2  . 1 1 1 . 1 . 1 1 . 1 1 1 1 1 1 1 1 . 1 . 1 . 1 1 . . 1 . 1</span></span>
-<span><span class="co">#&gt; Cell_3  1 . 1 . 1 . 1 1 . . . 1 1 1 1 1 1 . 1 1 . 1 1 1 1 . 1 1 1 .</span></span>
-<span><span class="co">#&gt; Cell_4  . 1 . 1 . 1 . 1 1 1 1 1 1 1 1 . . 1 . 1 . 1 . 1 . 1 1 1 1 1</span></span>
-<span><span class="co">#&gt; Cell_5  1 . 1 . 1 . . . 1 1 . 1 . . 1 1 1 1 1 1 . 1 1 1 1 . 1 1 1 1</span></span>
-<span><span class="co">#&gt; Cell_6  . . 1 1 . 1 . 1 1 1 1 1 1 1 1 1 1 1 1 . . 1 . 1 1 1 . . 1 .</span></span>
-<span><span class="co">#&gt; Cell_7  1 . 1 1 . . 1 1 . 1 1 1 1 1 1 1 . . 1 . 1 1 1 1 . . 1 1 1 .</span></span>
-<span><span class="co">#&gt; Cell_8  . 1 1 1 . 1 1 1 1 . 1 1 1 1 1 1 . 1 1 . 1 1 1 1 . . . 1 . .</span></span>
-<span><span class="co">#&gt; Cell_9  . . 1 1 1 . . 1 1 1 . 1 . 1 1 1 . 1 1 1 . 1 . 1 1 1 . 1 1 1</span></span>
-<span><span class="co">#&gt; Cell_10 1 . . 1 1 1 . . 1 1 1 1 1 . 1 1 . 1 1 . . 1 . 1 1 1 1 . 1 1</span></span>
-<span><span class="co">#&gt; Cell_11 1 . 1 1 . 1 1 1 . 1 1 1 1 1 1 1 1 1 1 . 1 . . 1 . . 1 . 1 .</span></span>
-<span><span class="co">#&gt; Cell_12 1 . 1 1 1 1 . 1 1 1 1 1 . 1 1 1 . 1 . . . 1 . 1 1 . 1 1 . 1</span></span>
-<span><span class="co">#&gt; Cell_13 1 . 1 1 . . 1 1 1 1 1 1 1 1 1 1 1 . 1 1 . 1 . 1 . . 1 . 1 .</span></span>
-<span><span class="co">#&gt; Cell_14 1 . 1 1 . . . 1 1 . 1 1 1 1 1 . . 1 1 1 . 1 1 1 . . 1 1 1 1</span></span>
-<span><span class="co">#&gt; Cell_15 1 . 1 . 1 . . . 1 . 1 1 . 1 1 1 1 1 1 1 . . 1 1 1 . 1 1 1 1</span></span>
-<span><span class="co">#&gt; Cell_16 1 . 1 . 1 1 . 1 1 1 1 1 1 . 1 1 1 1 1 1 1 . . 1 1 . . . 1 .</span></span>
-<span><span class="co">#&gt; Cell_17 1 . 1 . 1 1 . . 1 . 1 1 1 1 1 1 1 1 1 1 . . 1 1 1 . 1 . 1 .</span></span>
-<span><span class="co">#&gt; Cell_18 1 . 1 1 . 1 . 1 1 . 1 1 . 1 1 1 . 1 1 . . . 1 1 1 1 . 1 1 1</span></span>
-<span><span class="co">#&gt; Cell_19 1 . 1 . 1 1 1 1 1 1 1 1 1 1 1 1 . 1 1 . 1 . . 1 . . 1 . 1 .</span></span>
-<span><span class="co">#&gt; Cell_20 1 1 1 1 1 . . . 1 . . 1 1 1 1 1 1 1 . 1 . . . 1 1 . 1 1 1 1</span></span>
-<span><span class="co">#&gt; Cell_21 . . 1 1 . 1 1 1 1 1 1 1 1 1 . 1 1 1 1 . 1 1 . 1 1 . . 1 . .</span></span>
-<span><span class="co">#&gt; Cell_22 . . 1 1 1 1 1 1 1 1 . 1 1 1 . 1 . . 1 . . 1 . 1 1 . 1 1 1 1</span></span>
-<span><span class="co">#&gt; Cell_23 1 . 1 1 1 . 1 1 . . 1 1 . 1 1 . 1 1 . 1 . 1 1 1 1 . 1 1 . 1</span></span>
-<span><span class="co">#&gt; Cell_24 1 . 1 1 . 1 . . 1 . 1 1 . 1 1 1 1 1 1 1 . . 1 1 1 1 . . 1 1</span></span>
-<span><span class="co">#&gt; Cell_25 1 . 1 . 1 1 . . 1 1 . 1 . . 1 1 1 1 1 1 . 1 1 1 1 . . 1 1 1</span></span>
-<span><span class="co">#&gt; Cell_26 1 . . 1 . 1 1 . 1 1 1 1 . 1 1 . . 1 1 . . 1 . 1 1 1 1 1 1 1</span></span>
-<span><span class="co">#&gt; Cell_27 1 . 1 1 1 . 1 . . 1 1 1 1 1 1 1 . 1 1 1 . . 1 1 . . 1 . 1 1</span></span>
-<span><span class="co">#&gt; Cell_28 1 . 1 1 . . 1 1 1 1 . 1 . 1 1 . . 1 1 1 . 1 1 1 . 1 1 1 . 1</span></span>
-<span><span class="co">#&gt; Cell_29 1 . 1 . 1 1 . . 1 1 1 1 1 . 1 1 1 1 1 1 . . . 1 1 1 1 . 1 .</span></span>
-<span><span class="co">#&gt; Cell_30 1 . 1 1 1 . . . 1 1 . 1 . 1 1 . . 1 . 1 . 1 1 1 1 1 1 1 1 1</span></span>
+<span><span class="co">#&gt; Cell_1  1 1 1 1 . 1 1 1 . 1 1 1 . 1 . . 1 . . . 1 . 1 1 1 1 1 1 1 .</span></span>
+<span><span class="co">#&gt; Cell_2  . 1 1 1 1 1 1 . 1 1 1 1 . 1 . . 1 1 1 . 1 . 1 1 1 . 1 . 1 .</span></span>
+<span><span class="co">#&gt; Cell_3  1 1 1 . 1 1 . . . 1 1 1 1 1 . . 1 . 1 1 1 . 1 1 1 1 1 . 1 .</span></span>
+<span><span class="co">#&gt; Cell_4  1 1 . 1 . 1 1 1 . . 1 1 . 1 1 . 1 1 1 . . . 1 1 1 1 1 1 1 .</span></span>
+<span><span class="co">#&gt; Cell_5  . 1 1 . 1 . 1 . 1 . 1 1 1 1 1 . 1 . 1 1 1 . 1 1 1 1 1 1 . .</span></span>
+<span><span class="co">#&gt; Cell_6  . 1 1 1 . 1 . 1 . 1 1 1 . 1 1 . . . 1 1 1 . 1 1 1 1 1 1 1 .</span></span>
+<span><span class="co">#&gt; Cell_7  1 1 1 1 1 . 1 . . 1 1 1 . 1 1 . 1 1 1 . . 1 1 1 . 1 1 . 1 .</span></span>
+<span><span class="co">#&gt; Cell_8  1 1 . 1 . 1 . 1 1 . 1 1 . . 1 . . 1 1 1 1 . 1 . 1 1 1 1 1 1</span></span>
+<span><span class="co">#&gt; Cell_9  . 1 . 1 . . . 1 1 . 1 1 1 . 1 . 1 1 . 1 1 1 1 1 1 . 1 1 1 1</span></span>
+<span><span class="co">#&gt; Cell_10 1 1 1 1 . 1 1 . . 1 1 1 . 1 . 1 . . 1 . 1 . 1 1 1 1 1 1 1 .</span></span>
+<span><span class="co">#&gt; Cell_11 1 1 1 1 . 1 . . 1 1 1 1 1 1 1 . . . 1 . 1 . 1 1 1 . 1 1 1 .</span></span>
+<span><span class="co">#&gt; Cell_12 1 1 1 . . 1 1 . . . . 1 . 1 . 1 1 1 1 1 1 1 1 1 1 1 1 . 1 .</span></span>
+<span><span class="co">#&gt; Cell_13 . 1 1 . 1 1 . . 1 . 1 1 1 . 1 . 1 1 1 1 1 . 1 1 1 . 1 1 1 .</span></span>
+<span><span class="co">#&gt; Cell_14 . 1 1 1 . 1 1 . . 1 1 1 . 1 . . 1 1 1 1 . . 1 1 1 1 1 . 1 1</span></span>
+<span><span class="co">#&gt; Cell_15 . 1 . 1 1 1 . . 1 . 1 . . . 1 1 1 1 1 1 1 1 . 1 1 1 1 1 1 .</span></span>
+<span><span class="co">#&gt; Cell_16 . 1 1 . . 1 . . 1 1 1 1 . 1 1 1 1 . 1 1 1 1 . 1 . 1 1 . 1 1</span></span>
+<span><span class="co">#&gt; Cell_17 . 1 1 . . . . . 1 . 1 1 1 1 1 . 1 1 . 1 1 1 1 1 1 . 1 1 1 1</span></span>
+<span><span class="co">#&gt; Cell_18 . 1 1 1 . . 1 1 1 . 1 1 1 1 1 . 1 1 1 1 . . 1 1 1 . 1 . 1 .</span></span>
+<span><span class="co">#&gt; Cell_19 . 1 1 1 . 1 1 . . . 1 1 . . 1 1 . 1 1 1 . 1 1 1 1 1 1 1 1 .</span></span>
+<span><span class="co">#&gt; Cell_20 . 1 1 . 1 1 . . . . . 1 1 1 1 1 1 . 1 1 . 1 . 1 1 1 1 1 1 1</span></span>
+<span><span class="co">#&gt; Cell_21 1 1 1 . . 1 . . 1 . 1 1 1 . 1 1 1 . 1 . 1 1 1 1 1 . 1 1 1 .</span></span>
+<span><span class="co">#&gt; Cell_22 . 1 1 . . 1 1 . 1 . 1 1 . . 1 1 1 . 1 1 1 1 1 . 1 1 1 1 1 .</span></span>
+<span><span class="co">#&gt; Cell_23 1 1 1 1 . 1 1 . . 1 1 1 . 1 . . . 1 1 . 1 . 1 1 1 1 1 1 1 .</span></span>
+<span><span class="co">#&gt; Cell_24 . 1 1 . . 1 . . . 1 1 1 1 1 1 . 1 1 1 1 1 . 1 1 1 . 1 1 1 .</span></span>
+<span><span class="co">#&gt; Cell_25 . 1 . 1 . 1 . . 1 . 1 1 1 1 . . 1 . 1 1 1 . 1 1 1 1 1 1 1 1</span></span>
+<span><span class="co">#&gt; Cell_26 . 1 1 1 1 1 1 1 . . . 1 . 1 1 . . 1 1 1 . 1 1 . 1 1 1 1 1 .</span></span>
+<span><span class="co">#&gt; Cell_27 . 1 1 1 . 1 1 . . . 1 1 . 1 1 . 1 1 1 1 1 . 1 1 1 . 1 1 1 .</span></span>
+<span><span class="co">#&gt; Cell_28 . 1 . 1 . 1 . . 1 . 1 1 1 . 1 . 1 . 1 1 1 1 1 1 1 1 1 1 1 .</span></span>
+<span><span class="co">#&gt; Cell_29 1 1 1 1 . 1 1 . 1 . 1 1 1 1 . . 1 1 1 . 1 . 1 1 1 . 1 . 1 .</span></span>
+<span><span class="co">#&gt; Cell_30 . 1 . 1 . 1 . 1 1 . 1 1 . 1 1 1 1 1 . 1 1 1 . 1 1 . 1 . 1 1</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $snn</span></span>
 <span><span class="co">#&gt; 30 x 30 sparse Matrix of class "dgCMatrix"</span></span>
 <span><span class="co">#&gt;   [[ suppressing 30 column names 'Cell_1', 'Cell_2', 'Cell_3' ... ]]</span></span>
 <span><span class="co">#&gt;                                                                              </span></span>
-<span><span class="co">#&gt; Cell_1  1.0000000 0.4285714 0.6666667 0.4285714 0.7391304 0.4285714 0.6000000</span></span>
-<span><span class="co">#&gt; Cell_2  0.4285714 1.0000000 0.4814815 0.6666667 0.4814815 0.6666667 0.4285714</span></span>
-<span><span class="co">#&gt; Cell_3  0.6666667 0.4814815 1.0000000 0.3793103 0.6666667 0.4814815 0.6666667</span></span>
-<span><span class="co">#&gt; Cell_4  0.4285714 0.6666667 0.3793103 1.0000000 0.4285714 0.6000000 0.4814815</span></span>
-<span><span class="co">#&gt; Cell_5  0.7391304 0.4814815 0.6666667 0.4285714 1.0000000 0.4814815 0.4814815</span></span>
-<span><span class="co">#&gt; Cell_6  0.4285714 0.6666667 0.4814815 0.6000000 0.4814815 1.0000000 0.5384615</span></span>
-<span><span class="co">#&gt; Cell_7  0.6000000 0.4285714 0.6666667 0.4814815 0.4814815 0.5384615 1.0000000</span></span>
-<span><span class="co">#&gt; Cell_8  0.4285714 0.6666667 0.4814815 0.5384615 0.3793103 0.6000000 0.6666667</span></span>
-<span><span class="co">#&gt; Cell_9  0.5384615 0.6000000 0.5384615 0.6000000 0.6666667 0.6666667 0.4814815</span></span>
-<span><span class="co">#&gt; Cell_10 0.6000000 0.4814815 0.4285714 0.6000000 0.6000000 0.6666667 0.4814815</span></span>
-<span><span class="co">#&gt; Cell_11 0.5384615 0.4814815 0.5384615 0.4814815 0.4285714 0.6666667 0.7391304</span></span>
-<span><span class="co">#&gt; Cell_12 0.5384615 0.6666667 0.4814815 0.6000000 0.6000000 0.6000000 0.5384615</span></span>
-<span><span class="co">#&gt; Cell_13 0.5384615 0.5384615 0.6666667 0.5384615 0.5384615 0.6666667 0.7391304</span></span>
-<span><span class="co">#&gt; Cell_14 0.6000000 0.6000000 0.6000000 0.6666667 0.6000000 0.5384615 0.6666667</span></span>
-<span><span class="co">#&gt; Cell_15 0.7391304 0.5384615 0.6666667 0.4285714 0.8181818 0.4814815 0.4814815</span></span>
-<span><span class="co">#&gt; Cell_16 0.6000000 0.5384615 0.5384615 0.4285714 0.6000000 0.6666667 0.4814815</span></span>
-<span><span class="co">#&gt; Cell_17 0.6666667 0.5384615 0.6666667 0.4285714 0.6666667 0.6000000 0.4814815</span></span>
-<span><span class="co">#&gt; Cell_18 0.5384615 0.6000000 0.4814815 0.5384615 0.5384615 0.6666667 0.5384615</span></span>
-<span><span class="co">#&gt; Cell_19 0.6000000 0.4285714 0.5384615 0.4814815 0.4814815 0.6000000 0.6666667</span></span>
-<span><span class="co">#&gt; Cell_20 0.6000000 0.6666667 0.6000000 0.5384615 0.6666667 0.4814815 0.4285714</span></span>
-<span><span class="co">#&gt; Cell_21 0.4285714 0.6666667 0.4814815 0.4814815 0.4285714 0.7391304 0.6000000</span></span>
-<span><span class="co">#&gt; Cell_22 0.5384615 0.5384615 0.6000000 0.5384615 0.5384615 0.6000000 0.6000000</span></span>
-<span><span class="co">#&gt; Cell_23 0.6000000 0.6000000 0.6666667 0.4814815 0.6000000 0.4285714 0.5384615</span></span>
-<span><span class="co">#&gt; Cell_24 0.5384615 0.6000000 0.4814815 0.4814815 0.6000000 0.6666667 0.4285714</span></span>
-<span><span class="co">#&gt; Cell_25 0.6666667 0.5384615 0.6000000 0.4285714 0.9047619 0.5384615 0.4285714</span></span>
-<span><span class="co">#&gt; Cell_26 0.5384615 0.4814815 0.4285714 0.6666667 0.5384615 0.6000000 0.5384615</span></span>
-<span><span class="co">#&gt; Cell_27 0.8181818 0.4285714 0.6000000 0.4814815 0.6000000 0.4814815 0.6666667</span></span>
-<span><span class="co">#&gt; Cell_28 0.5384615 0.4814815 0.5384615 0.6000000 0.6000000 0.4814815 0.6000000</span></span>
-<span><span class="co">#&gt; Cell_29 0.6666667 0.4814815 0.5384615 0.4814815 0.6666667 0.6666667 0.4285714</span></span>
-<span><span class="co">#&gt; Cell_30 0.6000000 0.4814815 0.5384615 0.6000000 0.7391304 0.4814815 0.4814815</span></span>
+<span><span class="co">#&gt; Cell_1  1.0000000 0.6666667 0.6666667 0.7391304 0.5384615 0.7391304 0.6000000</span></span>
+<span><span class="co">#&gt; Cell_2  0.6666667 1.0000000 0.6666667 0.6000000 0.6000000 0.6000000 0.6666667</span></span>
+<span><span class="co">#&gt; Cell_3  0.6666667 0.6666667 1.0000000 0.5384615 0.6666667 0.6666667 0.6000000</span></span>
+<span><span class="co">#&gt; Cell_4  0.7391304 0.6000000 0.5384615 1.0000000 0.5384615 0.6666667 0.6666667</span></span>
+<span><span class="co">#&gt; Cell_5  0.5384615 0.6000000 0.6666667 0.5384615 1.0000000 0.6000000 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_6  0.7391304 0.6000000 0.6666667 0.6666667 0.6000000 1.0000000 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_7  0.6000000 0.6666667 0.6000000 0.6666667 0.5384615 0.5384615 1.0000000</span></span>
+<span><span class="co">#&gt; Cell_8  0.5384615 0.4814815 0.4814815 0.6666667 0.4814815 0.6666667 0.4285714</span></span>
+<span><span class="co">#&gt; Cell_9  0.4814815 0.4814815 0.4285714 0.5384615 0.5384615 0.5384615 0.4285714</span></span>
+<span><span class="co">#&gt; Cell_10 0.8181818 0.6666667 0.6666667 0.6666667 0.5384615 0.7391304 0.6000000</span></span>
+<span><span class="co">#&gt; Cell_11 0.6666667 0.6666667 0.6666667 0.6000000 0.6000000 0.7391304 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_12 0.6000000 0.6000000 0.6666667 0.6000000 0.5384615 0.5384615 0.6000000</span></span>
+<span><span class="co">#&gt; Cell_13 0.4814815 0.6666667 0.6666667 0.5384615 0.7391304 0.6000000 0.4814815</span></span>
+<span><span class="co">#&gt; Cell_14 0.6666667 0.7391304 0.6666667 0.6666667 0.5384615 0.6666667 0.6666667</span></span>
+<span><span class="co">#&gt; Cell_15 0.4285714 0.5384615 0.4814815 0.5384615 0.5384615 0.5384615 0.4814815</span></span>
+<span><span class="co">#&gt; Cell_16 0.4814815 0.5384615 0.6000000 0.4285714 0.5384615 0.6000000 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_17 0.4814815 0.5384615 0.5384615 0.4814815 0.6666667 0.5384615 0.4814815</span></span>
+<span><span class="co">#&gt; Cell_18 0.5384615 0.6666667 0.5384615 0.6666667 0.6666667 0.6000000 0.6000000</span></span>
+<span><span class="co">#&gt; Cell_19 0.5384615 0.5384615 0.4814815 0.6666667 0.5384615 0.6666667 0.6000000</span></span>
+<span><span class="co">#&gt; Cell_20 0.4285714 0.4285714 0.6000000 0.4814815 0.6000000 0.5384615 0.4814815</span></span>
+<span><span class="co">#&gt; Cell_21 0.5384615 0.5384615 0.6000000 0.5384615 0.6000000 0.5384615 0.4814815</span></span>
+<span><span class="co">#&gt; Cell_22 0.5384615 0.5384615 0.5384615 0.5384615 0.6666667 0.6000000 0.4814815</span></span>
+<span><span class="co">#&gt; Cell_23 0.8181818 0.7391304 0.6666667 0.7391304 0.5384615 0.7391304 0.6666667</span></span>
+<span><span class="co">#&gt; Cell_24 0.6000000 0.6666667 0.7391304 0.6000000 0.6666667 0.7391304 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_25 0.6000000 0.6000000 0.6666667 0.6000000 0.6666667 0.6666667 0.4285714</span></span>
+<span><span class="co">#&gt; Cell_26 0.5384615 0.5384615 0.4814815 0.6666667 0.5384615 0.6666667 0.6000000</span></span>
+<span><span class="co">#&gt; Cell_27 0.6666667 0.7391304 0.6000000 0.7391304 0.6666667 0.7391304 0.6000000</span></span>
+<span><span class="co">#&gt; Cell_28 0.5384615 0.5384615 0.6000000 0.6000000 0.6666667 0.6666667 0.4814815</span></span>
+<span><span class="co">#&gt; Cell_29 0.6666667 0.8181818 0.6666667 0.6666667 0.6000000 0.5384615 0.6000000</span></span>
+<span><span class="co">#&gt; Cell_30 0.4814815 0.5384615 0.4285714 0.5384615 0.4285714 0.5384615 0.4285714</span></span>
 <span><span class="co">#&gt;                                                                              </span></span>
-<span><span class="co">#&gt; Cell_1  0.4285714 0.5384615 0.6000000 0.5384615 0.5384615 0.5384615 0.6000000</span></span>
-<span><span class="co">#&gt; Cell_2  0.6666667 0.6000000 0.4814815 0.4814815 0.6666667 0.5384615 0.6000000</span></span>
-<span><span class="co">#&gt; Cell_3  0.4814815 0.5384615 0.4285714 0.5384615 0.4814815 0.6666667 0.6000000</span></span>
-<span><span class="co">#&gt; Cell_4  0.5384615 0.6000000 0.6000000 0.4814815 0.6000000 0.5384615 0.6666667</span></span>
-<span><span class="co">#&gt; Cell_5  0.3793103 0.6666667 0.6000000 0.4285714 0.6000000 0.5384615 0.6000000</span></span>
-<span><span class="co">#&gt; Cell_6  0.6000000 0.6666667 0.6666667 0.6666667 0.6000000 0.6666667 0.5384615</span></span>
-<span><span class="co">#&gt; Cell_7  0.6666667 0.4814815 0.4814815 0.7391304 0.5384615 0.7391304 0.6666667</span></span>
-<span><span class="co">#&gt; Cell_8  1.0000000 0.4814815 0.4285714 0.6000000 0.5384615 0.5384615 0.6000000</span></span>
-<span><span class="co">#&gt; Cell_9  0.4814815 1.0000000 0.6000000 0.4285714 0.6666667 0.5384615 0.6000000</span></span>
-<span><span class="co">#&gt; Cell_10 0.4285714 0.6000000 1.0000000 0.5384615 0.6666667 0.5384615 0.5384615</span></span>
-<span><span class="co">#&gt; Cell_11 0.6000000 0.4285714 0.5384615 1.0000000 0.5384615 0.7391304 0.5384615</span></span>
-<span><span class="co">#&gt; Cell_12 0.5384615 0.6666667 0.6666667 0.5384615 1.0000000 0.5384615 0.6000000</span></span>
-<span><span class="co">#&gt; Cell_13 0.5384615 0.5384615 0.5384615 0.7391304 0.5384615 1.0000000 0.6666667</span></span>
-<span><span class="co">#&gt; Cell_14 0.6000000 0.6000000 0.5384615 0.5384615 0.6000000 0.6666667 1.0000000</span></span>
-<span><span class="co">#&gt; Cell_15 0.4285714 0.6000000 0.5384615 0.4814815 0.6000000 0.5384615 0.6666667</span></span>
-<span><span class="co">#&gt; Cell_16 0.4814815 0.5384615 0.6000000 0.6666667 0.5384615 0.6000000 0.4814815</span></span>
-<span><span class="co">#&gt; Cell_17 0.4814815 0.4814815 0.6000000 0.6000000 0.5384615 0.6000000 0.6000000</span></span>
-<span><span class="co">#&gt; Cell_18 0.6000000 0.6666667 0.6000000 0.5384615 0.6666667 0.4814815 0.6666667</span></span>
-<span><span class="co">#&gt; Cell_19 0.6000000 0.4814815 0.6000000 0.8181818 0.6000000 0.6666667 0.5384615</span></span>
-<span><span class="co">#&gt; Cell_20 0.4285714 0.6000000 0.5384615 0.4814815 0.6000000 0.5384615 0.6000000</span></span>
-<span><span class="co">#&gt; Cell_21 0.7391304 0.5384615 0.4814815 0.6666667 0.6000000 0.6000000 0.4814815</span></span>
-<span><span class="co">#&gt; Cell_22 0.5384615 0.6666667 0.6000000 0.5384615 0.6666667 0.6000000 0.5384615</span></span>
-<span><span class="co">#&gt; Cell_23 0.4814815 0.5384615 0.4285714 0.4814815 0.6666667 0.5384615 0.6666667</span></span>
-<span><span class="co">#&gt; Cell_24 0.4814815 0.6000000 0.6000000 0.5384615 0.5384615 0.5384615 0.6000000</span></span>
-<span><span class="co">#&gt; Cell_25 0.4285714 0.6666667 0.6000000 0.4285714 0.6000000 0.4814815 0.5384615</span></span>
-<span><span class="co">#&gt; Cell_26 0.4814815 0.6000000 0.7391304 0.5384615 0.6666667 0.5384615 0.6000000</span></span>
-<span><span class="co">#&gt; Cell_27 0.4814815 0.5384615 0.6000000 0.6666667 0.5384615 0.6666667 0.6666667</span></span>
-<span><span class="co">#&gt; Cell_28 0.5384615 0.6666667 0.4814815 0.4814815 0.6000000 0.6000000 0.7391304</span></span>
-<span><span class="co">#&gt; Cell_29 0.3793103 0.5384615 0.7391304 0.6000000 0.5384615 0.6000000 0.4814815</span></span>
-<span><span class="co">#&gt; Cell_30 0.3793103 0.7391304 0.6000000 0.3793103 0.6666667 0.4814815 0.6666667</span></span>
+<span><span class="co">#&gt; Cell_1  0.5384615 0.4814815 0.8181818 0.6666667 0.6000000 0.4814815 0.6666667</span></span>
+<span><span class="co">#&gt; Cell_2  0.4814815 0.4814815 0.6666667 0.6666667 0.6000000 0.6666667 0.7391304</span></span>
+<span><span class="co">#&gt; Cell_3  0.4814815 0.4285714 0.6666667 0.6666667 0.6666667 0.6666667 0.6666667</span></span>
+<span><span class="co">#&gt; Cell_4  0.6666667 0.5384615 0.6666667 0.6000000 0.6000000 0.5384615 0.6666667</span></span>
+<span><span class="co">#&gt; Cell_5  0.4814815 0.5384615 0.5384615 0.6000000 0.5384615 0.7391304 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_6  0.6666667 0.5384615 0.7391304 0.7391304 0.5384615 0.6000000 0.6666667</span></span>
+<span><span class="co">#&gt; Cell_7  0.4285714 0.4285714 0.6000000 0.5384615 0.6000000 0.4814815 0.6666667</span></span>
+<span><span class="co">#&gt; Cell_8  1.0000000 0.6666667 0.5384615 0.6000000 0.4814815 0.6000000 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_9  0.6666667 1.0000000 0.3793103 0.5384615 0.4285714 0.6666667 0.4814815</span></span>
+<span><span class="co">#&gt; Cell_10 0.5384615 0.3793103 1.0000000 0.7391304 0.6666667 0.4814815 0.6666667</span></span>
+<span><span class="co">#&gt; Cell_11 0.6000000 0.5384615 0.7391304 1.0000000 0.4814815 0.6666667 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_12 0.4814815 0.4285714 0.6666667 0.4814815 1.0000000 0.5384615 0.6666667</span></span>
+<span><span class="co">#&gt; Cell_13 0.6000000 0.6666667 0.4814815 0.6666667 0.5384615 1.0000000 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_14 0.5384615 0.4814815 0.6666667 0.5384615 0.6666667 0.5384615 1.0000000</span></span>
+<span><span class="co">#&gt; Cell_15 0.6000000 0.6000000 0.4814815 0.4814815 0.5384615 0.6666667 0.4814815</span></span>
+<span><span class="co">#&gt; Cell_16 0.4814815 0.4814815 0.5384615 0.5384615 0.6000000 0.5384615 0.6000000</span></span>
+<span><span class="co">#&gt; Cell_17 0.5384615 0.8181818 0.4285714 0.6000000 0.5384615 0.7391304 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_18 0.5384615 0.6666667 0.4814815 0.6000000 0.5384615 0.6666667 0.6666667</span></span>
+<span><span class="co">#&gt; Cell_19 0.6000000 0.5384615 0.6666667 0.5384615 0.6666667 0.6000000 0.6666667</span></span>
+<span><span class="co">#&gt; Cell_20 0.4285714 0.4814815 0.4814815 0.4814815 0.6000000 0.6000000 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_21 0.5384615 0.6000000 0.6000000 0.7391304 0.6000000 0.7391304 0.4285714</span></span>
+<span><span class="co">#&gt; Cell_22 0.6000000 0.5384615 0.6000000 0.5384615 0.6666667 0.6666667 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_23 0.6000000 0.4285714 0.9047619 0.7391304 0.6666667 0.5384615 0.7391304</span></span>
+<span><span class="co">#&gt; Cell_24 0.5384615 0.6000000 0.6000000 0.7391304 0.6000000 0.8181818 0.6666667</span></span>
+<span><span class="co">#&gt; Cell_25 0.6666667 0.6666667 0.6000000 0.6666667 0.5384615 0.6666667 0.6666667</span></span>
+<span><span class="co">#&gt; Cell_26 0.6000000 0.4814815 0.5384615 0.4814815 0.6000000 0.5384615 0.6000000</span></span>
+<span><span class="co">#&gt; Cell_27 0.6000000 0.6000000 0.6666667 0.6666667 0.6666667 0.7391304 0.7391304</span></span>
+<span><span class="co">#&gt; Cell_28 0.6666667 0.7391304 0.5384615 0.6666667 0.5384615 0.7391304 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_29 0.5384615 0.5384615 0.6666667 0.7391304 0.6666667 0.6666667 0.6666667</span></span>
+<span><span class="co">#&gt; Cell_30 0.6000000 0.7391304 0.4285714 0.4814815 0.5384615 0.5384615 0.5384615</span></span>
 <span><span class="co">#&gt;                                                                              </span></span>
-<span><span class="co">#&gt; Cell_1  0.7391304 0.6000000 0.6666667 0.5384615 0.6000000 0.6000000 0.4285714</span></span>
-<span><span class="co">#&gt; Cell_2  0.5384615 0.5384615 0.5384615 0.6000000 0.4285714 0.6666667 0.6666667</span></span>
-<span><span class="co">#&gt; Cell_3  0.6666667 0.5384615 0.6666667 0.4814815 0.5384615 0.6000000 0.4814815</span></span>
-<span><span class="co">#&gt; Cell_4  0.4285714 0.4285714 0.4285714 0.5384615 0.4814815 0.5384615 0.4814815</span></span>
-<span><span class="co">#&gt; Cell_5  0.8181818 0.6000000 0.6666667 0.5384615 0.4814815 0.6666667 0.4285714</span></span>
-<span><span class="co">#&gt; Cell_6  0.4814815 0.6666667 0.6000000 0.6666667 0.6000000 0.4814815 0.7391304</span></span>
-<span><span class="co">#&gt; Cell_7  0.4814815 0.4814815 0.4814815 0.5384615 0.6666667 0.4285714 0.6000000</span></span>
-<span><span class="co">#&gt; Cell_8  0.4285714 0.4814815 0.4814815 0.6000000 0.6000000 0.4285714 0.7391304</span></span>
-<span><span class="co">#&gt; Cell_9  0.6000000 0.5384615 0.4814815 0.6666667 0.4814815 0.6000000 0.5384615</span></span>
-<span><span class="co">#&gt; Cell_10 0.5384615 0.6000000 0.6000000 0.6000000 0.6000000 0.5384615 0.4814815</span></span>
-<span><span class="co">#&gt; Cell_11 0.4814815 0.6666667 0.6000000 0.5384615 0.8181818 0.4814815 0.6666667</span></span>
-<span><span class="co">#&gt; Cell_12 0.6000000 0.5384615 0.5384615 0.6666667 0.6000000 0.6000000 0.6000000</span></span>
-<span><span class="co">#&gt; Cell_13 0.5384615 0.6000000 0.6000000 0.4814815 0.6666667 0.5384615 0.6000000</span></span>
-<span><span class="co">#&gt; Cell_14 0.6666667 0.4814815 0.6000000 0.6666667 0.5384615 0.6000000 0.4814815</span></span>
-<span><span class="co">#&gt; Cell_15 1.0000000 0.6000000 0.8181818 0.6666667 0.5384615 0.7391304 0.4285714</span></span>
-<span><span class="co">#&gt; Cell_16 0.6000000 1.0000000 0.7391304 0.5384615 0.7391304 0.5384615 0.6000000</span></span>
-<span><span class="co">#&gt; Cell_17 0.8181818 0.7391304 1.0000000 0.6000000 0.6666667 0.6666667 0.4814815</span></span>
-<span><span class="co">#&gt; Cell_18 0.6666667 0.5384615 0.6000000 1.0000000 0.5384615 0.5384615 0.5384615</span></span>
-<span><span class="co">#&gt; Cell_19 0.5384615 0.7391304 0.6666667 0.5384615 1.0000000 0.4814815 0.6000000</span></span>
-<span><span class="co">#&gt; Cell_20 0.7391304 0.5384615 0.6666667 0.5384615 0.4814815 1.0000000 0.4285714</span></span>
-<span><span class="co">#&gt; Cell_21 0.4285714 0.6000000 0.4814815 0.5384615 0.6000000 0.4285714 1.0000000</span></span>
-<span><span class="co">#&gt; Cell_22 0.4814815 0.4814815 0.4814815 0.5384615 0.6000000 0.5384615 0.6666667</span></span>
-<span><span class="co">#&gt; Cell_23 0.6666667 0.4285714 0.5384615 0.5384615 0.4285714 0.6000000 0.4814815</span></span>
-<span><span class="co">#&gt; Cell_24 0.7391304 0.6000000 0.7391304 0.8181818 0.4814815 0.6000000 0.4814815</span></span>
-<span><span class="co">#&gt; Cell_25 0.7391304 0.6666667 0.6666667 0.6000000 0.4814815 0.6000000 0.4814815</span></span>
-<span><span class="co">#&gt; Cell_26 0.5384615 0.4285714 0.4814815 0.6666667 0.5384615 0.4814815 0.5384615</span></span>
-<span><span class="co">#&gt; Cell_27 0.6666667 0.5384615 0.6666667 0.5384615 0.6666667 0.6000000 0.4285714</span></span>
-<span><span class="co">#&gt; Cell_28 0.5384615 0.3793103 0.4285714 0.6000000 0.4814815 0.4814815 0.4814815</span></span>
-<span><span class="co">#&gt; Cell_29 0.6666667 0.8181818 0.8181818 0.5384615 0.6666667 0.6000000 0.4814815</span></span>
-<span><span class="co">#&gt; Cell_30 0.6666667 0.4285714 0.5384615 0.6000000 0.4285714 0.6666667 0.3793103</span></span>
+<span><span class="co">#&gt; Cell_1  0.4285714 0.4814815 0.4814815 0.5384615 0.5384615 0.4285714 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_2  0.5384615 0.5384615 0.5384615 0.6666667 0.5384615 0.4285714 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_3  0.4814815 0.6000000 0.5384615 0.5384615 0.4814815 0.6000000 0.6000000</span></span>
+<span><span class="co">#&gt; Cell_4  0.5384615 0.4285714 0.4814815 0.6666667 0.6666667 0.4814815 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_5  0.5384615 0.5384615 0.6666667 0.6666667 0.5384615 0.6000000 0.6000000</span></span>
+<span><span class="co">#&gt; Cell_6  0.5384615 0.6000000 0.5384615 0.6000000 0.6666667 0.5384615 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_7  0.4814815 0.5384615 0.4814815 0.6000000 0.6000000 0.4814815 0.4814815</span></span>
+<span><span class="co">#&gt; Cell_8  0.6000000 0.4814815 0.5384615 0.5384615 0.6000000 0.4285714 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_9  0.6000000 0.4814815 0.8181818 0.6666667 0.5384615 0.4814815 0.6000000</span></span>
+<span><span class="co">#&gt; Cell_10 0.4814815 0.5384615 0.4285714 0.4814815 0.6666667 0.4814815 0.6000000</span></span>
+<span><span class="co">#&gt; Cell_11 0.4814815 0.5384615 0.6000000 0.6000000 0.5384615 0.4814815 0.7391304</span></span>
+<span><span class="co">#&gt; Cell_12 0.5384615 0.6000000 0.5384615 0.5384615 0.6666667 0.6000000 0.6000000</span></span>
+<span><span class="co">#&gt; Cell_13 0.6666667 0.5384615 0.7391304 0.6666667 0.6000000 0.6000000 0.7391304</span></span>
+<span><span class="co">#&gt; Cell_14 0.4814815 0.6000000 0.5384615 0.6666667 0.6666667 0.5384615 0.4285714</span></span>
+<span><span class="co">#&gt; Cell_15 1.0000000 0.6000000 0.5384615 0.4814815 0.6666667 0.6000000 0.6000000</span></span>
+<span><span class="co">#&gt; Cell_16 0.6000000 1.0000000 0.6000000 0.4814815 0.5384615 0.6666667 0.6000000</span></span>
+<span><span class="co">#&gt; Cell_17 0.5384615 0.6000000 1.0000000 0.6666667 0.5384615 0.6000000 0.6666667</span></span>
+<span><span class="co">#&gt; Cell_18 0.4814815 0.4814815 0.6666667 1.0000000 0.6000000 0.4814815 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_19 0.6666667 0.5384615 0.5384615 0.6000000 1.0000000 0.6000000 0.6000000</span></span>
+<span><span class="co">#&gt; Cell_20 0.6000000 0.6666667 0.6000000 0.4814815 0.6000000 1.0000000 0.6000000</span></span>
+<span><span class="co">#&gt; Cell_21 0.6000000 0.6000000 0.6666667 0.5384615 0.6000000 0.6000000 1.0000000</span></span>
+<span><span class="co">#&gt; Cell_22 0.6666667 0.6666667 0.6000000 0.5384615 0.7391304 0.6000000 0.7391304</span></span>
+<span><span class="co">#&gt; Cell_23 0.4814815 0.4814815 0.4814815 0.5384615 0.6666667 0.4285714 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_24 0.5384615 0.6000000 0.7391304 0.6666667 0.6000000 0.6000000 0.6666667</span></span>
+<span><span class="co">#&gt; Cell_25 0.6000000 0.6000000 0.6666667 0.6000000 0.5384615 0.6000000 0.6000000</span></span>
+<span><span class="co">#&gt; Cell_26 0.5384615 0.4285714 0.4814815 0.6000000 0.7391304 0.6000000 0.4285714</span></span>
+<span><span class="co">#&gt; Cell_27 0.6000000 0.5384615 0.6666667 0.7391304 0.7391304 0.5384615 0.6000000</span></span>
+<span><span class="co">#&gt; Cell_28 0.7391304 0.6000000 0.6666667 0.6000000 0.6666667 0.6000000 0.7391304</span></span>
+<span><span class="co">#&gt; Cell_29 0.4814815 0.4814815 0.6000000 0.7391304 0.5384615 0.4285714 0.6666667</span></span>
+<span><span class="co">#&gt; Cell_30 0.6666667 0.6666667 0.6666667 0.6000000 0.5384615 0.5384615 0.5384615</span></span>
 <span><span class="co">#&gt;                                                                              </span></span>
-<span><span class="co">#&gt; Cell_1  0.5384615 0.6000000 0.5384615 0.6666667 0.5384615 0.8181818 0.5384615</span></span>
-<span><span class="co">#&gt; Cell_2  0.5384615 0.6000000 0.6000000 0.5384615 0.4814815 0.4285714 0.4814815</span></span>
-<span><span class="co">#&gt; Cell_3  0.6000000 0.6666667 0.4814815 0.6000000 0.4285714 0.6000000 0.5384615</span></span>
-<span><span class="co">#&gt; Cell_4  0.5384615 0.4814815 0.4814815 0.4285714 0.6666667 0.4814815 0.6000000</span></span>
-<span><span class="co">#&gt; Cell_5  0.5384615 0.6000000 0.6000000 0.9047619 0.5384615 0.6000000 0.6000000</span></span>
-<span><span class="co">#&gt; Cell_6  0.6000000 0.4285714 0.6666667 0.5384615 0.6000000 0.4814815 0.4814815</span></span>
-<span><span class="co">#&gt; Cell_7  0.6000000 0.5384615 0.4285714 0.4285714 0.5384615 0.6666667 0.6000000</span></span>
-<span><span class="co">#&gt; Cell_8  0.5384615 0.4814815 0.4814815 0.4285714 0.4814815 0.4814815 0.5384615</span></span>
-<span><span class="co">#&gt; Cell_9  0.6666667 0.5384615 0.6000000 0.6666667 0.6000000 0.5384615 0.6666667</span></span>
-<span><span class="co">#&gt; Cell_10 0.6000000 0.4285714 0.6000000 0.6000000 0.7391304 0.6000000 0.4814815</span></span>
-<span><span class="co">#&gt; Cell_11 0.5384615 0.4814815 0.5384615 0.4285714 0.5384615 0.6666667 0.4814815</span></span>
-<span><span class="co">#&gt; Cell_12 0.6666667 0.6666667 0.5384615 0.6000000 0.6666667 0.5384615 0.6000000</span></span>
-<span><span class="co">#&gt; Cell_13 0.6000000 0.5384615 0.5384615 0.4814815 0.5384615 0.6666667 0.6000000</span></span>
-<span><span class="co">#&gt; Cell_14 0.5384615 0.6666667 0.6000000 0.5384615 0.6000000 0.6666667 0.7391304</span></span>
-<span><span class="co">#&gt; Cell_15 0.4814815 0.6666667 0.7391304 0.7391304 0.5384615 0.6666667 0.5384615</span></span>
-<span><span class="co">#&gt; Cell_16 0.4814815 0.4285714 0.6000000 0.6666667 0.4285714 0.5384615 0.3793103</span></span>
-<span><span class="co">#&gt; Cell_17 0.4814815 0.5384615 0.7391304 0.6666667 0.4814815 0.6666667 0.4285714</span></span>
-<span><span class="co">#&gt; Cell_18 0.5384615 0.5384615 0.8181818 0.6000000 0.6666667 0.5384615 0.6000000</span></span>
-<span><span class="co">#&gt; Cell_19 0.6000000 0.4285714 0.4814815 0.4814815 0.5384615 0.6666667 0.4814815</span></span>
-<span><span class="co">#&gt; Cell_20 0.5384615 0.6000000 0.6000000 0.6000000 0.4814815 0.6000000 0.4814815</span></span>
-<span><span class="co">#&gt; Cell_21 0.6666667 0.4814815 0.4814815 0.4814815 0.5384615 0.4285714 0.4814815</span></span>
-<span><span class="co">#&gt; Cell_22 1.0000000 0.4814815 0.4285714 0.5384615 0.6000000 0.5384615 0.5384615</span></span>
-<span><span class="co">#&gt; Cell_23 0.4814815 1.0000000 0.5384615 0.5384615 0.5384615 0.6000000 0.6666667</span></span>
-<span><span class="co">#&gt; Cell_24 0.4285714 0.5384615 1.0000000 0.6666667 0.6000000 0.6000000 0.5384615</span></span>
-<span><span class="co">#&gt; Cell_25 0.5384615 0.5384615 0.6666667 1.0000000 0.5384615 0.5384615 0.5384615</span></span>
-<span><span class="co">#&gt; Cell_26 0.6000000 0.5384615 0.6000000 0.5384615 1.0000000 0.5384615 0.6666667</span></span>
-<span><span class="co">#&gt; Cell_27 0.5384615 0.6000000 0.6000000 0.5384615 0.5384615 1.0000000 0.6000000</span></span>
-<span><span class="co">#&gt; Cell_28 0.5384615 0.6666667 0.5384615 0.5384615 0.6666667 0.6000000 1.0000000</span></span>
-<span><span class="co">#&gt; Cell_29 0.4814815 0.4285714 0.6666667 0.6666667 0.5384615 0.6000000 0.4285714</span></span>
-<span><span class="co">#&gt; Cell_30 0.5384615 0.6666667 0.6000000 0.6666667 0.6666667 0.6000000 0.7391304</span></span>
+<span><span class="co">#&gt; Cell_1  0.5384615 0.8181818 0.6000000 0.6000000 0.5384615 0.6666667 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_2  0.5384615 0.7391304 0.6666667 0.6000000 0.5384615 0.7391304 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_3  0.5384615 0.6666667 0.7391304 0.6666667 0.4814815 0.6000000 0.6000000</span></span>
+<span><span class="co">#&gt; Cell_4  0.5384615 0.7391304 0.6000000 0.6000000 0.6666667 0.7391304 0.6000000</span></span>
+<span><span class="co">#&gt; Cell_5  0.6666667 0.5384615 0.6666667 0.6666667 0.5384615 0.6666667 0.6666667</span></span>
+<span><span class="co">#&gt; Cell_6  0.6000000 0.7391304 0.7391304 0.6666667 0.6666667 0.7391304 0.6666667</span></span>
+<span><span class="co">#&gt; Cell_7  0.4814815 0.6666667 0.5384615 0.4285714 0.6000000 0.6000000 0.4814815</span></span>
+<span><span class="co">#&gt; Cell_8  0.6000000 0.6000000 0.5384615 0.6666667 0.6000000 0.6000000 0.6666667</span></span>
+<span><span class="co">#&gt; Cell_9  0.5384615 0.4285714 0.6000000 0.6666667 0.4814815 0.6000000 0.7391304</span></span>
+<span><span class="co">#&gt; Cell_10 0.6000000 0.9047619 0.6000000 0.6000000 0.5384615 0.6666667 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_11 0.5384615 0.7391304 0.7391304 0.6666667 0.4814815 0.6666667 0.6666667</span></span>
+<span><span class="co">#&gt; Cell_12 0.6666667 0.6666667 0.6000000 0.5384615 0.6000000 0.6666667 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_13 0.6666667 0.5384615 0.8181818 0.6666667 0.5384615 0.7391304 0.7391304</span></span>
+<span><span class="co">#&gt; Cell_14 0.5384615 0.7391304 0.6666667 0.6666667 0.6000000 0.7391304 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_15 0.6666667 0.4814815 0.5384615 0.6000000 0.5384615 0.6000000 0.7391304</span></span>
+<span><span class="co">#&gt; Cell_16 0.6666667 0.4814815 0.6000000 0.6000000 0.4285714 0.5384615 0.6000000</span></span>
+<span><span class="co">#&gt; Cell_17 0.6000000 0.4814815 0.7391304 0.6666667 0.4814815 0.6666667 0.6666667</span></span>
+<span><span class="co">#&gt; Cell_18 0.5384615 0.5384615 0.6666667 0.6000000 0.6000000 0.7391304 0.6000000</span></span>
+<span><span class="co">#&gt; Cell_19 0.7391304 0.6666667 0.6000000 0.5384615 0.7391304 0.7391304 0.6666667</span></span>
+<span><span class="co">#&gt; Cell_20 0.6000000 0.4285714 0.6000000 0.6000000 0.6000000 0.5384615 0.6000000</span></span>
+<span><span class="co">#&gt; Cell_21 0.7391304 0.5384615 0.6666667 0.6000000 0.4285714 0.6000000 0.7391304</span></span>
+<span><span class="co">#&gt; Cell_22 1.0000000 0.5384615 0.6000000 0.6000000 0.6000000 0.6666667 0.7391304</span></span>
+<span><span class="co">#&gt; Cell_23 0.5384615 1.0000000 0.6666667 0.6000000 0.6000000 0.7391304 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_24 0.6000000 0.6666667 1.0000000 0.6666667 0.5384615 0.8181818 0.6666667</span></span>
+<span><span class="co">#&gt; Cell_25 0.6000000 0.6000000 0.6666667 1.0000000 0.4814815 0.6666667 0.8181818</span></span>
+<span><span class="co">#&gt; Cell_26 0.6000000 0.6000000 0.5384615 0.4814815 1.0000000 0.6666667 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_27 0.6666667 0.7391304 0.8181818 0.6666667 0.6666667 1.0000000 0.6666667</span></span>
+<span><span class="co">#&gt; Cell_28 0.7391304 0.5384615 0.6666667 0.8181818 0.5384615 0.6666667 1.0000000</span></span>
+<span><span class="co">#&gt; Cell_29 0.5384615 0.7391304 0.6666667 0.6666667 0.4814815 0.7391304 0.6000000</span></span>
+<span><span class="co">#&gt; Cell_30 0.5384615 0.4285714 0.5384615 0.6000000 0.4814815 0.6000000 0.6000000</span></span>
 <span><span class="co">#&gt;                            </span></span>
-<span><span class="co">#&gt; Cell_1  0.6666667 0.6000000</span></span>
-<span><span class="co">#&gt; Cell_2  0.4814815 0.4814815</span></span>
-<span><span class="co">#&gt; Cell_3  0.5384615 0.5384615</span></span>
-<span><span class="co">#&gt; Cell_4  0.4814815 0.6000000</span></span>
-<span><span class="co">#&gt; Cell_5  0.6666667 0.7391304</span></span>
-<span><span class="co">#&gt; Cell_6  0.6666667 0.4814815</span></span>
-<span><span class="co">#&gt; Cell_7  0.4285714 0.4814815</span></span>
-<span><span class="co">#&gt; Cell_8  0.3793103 0.3793103</span></span>
+<span><span class="co">#&gt; Cell_1  0.6666667 0.4814815</span></span>
+<span><span class="co">#&gt; Cell_2  0.8181818 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_3  0.6666667 0.4285714</span></span>
+<span><span class="co">#&gt; Cell_4  0.6666667 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_5  0.6000000 0.4285714</span></span>
+<span><span class="co">#&gt; Cell_6  0.5384615 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_7  0.6000000 0.4285714</span></span>
+<span><span class="co">#&gt; Cell_8  0.5384615 0.6000000</span></span>
 <span><span class="co">#&gt; Cell_9  0.5384615 0.7391304</span></span>
-<span><span class="co">#&gt; Cell_10 0.7391304 0.6000000</span></span>
-<span><span class="co">#&gt; Cell_11 0.6000000 0.3793103</span></span>
-<span><span class="co">#&gt; Cell_12 0.5384615 0.6666667</span></span>
-<span><span class="co">#&gt; Cell_13 0.6000000 0.4814815</span></span>
-<span><span class="co">#&gt; Cell_14 0.4814815 0.6666667</span></span>
-<span><span class="co">#&gt; Cell_15 0.6666667 0.6666667</span></span>
-<span><span class="co">#&gt; Cell_16 0.8181818 0.4285714</span></span>
-<span><span class="co">#&gt; Cell_17 0.8181818 0.5384615</span></span>
-<span><span class="co">#&gt; Cell_18 0.5384615 0.6000000</span></span>
-<span><span class="co">#&gt; Cell_19 0.6666667 0.4285714</span></span>
-<span><span class="co">#&gt; Cell_20 0.6000000 0.6666667</span></span>
-<span><span class="co">#&gt; Cell_21 0.4814815 0.3793103</span></span>
-<span><span class="co">#&gt; Cell_22 0.4814815 0.5384615</span></span>
-<span><span class="co">#&gt; Cell_23 0.4285714 0.6666667</span></span>
-<span><span class="co">#&gt; Cell_24 0.6666667 0.6000000</span></span>
-<span><span class="co">#&gt; Cell_25 0.6666667 0.6666667</span></span>
-<span><span class="co">#&gt; Cell_26 0.5384615 0.6666667</span></span>
-<span><span class="co">#&gt; Cell_27 0.6000000 0.6000000</span></span>
-<span><span class="co">#&gt; Cell_28 0.4285714 0.7391304</span></span>
+<span><span class="co">#&gt; Cell_10 0.6666667 0.4285714</span></span>
+<span><span class="co">#&gt; Cell_11 0.7391304 0.4814815</span></span>
+<span><span class="co">#&gt; Cell_12 0.6666667 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_13 0.6666667 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_14 0.6666667 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_15 0.4814815 0.6666667</span></span>
+<span><span class="co">#&gt; Cell_16 0.4814815 0.6666667</span></span>
+<span><span class="co">#&gt; Cell_17 0.6000000 0.6666667</span></span>
+<span><span class="co">#&gt; Cell_18 0.7391304 0.6000000</span></span>
+<span><span class="co">#&gt; Cell_19 0.5384615 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_20 0.4285714 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_21 0.6666667 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_22 0.5384615 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_23 0.7391304 0.4285714</span></span>
+<span><span class="co">#&gt; Cell_24 0.6666667 0.5384615</span></span>
+<span><span class="co">#&gt; Cell_25 0.6666667 0.6000000</span></span>
+<span><span class="co">#&gt; Cell_26 0.4814815 0.4814815</span></span>
+<span><span class="co">#&gt; Cell_27 0.7391304 0.6000000</span></span>
+<span><span class="co">#&gt; Cell_28 0.6000000 0.6000000</span></span>
 <span><span class="co">#&gt; Cell_29 1.0000000 0.5384615</span></span>
 <span><span class="co">#&gt; Cell_30 0.5384615 1.0000000</span></span></code></pre></div>
 </div>
@@ -1026,13 +1032,13 @@ the AnnData object.</p>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span></span>
 <span>  <span class="va">obj</span>,</span>
-<span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  obs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  var_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  obsm_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  varm_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  obsp_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  uns_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  layers_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  obs_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  var_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  obsm_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  varm_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  obsp_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  uns_mapping <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span>
 <span><span class="va">ad</span><span class="op">$</span><span class="va">varp</span></span>
 <span><span class="co">#&gt; NULL</span></span></code></pre></div>
@@ -1046,13 +1052,13 @@ object is copied to the <code>uns</code> slot of the AnnData object.</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span></span>
 <span>  <span class="va">obj</span>,</span>
-<span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  obs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  var_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  obsm_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  varm_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  obsp_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  varp_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  layers_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  obs_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  var_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  obsm_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  varm_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  obsp_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  varp_mapping <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span>
 <span><span class="va">ad</span><span class="op">$</span><span class="va">uns</span></span>
 <span><span class="co">#&gt; $data</span></span>

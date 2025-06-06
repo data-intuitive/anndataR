@@ -223,7 +223,7 @@ conversion to and from SingleCellExperiment objects</a> for more details
 on how to customize the conversion process. For instance:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">adata</span><span class="op">$</span><span class="fu">as_SingleCellExperiment</span><span class="op">(</span></span>
-<span>  assays_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  assays_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  colData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>coldata1 <span class="op">=</span> <span class="st">"integer"</span>, coldata2 <span class="op">=</span> <span class="st">"numeric"</span><span class="op">)</span>,</span>
 <span>  rowData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>rowdata1 <span class="op">=</span> <span class="st">"character"</span>, rowdata2 <span class="op">=</span> <span class="st">"logical"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -270,7 +270,7 @@ on how to customize the conversion process. Example:</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span></span>
 <span>  <span class="va">sce_obj</span>,</span>
 <span>  x_mapping <span class="op">=</span> <span class="st">"counts"</span>,</span>
-<span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  layers_mapping <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; AnnData object with n_obs × n_vars = 200 × 100</span></span></code></pre></div>
 </div>
