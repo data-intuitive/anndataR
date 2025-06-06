@@ -131,9 +131,9 @@ mappings.</p>
 <p>Here, we showcase what happens if you do not provide any mapping
 information for the conversion.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">seurat_obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/to_Seurat.html">to_Seurat</a></span><span class="op">(</span><span class="va">ad</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">seurat_obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_Seurat.html">as_Seurat</a></span><span class="op">(</span><span class="va">ad</span><span class="op">)</span></span>
 <span><span class="va">seurat_obj</span></span>
-<span><span class="co"># Error in `to_Seurat()`:</span></span>
+<span><span class="co"># Error in `as_Seurat()`:</span></span>
 <span><span class="co"># ! `layers_mapping` must contain an item named "counts" and/or "data"</span></span>
 <span><span class="co"># ℹ Found names: "X", "integer_matrix", and "numeric_rsparse"</span></span></code></pre></div>
 <p>Immediately, we run in the first error: one of the layers in the
@@ -588,18 +588,18 @@ mapping.</p>
 <span><span class="co">#&gt; Negative:  Feature16, Feature14, Feature3, Feature4, Feature13, Feature17, Feature19, Feature9, Feature1, Feature11</span></span>
 <span><span class="co">#&gt; Computing nearest neighbor graph</span></span>
 <span><span class="co">#&gt; Computing SNN</span></span>
-<span><span class="co">#&gt; 08:45:05 UMAP embedding parameters a = 0.9922 b = 1.112</span></span>
-<span><span class="co">#&gt; 08:45:05 Read 30 rows and found 10 numeric columns</span></span>
-<span><span class="co">#&gt; 08:45:05 Using Annoy for neighbor search, n_neighbors = 30</span></span>
-<span><span class="co">#&gt; 08:45:05 Building Annoy index with metric = cosine, n_trees = 50</span></span>
-<span><span class="co">#&gt; 08:45:05 Writing NN index file to temp file /tmp/Rtmpnfbfgq/file205f7f660fe3</span></span>
-<span><span class="co">#&gt; 08:45:05 Searching Annoy index using 1 thread, search_k = 3000</span></span>
-<span><span class="co">#&gt; 08:45:05 Annoy recall = 100%</span></span>
-<span><span class="co">#&gt; 08:45:05 Commencing smooth kNN distance calibration using 1 thread with target n_neighbors = 30</span></span>
-<span><span class="co">#&gt; 08:45:05 Initializing from normalized Laplacian + noise (using RSpectra)</span></span>
-<span><span class="co">#&gt; 08:45:05 Commencing optimization for 500 epochs, with 866 positive edges</span></span>
-<span><span class="co">#&gt; 08:45:05 Using rng type: pcg</span></span>
-<span><span class="co">#&gt; 08:45:06 Optimization finished</span></span></code></pre></div>
+<span><span class="co">#&gt; 14:48:10 UMAP embedding parameters a = 0.9922 b = 1.112</span></span>
+<span><span class="co">#&gt; 14:48:10 Read 30 rows and found 10 numeric columns</span></span>
+<span><span class="co">#&gt; 14:48:10 Using Annoy for neighbor search, n_neighbors = 30</span></span>
+<span><span class="co">#&gt; 14:48:10 Building Annoy index with metric = cosine, n_trees = 50</span></span>
+<span><span class="co">#&gt; 14:48:10 Writing NN index file to temp file /tmp/RtmpvKbVII/file210f3dd48b8a</span></span>
+<span><span class="co">#&gt; 14:48:10 Searching Annoy index using 1 thread, search_k = 3000</span></span>
+<span><span class="co">#&gt; 14:48:10 Annoy recall = 100%</span></span>
+<span><span class="co">#&gt; 14:48:10 Commencing smooth kNN distance calibration using 1 thread with target n_neighbors = 30</span></span>
+<span><span class="co">#&gt; 14:48:10 Initializing from normalized Laplacian + noise (using RSpectra)</span></span>
+<span><span class="co">#&gt; 14:48:10 Commencing optimization for 500 epochs, with 866 positive edges</span></span>
+<span><span class="co">#&gt; 14:48:10 Using rng type: pcg</span></span>
+<span><span class="co">#&gt; 14:48:11 Optimization finished</span></span></code></pre></div>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span>
 <span><span class="va">ad</span></span>
