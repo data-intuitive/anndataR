@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">anndataR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0.9002</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0.9003</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,10 +35,9 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><h6 class="dropdown-header" data-toc-skip>Usage</h6></li>
-    <li><a class="dropdown-item" href="../articles/usage_h5ad.html">Read/write H5AD files</a></li>
+    <li><a class="dropdown-item" href="../articles/anndataR.html">Read/write H5AD files</a></li>
     <li><a class="dropdown-item" href="../articles/usage_seurat.html">Read/write Seurat objects</a></li>
     <li><a class="dropdown-item" href="../articles/usage_singlecellexperiment.html">Read/write SingleCellExperiment objects</a></li>
-    <li><a class="dropdown-item" href="../articles/singlecellexperiment_mapping.html">Mapping between SingleCellExperiment and AnnData</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Development</h6></li>
     <li><a class="dropdown-item" href="../articles/software_design.html">Software design</a></li>
@@ -218,61 +217,73 @@ and SingleCellExperiment data structures, so some information might be
 lost during conversion. It is recommended to carefully inspect the
 converted object to ensure that all necessary information has been
 transferred.</p>
-<p>See the <a href="singlecellexperiment.html">in-depth vignette on
-conversion to and from SingleCellExperiment objects</a> for more details
-on how to customize the conversion process. For instance:</p>
+<div class="section level3">
+<h3 id="customizing-the-conversion">Customizing the conversion<a class="anchor" aria-label="anchor" href="#customizing-the-conversion"></a>
+</h3>
+<p>You can customize the conversion process by providing specific
+mappings for each slot in the <code>SingleCellExperiment</code> object.
+Each of the mapping arguments can be provided with one of the following:
+- <code>TRUE</code>: all items in the slot will be copied using the
+default mapping - <code>FALSE</code>: the slot will not be copied - a
+(named) character vector: the names are the names of the slot in the
+<code>SingleCellExperiment</code> object, the values are the names of
+the slot in the <code>AnnData</code> object.</p>
+<p>See <code><a href="../reference/as_SingleCellExperiment.html">?as_SingleCellExperiment</a></code> for more details on how to
+customize the conversion process. For instance:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">adata</span><span class="op">$</span><span class="fu">as_SingleCellExperiment</span><span class="op">(</span></span>
-<span>  assays_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  colData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>coldata1 <span class="op">=</span> <span class="st">"integer"</span>, coldata2 <span class="op">=</span> <span class="st">"numeric"</span><span class="op">)</span>,</span>
-<span>  rowData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>rowdata1 <span class="op">=</span> <span class="st">"character"</span>, rowdata2 <span class="op">=</span> <span class="st">"logical"</span><span class="op">)</span></span>
-<span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sce_obj</span> <span class="op">&lt;-</span> <span class="va">adata</span><span class="op">$</span><span class="fu">as_SingleCellExperiment</span><span class="op">(</span></span>
+<span>  x_mapping <span class="op">=</span> <span class="st">"counts"</span>,</span>
+<span>  assays_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"csc_counts"</span><span class="op">)</span>,</span>
+<span>  colData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Int"</span>, <span class="st">"IntNA"</span><span class="op">)</span>,</span>
+<span>  rowData_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>rowdata1 <span class="op">=</span> <span class="st">"String"</span>, rowdata2 <span class="op">=</span> <span class="st">"total_counts"</span><span class="op">)</span>,</span>
+<span>  reducedDims_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    <span class="st">"pca"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>sampleFactors <span class="op">=</span> <span class="st">"X_pca"</span>, featureLoadings <span class="op">=</span> <span class="st">"PCs"</span><span class="op">)</span>,</span>
+<span>    <span class="st">"umap"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>sampleFactors <span class="op">=</span> <span class="st">"X_umap"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  colPairs_mapping <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  rowPairs_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>value1 <span class="op">=</span> <span class="st">"Bool"</span>, value2 <span class="op">=</span> <span class="st">"IntScalar"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">sce_obj</span></span></code></pre></div>
+</div>
 </div>
 <div class="section level2">
 <h2 id="convert-a-singlecellexperiment-object-to-an-anndata-object">Convert a SingleCellExperiment Object to an AnnData Object<a class="anchor" aria-label="anchor" href="#convert-a-singlecellexperiment-object-to-an-anndata-object"></a>
 </h2>
-<p>Here’s an example demonstrating how to create a
-<code>SingleCellExperiment</code> object from scratch, then convert it
-to <code>AnnData</code> and save it as <code>.h5ad</code></p>
+<p>The reverse conversion is also possible, allowing you to convert a
+<code>SingleCellExperiment</code> object back to an <code>AnnData</code>
+object, or to just write out the <code>SingleCellExperiment</code>
+object as an <code>.h5ad</code> file.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">counts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html" class="external-link">rbinom</a></span><span class="op">(</span><span class="fl">20000</span>, <span class="fl">1000</span>, <span class="fl">.001</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
-<span><span class="va">sce_obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SingleCellExperiment/man/SingleCellExperiment.html" class="external-link">SingleCellExperiment</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>counts <span class="op">=</span> <span class="va">counts</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">sce_obj</span></span>
-<span><span class="co">#&gt; class: SingleCellExperiment </span></span>
-<span><span class="co">#&gt; dim: 100 200 </span></span>
-<span><span class="co">#&gt; metadata(0):</span></span>
-<span><span class="co">#&gt; assays(1): counts</span></span>
-<span><span class="co">#&gt; rownames: NULL</span></span>
-<span><span class="co">#&gt; rowData names(0):</span></span>
-<span><span class="co">#&gt; colnames: NULL</span></span>
-<span><span class="co">#&gt; colData names(0):</span></span>
-<span><span class="co">#&gt; reducedDimNames(0):</span></span>
-<span><span class="co">#&gt; mainExpName: NULL</span></span>
-<span><span class="co">#&gt; altExpNames(0):</span></span></code></pre></div>
-<p>You can convert the <code>SingleCellExperiment</code> object to an
-<code>AnnData</code> object using the <code>as_AnnData</code>
-function:</p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/write_h5ad.html">write_h5ad</a></span><span class="op">(</span><span class="va">sce_obj</span>, <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".h5ad"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>This is equivalent to converting the
+<code>SingleCellExperiment</code> object to an <code>AnnData</code>
+object and then writing it out:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">adata</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span><span class="va">sce_obj</span><span class="op">)</span></span>
-<span><span class="va">adata</span></span>
-<span><span class="co">#&gt; AnnData object with n_obs × n_vars = 200 × 100</span></span>
-<span><span class="co">#&gt;     layers: 'counts'</span></span></code></pre></div>
-<p>Again note that there is no one-to-one mapping possible between the
-AnnData and SingleCellExperiment data structures, so some information
-might be lost during conversion. It is recommended to carefully inspect
-the converted object to ensure that all necessary information has been
-transferred.</p>
-<p>See the <a href="singlecellexperiment.html">in-depth vignette on
-conversion to and from SingleCellExperiment objects</a> for more details
-on how to customize the conversion process. Example:</p>
+<span><span class="fu"><a href="../reference/write_h5ad.html">write_h5ad</a></span><span class="op">(</span><span class="va">adata</span>, <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".h5ad"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>You can again customize the conversion process by providing specific
+mappings for each slot in the <code>AnnData</code> object. For more
+details, see <code><a href="../reference/as_AnnData.html">?as_AnnData</a></code>.</p>
+<p>Here’s an example:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span></span>
 <span>  <span class="va">sce_obj</span>,</span>
 <span>  x_mapping <span class="op">=</span> <span class="st">"counts"</span>,</span>
-<span>  layers_mapping <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  layers_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"csc_counts"</span><span class="op">)</span>,</span>
+<span>  obs_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>metadata1 <span class="op">=</span> <span class="st">"Int"</span>, metadata2 <span class="op">=</span> <span class="st">"IntNA"</span><span class="op">)</span>,</span>
+<span>  var_mapping <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  obsm_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>X_pca <span class="op">=</span> <span class="st">"X_pca"</span>, X_umap <span class="op">=</span> <span class="st">"X_umap"</span><span class="op">)</span>,</span>
+<span>  obsp_mapping <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  uns_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Bool"</span>, <span class="st">"IntScalar"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; AnnData object with n_obs × n_vars = 200 × 100</span></span></code></pre></div>
+<span><span class="co">#&gt; AnnData object with n_obs × n_vars = 50 × 100</span></span>
+<span><span class="co">#&gt;     obs: 'metadata1', 'metadata2'</span></span>
+<span><span class="co">#&gt;     uns: 'Bool', 'IntScalar'</span></span>
+<span><span class="co">#&gt;     obsm: 'X_pca', 'X_umap'</span></span>
+<span><span class="co">#&gt;     varm: 'X_pca'</span></span>
+<span><span class="co">#&gt;     layers: 'csc_counts'</span></span>
+<span><span class="co">#&gt;     obsp: 'connectivities', 'distances'</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="session-info">Session info<a class="anchor" aria-label="anchor" href="#session-info"></a>
@@ -306,7 +317,7 @@ on how to customize the conversion process. Example:</p>
 <span><span class="co">#&gt;  [5] GenomeInfoDb_1.44.0         IRanges_2.42.0             </span></span>
 <span><span class="co">#&gt;  [7] S4Vectors_0.46.0            BiocGenerics_0.54.0        </span></span>
 <span><span class="co">#&gt;  [9] generics_0.1.4              MatrixGenerics_1.20.0      </span></span>
-<span><span class="co">#&gt; [11] matrixStats_1.5.0           anndataR_0.1.0.9002        </span></span>
+<span><span class="co">#&gt; [11] matrixStats_1.5.0           anndataR_0.1.0.9003        </span></span>
 <span><span class="co">#&gt; [13] BiocStyle_2.36.0           </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>

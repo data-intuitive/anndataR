@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">anndataR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0.9002</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0.9003</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,10 +35,9 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><h6 class="dropdown-header" data-toc-skip>Usage</h6></li>
-    <li><a class="dropdown-item" href="../articles/usage_h5ad.html">Read/write H5AD files</a></li>
+    <li><a class="dropdown-item" href="../articles/anndataR.html">Read/write H5AD files</a></li>
     <li><a class="dropdown-item" href="../articles/usage_seurat.html">Read/write Seurat objects</a></li>
     <li><a class="dropdown-item" href="../articles/usage_singlecellexperiment.html">Read/write SingleCellExperiment objects</a></li>
-    <li><a class="dropdown-item" href="../articles/singlecellexperiment_mapping.html">Mapping between SingleCellExperiment and AnnData</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Development</h6></li>
     <li><a class="dropdown-item" href="../articles/software_design.html">Software design</a></li>
@@ -82,12 +81,22 @@ Deconinck</h4>
 
     
     
+<div class="section level2">
+<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
 <p><strong>{anndataR}</strong> allows users to work with
 <code>.h5ad</code> files, access various slots in the datasets and
-convert these files to <code>SingleCellExperiment</code> objects and
-<code>SeuratObject</code>s, and vice versa.</p>
+convert these files to <code>SingleCellExperiment</code> objects or
+<code>Seurat</code> objects, and vice versa. This enables users to move
+data easily between the different programming languages and analysis
+ecosystems needed to perform single-cell data analysis. This package
+differs from <a href="https://bioconductor.org/packages/release/bioc/html/zellkonverter.html" class="external-link">zellkonverter</a>
+because it reads and writes these <code>.h5ad</code> files natively in
+R, and allows conversion to and from <code>Seurat</code> objects as
+well.</p>
 <p>Check out <code><a href="../reference/anndataR-package.html">?anndataR</a></code> for a full list of the functions
 provided by this package.</p>
+</div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -178,11 +187,35 @@ package:</p>
 <span><span class="co">#&gt; Active assay: RNA (100 features, 0 variable features)</span></span>
 <span><span class="co">#&gt;  5 layers present: counts, csc_counts, dense_X, dense_counts, X</span></span>
 <span><span class="co">#&gt;  2 dimensional reductions calculated: X_pca, X_umap</span></span></code></pre></div>
+<p>Convert a SingleCellExperiment object to an AnnData object:</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">adata</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span><span class="va">sce</span><span class="op">)</span></span>
+<span><span class="va">adata</span></span>
+<span><span class="co">#&gt; AnnData object with n_obs × n_vars = 50 × 100</span></span>
+<span><span class="co">#&gt;     obs: 'Float', 'FloatNA', 'Int', 'IntNA', 'Bool', 'BoolNA', 'n_genes_by_counts', 'log1p_n_genes_by_counts', 'total_counts', 'log1p_total_counts', 'leiden'</span></span>
+<span><span class="co">#&gt;     var: 'String', 'n_cells_by_counts', 'mean_counts', 'log1p_mean_counts', 'pct_dropout_by_counts', 'total_counts', 'log1p_total_counts', 'highly_variable', 'means', 'dispersions', 'dispersions_norm'</span></span>
+<span><span class="co">#&gt;     uns: 'Bool', 'BoolNA', 'Category', 'DataFrameEmpty', 'Int', 'IntNA', 'IntScalar', 'Sparse1D', 'String', 'String2D', 'StringScalar', 'hvg', 'leiden', 'log1p', 'neighbors', 'pca', 'rank_genes_groups', 'umap'</span></span>
+<span><span class="co">#&gt;     obsm: 'X_pca', 'X_umap'</span></span>
+<span><span class="co">#&gt;     varm: 'X_pca'</span></span>
+<span><span class="co">#&gt;     layers: 'counts', 'csc_counts', 'dense_X', 'dense_counts', 'X'</span></span>
+<span><span class="co">#&gt;     obsp: 'connectivities', 'distances'</span></span></code></pre></div>
+<p>Convert a Seurat object to an AnnData object:</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">adata</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span>
+<span><span class="va">adata</span></span>
+<span><span class="co">#&gt; AnnData object with n_obs × n_vars = 50 × 100</span></span>
+<span><span class="co">#&gt;     obs: 'orig.ident', 'nCount_RNA', 'nFeature_RNA', 'Float', 'FloatNA', 'Int', 'IntNA', 'Bool', 'BoolNA', 'n_genes_by_counts', 'log1p_n_genes_by_counts', 'total_counts', 'log1p_total_counts', 'leiden'</span></span>
+<span><span class="co">#&gt;     var: 'String', 'n_cells_by_counts', 'mean_counts', 'log1p_mean_counts', 'pct_dropout_by_counts', 'total_counts', 'log1p_total_counts', 'highly_variable', 'means', 'dispersions', 'dispersions_norm'</span></span>
+<span><span class="co">#&gt;     uns: 'Bool', 'BoolNA', 'Category', 'DataFrameEmpty', 'Int', 'IntNA', 'IntScalar', 'Sparse1D', 'String', 'String2D', 'StringScalar', 'hvg', 'leiden', 'log1p', 'neighbors', 'pca', 'rank_genes_groups', 'umap'</span></span>
+<span><span class="co">#&gt;     obsm: 'X_pca', 'X_umap'</span></span>
+<span><span class="co">#&gt;     varm: 'X_pca'</span></span>
+<span><span class="co">#&gt;     layers: 'counts', 'csc_counts', 'dense_X', 'dense_counts', 'X'</span></span>
+<span><span class="co">#&gt;     obsp: 'connectivities', 'distances'</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="manually-create-an-object">Manually create an object<a class="anchor" aria-label="anchor" href="#manually-create-an-object"></a>
 </h2>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">adata</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/AnnData.html">AnnData</a></span><span class="op">(</span></span>
 <span>  X <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>,</span>
 <span>  obs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
@@ -199,9 +232,25 @@ package:</p>
 <span><span class="co">#&gt;     var: 'gene_name'</span></span></code></pre></div>
 </div>
 <div class="section level2">
+<h2 id="write-to-disk">Write to disk:<a class="anchor" aria-label="anchor" href="#write-to-disk"></a>
+</h2>
+<p>Write an AnnData object to disk:</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tmpfile</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".h5ad"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/write_h5ad.html">write_h5ad</a></span><span class="op">(</span><span class="va">adata</span>, <span class="va">tmpfile</span><span class="op">)</span></span></code></pre></div>
+<p>Write an SCE object to disk:</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tmpfile</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".h5ad"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/write_h5ad.html">write_h5ad</a></span><span class="op">(</span><span class="va">sce</span>, <span class="va">tmpfile</span><span class="op">)</span></span></code></pre></div>
+<p>Write a Seurat object to disk:</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tmpfile</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".h5ad"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/write_h5ad.html">write_h5ad</a></span><span class="op">(</span><span class="va">obj</span>, <span class="va">tmpfile</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
 <h2 id="session-info">Session info<a class="anchor" aria-label="anchor" href="#session-info"></a>
 </h2>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; R version 4.5.1 (2025-06-13)</span></span>
 <span><span class="co">#&gt; Platform: x86_64-pc-linux-gnu</span></span>
@@ -225,7 +274,7 @@ package:</p>
 <span><span class="co">#&gt; [8] base     </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; other attached packages:</span></span>
-<span><span class="co">#&gt;  [1] anndataR_0.1.0.9002         SingleCellExperiment_1.30.1</span></span>
+<span><span class="co">#&gt;  [1] anndataR_0.1.0.9003         SingleCellExperiment_1.30.1</span></span>
 <span><span class="co">#&gt;  [3] SummarizedExperiment_1.38.1 Biobase_2.68.0             </span></span>
 <span><span class="co">#&gt;  [5] GenomicRanges_1.60.0        GenomeInfoDb_1.44.0        </span></span>
 <span><span class="co">#&gt;  [7] IRanges_2.42.0              S4Vectors_0.46.0           </span></span>

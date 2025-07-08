@@ -23,7 +23,7 @@
 
     <a class="navbar-brand me-2" href="index.html">anndataR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0.9002</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0.9003</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,10 +38,9 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><h6 class="dropdown-header" data-toc-skip>Usage</h6></li>
-    <li><a class="dropdown-item" href="articles/usage_h5ad.html">Read/write H5AD files</a></li>
+    <li><a class="dropdown-item" href="articles/anndataR.html">Read/write H5AD files</a></li>
     <li><a class="dropdown-item" href="articles/usage_seurat.html">Read/write Seurat objects</a></li>
     <li><a class="dropdown-item" href="articles/usage_singlecellexperiment.html">Read/write SingleCellExperiment objects</a></li>
-    <li><a class="dropdown-item" href="articles/singlecellexperiment_mapping.html">Mapping between SingleCellExperiment and AnnData</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Development</h6></li>
     <li><a class="dropdown-item" href="articles/software_design.html">Software design</a></li>
@@ -110,12 +109,16 @@
 <h2 id="getting-started">Getting started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
 </h2>
 <p>The best way to get started with <strong>{anndataR}</strong> is to explore the package vignettes (available at <a href="https://anndatar.data-intuitive.com/articles/" class="external-link uri">https://anndatar.data-intuitive.com/articles/</a>).</p>
+<p>In order to browse these vignettes locally, you need to build them during installation:</p>
+<pre><code><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>pkg.build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"scverse/anndataR"</span><span class="op">)</span></span></code></pre>
+<p>Take note that you need all suggested dependencies available, and that building them can take some time.</p>
 <ul>
 <li>
 <strong>Getting started</strong>: An introduction to the package and its features.<br><code><a href="articles/anndataR.html">vignette("anndataR", package = "anndataR")</a></code>
 </li>
 <li>
-<strong>Reading and writing H5AD files</strong>: How to read and write <code>*.h5ad</code> files.<br><code><a href="articles/usage_h5ad.html">vignette("usage_h5ad", package = "anndataR")</a></code>
+<strong>Reading and writing H5AD files</strong>: How to read and write <code>*.h5ad</code> files.<br><code><a href="https://anndataR.data-intuitive.com/articles/usage_h5ad.html">vignette("usage_h5ad", package = "anndataR")</a></code>
 </li>
 <li>
 <strong>Converting to/from Seurat objects</strong>: How to convert between <code>AnnData</code> and <code>Seurat</code> objects.<br><code><a href="articles/usage_seurat.html">vignette("usage_seurat", package = "anndataR")</a></code>
