@@ -23,7 +23,7 @@
 
     <a class="navbar-brand me-2" href="index.html">anndataR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0.9009</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0.9010</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -100,7 +100,7 @@
 <span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"scverse/anndataR"</span><span class="op">)</span></span></code></pre></div>
 <p>You will need to install additional dependencies, depending on the task you want to perform.</p>
 <ul>
-<li>To read/write <code>*.h5ad</code> files, install <a href="https://cran.r-project.org/package=hdf5r" class="external-link">hdf5r</a>:<br><code>install.packages("hdf5r")</code>
+<li>To read/write <code>*.h5ad</code> files, install <a href="https://www.bioconductor.org/packages/rhdf5" class="external-link">rhdf5</a>:<br><code>BiocManager::install("rhdf5")</code>
 </li>
 <li>To convert to/from <code>SingleCellExperiment</code> objects, install <a href="https://bioconductor.org/packages/release/bioc/html/SingleCellExperiment.html" class="external-link">SingleCellExperiment</a>:<br><code>BiocManager::install("SingleCellExperiment")</code>
 </li>
