@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">anndataR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0.9011</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,7 +35,6 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><h6 class="dropdown-header" data-toc-skip>Usage</h6></li>
-    <li><a class="dropdown-item" href="../articles/anndataR.html">Read/write H5AD files</a></li>
     <li><a class="dropdown-item" href="../articles/usage_seurat.html">Read/write Seurat objects</a></li>
     <li><a class="dropdown-item" href="../articles/usage_singlecellexperiment.html">Read/write SingleCellExperiment objects</a></li>
     <li><hr class="dropdown-divider"></li>
@@ -77,32 +76,30 @@
 objects using the <strong>{anndataR}</strong> package, leveraging the
 interoperability between <code>Seurat</code> and the
 <code>AnnData</code> format.</p>
-<p>Check out <code><a href="../reference/anndataR-package.html">?anndataR</a></code> for a full list of the functions
-provided by this package.</p>
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
-<p>Seurat is a widely used toolkit for single-cell analysis in R.
-<strong>{anndataR}</strong> enables conversion between
+<p><strong>{Seurat}</strong> is a widely used toolkit for single-cell
+analysis in R. <strong>{anndataR}</strong> enables conversion between
 <code>Seurat</code> objects and <code>AnnData</code> objects, allowing
-you to leverage the strengths of both the scverse and Seurat
-ecosystems.</p>
+you to leverage the strengths of both the <strong>scverse</strong> and
+<strong>{Seurat}</strong> ecosystems.</p>
 </div>
 <div class="section level2">
 <h2 id="prerequisites">Prerequisites<a class="anchor" aria-label="anchor" href="#prerequisites"></a>
 </h2>
-<p>Before you begin, make sure you have both Seurat and
-<strong>{anndataR}</strong> installed. You can install them using the
+<p>This vignette requires the <strong>{Seurat}</strong> package in
+addition to <strong>{anndataR}</strong>. You can install them using the
 following code:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"pak"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"pak"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
-<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"Seurat"</span><span class="op">)</span></span>
-<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"scverse/anndataR"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"Seurat"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="converting-an-anndata-object-to-a-seurat-object">Converting an AnnData Object to a Seurat Object<a class="anchor" aria-label="anchor" href="#converting-an-anndata-object-to-a-seurat-object"></a>
+<h2 id="converting-an-anndata-object-to-a-seurat-object">Converting an <code>AnnData</code> Object to a <code>Seurat</code>
+Object<a class="anchor" aria-label="anchor" href="#converting-an-anndata-object-to-a-seurat-object"></a>
 </h2>
 <p>Using an example <code>.h5ad</code> file included in the package, we
 will demonstrate how to read an <code>.h5ad</code> file and convert it
@@ -122,8 +119,7 @@ to a <code>Seurat</code> object.</p>
 <span><span class="co">#&gt;     intersect, t</span></span>
 <span></span>
 <span><span class="va">h5ad_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"example.h5ad"</span>, package <span class="op">=</span> <span class="st">"anndataR"</span><span class="op">)</span></span></code></pre></div>
-<p>Read the <code>.h5ad</code> file and convert it to a
-<code>Seurat</code> object:</p>
+<p>Read the <code>.h5ad</code> file as a <code>Seurat</code> object:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">seurat_obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_h5ad.html">read_h5ad</a></span><span class="op">(</span><span class="va">h5ad_file</span>, as <span class="op">=</span> <span class="st">"Seurat"</span><span class="op">)</span></span>
 <span><span class="va">seurat_obj</span></span>
@@ -143,22 +139,22 @@ explicitly converting.</p>
 <span><span class="co">#&gt; Active assay: RNA (100 features, 0 variable features)</span></span>
 <span><span class="co">#&gt;  5 layers present: counts, csc_counts, dense_X, dense_counts, X</span></span>
 <span><span class="co">#&gt;  2 dimensional reductions calculated: X_pca, X_umap</span></span></code></pre></div>
-<p>Note that there is no one-to-one mapping possible between the AnnData
-and SeuratObject data structures, so some information might be lost
-during conversion. It is recommended to carefully inspect the converted
-object to ensure that all necessary information has been
-transferred.</p>
+<p>Note that there is no one-to-one mapping possible between the
+<code>AnnData</code> and <code>Seurat</code> data structures, so some
+information might be lost during conversion. It is recommended to
+carefully inspect the converted object to ensure that all necessary
+information has been transferred.</p>
 <div class="section level3">
 <h3 id="customizing-the-conversion">Customizing the conversion<a class="anchor" aria-label="anchor" href="#customizing-the-conversion"></a>
 </h3>
 <p>You can customize the conversion process by providing specific
-mappings for each slot in the Seurat object. Each of the mapping
-arguments can be provided with one of the following: -
-<code>TRUE</code>: all items in the slot will be copied using the
-default mapping - <code>FALSE</code>: the slot will not be copied - a
-(named) character vector: the names are the names of the slot in the
-Seurat object, the values are the names of the slot in the AnnData
-object.</p>
+mappings for each slot in the <code>Seurat</code> object.</p>
+<p>Each of the mapping arguments can be provided with one of the
+following: - <code>TRUE</code>: all items in the slot will be copied
+using the default mapping - <code>FALSE</code>: the slot will not be
+copied - A (named) character vector: the names are the names of the slot
+in the <code>Seurat</code> object, the values are the names of the slot
+in the <code>AnnData</code> object.</p>
 <p>See <code><a href="../reference/as_Seurat.html">?as_Seurat</a></code> for more details on how to customize the
 conversion process. For instance:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -179,10 +175,13 @@ conversion process. For instance:</p>
 <span><span class="co">#&gt; Active assay: RNA (100 features, 0 variable features)</span></span>
 <span><span class="co">#&gt;  3 layers present: counts, dense_counts, X</span></span>
 <span><span class="co">#&gt;  2 dimensional reductions calculated: pca, umap</span></span></code></pre></div>
+<p>The mapping arguments can also be passed directly to
+<code><a href="../reference/read_h5ad.html">read_h5ad()</a></code>.</p>
 </div>
 </div>
 <div class="section level2">
-<h2 id="convert-a-seurat-object-to-an-anndata-object">Convert a Seurat Object to an AnnData Object<a class="anchor" aria-label="anchor" href="#convert-a-seurat-object-to-an-anndata-object"></a>
+<h2 id="convert-a-seurat-object-to-an-anndata-object">Convert a <code>Seurat</code> object to an <code>AnnData</code>
+object<a class="anchor" aria-label="anchor" href="#convert-a-seurat-object-to-an-anndata-object"></a>
 </h2>
 <p>The reverse conversion is also possible, allowing you to convert the
 <code>Seurat</code> object back to an <code>AnnData</code> object, or to
@@ -219,6 +218,8 @@ details, see <code><a href="../reference/as_AnnData.html">?as_AnnData</a></code>
 <span><span class="co">#&gt;     varm: 'pca'</span></span>
 <span><span class="co">#&gt;     layers: 'dense_counts'</span></span>
 <span><span class="co">#&gt;     obsp: 'connectivities', 'distances'</span></span></code></pre></div>
+<p>The mapping arguments can also be passed directly to
+<code><a href="../reference/write_h5ad.html">write_h5ad()</a></code>.</p>
 </div>
 <div class="section level2">
 <h2 id="session-info">Session info<a class="anchor" aria-label="anchor" href="#session-info"></a>
@@ -246,8 +247,8 @@ details, see <code><a href="../reference/as_AnnData.html">?as_AnnData</a></code>
 <span><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; other attached packages:</span></span>
-<span><span class="co">#&gt; [1] Seurat_5.3.0        SeuratObject_5.1.0  sp_2.2-0           </span></span>
-<span><span class="co">#&gt; [4] anndataR_0.1.0.9011 BiocStyle_2.36.0   </span></span>
+<span><span class="co">#&gt; [1] Seurat_5.3.0       SeuratObject_5.1.0 sp_2.2-0           anndataR_0.2.0    </span></span>
+<span><span class="co">#&gt; [5] BiocStyle_2.36.0  </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
 <span><span class="co">#&gt;   [1] deldir_2.0-4           pbapply_1.7-4          gridExtra_2.3         </span></span>

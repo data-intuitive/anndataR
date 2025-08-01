@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">anndataR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0.9011</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,7 +35,6 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><h6 class="dropdown-header" data-toc-skip>Usage</h6></li>
-    <li><a class="dropdown-item" href="../articles/anndataR.html">Read/write H5AD files</a></li>
     <li><a class="dropdown-item" href="../articles/usage_seurat.html">Read/write Seurat objects</a></li>
     <li><a class="dropdown-item" href="../articles/usage_singlecellexperiment.html">Read/write SingleCellExperiment objects</a></li>
     <li><hr class="dropdown-divider"></li>
@@ -78,33 +77,32 @@
 <strong>{anndataR}</strong> package, leveraging the interoperability
 between <code>SingleCellExperiment</code> and the <code>AnnData</code>
 format.</p>
-<p>Check out <code><a href="../reference/anndataR-package.html">?anndataR</a></code> for a full list of the functions
-provided by this package.</p>
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
-<p>SingleCellExperiment is a widely used class for storing single-cell
-data in R, especially within the Bioconductor ecosystem.
-<strong>{anndataR}</strong> enables conversion between
-<code>SingleCellExperiment</code> objects and <code>AnnData</code>
-objects, allowing you to leverage the strengths of both the scverse and
-Bioconductor ecosystems.</p>
+<p><code>SingleCellExperiment</code> is a widely used class for storing
+single-cell data in R, especially within the
+<strong>Bioconductor</strong> ecosystem. <strong>{anndataR}</strong>
+enables conversion between <code>SingleCellExperiment</code> objects and
+<code>AnnData</code> objects, allowing you to leverage the strengths of
+both the <strong>scverse</strong> and <strong>Bioconductor</strong>
+ecosystems.</p>
 </div>
 <div class="section level2">
 <h2 id="prerequisites">Prerequisites<a class="anchor" aria-label="anchor" href="#prerequisites"></a>
 </h2>
-<p>Before you begin, make sure you have both SingleCellExperiment and
-<strong>{anndataR}</strong> installed. You can install them using the
+<p>This vignette requires <strong>{SingleCellExperiment}</strong> in
+addition to <strong>{anndataR}</strong>. You can install them using the
 following code:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"pak"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"pak"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"BiocManager"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
-<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SingleCellExperiment"</span>, <span class="st">"SummarizedExperiment"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"scverse/anndataR"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"SingleCellExperiment"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="converting-an-anndata-object-to-a-singlecellexperiment-object">Converting an AnnData Object to a SingleCellExperiment Object<a class="anchor" aria-label="anchor" href="#converting-an-anndata-object-to-a-singlecellexperiment-object"></a>
+<h2 id="converting-an-anndata-object-to-a-singlecellexperiment-object">Converting an <code>AnnData</code> object to a
+<code>SingleCellExperiment</code> object<a class="anchor" aria-label="anchor" href="#converting-an-anndata-object-to-a-singlecellexperiment-object"></a>
 </h2>
 <p>Using an example <code>.h5ad</code> file included in the package, we
 will demonstrate how to read an <code>.h5ad</code> file and convert it
@@ -184,21 +182,10 @@ to a <code>SingleCellExperiment</code> object.</p>
 <span><span class="co">#&gt;     anyMissing, rowMedians</span></span>
 <span></span>
 <span><span class="va">h5ad_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"example.h5ad"</span>, package <span class="op">=</span> <span class="st">"anndataR"</span><span class="op">)</span></span></code></pre></div>
-<p>Read the <code>.h5ad</code> file:</p>
+<p>Read the <code>.h5ad</code> file as a
+<code>SingleCellExperiment</code> object:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">adata</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_h5ad.html">read_h5ad</a></span><span class="op">(</span><span class="va">h5ad_file</span><span class="op">)</span></span>
-<span><span class="va">adata</span></span>
-<span><span class="co">#&gt; AnnData object with n_obs × n_vars = 50 × 100</span></span>
-<span><span class="co">#&gt;     obs: 'Float', 'FloatNA', 'Int', 'IntNA', 'Bool', 'BoolNA', 'n_genes_by_counts', 'log1p_n_genes_by_counts', 'total_counts', 'log1p_total_counts', 'leiden'</span></span>
-<span><span class="co">#&gt;     var: 'String', 'n_cells_by_counts', 'mean_counts', 'log1p_mean_counts', 'pct_dropout_by_counts', 'total_counts', 'log1p_total_counts', 'highly_variable', 'means', 'dispersions', 'dispersions_norm'</span></span>
-<span><span class="co">#&gt;     uns: 'Bool', 'BoolNA', 'Category', 'DataFrameEmpty', 'Int', 'IntNA', 'IntScalar', 'Sparse1D', 'String', 'String2D', 'StringScalar', 'hvg', 'leiden', 'log1p', 'neighbors', 'pca', 'rank_genes_groups', 'umap'</span></span>
-<span><span class="co">#&gt;     obsm: 'X_pca', 'X_umap'</span></span>
-<span><span class="co">#&gt;     varm: 'PCs'</span></span>
-<span><span class="co">#&gt;     layers: 'counts', 'csc_counts', 'dense_X', 'dense_counts'</span></span>
-<span><span class="co">#&gt;     obsp: 'connectivities', 'distances'</span></span></code></pre></div>
-<p>Convert to a <code>SingleCellExperiment</code> object:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">sce_obj</span> <span class="op">&lt;-</span> <span class="va">adata</span><span class="op">$</span><span class="fu">as_SingleCellExperiment</span><span class="op">(</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">sce_obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_h5ad.html">read_h5ad</a></span><span class="op">(</span><span class="va">h5ad_file</span>, as <span class="op">=</span> <span class="st">"SingleCellExperiment"</span><span class="op">)</span></span>
 <span><span class="va">sce_obj</span></span>
 <span><span class="co">#&gt; class: SingleCellExperiment </span></span>
 <span><span class="co">#&gt; dim: 100 50 </span></span>
@@ -212,22 +199,41 @@ to a <code>SingleCellExperiment</code> object.</p>
 <span><span class="co">#&gt; reducedDimNames(2): X_pca X_umap</span></span>
 <span><span class="co">#&gt; mainExpName: NULL</span></span>
 <span><span class="co">#&gt; altExpNames(0):</span></span></code></pre></div>
-<p>Note that there is no one-to-one mapping possible between the AnnData
-and SingleCellExperiment data structures, so some information might be
-lost during conversion. It is recommended to carefully inspect the
-converted object to ensure that all necessary information has been
-transferred.</p>
+<p>This is equivalent to reading in the <code>.h5ad</code> file and
+explicitly converting.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">adata</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_h5ad.html">read_h5ad</a></span><span class="op">(</span><span class="va">h5ad_file</span><span class="op">)</span></span>
+<span><span class="va">sce</span> <span class="op">&lt;-</span> <span class="va">adata</span><span class="op">$</span><span class="fu">as_SingleCellExperiment</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">sce</span></span>
+<span><span class="co">#&gt; class: SingleCellExperiment </span></span>
+<span><span class="co">#&gt; dim: 100 50 </span></span>
+<span><span class="co">#&gt; metadata(18): Bool BoolNA ... rank_genes_groups umap</span></span>
+<span><span class="co">#&gt; assays(5): counts csc_counts dense_X dense_counts X</span></span>
+<span><span class="co">#&gt; rownames(100): Gene000 Gene001 ... Gene098 Gene099</span></span>
+<span><span class="co">#&gt; rowData names(11): String n_cells_by_counts ... dispersions</span></span>
+<span><span class="co">#&gt;   dispersions_norm</span></span>
+<span><span class="co">#&gt; colnames(50): Cell000 Cell001 ... Cell048 Cell049</span></span>
+<span><span class="co">#&gt; colData names(11): Float FloatNA ... log1p_total_counts leiden</span></span>
+<span><span class="co">#&gt; reducedDimNames(2): X_pca X_umap</span></span>
+<span><span class="co">#&gt; mainExpName: NULL</span></span>
+<span><span class="co">#&gt; altExpNames(0):</span></span></code></pre></div>
+<p>Note that there is no one-to-one mapping possible between the
+<code>AnnData</code> and <code>SingleCellExperiment</code> data
+structures, so some information might be lost during conversion. It is
+recommended to carefully inspect the converted object to ensure that all
+necessary information has been transferred.</p>
 <div class="section level3">
 <h3 id="customizing-the-conversion">Customizing the conversion<a class="anchor" aria-label="anchor" href="#customizing-the-conversion"></a>
 </h3>
 <p>You can customize the conversion process by providing specific
-mappings for each slot in the <code>SingleCellExperiment</code> object.
-Each of the mapping arguments can be provided with one of the following:
-- <code>TRUE</code>: all items in the slot will be copied using the
-default mapping - <code>FALSE</code>: the slot will not be copied - a
-(named) character vector: the names are the names of the slot in the
-<code>SingleCellExperiment</code> object, the values are the names of
-the slot in the <code>AnnData</code> object.</p>
+mappings for each slot in the <code>SingleCellExperiment</code>
+object.</p>
+<p>Each of the mapping arguments can be provided with one of the
+following: - <code>TRUE</code>: all items in the slot will be copied
+using the default mapping - <code>FALSE</code>: the slot will not be
+copied - A (named) character vector: the names are the names of the slot
+in the <code>SingleCellExperiment</code> object, the values are the
+names of the slot in the <code>AnnData</code> object.</p>
 <p>See <code><a href="../reference/as_SingleCellExperiment.html">?as_SingleCellExperiment</a></code> for more details on how to
 customize the conversion process. For instance:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -245,10 +251,13 @@ customize the conversion process. For instance:</p>
 <span>  metadata_mapping <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>value1 <span class="op">=</span> <span class="st">"Bool"</span>, value2 <span class="op">=</span> <span class="st">"IntScalar"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="va">sce_obj</span></span></code></pre></div>
+<p>The mapping arguments can also be passed directly to
+<code><a href="../reference/read_h5ad.html">read_h5ad()</a></code>.</p>
 </div>
 </div>
 <div class="section level2">
-<h2 id="convert-a-singlecellexperiment-object-to-an-anndata-object">Convert a SingleCellExperiment Object to an AnnData Object<a class="anchor" aria-label="anchor" href="#convert-a-singlecellexperiment-object-to-an-anndata-object"></a>
+<h2 id="convert-a-singlecellexperiment-object-to-an-anndata-object">Convert a <code>SingleCellExperiment</code> object to an
+<code>AnnData</code> object<a class="anchor" aria-label="anchor" href="#convert-a-singlecellexperiment-object-to-an-anndata-object"></a>
 </h2>
 <p>The reverse conversion is also possible, allowing you to convert a
 <code>SingleCellExperiment</code> object back to an <code>AnnData</code>
@@ -284,6 +293,8 @@ details, see <code><a href="../reference/as_AnnData.html">?as_AnnData</a></code>
 <span><span class="co">#&gt;     varm: 'X_pca'</span></span>
 <span><span class="co">#&gt;     layers: 'csc_counts'</span></span>
 <span><span class="co">#&gt;     obsp: 'connectivities', 'distances'</span></span></code></pre></div>
+<p>The mapping arguments can also be passed directly to
+<code><a href="../reference/write_h5ad.html">write_h5ad()</a></code>.</p>
 </div>
 <div class="section level2">
 <h2 id="session-info">Session info<a class="anchor" aria-label="anchor" href="#session-info"></a>
@@ -317,7 +328,7 @@ details, see <code><a href="../reference/as_AnnData.html">?as_AnnData</a></code>
 <span><span class="co">#&gt;  [5] GenomeInfoDb_1.44.1         IRanges_2.42.0             </span></span>
 <span><span class="co">#&gt;  [7] S4Vectors_0.46.0            BiocGenerics_0.54.0        </span></span>
 <span><span class="co">#&gt;  [9] generics_0.1.4              MatrixGenerics_1.20.0      </span></span>
-<span><span class="co">#&gt; [11] matrixStats_1.5.0           anndataR_0.1.0.9011        </span></span>
+<span><span class="co">#&gt; [11] matrixStats_1.5.0           anndataR_0.2.0             </span></span>
 <span><span class="co">#&gt; [13] BiocStyle_2.36.0           </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>

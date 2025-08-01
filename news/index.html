@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">anndataR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0.9011</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,7 +20,6 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><h6 class="dropdown-header" data-toc-skip>Usage</h6></li>
-    <li><a class="dropdown-item" href="../articles/anndataR.html">Read/write H5AD files</a></li>
     <li><a class="dropdown-item" href="../articles/usage_seurat.html">Read/write Seurat objects</a></li>
     <li><a class="dropdown-item" href="../articles/usage_singlecellexperiment.html">Read/write SingleCellExperiment objects</a></li>
     <li><hr class="dropdown-divider"></li>
@@ -45,6 +44,54 @@
     </div>
 
     <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.2.0" id="anndatar-020">anndataR 0.2.0<a class="anchor" aria-label="anchor" href="#anndatar-020"></a></h2>
+<div class="section level3">
+<h3 id="breaking-changes-0-2-0">Breaking changes<a class="anchor" aria-label="anchor" href="#breaking-changes-0-2-0"></a></h3>
+<ul><li>Switch the HDF5 back end to use the <strong>{rhdf5}</strong> package instead of <strong>{hdf5r}</strong> (PR <a href="https://github.com/scverse/anndataR/issues/283" class="external-link">#283</a>, Fixes <a href="https://github.com/scverse/anndataR/issues/272" class="external-link">#272</a>, <a href="https://github.com/scverse/anndataR/issues/175" class="external-link">#175</a>, <a href="https://github.com/scverse/anndataR/issues/299" class="external-link">#299</a>)
+<ul><li>This addresses various issues related to H5AD files and allows better integration with Bioconductor. Most of the previous known issues have now been resolved.</li>
+<li>It also greatly improves compatibility with H5AD files written by Python <strong>anndata</strong>
+</li>
+<li>
+<strong>NOTE:</strong> Make sure to install <strong>{rhdf5}</strong> instead of <strong>{hdf5r}</strong> to be able to read and write H5AD files!</li>
+</ul></li>
+</ul></div>
+<div class="section level3">
+<h3 id="major-changes-0-2-0">Major changes<a class="anchor" aria-label="anchor" href="#major-changes-0-2-0"></a></h3>
+<ul><li>Updates for compatibility with Python <strong>anndata</strong> &gt;= 0.12.0 (PR <a href="https://github.com/scverse/anndataR/issues/305" class="external-link">#305</a>, Fixes <a href="https://github.com/scverse/anndataR/issues/304" class="external-link">#304</a>)
+<ul><li>Add helpers for reading/writing <code>NULL</code> values to/from H5AD files</li>
+<li>Writing of <code>NULL</code> values can be disabled by setting <code>option(anndataR.write_null = FALSE)</code> to allow the files to be read by Python <strong>anndata</strong> &lt; 0.12.0</li>
+</ul></li>
+<li>A <code>counts</code> or <code>data</code> layer is no longer required during <code>Seurat</code> conversion (PR <a href="https://github.com/scverse/anndataR/issues/284" class="external-link">#284</a>)
+<ul><li>There will still be a warning if neither of this is present as it may affect compatibility with <strong>{Seurat}</strong> functions</li>
+</ul></li>
+</ul></div>
+<div class="section level3">
+<h3 id="minor-changes-0-2-0">Minor changes<a class="anchor" aria-label="anchor" href="#minor-changes-0-2-0"></a></h3>
+<ul><li>Use accessor functions/methods instead of direct slot access where possible (PR <a href="https://github.com/scverse/anndataR/issues/291" class="external-link">#291</a>)</li>
+<li>Refactor superfluous for loops (PR <a href="https://github.com/scverse/anndataR/issues/298" class="external-link">#298</a>)</li>
+<li>Change uses of <code><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply()</a></code> to <code><a href="https://rdrr.io/r/base/lapply.html" class="external-link">vapply()</a></code> (PR <a href="https://github.com/scverse/anndataR/issues/294" class="external-link">#294</a>)</li>
+<li>Ignore <code>development_status.Rmd</code> vignette when building package (PR <a href="https://github.com/scverse/anndataR/issues/296" class="external-link">#296</a>)</li>
+<li>Remove <code>anndataR.Rproj</code> file from repository (PR <a href="https://github.com/scverse/anndataR/issues/292" class="external-link">#292</a>)</li>
+</ul></div>
+<div class="section level3">
+<h3 id="bug-fixes-0-2-0">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-0-2-0"></a></h3>
+<ul><li>Fix a bug where string arrays were not transposed correctly when writing to H5AD files (PR <a href="https://github.com/scverse/anndataR/issues/305" class="external-link">#305</a>)</li>
+<li>Fix a bug where the dimensions of dense arrays were not properly conserved when reading from H5AD (PR <a href="https://github.com/scverse/anndataR/issues/305" class="external-link">#305</a>)</li>
+</ul></div>
+<div class="section level3">
+<h3 id="documentation-0-2-0">Documentation<a class="anchor" aria-label="anchor" href="#documentation-0-2-0"></a></h3>
+<ul><li>Simplify and update vignettes (PR <a href="https://github.com/scverse/anndataR/issues/282" class="external-link">#282</a>)</li>
+<li>Add Bioconductor installation instructions in preparation for submission (PR <a href="https://github.com/scverse/anndataR/issues/297" class="external-link">#297</a>)</li>
+</ul></div>
+<div class="section level3">
+<h3 id="testing-0-2-0">Testing<a class="anchor" aria-label="anchor" href="#testing-0-2-0"></a></h3>
+<ul><li>Improvements to round trip testing (PR <a href="https://github.com/scverse/anndataR/issues/283" class="external-link">#283</a>, PR <a href="https://github.com/scverse/anndataR/issues/293" class="external-link">#293</a>, PR <a href="https://github.com/scverse/anndataR/issues/305" class="external-link">#305</a>)
+<ul><li>Most round trip tests are now enabled and pass successfully</li>
+<li>Conversion helpers have been added to assist with <strong>{reticulate}</strong> tests</li>
+</ul></li>
+</ul></div>
+</div>
+    <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.0" id="anndatar-010-inital-release-candidate">anndataR 0.1.0 (inital release candidate)<a class="anchor" aria-label="anchor" href="#anndatar-010-inital-release-candidate"></a></h2>
 <p>Initial release candidate of <strong>{anndataR}</strong> including:</p>
 <ul><li>Native reading and writing of H5AD files</li>
@@ -53,7 +100,8 @@
 <li>Extensive function documentation and vignettes demonstrating usage</li>
 <li>Comprehensive unit testing and identification of known issues</li>
 </ul></div>
-  </main></div>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside></div>
 
 
     <footer><div class="pkgdown-footer-left">

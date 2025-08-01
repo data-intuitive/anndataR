@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">anndataR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0.9011</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,7 +20,6 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><h6 class="dropdown-header" data-toc-skip>Usage</h6></li>
-    <li><a class="dropdown-item" href="../articles/anndataR.html">Read/write H5AD files</a></li>
     <li><a class="dropdown-item" href="../articles/usage_seurat.html">Read/write Seurat objects</a></li>
     <li><a class="dropdown-item" href="../articles/usage_singlecellexperiment.html">Read/write SingleCellExperiment objects</a></li>
     <li><hr class="dropdown-divider"></li>
@@ -97,8 +96,26 @@ file. Can be one of <code>"none"</code>, <code>"gzip"</code> or <code>"lzf"</cod
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>Compression is currently not supported for Boolean arrays, they will be
+
+<div class="section">
+<h3 id="compression">Compression<a class="anchor" aria-label="anchor" href="#compression"></a></h3>
+
+
+<p>Compression is currently not supported for Boolean arrays, they will be
 written uncompressed.</p>
+</div>
+
+<div class="section">
+<h3 id="null-values"><code>NULL</code> values<a class="anchor" aria-label="anchor" href="#null-values"></a></h3>
+
+
+<p>For compatibility with changes in Python <strong>anndata</strong> 0.12.0, <code>NULL</code> values
+in <code>uns</code> are written to H5AD files as a <code>NULL</code> dataset (instead of not being
+written at all). To disable this behaviour, set
+<code>option(anndataR.write_null = FALSE)</code>. This may be required to allow the file
+to be read by older versions of Python <strong>anndata</strong>.</p>
+</div>
+
     </div>
 
     <div class="section level2">
