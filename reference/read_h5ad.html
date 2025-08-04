@@ -53,7 +53,6 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">read_h5ad</span><span class="op">(</span></span>
 <span>  <span class="va">path</span>,</span>
 <span>  as <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"InMemoryAnnData"</span>, <span class="st">"HDF5AnnData"</span>, <span class="st">"SingleCellExperiment"</span>, <span class="st">"Seurat"</span><span class="op">)</span>,</span>
-<span>  to <span class="op">=</span> <span class="fu">deprecated</span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  mode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"r"</span>, <span class="st">"r+"</span>, <span class="st">"a"</span>, <span class="st">"w"</span>, <span class="st">"w-"</span>, <span class="st">"x"</span><span class="op">)</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -76,10 +75,6 @@
 <li><p><code>"Seurat"</code>: Read the H5AD file as a
 <code><a href="https://satijalab.github.io/seurat-object/reference/Seurat-class.html" class="external-link">SeuratObject::Seurat</a></code> object</p></li>
 </ul></dd>
-
-
-<dt id="arg-to">to<a class="anchor" aria-label="anchor" href="#arg-to"></a></dt>
-<dd><p><a href="https://lifecycle.r-lib.org/articles/stages.html#deprecated" class="external-link"><img src="figures/lifecycle-deprecated.svg" alt="[Deprecated]"></a> Deprecated, use <code>as</code> instead</p></dd>
 
 
 <dt id="arg-mode">mode<a class="anchor" aria-label="anchor" href="#arg-mode"></a></dt>
