@@ -135,7 +135,6 @@ intended to be used as a base class for concrete implementations of
 <li><p><a href="#method-AbstractAnnData-as_Seurat"><code>AbstractAnnData$as_Seurat()</code></a></p></li>
 <li><p><a href="#method-AbstractAnnData-as_InMemoryAnnData"><code>AbstractAnnData$as_InMemoryAnnData()</code></a></p></li>
 <li><p><a href="#method-AbstractAnnData-as_HDF5AnnData"><code>AbstractAnnData$as_HDF5AnnData()</code></a></p></li>
-<li><p><a href="#method-AbstractAnnData-to_HDF5AnnData"><code>AbstractAnnData$to_HDF5AnnData()</code></a></p></li>
 <li><p><a href="#method-AbstractAnnData-write_h5ad"><code>AbstractAnnData$write_h5ad()</code></a></p></li>
 <li><p><a href="#method-AbstractAnnData-clone"><code>AbstractAnnData$clone()</code></a></p></li>
 </ul></div><p></p><hr><a id="method-AbstractAnnData-print"></a><div class="section">
@@ -404,32 +403,11 @@ intended to be used as a base class for concrete implementations of
 <p>An <code><a href="HDF5AnnData.html">HDF5AnnData</a></code> object</p>
 </div>
 
-</div><p></p><hr><a id="method-AbstractAnnData-to_HDF5AnnData"></a><div class="section">
-<h3 id="method-to-hdf-anndata-">Method <code>to_HDF5AnnData()</code><a class="anchor" aria-label="anchor" href="#method-to-hdf-anndata-"></a></h3>
-<p><a href="https://lifecycle.r-lib.org/articles/stages.html#deprecated" class="external-link"><img src="figures/lifecycle-deprecated.svg" alt="[Deprecated]"></a></p>
-<p>Deprecated, use <code><a href="as_HDF5AnnData.html">as_HDF5AnnData()</a></code> instead</p><div class="section">
-<h4 id="usage-16">Usage<a class="anchor" aria-label="anchor" href="#usage-16"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">AbstractAnnData</span><span class="op">$</span><span class="fu">to_HDF5AnnData</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
-<h4 id="arguments-4">Arguments<a class="anchor" aria-label="anchor" href="#arguments-4"></a></h4>
-<p></p><div class="arguments"><dl><dt><code>...</code></dt>
-<dd><p>Arguments passed to <code>adata$as_HDF5AnnData()</code></p></dd>
-
-
-</dl><p></p></div>
-</div>
-<div class="section">
-<h4 id="returns-4">Returns<a class="anchor" aria-label="anchor" href="#returns-4"></a></h4>
-<p>An <code><a href="HDF5AnnData.html">HDF5AnnData</a></code> object</p>
-</div>
-
 </div><p></p><hr><a id="method-AbstractAnnData-write_h5ad"></a><div class="section">
 <h3 id="method-write-h-ad-">Method <code><a href="write_h5ad.html">write_h5ad()</a></code><a class="anchor" aria-label="anchor" href="#method-write-h-ad-"></a></h3>
 <p>Write the <code>AnnData</code> object to an H5AD file</p>
 <p>See <code><a href="write_h5ad.html">write_h5ad()</a></code> for details</p><div class="section">
-<h4 id="usage-17">Usage<a class="anchor" aria-label="anchor" href="#usage-17"></a></h4>
+<h4 id="usage-16">Usage<a class="anchor" aria-label="anchor" href="#usage-16"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">AbstractAnnData</span><span class="op">$</span><span class="fu">write_h5ad</span><span class="op">(</span></span>
 <span>  <span class="va">path</span>,</span>
 <span>  compression <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"none"</span>, <span class="st">"gzip"</span>, <span class="st">"lzf"</span><span class="op">)</span>,</span>
@@ -438,7 +416,7 @@ intended to be used as a base class for concrete implementations of
 </div>
 
 <div class="section">
-<h4 id="arguments-5">Arguments<a class="anchor" aria-label="anchor" href="#arguments-5"></a></h4>
+<h4 id="arguments-4">Arguments<a class="anchor" aria-label="anchor" href="#arguments-4"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>path</code></dt>
 <dd><p>See <code><a href="write_h5ad.html">write_h5ad()</a></code></p></dd>
 
@@ -454,19 +432,19 @@ intended to be used as a base class for concrete implementations of
 </dl><p></p></div>
 </div>
 <div class="section">
-<h4 id="returns-5">Returns<a class="anchor" aria-label="anchor" href="#returns-5"></a></h4>
+<h4 id="returns-4">Returns<a class="anchor" aria-label="anchor" href="#returns-4"></a></h4>
 <p><code>path</code> invisibly</p>
 </div>
 
 </div><p></p><hr><a id="method-AbstractAnnData-clone"></a><div class="section">
 <h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
-<h4 id="usage-18">Usage<a class="anchor" aria-label="anchor" href="#usage-18"></a></h4>
+<h4 id="usage-17">Usage<a class="anchor" aria-label="anchor" href="#usage-17"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">AbstractAnnData</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-6">Arguments<a class="anchor" aria-label="anchor" href="#arguments-6"></a></h4>
+<h4 id="arguments-5">Arguments<a class="anchor" aria-label="anchor" href="#arguments-5"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
 
