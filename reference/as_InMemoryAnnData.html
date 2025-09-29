@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">anndataR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.99.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.99.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,7 +40,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.svg" class="logo" alt=""><h1>Convert an <code>AnnData</code> to an <code>InMemoryAnnData</code></h1>
-      <small class="dont-index">Source: <a href="https://github.com/scverse/anndataR/blob/v0.99.0/R/InMemoryAnnData.R" class="external-link"><code>R/InMemoryAnnData.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/scverse/anndataR/blob/devel/R/InMemoryAnnData.R" class="external-link"><code>R/InMemoryAnnData.R</code></a></small>
       <div class="d-none name"><code>as_InMemoryAnnData.Rd</code></div>
     </div>
 
@@ -71,8 +71,10 @@
     <div class="dont-index"><p>Other object converters:
 <code><a href="as_AnnData.html">as_AnnData</a>()</code>,
 <code><a href="as_HDF5AnnData.html">as_HDF5AnnData</a>()</code>,
+<code><a href="as_ReticulateAnnData.html">as_ReticulateAnnData</a>()</code>,
 <code><a href="as_Seurat.html">as_Seurat</a>()</code>,
-<code><a href="as_SingleCellExperiment.html">as_SingleCellExperiment</a>()</code></p></div>
+<code><a href="as_SingleCellExperiment.html">as_SingleCellExperiment</a>()</code>,
+<code><a href="reticulate-helpers.html">reticulate-helpers</a></code></p></div>
     </div>
 
     <div class="section level2">
@@ -87,7 +89,7 @@
 <span class="r-in"><span>  var <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>row.names <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, gene <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">ad</span><span class="op">$</span><span class="fu">as_InMemoryAnnData</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> AnnData object with n_obs × n_vars = 3 × 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> InMemoryAnnData object with n_obs × n_vars = 3 × 5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     obs: 'cell'</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     var: 'gene'</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     layers: 'A', 'B'</span>

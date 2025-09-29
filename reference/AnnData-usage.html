@@ -8,7 +8,9 @@ Back ends
 
 There are different back ends for AnnData objects that inherit from the
 abstract AbstractAnnData class. For example, the InMemoryAnnData stores
-data in memory or the HDF5AnnData is backed by a H5AD file.
+data in memory, the HDF5AnnData is backed by a H5AD file, and the
+ReticulateAnnData provides direct integration with Python AnnData objects
+via reticulate.
 
 
 
@@ -35,7 +37,9 @@ Back ends
 
 There are different back ends for AnnData objects that inherit from the
 abstract AbstractAnnData class. For example, the InMemoryAnnData stores
-data in memory or the HDF5AnnData is backed by a H5AD file.
+data in memory, the HDF5AnnData is backed by a H5AD file, and the
+ReticulateAnnData provides direct integration with Python AnnData objects
+via reticulate.
 
 
 
@@ -61,7 +65,7 @@ adata$method() calls a method
 
     <a class="navbar-brand me-2" href="../index.html">anndataR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.99.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.99.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -94,7 +98,7 @@ adata$method() calls a method
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.svg" class="logo" alt=""><h1>AnnData structure and usage</h1>
-      <small class="dont-index">Source: <a href="https://github.com/scverse/anndataR/blob/v0.99.0/R/AnnData-usage.R" class="external-link"><code>R/AnnData-usage.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/scverse/anndataR/blob/devel/R/AnnData-usage.R" class="external-link"><code>R/AnnData-usage.R</code></a></small>
       <div class="d-none name"><code>AnnData-usage.Rd</code></div>
     </div>
 
@@ -108,7 +112,9 @@ annotations in <code>uns</code>.</p><div class="section">
 
 <p>There are different back ends for <code>AnnData</code> objects that inherit from the
 abstract <a href="AbstractAnnData.html">AbstractAnnData</a> class. For example, the <a href="InMemoryAnnData.html">InMemoryAnnData</a> stores
-data in memory or the <a href="HDF5AnnData.html">HDF5AnnData</a> is backed by a H5AD file.</p>
+data in memory, the <a href="HDF5AnnData.html">HDF5AnnData</a> is backed by a H5AD file, and the
+<a href="ReticulateAnnData.html">ReticulateAnnData</a> provides direct integration with Python <code>AnnData</code> objects
+via reticulate.</p>
 </div>
 
 <div class="section">
@@ -127,6 +133,10 @@ methods, can be accessed using the <code>$</code> operator</p>
     </div>
 
 
+    <div class="section level2">
+    <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <p>An <code>AnnData</code> object inheriting from <code><a href="AbstractAnnData.html">AbstractAnnData</a></code></p>
+    </div>
     <div class="section level2">
     <h2 id="fields">Fields<a class="anchor" aria-label="anchor" href="#fields"></a></h2>
 
@@ -267,6 +277,9 @@ elements with number of rows and columns equal to <code>n_vars</code>.</p></dd>
 <dt><code><a href="as_HDF5AnnData.html">as_HDF5AnnData()</a></code></dt>
 <dd><p>Convert to <code><a href="HDF5AnnData.html">HDF5AnnData</a></code>, see <code><a href="as_HDF5AnnData.html">as_HDF5AnnData()</a></code></p></dd>
 
+<dt><code><a href="as_ReticulateAnnData.html">as_ReticulateAnnData()</a></code></dt>
+<dd><p>Convert to <code><a href="ReticulateAnnData.html">ReticulateAnnData</a></code>, see <code><a href="as_ReticulateAnnData.html">as_ReticulateAnnData()</a></code></p></dd>
+
 
 </dl></div>
 
@@ -316,7 +329,8 @@ elements with number of rows and columns equal to <code>n_vars</code>.</p></dd>
 <p><a href="AbstractAnnData.html">AbstractAnnData</a> for the abstract class that all <code>AnnData</code> objects
 inherit from</p>
 <p><a href="InMemoryAnnData.html">InMemoryAnnData</a> for the in-memory implementation of <code>AnnData</code></p>
-<p><a href="HDF5AnnData.html">HDF5AnnData</a> for the HDF5-backed implementation of <code>AnnData</code></p></div>
+<p><a href="HDF5AnnData.html">HDF5AnnData</a> for the HDF5-backed implementation of <code>AnnData</code></p>
+<p><a href="ReticulateAnnData.html">ReticulateAnnData</a> for the reticulate-based implementation that wraps Python AnnData objects</p></div>
     </div>
 
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

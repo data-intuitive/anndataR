@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">anndataR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.99.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.99.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,7 +74,7 @@ Morgan</h4>
 Deconinck</h4>
                         
       
-      <small class="dont-index">Source: <a href="https://github.com/scverse/anndataR/blob/v0.99.0/vignettes/anndataR.Rmd" class="external-link"><code>vignettes/anndataR.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/scverse/anndataR/blob/devel/vignettes/anndataR.Rmd" class="external-link"><code>vignettes/anndataR.Rmd</code></a></small>
       <div class="d-none name"><code>anndataR.Rmd</code></div>
     </div>
 
@@ -137,7 +137,7 @@ object:</p>
 <p>View structure:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">adata</span></span>
-<span><span class="co">#&gt; AnnData object with n_obs × n_vars = 50 × 100</span></span>
+<span><span class="co">#&gt; HDF5AnnData object with n_obs × n_vars = 50 × 100</span></span>
 <span><span class="co">#&gt;     obs: 'Float', 'FloatNA', 'Int', 'IntNA', 'Bool', 'BoolNA', 'n_genes_by_counts', 'log1p_n_genes_by_counts', 'total_counts', 'log1p_total_counts', 'leiden'</span></span>
 <span><span class="co">#&gt;     var: 'String', 'n_cells_by_counts', 'mean_counts', 'log1p_mean_counts', 'pct_dropout_by_counts', 'total_counts', 'log1p_total_counts', 'highly_variable', 'means', 'dispersions', 'dispersions_norm'</span></span>
 <span><span class="co">#&gt;     uns: 'Bool', 'BoolNA', 'Category', 'DataFrameEmpty', 'Int', 'IntNA', 'IntScalar', 'Sparse1D', 'String', 'String2D', 'StringScalar', 'hvg', 'leiden', 'log1p', 'neighbors', 'pca', 'rank_genes_groups', 'umap'</span></span>
@@ -206,7 +206,7 @@ object:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">adata</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span><span class="va">sce</span><span class="op">)</span></span>
 <span><span class="va">adata</span></span>
-<span><span class="co">#&gt; AnnData object with n_obs × n_vars = 50 × 100</span></span>
+<span><span class="co">#&gt; InMemoryAnnData object with n_obs × n_vars = 50 × 100</span></span>
 <span><span class="co">#&gt;     obs: 'Float', 'FloatNA', 'Int', 'IntNA', 'Bool', 'BoolNA', 'n_genes_by_counts', 'log1p_n_genes_by_counts', 'total_counts', 'log1p_total_counts', 'leiden'</span></span>
 <span><span class="co">#&gt;     var: 'String', 'n_cells_by_counts', 'mean_counts', 'log1p_mean_counts', 'pct_dropout_by_counts', 'total_counts', 'log1p_total_counts', 'highly_variable', 'means', 'dispersions', 'dispersions_norm'</span></span>
 <span><span class="co">#&gt;     uns: 'Bool', 'BoolNA', 'Category', 'DataFrameEmpty', 'Int', 'IntNA', 'IntScalar', 'Sparse1D', 'String', 'String2D', 'StringScalar', 'hvg', 'leiden', 'log1p', 'neighbors', 'pca', 'rank_genes_groups', 'umap'</span></span>
@@ -220,12 +220,11 @@ object:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">adata</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/as_AnnData.html">as_AnnData</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span>
 <span><span class="va">adata</span></span>
-<span><span class="co">#&gt; AnnData object with n_obs × n_vars = 50 × 100</span></span>
+<span><span class="co">#&gt; InMemoryAnnData object with n_obs × n_vars = 50 × 100</span></span>
 <span><span class="co">#&gt;     obs: 'orig.ident', 'nCount_RNA', 'nFeature_RNA', 'Float', 'FloatNA', 'Int', 'IntNA', 'Bool', 'BoolNA', 'n_genes_by_counts', 'log1p_n_genes_by_counts', 'total_counts', 'log1p_total_counts', 'leiden'</span></span>
 <span><span class="co">#&gt;     var: 'String', 'n_cells_by_counts', 'mean_counts', 'log1p_mean_counts', 'pct_dropout_by_counts', 'total_counts', 'log1p_total_counts', 'highly_variable', 'means', 'dispersions', 'dispersions_norm'</span></span>
 <span><span class="co">#&gt;     uns: 'Bool', 'BoolNA', 'Category', 'DataFrameEmpty', 'Int', 'IntNA', 'IntScalar', 'Sparse1D', 'String', 'String2D', 'StringScalar', 'hvg', 'leiden', 'log1p', 'neighbors', 'pca', 'rank_genes_groups', 'umap'</span></span>
 <span><span class="co">#&gt;     obsm: 'X_pca', 'X_umap'</span></span>
-<span><span class="co">#&gt;     varm: 'X_pca'</span></span>
 <span><span class="co">#&gt;     layers: 'counts', 'csc_counts', 'dense_X', 'dense_counts', 'X'</span></span>
 <span><span class="co">#&gt;     obsp: 'connectivities', 'distances'</span></span></code></pre></div>
 </div>
@@ -244,34 +243,178 @@ object:</p>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">adata</span></span>
-<span><span class="co">#&gt; AnnData object with n_obs × n_vars = 10 × 10</span></span>
+<span><span class="co">#&gt; InMemoryAnnData object with n_obs × n_vars = 10 × 10</span></span>
 <span><span class="co">#&gt;     obs: 'cell_type'</span></span>
 <span><span class="co">#&gt;     var: 'gene_name'</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="standard-r-subsetting-with-s3-methods">Standard R subsetting with S3 methods<a class="anchor" aria-label="anchor" href="#standard-r-subsetting-with-s3-methods"></a>
+</h2>
+<p><strong>{anndataR}</strong> provides standard R subsetting methods
+that work with familiar bracket notation. These methods return
+<code>AnnDataView</code> objects that provide lazy evaluation for
+efficient memory usage:</p>
+<div class="section level3">
+<h3 id="basic-subsetting">Basic subsetting<a class="anchor" aria-label="anchor" href="#basic-subsetting"></a>
+</h3>
+<p>Subset observations (rows) using logical conditions:</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Create some sample data</span></span>
+<span><span class="va">adata</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/AnnData.html">AnnData</a></span><span class="op">(</span></span>
+<span>  X <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">50</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">10</span>, ncol <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,</span>
+<span>  obs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<span>    cell_type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  var <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<span>    gene_name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"gene_"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span>,</span>
+<span>    highly_variable <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Subset to cell type "A"</span></span>
+<span><span class="va">view1</span> <span class="op">&lt;-</span> <span class="va">adata</span><span class="op">[</span><span class="va">adata</span><span class="op">$</span><span class="va">obs</span><span class="op">$</span><span class="va">cell_type</span> <span class="op">==</span> <span class="st">"A"</span>, <span class="op">]</span></span>
+<span><span class="va">view1</span></span>
+<span><span class="co">#&gt; View of InMemoryAnnData object with n_obs × n_vars = 3 × 5</span></span>
+<span><span class="co">#&gt;     obs: 'cell_type', 'score'</span></span>
+<span><span class="co">#&gt;     var: 'gene_name', 'highly_variable'</span></span></code></pre></div>
+<p>Subset variables (columns) using logical conditions:</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Subset to highly variable genes</span></span>
+<span><span class="va">view2</span> <span class="op">&lt;-</span> <span class="va">adata</span><span class="op">[</span>, <span class="va">adata</span><span class="op">$</span><span class="va">var</span><span class="op">$</span><span class="va">highly_variable</span><span class="op">]</span></span>
+<span><span class="va">view2</span></span>
+<span><span class="co">#&gt; View of InMemoryAnnData object with n_obs × n_vars = 10 × 3</span></span>
+<span><span class="co">#&gt;     obs: 'cell_type', 'score'</span></span>
+<span><span class="co">#&gt;     var: 'gene_name', 'highly_variable'</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="combined-subsetting">Combined subsetting<a class="anchor" aria-label="anchor" href="#combined-subsetting"></a>
+</h3>
+<p>Subset both observations and variables simultaneously:</p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Subset to cell type "A" and highly variable genes</span></span>
+<span><span class="va">view3</span> <span class="op">&lt;-</span> <span class="va">adata</span><span class="op">[</span><span class="va">adata</span><span class="op">$</span><span class="va">obs</span><span class="op">$</span><span class="va">cell_type</span> <span class="op">==</span> <span class="st">"A"</span>, <span class="va">adata</span><span class="op">$</span><span class="va">var</span><span class="op">$</span><span class="va">highly_variable</span><span class="op">]</span></span>
+<span><span class="va">view3</span></span>
+<span><span class="co">#&gt; View of InMemoryAnnData object with n_obs × n_vars = 3 × 3</span></span>
+<span><span class="co">#&gt;     obs: 'cell_type', 'score'</span></span>
+<span><span class="co">#&gt;     var: 'gene_name', 'highly_variable'</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="using-different-index-types">Using different index types<a class="anchor" aria-label="anchor" href="#using-different-index-types"></a>
+</h3>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Numeric indices</span></span>
+<span><span class="va">view4</span> <span class="op">&lt;-</span> <span class="va">adata</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span>
+<span><span class="va">view4</span></span>
+<span><span class="co">#&gt; View of InMemoryAnnData object with n_obs × n_vars = 5 × 3</span></span>
+<span><span class="co">#&gt;     obs: 'cell_type', 'score'</span></span>
+<span><span class="co">#&gt;     var: 'gene_name', 'highly_variable'</span></span>
+<span></span>
+<span><span class="co"># Character names (if available)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">adata</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"cell_"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">adata</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"gene_"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span></span>
+<span><span class="va">view5</span> <span class="op">&lt;-</span> <span class="va">adata</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cell_1"</span>, <span class="st">"cell_2"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gene_1"</span>, <span class="st">"gene_3"</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="va">view5</span></span>
+<span><span class="co">#&gt; View of InMemoryAnnData object with n_obs × n_vars = 2 × 2</span></span>
+<span><span class="co">#&gt;     obs: 'cell_type', 'score'</span></span>
+<span><span class="co">#&gt;     var: 'gene_name', 'highly_variable'</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="working-with-views">Working with views<a class="anchor" aria-label="anchor" href="#working-with-views"></a>
+</h3>
+<p>Views maintain access to all original data slots:</p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Access dimensions</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">view3</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 3 3</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">view3</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 3</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">view3</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 3</span></span>
+<span></span>
+<span><span class="co"># Access names</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">view3</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "cell_1" "cell_2" "cell_3"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">view3</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "gene_1" "gene_3" "gene_4"</span></span>
+<span></span>
+<span><span class="co"># Access data matrices and metadata</span></span>
+<span><span class="va">view3</span><span class="op">$</span><span class="va">X</span></span>
+<span><span class="co">#&gt;            gene_1      gene_3     gene_4</span></span>
+<span><span class="co">#&gt; cell_1 -0.6905379  0.02229473  0.4543416</span></span>
+<span><span class="co">#&gt; cell_2 -0.5585420  0.60361101 -0.8552025</span></span>
+<span><span class="co">#&gt; cell_3 -0.5366633 -0.26265057 -0.2868952</span></span>
+<span><span class="va">view3</span><span class="op">$</span><span class="va">obs</span></span>
+<span><span class="co">#&gt;        cell_type     score</span></span>
+<span><span class="co">#&gt; cell_1         A 0.3492990</span></span>
+<span><span class="co">#&gt; cell_2         A 0.9473183</span></span>
+<span><span class="co">#&gt; cell_3         A 0.2161000</span></span>
+<span><span class="va">view3</span><span class="op">$</span><span class="va">var</span></span>
+<span><span class="co">#&gt;        gene_name highly_variable</span></span>
+<span><span class="co">#&gt; gene_1    gene_1            TRUE</span></span>
+<span><span class="co">#&gt; gene_3    gene_3            TRUE</span></span>
+<span><span class="co">#&gt; gene_4    gene_4            TRUE</span></span>
+<span></span>
+<span><span class="co"># Views can be converted to concrete implementations</span></span>
+<span><span class="va">concrete</span> <span class="op">&lt;-</span> <span class="va">view3</span><span class="op">$</span><span class="fu">as_InMemoryAnnData</span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">concrete</span></span>
+<span><span class="co">#&gt; InMemoryAnnData object with n_obs × n_vars = 3 × 3</span></span>
+<span><span class="co">#&gt;     obs: 'cell_type', 'score'</span></span>
+<span><span class="co">#&gt;     var: 'gene_name', 'highly_variable'</span></span></code></pre></div>
+</div>
 </div>
 <div class="section level2">
 <h2 id="write-to-disk">Write to disk:<a class="anchor" aria-label="anchor" href="#write-to-disk"></a>
 </h2>
 <p>Write an <code>AnnData</code> object to disk:</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tmpfile</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".h5ad"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/write_h5ad.html">write_h5ad</a></span><span class="op">(</span><span class="va">adata</span>, <span class="va">tmpfile</span><span class="op">)</span></span></code></pre></div>
 <p>Write a <code>SingleCellExperiment</code> object to disk:</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tmpfile</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".h5ad"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/write_h5ad.html">write_h5ad</a></span><span class="op">(</span><span class="va">sce</span>, <span class="va">tmpfile</span><span class="op">)</span></span></code></pre></div>
 <p>Write a <code>Seurat</code> object to disk:</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tmpfile</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".h5ad"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/write_h5ad.html">write_h5ad</a></span><span class="op">(</span><span class="va">obj</span>, <span class="va">tmpfile</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
+<h2 id="citing-anndatar">Citing <strong>{anndataR}</strong><a class="anchor" aria-label="anchor" href="#citing-anndatar"></a>
+</h2>
+<p>If you use <strong>{anndataR}</strong> in your work, please cite <a href="https://doi.org/10.1101/2025.08.18.669052" class="external-link"><em>“anndataR improves
+interoperability between R and Python in single-cell
+transcriptomics”</em></a>:</p>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"anndataR"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; To cite package 'anndataR' in publications use:</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   Deconinck L, Zappia L, Cannoodt R, Morgan M, scverse core, Virshup I,</span></span>
+<span><span class="co">#&gt;   Sang-aram C, Bredikhin D, Seurinck R, Saeys Y (2025). "anndataR</span></span>
+<span><span class="co">#&gt;   improves interoperability between R and Python in single-cell</span></span>
+<span><span class="co">#&gt;   transcriptomics." _bioRxiv_, 2025.08.18.669052.</span></span>
+<span><span class="co">#&gt;   doi:10.1101/2025.08.18.669052</span></span>
+<span><span class="co">#&gt;   &lt;https://doi.org/10.1101/2025.08.18.669052&gt;.</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   @Article{,</span></span>
+<span><span class="co">#&gt;     title = {{anndataR} improves interoperability between R and Python in single-cell transcriptomics},</span></span>
+<span><span class="co">#&gt;     author = {Louise Deconinck and Luke Zappia and Robrecht Cannoodt and Martin Morgan and {scverse core} and Isaac Virshup and Chananchida Sang-aram and Danila Bredikhin and Ruth Seurinck and Yvan Saeys},</span></span>
+<span><span class="co">#&gt;     journal = {bioRxiv},</span></span>
+<span><span class="co">#&gt;     year = {2025},</span></span>
+<span><span class="co">#&gt;     pages = {2025.08.18.669052},</span></span>
+<span><span class="co">#&gt;     doi = {10.1101/2025.08.18.669052},</span></span>
+<span><span class="co">#&gt;   }</span></span></code></pre></div>
+</div>
+<div class="section level2">
 <h2 id="session-info">Session info<a class="anchor" aria-label="anchor" href="#session-info"></a>
 </h2>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; R version 4.5.1 (2025-06-13)</span></span>
 <span><span class="co">#&gt; Platform: x86_64-pc-linux-gnu</span></span>
-<span><span class="co">#&gt; Running under: Ubuntu 24.04.2 LTS</span></span>
+<span><span class="co">#&gt; Running under: Ubuntu 24.04.3 LTS</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Matrix products: default</span></span>
 <span><span class="co">#&gt; BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 </span></span>
@@ -291,20 +434,20 @@ object:</p>
 <span><span class="co">#&gt; [8] base     </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; other attached packages:</span></span>
-<span><span class="co">#&gt;  [1] anndataR_0.99.0             SingleCellExperiment_1.30.1</span></span>
+<span><span class="co">#&gt;  [1] anndataR_0.99.2             SingleCellExperiment_1.30.1</span></span>
 <span><span class="co">#&gt;  [3] SummarizedExperiment_1.38.1 Biobase_2.68.0             </span></span>
-<span><span class="co">#&gt;  [5] GenomicRanges_1.60.0        GenomeInfoDb_1.44.1        </span></span>
+<span><span class="co">#&gt;  [5] GenomicRanges_1.60.0        GenomeInfoDb_1.44.3        </span></span>
 <span><span class="co">#&gt;  [7] IRanges_2.42.0              S4Vectors_0.46.0           </span></span>
 <span><span class="co">#&gt;  [9] BiocGenerics_0.54.0         generics_0.1.4             </span></span>
 <span><span class="co">#&gt; [11] MatrixGenerics_1.20.0       matrixStats_1.5.0          </span></span>
-<span><span class="co">#&gt; [13] SeuratObject_5.1.0          sp_2.2-0                   </span></span>
+<span><span class="co">#&gt; [13] SeuratObject_5.2.0          sp_2.2-0                   </span></span>
 <span><span class="co">#&gt; [15] BiocStyle_2.36.0           </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
-<span><span class="co">#&gt;   [1] RColorBrewer_1.1-3      jsonlite_2.0.0          magrittr_2.0.3         </span></span>
-<span><span class="co">#&gt;   [4] spatstat.utils_3.1-5    farver_2.1.2            rmarkdown_2.29         </span></span>
-<span><span class="co">#&gt;   [7] fs_1.6.6                ragg_1.4.0              vctrs_0.6.5            </span></span>
-<span><span class="co">#&gt;  [10] ROCR_1.0-11             spatstat.explore_3.5-2  htmltools_0.5.8.1      </span></span>
+<span><span class="co">#&gt;   [1] RColorBrewer_1.1-3      jsonlite_2.0.0          magrittr_2.0.4         </span></span>
+<span><span class="co">#&gt;   [4] spatstat.utils_3.2-0    farver_2.1.2            rmarkdown_2.30         </span></span>
+<span><span class="co">#&gt;   [7] fs_1.6.6                ragg_1.5.0              vctrs_0.6.5            </span></span>
+<span><span class="co">#&gt;  [10] ROCR_1.0-11             spatstat.explore_3.5-3  htmltools_0.5.8.1      </span></span>
 <span><span class="co">#&gt;  [13] S4Arrays_1.8.1          Rhdf5lib_1.30.0         SparseArray_1.8.1      </span></span>
 <span><span class="co">#&gt;  [16] rhdf5_2.52.1            sass_0.4.10             sctransform_0.4.2      </span></span>
 <span><span class="co">#&gt;  [19] parallelly_1.45.1       KernSmooth_2.23-26      bslib_0.9.0            </span></span>
@@ -314,35 +457,36 @@ object:</p>
 <span><span class="co">#&gt;  [31] lifecycle_1.0.4         pkgconfig_2.0.3         Matrix_1.7-3           </span></span>
 <span><span class="co">#&gt;  [34] R6_2.6.1                fastmap_1.2.0           GenomeInfoDbData_1.2.14</span></span>
 <span><span class="co">#&gt;  [37] fitdistrplus_1.2-4      future_1.67.0           shiny_1.11.1           </span></span>
-<span><span class="co">#&gt;  [40] digest_0.6.37           patchwork_1.3.1         tensor_1.5.1           </span></span>
+<span><span class="co">#&gt;  [40] digest_0.6.37           patchwork_1.3.2         tensor_1.5.1           </span></span>
 <span><span class="co">#&gt;  [43] Seurat_5.3.0            RSpectra_0.16-2         irlba_2.3.5.1          </span></span>
-<span><span class="co">#&gt;  [46] textshaping_1.0.1       progressr_0.15.1        spatstat.sparse_3.1-0  </span></span>
+<span><span class="co">#&gt;  [46] textshaping_1.0.3       progressr_0.16.0        spatstat.sparse_3.1-0  </span></span>
 <span><span class="co">#&gt;  [49] polyclip_1.10-7         httr_1.4.7              abind_1.4-8            </span></span>
-<span><span class="co">#&gt;  [52] compiler_4.5.1          fastDummies_1.7.5       MASS_7.3-65            </span></span>
-<span><span class="co">#&gt;  [55] DelayedArray_0.34.1     tools_4.5.1             lmtest_0.9-40          </span></span>
-<span><span class="co">#&gt;  [58] httpuv_1.6.16           future.apply_1.20.0     goftest_1.2-3          </span></span>
-<span><span class="co">#&gt;  [61] glue_1.8.0              nlme_3.1-168            rhdf5filters_1.20.0    </span></span>
-<span><span class="co">#&gt;  [64] promises_1.3.3          grid_4.5.1              Rtsne_0.17             </span></span>
-<span><span class="co">#&gt;  [67] cluster_2.1.8.1         reshape2_1.4.4          spatstat.data_3.1-6    </span></span>
-<span><span class="co">#&gt;  [70] gtable_0.3.6            tidyr_1.3.1             data.table_1.17.8      </span></span>
-<span><span class="co">#&gt;  [73] XVector_0.48.0          spatstat.geom_3.5-0     RcppAnnoy_0.0.22       </span></span>
-<span><span class="co">#&gt;  [76] ggrepel_0.9.6           RANN_2.6.2              pillar_1.11.0          </span></span>
-<span><span class="co">#&gt;  [79] stringr_1.5.1           spam_2.11-1             RcppHNSW_0.6.0         </span></span>
-<span><span class="co">#&gt;  [82] later_1.4.2             splines_4.5.1           dplyr_1.1.4            </span></span>
-<span><span class="co">#&gt;  [85] lattice_0.22-7          deldir_2.0-4            survival_3.8-3         </span></span>
-<span><span class="co">#&gt;  [88] tidyselect_1.2.1        miniUI_0.1.2            pbapply_1.7-4          </span></span>
-<span><span class="co">#&gt;  [91] knitr_1.50              gridExtra_2.3           bookdown_0.43          </span></span>
-<span><span class="co">#&gt;  [94] scattermore_1.2         xfun_0.52               stringi_1.8.7          </span></span>
-<span><span class="co">#&gt;  [97] UCSC.utils_1.4.0        lazyeval_0.2.2          yaml_2.3.10            </span></span>
-<span><span class="co">#&gt; [100] evaluate_1.0.4          codetools_0.2-20        tibble_3.3.0           </span></span>
-<span><span class="co">#&gt; [103] BiocManager_1.30.26     cli_3.6.5               uwot_0.2.3             </span></span>
-<span><span class="co">#&gt; [106] xtable_1.8-4            reticulate_1.43.0       systemfonts_1.2.3      </span></span>
-<span><span class="co">#&gt; [109] jquerylib_0.1.4         Rcpp_1.1.0              spatstat.random_3.4-1  </span></span>
-<span><span class="co">#&gt; [112] globals_0.18.0          png_0.1-8               spatstat.univar_3.1-4  </span></span>
-<span><span class="co">#&gt; [115] parallel_4.5.1          pkgdown_2.1.3           ggplot2_3.5.2          </span></span>
-<span><span class="co">#&gt; [118] dotCall64_1.2           listenv_0.9.1           viridisLite_0.4.2      </span></span>
-<span><span class="co">#&gt; [121] scales_1.4.0            ggridges_0.5.6          purrr_1.1.0            </span></span>
-<span><span class="co">#&gt; [124] crayon_1.5.3            rlang_1.1.6             cowplot_1.2.0</span></span></code></pre></div>
+<span><span class="co">#&gt;  [52] compiler_4.5.1          S7_0.2.0                fastDummies_1.7.5      </span></span>
+<span><span class="co">#&gt;  [55] MASS_7.3-65             DelayedArray_0.34.1     tools_4.5.1            </span></span>
+<span><span class="co">#&gt;  [58] lmtest_0.9-40           httpuv_1.6.16           future.apply_1.20.0    </span></span>
+<span><span class="co">#&gt;  [61] goftest_1.2-3           glue_1.8.0              nlme_3.1-168           </span></span>
+<span><span class="co">#&gt;  [64] rhdf5filters_1.20.0     promises_1.3.3          grid_4.5.1             </span></span>
+<span><span class="co">#&gt;  [67] Rtsne_0.17              cluster_2.1.8.1         reshape2_1.4.4         </span></span>
+<span><span class="co">#&gt;  [70] spatstat.data_3.1-8     gtable_0.3.6            tidyr_1.3.1            </span></span>
+<span><span class="co">#&gt;  [73] data.table_1.17.8       XVector_0.48.0          spatstat.geom_3.6-0    </span></span>
+<span><span class="co">#&gt;  [76] RcppAnnoy_0.0.22        ggrepel_0.9.6           RANN_2.6.2             </span></span>
+<span><span class="co">#&gt;  [79] pillar_1.11.1           stringr_1.5.2           spam_2.11-1            </span></span>
+<span><span class="co">#&gt;  [82] RcppHNSW_0.6.0          later_1.4.4             splines_4.5.1          </span></span>
+<span><span class="co">#&gt;  [85] dplyr_1.1.4             lattice_0.22-7          deldir_2.0-4           </span></span>
+<span><span class="co">#&gt;  [88] survival_3.8-3          tidyselect_1.2.1        miniUI_0.1.2           </span></span>
+<span><span class="co">#&gt;  [91] pbapply_1.7-4           knitr_1.50              gridExtra_2.3          </span></span>
+<span><span class="co">#&gt;  [94] bookdown_0.44           scattermore_1.2         xfun_0.53              </span></span>
+<span><span class="co">#&gt;  [97] stringi_1.8.7           UCSC.utils_1.4.0        lazyeval_0.2.2         </span></span>
+<span><span class="co">#&gt; [100] yaml_2.3.10             evaluate_1.0.5          codetools_0.2-20       </span></span>
+<span><span class="co">#&gt; [103] tibble_3.3.0            BiocManager_1.30.26     cli_3.6.5              </span></span>
+<span><span class="co">#&gt; [106] uwot_0.2.3              xtable_1.8-4            reticulate_1.43.0      </span></span>
+<span><span class="co">#&gt; [109] systemfonts_1.2.3       jquerylib_0.1.4         Rcpp_1.1.0             </span></span>
+<span><span class="co">#&gt; [112] spatstat.random_3.4-2   globals_0.18.0          png_0.1-8              </span></span>
+<span><span class="co">#&gt; [115] spatstat.univar_3.1-4   parallel_4.5.1          pkgdown_2.1.3          </span></span>
+<span><span class="co">#&gt; [118] ggplot2_4.0.0           dotCall64_1.2           listenv_0.9.1          </span></span>
+<span><span class="co">#&gt; [121] viridisLite_0.4.2       scales_1.4.0            ggridges_0.5.7         </span></span>
+<span><span class="co">#&gt; [124] purrr_1.1.0             crayon_1.5.3            rlang_1.1.6            </span></span>
+<span><span class="co">#&gt; [127] cowplot_1.2.0</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
