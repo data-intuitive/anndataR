@@ -122,10 +122,13 @@ examples remain visible.</p>
 <code class="sourceCode R"><span><span class="va">md</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rstudio.github.io/reticulate/reference/import.html" class="external-link">import</a></span><span class="op">(</span><span class="st">"mudata"</span><span class="op">)</span></span></code></pre></div>
 <p>Load a MuData object from file:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://github.com/gtca/h5xx-datasets/raw/b1177ac8877c89d8bb355b072164384b4e9cc81d/datasets/minipbcite.h5mu"</span></span>
-<span><span class="va">path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".h5mu"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span><span class="va">url</span>, <span class="va">path</span><span class="op">)</span></span>
-<span><span class="va">mdata</span> <span class="op">&lt;-</span> <span class="va">md</span><span class="op">$</span><span class="fu">read_h5mu</span><span class="op">(</span><span class="va">path</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">cache</span> <span class="op">&lt;-</span> <span class="fu">BiocFileCache</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocFileCache/man/BiocFileCache-class.html" class="external-link">BiocFileCache</a></span><span class="op">(</span>ask <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="va">h5mu_file</span> <span class="op">&lt;-</span> <span class="fu">BiocFileCache</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocFileCache/man/BiocFileCache-class.html" class="external-link">bfcrpath</a></span><span class="op">(</span></span>
+<span>  <span class="va">cache</span>,</span>
+<span>  <span class="st">"https://github.com/gtca/h5xx-datasets/raw/b1177ac8877c89d8bb355b072164384b4e9cc81d/datasets/minipbcite.h5mu"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">mdata</span> <span class="op">&lt;-</span> <span class="va">md</span><span class="op">$</span><span class="fu">read_h5mu</span><span class="op">(</span><span class="va">h5mu_file</span><span class="op">)</span></span></code></pre></div>
 <p>Access individual modalities and convert them:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">rna_mod</span> <span class="op">&lt;-</span> <span class="va">mdata</span><span class="op">$</span><span class="va">mod</span><span class="op">[[</span><span class="st">"rna"</span><span class="op">]</span><span class="op">]</span></span>
