@@ -34,7 +34,6 @@ Use get_generator_types() to get the available types for each slot."><meta prope
     <li><h6 class="dropdown-header" data-toc-skip>Development</h6></li>
     <li><a class="dropdown-item" href="../articles/software_design.html">Software design</a></li>
     <li><a class="dropdown-item" href="../articles/development_status.html">Development status</a></li>
-    <li><a class="dropdown-item" href="../articles/known_issues.html">Known issues</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -161,8 +160,8 @@ generated slots will be included in the output object. To generate a more
 complete object, use <code>format = "AnnData"</code> followed by
 <code>adata$as_SingleCellExperiment()</code> or <code>adata$as_Seurat()</code>.</p>
 <p>Use <code>get_generator_types()</code> to get a list of the available types for each
-slot, or for a specific slot by setting <code>slot = </code>. If <code>example = TRUE</code>, only
-the example types are returned.</p>
+slot, or for a specific slot by setting <code>slot</code>. If <code>example = TRUE</code>, only the
+example types are returned.</p>
     </div>
 
     <div class="section level2">

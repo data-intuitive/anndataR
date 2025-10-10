@@ -30,7 +30,6 @@ functionality of an AnnData object, see AnnData-usage."><meta property="og:image
     <li><h6 class="dropdown-header" data-toc-skip>Development</h6></li>
     <li><a class="dropdown-item" href="../articles/software_design.html">Software design</a></li>
     <li><a class="dropdown-item" href="../articles/development_status.html">Development status</a></li>
-    <li><a class="dropdown-item" href="../articles/known_issues.html">Known issues</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -317,10 +316,10 @@ new <code>AnnData</code> object.</p><table class="table table"><tr><td><strong>F
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>The default method for RunUMAP has changed from calling Python UMAP via reticulate to the R-native UWOT using the cosine metric</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> To use Python UMAP via reticulate, set umap.method to 'umap-learn' and metric to 'correlation'</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> This message will be shown once per session</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 10:42:38 UMAP embedding parameters a = 0.9922 b = 1.112</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 10:42:38 Read 200 rows and found 10 numeric columns</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 10:42:38 Using Annoy for neighbor search, n_neighbors = 30</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 10:42:38 Building Annoy index with metric = cosine, n_trees = 50</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 13:47:12 UMAP embedding parameters a = 0.9922 b = 1.112</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 13:47:12 Read 200 rows and found 10 numeric columns</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 13:47:12 Using Annoy for neighbor search, n_neighbors = 30</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 13:47:12 Building Annoy index with metric = cosine, n_trees = 50</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> 0%   10   20   30   40   50   60   70   80   90   100%</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> [----|----|----|----|----|----|----|----|----|----|</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> *</span>
@@ -374,15 +373,15 @@ new <code>AnnData</code> object.</p><table class="table table"><tr><td><strong>F
 <span class="r-msg co"><span class="r-pr">#&gt;</span> *</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> *</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> |</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 10:42:38 Writing NN index file to temp file /tmp/RtmpOwBbXf/file68273cd6ace4</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 10:42:38 Searching Annoy index using 1 thread, search_k = 3000</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 10:42:38 Annoy recall = 100%</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 10:42:39 Commencing smooth kNN distance calibration using 1 thread</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 13:47:12 Writing NN index file to temp file /tmp/RtmpIAvCEB/file67997ca3f9a6</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 13:47:12 Searching Annoy index using 1 thread, search_k = 3000</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 13:47:12 Annoy recall = 100%</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 13:47:13 Commencing smooth kNN distance calibration using 1 thread</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>  with target n_neighbors = 30</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 10:42:41 Initializing from normalized Laplacian + noise (using RSpectra)</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 10:42:41 Commencing optimization for 500 epochs, with 6148 positive edges</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 10:42:41 Using rng type: pcg</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 10:42:42 Optimization finished</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 13:47:14 Initializing from normalized Laplacian + noise (using RSpectra)</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 13:47:14 Commencing optimization for 500 epochs, with 6148 positive edges</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 13:47:14 Using rng type: pcg</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 13:47:15 Optimization finished</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">as_AnnData</span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Row names of `Loadings(seurat_obj, <span style="color: #0000BB;">"pca"</span>)` do not match the expected var names</span>

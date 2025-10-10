@@ -7,10 +7,13 @@ Back ends
 
 
 There are different back ends for AnnData objects that inherit from the
-abstract AbstractAnnData class. For example, the InMemoryAnnData stores
-data in memory, the HDF5AnnData is backed by a H5AD file, and the
-ReticulateAnnData provides direct integration with Python AnnData objects
-via reticulate.
+abstract AbstractAnnData class and store and access data in different ways:
+InMemoryAnnData stores data in memory
+HDF5AnnData provides an interface to a H5AD file
+ReticulateAnnData wraps a Python AnnData object via reticulate
+
+
+See the class documentation for details.
 
 
 
@@ -36,10 +39,13 @@ Back ends
 
 
 There are different back ends for AnnData objects that inherit from the
-abstract AbstractAnnData class. For example, the InMemoryAnnData stores
-data in memory, the HDF5AnnData is backed by a H5AD file, and the
-ReticulateAnnData provides direct integration with Python AnnData objects
-via reticulate.
+abstract AbstractAnnData class and store and access data in different ways:
+InMemoryAnnData stores data in memory
+HDF5AnnData provides an interface to a H5AD file
+ReticulateAnnData wraps a Python AnnData object via reticulate
+
+
+See the class documentation for details.
 
 
 
@@ -84,7 +90,6 @@ adata$method() calls a method
     <li><h6 class="dropdown-header" data-toc-skip>Development</h6></li>
     <li><a class="dropdown-item" href="../articles/software_design.html">Software design</a></li>
     <li><a class="dropdown-item" href="../articles/development_status.html">Development status</a></li>
-    <li><a class="dropdown-item" href="../articles/known_issues.html">Known issues</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -111,10 +116,10 @@ annotations in <code>uns</code>.</p><div class="section">
 
 
 <p>There are different back ends for <code>AnnData</code> objects that inherit from the
-abstract <a href="AbstractAnnData.html">AbstractAnnData</a> class. For example, the <a href="InMemoryAnnData.html">InMemoryAnnData</a> stores
-data in memory, the <a href="HDF5AnnData.html">HDF5AnnData</a> is backed by a H5AD file, and the
-<a href="ReticulateAnnData.html">ReticulateAnnData</a> provides direct integration with Python <code>AnnData</code> objects
-via reticulate.</p>
+abstract <a href="AbstractAnnData.html">AbstractAnnData</a> class and store and access data in different ways:</p><ul><li><p><a href="InMemoryAnnData.html">InMemoryAnnData</a> stores data in memory</p></li>
+<li><p><a href="HDF5AnnData.html">HDF5AnnData</a> provides an interface to a H5AD file</p></li>
+<li><p><a href="ReticulateAnnData.html">ReticulateAnnData</a> wraps a Python <code>AnnData</code> object via <span class="pkg">reticulate</span></p></li>
+</ul><p>See the class documentation for details.</p>
 </div>
 
 <div class="section">
