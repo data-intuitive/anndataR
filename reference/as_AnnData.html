@@ -11,7 +11,7 @@ functionality of an AnnData object, see AnnData-usage."><meta property="og:image
 
     <a class="navbar-brand me-2" href="../index.html">anndataR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.99.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.99.4</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -275,40 +275,40 @@ new <code>AnnData</code> object.</p><table class="table table"><tr><td><strong>F
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Centering and scaling data matrix</span>
 <span class="r-in"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://satijalab.org/seurat/reference/RunPCA.html" class="external-link">RunPCA</a></span><span class="op">(</span><span class="va">obj</span>, npcs <span class="op">=</span> <span class="fl">10L</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> PC_ 1 </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Positive:  Feature17, Feature19, Feature29, Feature58, Feature64, Feature5, Feature90, Feature93, Feature8, Feature12 </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature36, Feature13, Feature53, Feature98, Feature39, Feature82, Feature52, Feature24, Feature97, Feature54 </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature85, Feature27, Feature50, Feature80, Feature73, Feature21, Feature2, Feature20, Feature47, Feature59 </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Negative:  Feature25, Feature51, Feature99, Feature40, Feature68, Feature30, Feature62, Feature87, Feature56, Feature94 </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature60, Feature42, Feature67, Feature46, Feature7, Feature11, Feature70, Feature4, Feature49, Feature77 </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature28, Feature92, Feature78, Feature79, Feature57, Feature33, Feature55, Feature18, Feature65, Feature76 </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Positive:  Feature37, Feature76, Feature85, Feature72, Feature97, Feature14, Feature83, Feature69, Feature13, Feature92 </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature84, Feature95, Feature20, Feature5, Feature10, Feature33, Feature88, Feature32, Feature8, Feature60 </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature29, Feature93, Feature67, Feature1, Feature55, Feature61, Feature77, Feature74, Feature23, Feature28 </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Negative:  Feature78, Feature9, Feature41, Feature4, Feature47, Feature66, Feature17, Feature51, Feature91, Feature46 </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature94, Feature21, Feature62, Feature90, Feature56, Feature49, Feature81, Feature19, Feature75, Feature50 </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature86, Feature63, Feature73, Feature48, Feature16, Feature53, Feature18, Feature15, Feature89, Feature39 </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> PC_ 2 </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Positive:  Feature23, Feature98, Feature10, Feature88, Feature35, Feature73, Feature83, Feature26, Feature44, Feature79 </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature64, Feature41, Feature8, Feature56, Feature43, Feature53, Feature81, Feature90, Feature42, Feature22 </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature63, Feature2, Feature32, Feature12, Feature5, Feature11, Feature28, Feature51, Feature6, Feature29 </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Negative:  Feature80, Feature59, Feature87, Feature13, Feature86, Feature72, Feature19, Feature70, Feature36, Feature15 </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature74, Feature94, Feature20, Feature61, Feature24, Feature45, Feature3, Feature16, Feature46, Feature82 </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature9, Feature34, Feature100, Feature92, Feature39, Feature54, Feature67, Feature47, Feature71, Feature27 </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Positive:  Feature97, Feature67, Feature30, Feature5, Feature70, Feature23, Feature35, Feature22, Feature19, Feature2 </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature48, Feature77, Feature9, Feature41, Feature88, Feature34, Feature7, Feature21, Feature47, Feature58 </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature60, Feature78, Feature80, Feature4, Feature14, Feature62, Feature86, Feature96, Feature92, Feature12 </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Negative:  Feature15, Feature59, Feature100, Feature79, Feature94, Feature98, Feature84, Feature37, Feature38, Feature18 </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature3, Feature65, Feature31, Feature64, Feature61, Feature87, Feature16, Feature24, Feature29, Feature99 </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature13, Feature72, Feature6, Feature93, Feature63, Feature36, Feature27, Feature33, Feature46, Feature75 </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> PC_ 3 </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Positive:  Feature83, Feature38, Feature68, Feature42, Feature3, Feature87, Feature98, Feature69, Feature84, Feature10 </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature6, Feature59, Feature39, Feature77, Feature71, Feature17, Feature62, Feature16, Feature40, Feature72 </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature56, Feature29, Feature73, Feature50, Feature89, Feature13, Feature26, Feature78, Feature30, Feature9 </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Negative:  Feature31, Feature79, Feature34, Feature88, Feature58, Feature46, Feature45, Feature81, Feature51, Feature49 </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature35, Feature95, Feature8, Feature52, Feature23, Feature70, Feature76, Feature57, Feature20, Feature12 </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature11, Feature86, Feature97, Feature94, Feature55, Feature54, Feature37, Feature24, Feature43, Feature99 </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Positive:  Feature62, Feature77, Feature43, Feature56, Feature94, Feature17, Feature69, Feature52, Feature48, Feature18 </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature29, Feature85, Feature8, Feature32, Feature41, Feature11, Feature64, Feature63, Feature72, Feature42 </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature2, Feature99, Feature35, Feature86, Feature21, Feature31, Feature89, Feature16, Feature75, Feature20 </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Negative:  Feature73, Feature30, Feature87, Feature49, Feature84, Feature78, Feature10, Feature40, Feature3, Feature34 </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature22, Feature70, Feature66, Feature53, Feature59, Feature65, Feature100, Feature82, Feature24, Feature97 </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature33, Feature28, Feature25, Feature93, Feature57, Feature81, Feature19, Feature91, Feature51, Feature4 </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> PC_ 4 </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Positive:  Feature71, Feature62, Feature9, Feature53, Feature34, Feature48, Feature73, Feature12, Feature93, Feature43 </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature38, Feature92, Feature77, Feature32, Feature57, Feature66, Feature72, Feature97, Feature46, Feature80 </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature36, Feature67, Feature42, Feature64, Feature100, Feature8, Feature33, Feature4, Feature10, Feature44 </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Negative:  Feature91, Feature14, Feature69, Feature75, Feature2, Feature1, Feature88, Feature68, Feature19, Feature47 </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature45, Feature56, Feature81, Feature95, Feature20, Feature83, Feature94, Feature26, Feature40, Feature50 </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature17, Feature89, Feature39, Feature13, Feature16, Feature5, Feature31, Feature74, Feature41, Feature87 </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Positive:  Feature13, Feature55, Feature25, Feature4, Feature92, Feature39, Feature11, Feature98, Feature36, Feature94 </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature27, Feature2, Feature71, Feature24, Feature46, Feature67, Feature60, Feature50, Feature1, Feature28 </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature78, Feature41, Feature81, Feature80, Feature75, Feature10, Feature44, Feature58, Feature45, Feature14 </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Negative:  Feature8, Feature3, Feature20, Feature5, Feature26, Feature43, Feature95, Feature63, Feature79, Feature87 </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature17, Feature70, Feature97, Feature90, Feature89, Feature18, Feature22, Feature51, Feature47, Feature61 </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature19, Feature52, Feature82, Feature76, Feature15, Feature38, Feature34, Feature12, Feature40, Feature84 </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> PC_ 5 </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Positive:  Feature30, Feature8, Feature11, Feature64, Feature70, Feature100, Feature67, Feature96, Feature28, Feature55 </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature61, Feature74, Feature94, Feature12, Feature40, Feature43, Feature52, Feature62, Feature83, Feature99 </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature85, Feature33, Feature29, Feature79, Feature39, Feature37, Feature72, Feature2, Feature36, Feature53 </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Negative:  Feature34, Feature4, Feature50, Feature76, Feature22, Feature59, Feature89, Feature93, Feature41, Feature60 </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature32, Feature56, Feature35, Feature9, Feature20, Feature46, Feature68, Feature31, Feature6, Feature26 </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature16, Feature47, Feature7, Feature58, Feature48, Feature71, Feature82, Feature90, Feature49, Feature98 </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Positive:  Feature47, Feature68, Feature29, Feature35, Feature20, Feature95, Feature86, Feature66, Feature83, Feature11 </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature100, Feature70, Feature94, Feature1, Feature24, Feature10, Feature18, Feature62, Feature54, Feature39 </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature55, Feature4, Feature23, Feature16, Feature57, Feature48, Feature88, Feature15, Feature60, Feature82 </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Negative:  Feature96, Feature32, Feature43, Feature22, Feature52, Feature59, Feature87, Feature71, Feature12, Feature56 </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature36, Feature2, Feature17, Feature72, Feature25, Feature41, Feature49, Feature92, Feature90, Feature34 </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 	   Feature26, Feature37, Feature30, Feature69, Feature50, Feature99, Feature45, Feature79, Feature91, Feature13 </span>
 <span class="r-in"><span><span class="va">obj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://satijalab.org/seurat/reference/FindNeighbors.html" class="external-link">FindNeighbors</a></span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Computing nearest neighbor graph</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Computing SNN</span>
@@ -316,10 +316,10 @@ new <code>AnnData</code> object.</p><table class="table table"><tr><td><strong>F
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>The default method for RunUMAP has changed from calling Python UMAP via reticulate to the R-native UWOT using the cosine metric</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> To use Python UMAP via reticulate, set umap.method to 'umap-learn' and metric to 'correlation'</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> This message will be shown once per session</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 09:54:03 UMAP embedding parameters a = 0.9922 b = 1.112</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 09:54:03 Read 200 rows and found 10 numeric columns</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 09:54:03 Using Annoy for neighbor search, n_neighbors = 30</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 09:54:03 Building Annoy index with metric = cosine, n_trees = 50</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 08:58:17 UMAP embedding parameters a = 0.9922 b = 1.112</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 08:58:17 Read 200 rows and found 10 numeric columns</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 08:58:17 Using Annoy for neighbor search, n_neighbors = 30</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 08:58:17 Building Annoy index with metric = cosine, n_trees = 50</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> 0%   10   20   30   40   50   60   70   80   90   100%</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> [----|----|----|----|----|----|----|----|----|----|</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> *</span>
@@ -373,15 +373,15 @@ new <code>AnnData</code> object.</p><table class="table table"><tr><td><strong>F
 <span class="r-msg co"><span class="r-pr">#&gt;</span> *</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> *</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> |</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 09:54:03 Writing NN index file to temp file /tmp/RtmpdQ7toc/file68102371715b</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 09:54:03 Searching Annoy index using 1 thread, search_k = 3000</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 09:54:03 Annoy recall = 100%</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 09:54:04 Commencing smooth kNN distance calibration using 1 thread</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 08:58:17 Writing NN index file to temp file /tmp/RtmpUqOvRo/file67e07ddd8b22</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 08:58:17 Searching Annoy index using 1 thread, search_k = 3000</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 08:58:17 Annoy recall = 100%</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 08:58:18 Commencing smooth kNN distance calibration using 1 thread</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>  with target n_neighbors = 30</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 09:54:05 Initializing from normalized Laplacian + noise (using RSpectra)</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 09:54:05 Commencing optimization for 500 epochs, with 6148 positive edges</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 09:54:05 Using rng type: pcg</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 09:54:06 Optimization finished</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 08:58:19 Initializing from normalized Laplacian + noise (using RSpectra)</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 08:58:19 Commencing optimization for 500 epochs, with 6160 positive edges</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 08:58:19 Using rng type: pcg</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 08:58:20 Optimization finished</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">as_AnnData</span><span class="op">(</span><span class="va">obj</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Row names of `Loadings(seurat_obj, <span style="color: #0000BB;">"pca"</span>)` do not match the expected var names</span>

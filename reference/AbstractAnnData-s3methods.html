@@ -9,7 +9,7 @@ making them behave like native R objects with familiar syntax."><meta property="
 
     <a class="navbar-brand me-2" href="../index.html">anndataR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.99.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.99.4</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -133,17 +133,67 @@ or exclusion patterns.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
-<span class="r-in"><span><span class="co"># Create example data</span></span></span>
-<span class="r-in"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="generate_dataset.html">generate_dataset</a></span><span class="op">(</span>n_obs <span class="op">=</span> <span class="fl">100</span>, n_vars <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Create example data</span></span></span>
+<span class="r-in"><span><span class="va">ad</span> <span class="op">&lt;-</span> <span class="fu"><a href="generate_dataset.html">generate_dataset</a></span><span class="op">(</span>n_obs <span class="op">=</span> <span class="fl">100</span>, n_vars <span class="op">=</span> <span class="fl">50</span>, format <span class="op">=</span> <span class="st">"AnnData"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Standard R methods work</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">ad</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 100  50</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">ad</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 100</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">ad</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 50</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/dimnames.html" class="external-link">dimnames</a></span><span class="op">(</span><span class="va">ad</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [1] "cell1"   "cell2"   "cell3"   "cell4"   "cell5"   "cell6"   "cell7"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [8] "cell8"   "cell9"   "cell10"  "cell11"  "cell12"  "cell13"  "cell14" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [15] "cell15"  "cell16"  "cell17"  "cell18"  "cell19"  "cell20"  "cell21" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [22] "cell22"  "cell23"  "cell24"  "cell25"  "cell26"  "cell27"  "cell28" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [29] "cell29"  "cell30"  "cell31"  "cell32"  "cell33"  "cell34"  "cell35" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [36] "cell36"  "cell37"  "cell38"  "cell39"  "cell40"  "cell41"  "cell42" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [43] "cell43"  "cell44"  "cell45"  "cell46"  "cell47"  "cell48"  "cell49" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [50] "cell50"  "cell51"  "cell52"  "cell53"  "cell54"  "cell55"  "cell56" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [57] "cell57"  "cell58"  "cell59"  "cell60"  "cell61"  "cell62"  "cell63" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [64] "cell64"  "cell65"  "cell66"  "cell67"  "cell68"  "cell69"  "cell70" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [71] "cell71"  "cell72"  "cell73"  "cell74"  "cell75"  "cell76"  "cell77" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [78] "cell78"  "cell79"  "cell80"  "cell81"  "cell82"  "cell83"  "cell84" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [85] "cell85"  "cell86"  "cell87"  "cell88"  "cell89"  "cell90"  "cell91" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [92] "cell92"  "cell93"  "cell94"  "cell95"  "cell96"  "cell97"  "cell98" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [99] "cell99"  "cell100"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "gene1"  "gene2"  "gene3"  "gene4"  "gene5"  "gene6"  "gene7"  "gene8" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "gene9"  "gene10" "gene11" "gene12" "gene13" "gene14" "gene15" "gene16"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "gene17" "gene18" "gene19" "gene20" "gene21" "gene22" "gene23" "gene24"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "gene25" "gene26" "gene27" "gene28" "gene29" "gene30" "gene31" "gene32"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "gene33" "gene34" "gene35" "gene36" "gene37" "gene38" "gene39" "gene40"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [41] "gene41" "gene42" "gene43" "gene44" "gene45" "gene46" "gene47" "gene48"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [49] "gene49" "gene50"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">ad</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [1] "cell1"   "cell2"   "cell3"   "cell4"   "cell5"   "cell6"   "cell7"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [8] "cell8"   "cell9"   "cell10"  "cell11"  "cell12"  "cell13"  "cell14" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [15] "cell15"  "cell16"  "cell17"  "cell18"  "cell19"  "cell20"  "cell21" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [22] "cell22"  "cell23"  "cell24"  "cell25"  "cell26"  "cell27"  "cell28" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [29] "cell29"  "cell30"  "cell31"  "cell32"  "cell33"  "cell34"  "cell35" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [36] "cell36"  "cell37"  "cell38"  "cell39"  "cell40"  "cell41"  "cell42" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [43] "cell43"  "cell44"  "cell45"  "cell46"  "cell47"  "cell48"  "cell49" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [50] "cell50"  "cell51"  "cell52"  "cell53"  "cell54"  "cell55"  "cell56" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [57] "cell57"  "cell58"  "cell59"  "cell60"  "cell61"  "cell62"  "cell63" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [64] "cell64"  "cell65"  "cell66"  "cell67"  "cell68"  "cell69"  "cell70" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [71] "cell71"  "cell72"  "cell73"  "cell74"  "cell75"  "cell76"  "cell77" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [78] "cell78"  "cell79"  "cell80"  "cell81"  "cell82"  "cell83"  "cell84" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [85] "cell85"  "cell86"  "cell87"  "cell88"  "cell89"  "cell90"  "cell91" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [92] "cell92"  "cell93"  "cell94"  "cell95"  "cell96"  "cell97"  "cell98" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [99] "cell99"  "cell100"</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">ad</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "gene1"  "gene2"  "gene3"  "gene4"  "gene5"  "gene6"  "gene7"  "gene8" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "gene9"  "gene10" "gene11" "gene12" "gene13" "gene14" "gene15" "gene16"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "gene17" "gene18" "gene19" "gene20" "gene21" "gene22" "gene23" "gene24"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "gene25" "gene26" "gene27" "gene28" "gene29" "gene30" "gene31" "gene32"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "gene33" "gene34" "gene35" "gene36" "gene37" "gene38" "gene39" "gene40"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [41] "gene41" "gene42" "gene43" "gene44" "gene45" "gene46" "gene47" "gene48"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [49] "gene49" "gene50"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Set names using dimnames</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/dimnames.html" class="external-link">dimnames</a></span><span class="op">(</span><span class="va">ad</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
@@ -159,7 +209,6 @@ or exclusion patterns.</p>
 <span class="r-in"><span><span class="va">subset_ad</span> <span class="op">&lt;-</span> <span class="va">ad</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span></span></span>
 <span class="r-in"><span><span class="va">subset_ad</span> <span class="op">&lt;-</span> <span class="va">ad</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span><span class="op">)</span>, length.out <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">ad</span><span class="op">)</span><span class="op">)</span>, <span class="op">]</span>  <span class="co"># logical subsetting (no recycling)</span></span></span>
 <span class="r-in"><span><span class="va">subset_ad</span> <span class="op">&lt;-</span> <span class="va">ad</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cell_1"</span>, <span class="st">"cell_2"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gene_1"</span>, <span class="st">"gene_2"</span><span class="op">)</span><span class="op">]</span>  <span class="co"># name subsetting</span></span></span>
-<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
