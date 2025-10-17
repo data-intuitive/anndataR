@@ -88,6 +88,7 @@
 <li>Adds warning when rownames don’t match var_names during conversion</li>
 </ul></li>
 <li>Avoid writing character datasets to H5AD files with LZF compression as it causes R to crash (PR <a href="https://github.com/scverse/anndataR/issues/356" class="external-link">#356</a>)</li>
+<li>Handle slots that may have incomplete dimensions when converting from <code>Seurat</code>. These are now skipped with a warning instead of indirectly raising an error. (PR <a href="https://github.com/scverse/anndataR/issues/369" class="external-link">#369</a>)</li>
 </ul></div>
 <div class="section level3">
 <h3 id="documentation-0-99-3">Documentation<a class="anchor" aria-label="anchor" href="#documentation-0-99-3"></a></h3>
