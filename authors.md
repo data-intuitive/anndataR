@@ -2,11 +2,12 @@
 
 ## Authors
 
-- **Robrecht Cannoodt**. Author, maintainer.
+- **[Robrecht Cannoodt](https://cannoodt.dev)**. Author, maintainer.
   [](https://orcid.org/0000-0003-3641-729X)  
   rcannood
 
-- **Luke Zappia**. Author. [](https://orcid.org/0000-0001-7744-8565)  
+- **[Luke Zappia](https://lazappi.id.au)**. Author.
+  [](https://orcid.org/0000-0001-7744-8565)  
   lazappi
 
 - **Martin Morgan**. Author. [](https://orcid.org/0000-0002-5874-8148)  
@@ -32,11 +33,11 @@
   [](https://orcid.org/0000-0002-0922-0822)  
   csangara
 
-- **Data Intuitive**. Funder, copyright holder.
+- **[Data Intuitive](https://data-intuitive.com)**. Funder.
 
-- **Chan Zuckerberg Initiative**. Funder.
+- **[Chan Zuckerberg Initiative](https://chanzuckerberg.com)**. Funder.
 
-- **scverse consortium**. Sponsor.
+- **[scverse consortium](https://scverse.org)**. Sponsor.
 
 ## Citation
 

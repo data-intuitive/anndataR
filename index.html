@@ -23,7 +23,7 @@
 
     <a class="navbar-brand me-2" href="index.html">anndataR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,7 +69,7 @@
 <!-- badges: start -->
 
 <p><strong>{anndataR}</strong> aims to make the <code>AnnData</code> format a first-class citizen in the R ecosystem, and to make it easy to work with AnnData files in R, either directly or by converting them to a <code>SingleCellExperiment</code> or <code>Seurat</code> object.</p>
-<p><strong>{anndataR}</strong> is an scverse® community project maintained by <a href="https://data-intuitive.com/" class="external-link">Data Intuitive</a>, and is fiscally sponsored by the <a href="https://chanzuckerberg.com/" class="external-link">Chan Zuckerberg Initiative</a>.</p>
+<p><strong>{anndataR}</strong> is a an scverse® community project fiscally sponsored by the <a href="https://chanzuckerberg.com/" class="external-link">Chan Zuckerberg Initiative</a>.</p>
 <div class="section level2">
 <h2 id="features-of-anndatar">Features of {anndataR}<a class="anchor" aria-label="anchor" href="#features-of-anndatar"></a>
 </h2>
@@ -87,7 +87,7 @@
 <p>You can install <strong>{anndataR}</strong> from Bioconductor using <strong>BiocManager</strong>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"BiocManager"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"anndataR"</span><span class="op">)</span></span></code></pre></div>
 <p>Or you can install the development version of <strong>{anndataR}</strong> from GitHub like so:</p>
@@ -112,8 +112,9 @@
 </h2>
 <p>The best way to get started with <strong>{anndataR}</strong> is to explore the package vignettes (available at <a href="https://anndatar.data-intuitive.com/articles/" class="external-link uri">https://anndatar.data-intuitive.com/articles/</a>).</p>
 <p>In order to browse these vignettes locally, you need to build them during installation:</p>
-<pre><code><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>pkg.build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"scverse/anndataR"</span><span class="op">)</span></span></code></pre>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>pkg.build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"scverse/anndataR"</span><span class="op">)</span></span></code></pre></div>
 <p>Take note that you need all suggested dependencies available, and that building them can take some time.</p>
 <ul>
 <li>
@@ -136,22 +137,22 @@
 <a class="anchor" aria-label="anchor" href="#citing-anndatar"></a>
 </h2>
 <p>If you use <strong>{anndataR}</strong> in your work, please cite <a href="https://doi.org/10.1101/2025.08.18.669052" class="external-link"><em>“anndataR improves interoperability between R and Python in single-cell transcriptomics”</em></a>:</p>
-<pre><code>&gt; citation("anndataR")
-
-Deconinck L, Zappia L, Cannoodt R, Morgan M, scverse core, Virshup I, Sang-aram C, Bredikhin D, Seurinck R, Saeys Y (2025).
-“anndataR improves interoperability between R and Python in single-cell transcriptomics.” _bioRxiv_, 2025.08.18.669052.
-doi:10.1101/2025.08.18.669052 &lt;https://doi.org/10.1101/2025.08.18.669052&gt;.
-
-A BibTeX entry for LaTeX users is
-
-  @Article{,
-    title = {{anndataR} improves interoperability between R and Python in single-cell transcriptomics},
-    author = {Louise Deconinck and Luke Zappia and Robrecht Cannoodt and Martin Morgan and {scverse core} and Isaac Virshup and Chananchida Sang-aram and Danila Bredikhin and Ruth Seurinck and Yvan Saeys},
-    journal = {bioRxiv},
-    year = {2025},
-    pages = {2025.08.18.669052},
-    doi = {10.1101/2025.08.18.669052},
-  }</code></pre>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"anndataR"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>Deconinck L, Zappia L, Cannoodt R, Morgan M, scverse core, Virshup I, Sang<span class="sc">-</span>aram C, Bredikhin D, Seurinck R, Saeys <span class="fu">Y</span> (<span class="dv">2025</span>).</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>“anndataR improves interoperability between R and Python <span class="cf">in</span> single<span class="sc">-</span>cell transcriptomics.” _bioRxiv_, <span class="dv">2025</span>.<span class="dv">08</span>.<span class="dv">18</span>.<span class="fl">669052.</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>doi<span class="sc">:</span><span class="fl">10.1101</span><span class="sc">/</span><span class="dv">2025</span>.<span class="dv">08</span>.<span class="fl">18.669052</span> <span class="sc">&lt;</span>https<span class="sc">:</span><span class="er">//</span>doi.org<span class="sc">/</span><span class="fl">10.1101</span><span class="sc">/</span><span class="dv">2025</span>.<span class="dv">08</span>.<span class="fl">18.669052</span><span class="sc">&gt;</span>.</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>A BibTeX entry <span class="cf">for</span> LaTeX users is</span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>  <span class="sc">@</span>Article{,</span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>    title <span class="ot">=</span> {{anndataR} improves interoperability between R and Python <span class="cf">in</span> single<span class="sc">-</span>cell transcriptomics},</span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a>    author <span class="ot">=</span> {Louise Deconinck and Luke Zappia and Robrecht Cannoodt and Martin Morgan and {scverse core} and Isaac Virshup and Chananchida Sang<span class="sc">-</span>aram and Danila Bredikhin and Ruth Seurinck and Yvan Saeys},</span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a>    journal <span class="ot">=</span> {bioRxiv},</span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a>    year <span class="ot">=</span> {<span class="dv">2025</span>},</span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a>    pages <span class="ot">=</span> {<span class="dv">2025</span>.<span class="dv">08</span>.<span class="fl">18.669052</span>},</span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a>    doi <span class="ot">=</span> {<span class="fl">10.1101</span><span class="sc">/</span><span class="dv">2025</span>.<span class="dv">08</span>.<span class="fl">18.669052</span>},</span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a>  }</span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
@@ -182,37 +183,28 @@ A BibTeX entry for LaTeX users is
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Robrecht Cannoodt <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-3641-729X" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
-<li>Luke Zappia <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-7744-8565" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li>
+<a href="https://cannoodt.dev" class="external-link">Robrecht Cannoodt</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-3641-729X" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li>
+<a href="https://lazappi.id.au" class="external-link">Luke Zappia</a> <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-7744-8565" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
 <li>Martin Morgan <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-5874-8148" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
 <li>Louise Deconinck <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-8100-6823" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
-<li>Data Intuitive <br><small class="roles"> Funder, copyright holder </small>   </li>
-<li>Chan Zuckerberg Initiative <br><small class="roles"> Funder </small>   </li>
+<li>
+<a href="https://data-intuitive.com" class="external-link">Data Intuitive</a> <br><small class="roles"> Funder </small>   </li>
+<li>
+<a href="https://chanzuckerberg.com" class="external-link">Chan Zuckerberg Initiative</a> <br><small class="roles"> Funder </small>   </li>
 <li><a href="authors.html">More about authors...</a></li>
 </ul>
 </div>
 
-<div class="dev-status">
-<h2 data-toc-skip>Dev status</h2>
-<ul class="list-unstyled">
-<li><a href="https://lifecycle.r-lib.org/articles/stages.html#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a></li>
-<li><a href="https://github.com/scverse/anndataR/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/scverse/anndataR/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://bioconductor.org/checkResults/release/bioc-LATEST/anndataR" class="external-link"><img src="http://www.bioconductor.org/shields/build/release/bioc/anndataR.svg" alt="Bioc release status"></a></li>
-<li><a href="https://bioconductor.org/checkResults/devel/bioc-LATEST/anndataR" class="external-link"><img src="http://www.bioconductor.org/shields/build/devel/bioc/anndataR.svg" alt="Bioc devel status"></a></li>
-<li><a href="http://bioconductor.org/packages/stats/bioc/anndataR/" class="external-link"><img src="https://bioconductor.org/shields/downloads/release/anndataR.svg" alt="Bioc downloads rank"></a></li>
-<li><a href="https://support.bioconductor.org/tag/anndataR" class="external-link"><img src="https://bioconductor.org/shields/posts/anndataR.svg" alt="Bioc support"></a></li>
-<li><a href="https://bioconductor.org/packages/release/bioc/html/anndataR.html#since" class="external-link"><img src="https://bioconductor.org/shields/years-in-bioc/anndataR.svg" alt="Bioc history"></a></li>
-<li><a href="http://bioconductor.org/checkResults/devel/bioc-LATEST/anndataR/" class="external-link"><img src="https://bioconductor.org/shields/lastcommit/devel/bioc/anndataR.svg" alt="Bioc last commit"></a></li>
-<li><a href="https://bioconductor.org/packages/release/bioc/html/anndataR.html#since" class="external-link"><img src="https://bioconductor.org/shields/dependencies/release/anndataR.svg" alt="Bioc dependencies"></a></li>
-</ul>
-</div>
+
 
   </aside>
 </div>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Robrecht Cannoodt, Luke Zappia, Martin Morgan, Louise Deconinck, Data Intuitive, Chan Zuckerberg Initiative.</p>
+  <p>Developed by <a href="https://cannoodt.dev" class="external-link">Robrecht Cannoodt</a>, <a href="https://lazappi.id.au" class="external-link">Luke Zappia</a>, Martin Morgan, Louise Deconinck, <a href="https://data-intuitive.com" class="external-link">Data Intuitive</a>, <a href="https://chanzuckerberg.com" class="external-link">Chan Zuckerberg Initiative</a>.</p>
 </div>
 
 <div class="pkgdown-footer-right">

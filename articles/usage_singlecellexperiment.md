@@ -306,10 +306,10 @@ sessionInfo()
 #> 
 #> loaded via a namespace (and not attached):
 #>  [1] Matrix_1.7-4        jsonlite_2.0.0      compiler_4.5.2     
-#>  [4] BiocManager_1.30.26 Rcpp_1.1.0          rhdf5filters_1.22.0
+#>  [4] BiocManager_1.30.27 Rcpp_1.1.0          rhdf5filters_1.22.0
 #>  [7] jquerylib_0.1.4     systemfonts_1.3.1   textshaping_1.0.4  
 #> [10] png_0.1-8           yaml_2.3.10         fastmap_1.2.0      
-#> [13] reticulate_1.44.0   lattice_0.22-7      XVector_0.50.0     
+#> [13] reticulate_1.44.1   lattice_0.22-7      XVector_0.50.0     
 #> [16] R6_2.6.1            S4Arrays_1.10.0     knitr_1.50         
 #> [19] htmlwidgets_1.6.4   DelayedArray_0.36.0 bookdown_0.45      
 #> [22] desc_1.4.3          bslib_0.9.0         rlang_1.1.6        
