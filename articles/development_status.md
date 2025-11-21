@@ -166,7 +166,7 @@ sessionInfo()
     ## [16] fastmap_1.2.0       yaml_2.3.10         lifecycle_1.0.4    
     ## [19] bookdown_0.45       BiocManager_1.30.27 compiler_4.5.2     
     ## [22] fs_1.6.6            pkgconfig_2.0.3     htmlwidgets_1.6.4  
-    ## [25] systemfonts_1.3.1   digest_0.6.38       R6_2.6.1           
+    ## [25] systemfonts_1.3.1   digest_0.6.39       R6_2.6.1           
     ## [28] tidyselect_1.2.1    pillar_1.11.1       magrittr_2.0.4     
     ## [31] bslib_0.9.0         withr_3.0.2         tools_4.5.2        
     ## [34] pkgdown_2.2.0       cachem_1.1.0        desc_1.4.3
