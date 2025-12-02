@@ -163,7 +163,7 @@ sessionInfo()
     ##  [7] textshaping_1.0.4   jsonlite_2.0.0      glue_1.8.0         
     ## [10] htmltools_0.5.8.1   ragg_1.5.0          sass_0.4.10        
     ## [13] rmarkdown_2.30      evaluate_1.0.5      jquerylib_0.1.4    
-    ## [16] fastmap_1.2.0       yaml_2.3.10         lifecycle_1.0.4    
+    ## [16] fastmap_1.2.0       yaml_2.3.11         lifecycle_1.0.4    
     ## [19] bookdown_0.45       BiocManager_1.30.27 compiler_4.5.2     
     ## [22] fs_1.6.6            pkgconfig_2.0.3     htmlwidgets_1.6.4  
     ## [25] systemfonts_1.3.1   digest_0.6.39       R6_2.6.1           
